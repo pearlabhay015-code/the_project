@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Hostel Facilities — Central University of South Bihar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --org-50:#EBF7FF;--org-100:#C8E9FB;--org-200:#96D3F7;--org-300:#5BB8EC;
+  --org-400:#2AA3E4;--org-500:#0D92D8;--org-600:#0B7EBD;--org-700:#096BA3;
+  --org-800:#075589;--org-900:#053D6E;
+  --org-A100:#E4F9F4;--org-A200:#4EC9A8;--org-A400:#FF6B95;--org-A700:#FFAB6E;
+  --lav:#B39DDB;--lav-lt:#EDE7F6;
+  --dark-bg:#f2adaded;--dark-bg2:#eae4f8;--dark-bg3:#e8dcfb;--dark-bg4:#E4E0F5;
+  --light-1:#F0FBFF;--light-2:#FFFFFF;--light-3:#E8F9F4;
+  --tw:#2C1A3E;--tw80:rgba(44,26,62,.82);--tw50:rgba(44,26,62,.50);
+  --tw20:rgba(44,26,62,.20);--tw10:rgba(44,26,62,.10);--tw06:rgba(44,26,62,.06);
+  --td:#1A1A3E;--td60:#4A4A7A;--td30:#9090B8;
+  --lb06:rgba(13,146,216,.06);--lb14:rgba(13,146,216,.14);--lb25:rgba(13,146,216,.25);
+  --fd:'Syne','Segoe UI','Helvetica Neue',Arial,sans-serif;
+  --fb:'DM Sans','Segoe UI','Helvetica Neue',Arial,sans-serif;
+  --r-sm:10px;--r-md:18px;--r-lg:26px;--r-xl:50px;
+  --ticker-h:36px;--topbar-h:40px;--nav-h:68px;
+  --offset:calc(var(--ticker-h) + var(--nav-h) + 12px);
+  --boys-clr:#2AA3E4;--boys-clr-lt:rgba(13,146,216,.12);
+  --girls-clr:#FF6B95;--girls-clr-lt:rgba(255,107,149,.10);
+}
+[data-theme="dark"] {
+  --dark-bg:#310943;--dark-bg2:#0d1434;--dark-bg3:#210e49;--dark-bg4:#131828;
+  --light-1:#0A0F1E;--light-2:#080D1A;--light-3:#0E1428;
+  --tw:#E4DCFF;--tw80:rgba(228,220,255,.85);--tw50:rgba(228,220,255,.50);
+  --tw20:rgba(228,220,255,.20);--tw10:rgba(228,220,255,.10);--tw06:rgba(228,220,255,.06);
+  --td:#EEE8FF;--td60:#A89FC8;--td30:#6B638A;
+  --org-50:#0D1836;--org-100:#0F1F44;--org-200:#1A3A6E;--org-300:#2255A4;
+  --org-400:#3A80D4;--org-500:#5AA0E8;--org-600:#7DB8F0;--org-700:#9FCCF7;
+  --org-800:#BFE0FA;--org-900:#DDEFFE;
+  --lav:#9B84D8;--lav-lt:#150E35;
+  --lb06:rgba(90,160,232,.08);--lb14:rgba(90,160,232,.18);--lb25:rgba(90,160,232,.30);
+  --glow-blue:0 0 18px rgba(90,160,232,.45),0 0 40px rgba(90,160,232,.20);
+  --glow-rose:0 0 18px rgba(255,107,149,.45),0 0 40px rgba(255,107,149,.18);
+  --boys-clr:#5AA0E8;--boys-clr-lt:rgba(90,160,232,.12);
+  --girls-clr:#FF8FAE;--girls-clr-lt:rgba(255,107,149,.12);
+}
+
+/* BASE */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*{-webkit-tap-highlight-color:transparent;tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);overflow-x:hidden;background:var(--light-2);transition:background .4s,color .4s;padding-top:var(--ticker-h)}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--org-50)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--org-A400),var(--lav));border-radius:4px}
+header[id],section[id]{scroll-margin-top:var(--offset)}
+
+/* TICKER */
+#ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);overflow:hidden;display:flex;align-items:center;background:linear-gradient(90deg,rgba(255,107,149,.90) 0%,rgba(179,157,219,.92) 28%,rgba(13,146,216,.92) 58%,rgba(78,201,168,.90) 100%);backdrop-filter:blur(12px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.22);box-shadow:0 2px 16px rgba(13,146,216,.18)}
+[data-theme="dark"] #ticker{background:linear-gradient(90deg,#07091A 0%,#0A0C24 40%,#080C20 100%);border-bottom:1px solid rgba(90,160,232,.20);box-shadow:0 2px 20px rgba(0,0,0,.60),0 0 24px rgba(90,160,232,.12)}
+.ticker-label{flex-shrink:0;padding:0 14px;height:100%;display:flex;align-items:center;gap:6px;font-family:var(--fd);font-size:.60rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;white-space:nowrap;background:rgba(255,255,255,.18);border-right:1px solid rgba(255,255,255,.25);z-index:2}
+[data-theme="dark"] .ticker-label{background:rgba(90,160,232,.14);border-right-color:rgba(90,160,232,.22);color:var(--org-700)}
+.ticker-fade{position:absolute;top:0;bottom:0;width:56px;z-index:1;pointer-events:none}
+.ticker-fade.lft{left:0;background:linear-gradient(90deg,rgba(255,107,149,.55),transparent)}
+.ticker-fade.rgt{right:0;background:linear-gradient(-90deg,rgba(78,201,168,.55),transparent)}
+[data-theme="dark"] .ticker-fade.lft{background:linear-gradient(90deg,rgba(7,9,26,.95),transparent)}
+[data-theme="dark"] .ticker-fade.rgt{background:linear-gradient(-90deg,rgba(8,12,32,.95),transparent)}
+.ticker-viewport{flex:1;overflow:hidden;position:relative}
+.ticker-track{display:flex;align-items:center;width:max-content;animation:tickerRoll 42s linear infinite;will-change:transform}
+.ticker-track:hover,.ticker-track.paused{animation-play-state:paused}
+@keyframes tickerRoll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.t-item{display:inline-flex;align-items:center;gap:9px;padding:0 26px;height:var(--ticker-h);font-size:.70rem;font-weight:500;color:#fff;white-space:nowrap;text-decoration:none;transition:color .2s,text-shadow .2s;cursor:pointer}
+.t-item:hover{text-shadow:0 0 14px rgba(255,255,255,.75)}
+[data-theme="dark"] .t-item{color:var(--td60)}
+[data-theme="dark"] .t-item:hover{color:var(--org-700);text-shadow:0 0 14px rgba(90,160,232,.55)}
+.t-sep{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.38);flex-shrink:0}
+[data-theme="dark"] .t-sep{background:rgba(90,160,232,.28)}
+.t-badge{display:inline-block;padding:1px 7px;border-radius:8px;font-size:.56rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.45);color:#ef0c18}
+[data-theme="dark"] .t-badge{background:rgba(155,132,216,.22);border-color:rgba(155,132,216,.48);color:var(--lav)}
+
+/* TOP BAR */
+#topbar{background:linear-gradient(90deg,var(--dark-bg),var(--light-1));border-bottom:1px solid rgba(255,255,255,.60);padding:0 5vw;height:var(--topbar-h);display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--tw50);z-index:600;transition:background .4s}
+[data-theme="dark"] #topbar{border-bottom-color:rgba(90,160,232,.12)}
+#topbar a{color:var(--tw50);text-decoration:none;transition:color .2s}
+#topbar a:hover{color:var(--org-A400)}
+.tb-l{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.tb-sep{opacity:.2}
+
+/* NAVBAR */
+#nav-wrap{position:sticky;top:var(--ticker-h);z-index:800;display:flex;justify-content:center;padding:8px 3vw;pointer-events:none}
+nav{pointer-events:all;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:rgba(235,247,255,.84);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border:1.5px solid rgba(13,146,216,.22);border-radius:60px;padding:8px 16px;width:min(980px,94vw);box-shadow:0 4px 24px rgba(13,146,216,.12),0 1px 0 rgba(255,255,255,.9) inset;transition:background .3s,box-shadow .3s,border-color .4s;animation:navIn .6s cubic-bezier(.16,1,.3,1) both}
+@keyframes navIn{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
+nav.sc{background:rgba(235,247,255,.96);box-shadow:0 6px 32px rgba(13,146,216,.18),0 1px 0 #fff inset}
+[data-theme="dark"] nav{background:rgba(8,13,30,.82);border-color:rgba(90,160,232,.22);box-shadow:0 4px 24px rgba(0,0,0,.50),0 0 0 1px rgba(155,132,216,.08) inset}
+[data-theme="dark"] nav.sc{background:rgba(8,13,30,.96);box-shadow:0 6px 32px rgba(0,0,0,.60),0 0 28px rgba(90,160,232,.10)}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;justify-content:center}
+.nav-logo img{width:43px}
+.brand-txt .abbr{font-family:var(--fd);font-size:1.2rem;font-weight:600;background:linear-gradient(90deg,var(--org-A400),var(--lav));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;list-style:none;gap:2px;justify-content:flex-start}
+.nav-links a{display:block;padding:8px 13px;font-family:var(--fb);font-size:.78rem;font-weight:500;color:var(--td60);text-decoration:none;border-radius:30px;transition:color .2s,background .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.act{color:var(--org-600);background:rgba(13,146,216,.09)}
+[data-theme="dark"] .nav-links a:hover,[data-theme="dark"] .nav-links a.act{color:var(--org-600);background:rgba(90,160,232,.12)}
+.nav-right{display:flex;justify-content:flex-end;align-items:center;gap:8px}
+.btn-apply{display:inline-flex;align-items:center;padding:7px 20px;border-radius:30px;font-family:var(--fb);font-size:.78rem;font-weight:700;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--org-A400),#D44B74);border:1.5px solid rgba(255,107,149,.35);box-shadow:0 4px 18px rgba(255,107,149,.30);transition:transform .2s,box-shadow .2s;white-space:nowrap;flex-shrink:0}
+.btn-apply:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,107,149,.45);color:#fff}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(13,146,216,.28);background:rgba(235,247,255,.60);cursor:pointer;flex-shrink:0;transition:all .3s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;backdrop-filter:blur(12px)}
+.theme-toggle:hover{transform:rotate(20deg) scale(1.08);border-color:rgba(90,160,232,.55)}
+.theme-toggle .ico-sun,.theme-toggle .ico-moon{position:absolute;font-size:1rem;transition:opacity .35s,transform .4s cubic-bezier(.16,1,.3,1)}
+.theme-toggle .ico-sun{opacity:1;transform:scale(1) rotate(0deg)}
+.theme-toggle .ico-moon{opacity:0;transform:scale(.4) rotate(-90deg)}
+[data-theme="dark"] .theme-toggle{border-color:rgba(155,132,216,.45);background:rgba(21,14,53,.70);box-shadow:0 0 12px rgba(155,132,216,.30)}
+[data-theme="dark"] .theme-toggle .ico-sun{opacity:0;transform:scale(.4) rotate(90deg)}
+[data-theme="dark"] .theme-toggle .ico-moon{opacity:1;transform:scale(1) rotate(0deg)}
+.ham{display:none;width:31px;height:31px;border-radius:10px;background:rgba(13,146,216,.10);border:1.5px solid rgba(13,146,216,.22);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex-shrink:0;transition:background .2s;padding:0}
+.ham:hover{background:rgba(13,146,216,.18)}
+.ham span{display:block;width:15px;height:1px;background:var(--org-600);border-radius:2px;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .25s,width .3s}
+.ham.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;width:0}
+.ham.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+[data-theme="dark"] .ham{background:rgba(90,160,232,.10);border-color:rgba(90,160,232,.22)}
+[data-theme="dark"] .ham span{background:var(--org-700)}
+
+/* MOBILE DRAWER */
+#mob-overlay{position:fixed;inset:0;z-index:1998;background:rgba(44,26,62,.30);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s}
+#mob-overlay.show{opacity:1;pointer-events:all}
+#mob-menu{position:fixed;top:0;right:0;bottom:0;width:min(300px,86vw);z-index:1999;background:rgba(240,251,255,.97);backdrop-filter:blur(32px) saturate(220%);-webkit-backdrop-filter:blur(32px) saturate(220%);border-left:1.5px solid rgba(13,146,216,.18);box-shadow:-4px 0 32px rgba(13,146,216,.10);transform:translateX(100%);visibility:hidden;transition:transform .35s cubic-bezier(.16,1,.3,1),visibility .35s;overflow-y:auto;padding:72px 20px 40px;display:flex;flex-direction:column;gap:0}
+#mob-menu.open{transform:translateX(0);visibility:visible}
+[data-theme="dark"] #mob-menu{background:rgba(8,10,22,.97);border-left-color:rgba(90,160,232,.20);box-shadow:-4px 0 40px rgba(0,0,0,.70)}
+.mob-header{position:absolute;top:0;left:0;right:0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(13,146,216,.10);background:rgba(235,247,255,.92)}
+.mob-title{font-family:var(--fd);font-size:.9rem;color:var(--tw80)}
+[data-theme="dark"] .mob-header{background:rgba(8,10,22,.95);border-bottom-color:rgba(90,160,232,.14)}
+.mob-close{width:34px;height:34px;border-radius:50%;background:rgba(255,107,149,.10);border:1.5px solid rgba(255,107,149,.22);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--org-A400);font-size:1rem;transition:background .2s}
+.mob-close:hover{background:rgba(255,107,149,.20);color:#D44B74}
+.mob-a{display:block;padding:11px 16px;border-radius:12px;font-size:.85rem;font-weight:500;color:var(--td60);text-decoration:none;transition:background .2s,color .2s;border:1px solid transparent}
+.mob-a:hover{background:rgba(13,146,216,.07);border-color:rgba(13,146,216,.14);color:var(--org-600)}
+[data-theme="dark"] .mob-a:hover{background:rgba(90,160,232,.10);border-color:rgba(90,160,232,.22)}
+.mob-divider{height:1px;background:rgba(13,146,216,.08);margin:8px 0}
+[data-theme="dark"] .mob-divider{background:rgba(90,160,232,.10)}
+.mob-section-lbl{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--org-400);padding:6px 16px 2px}
+.mob-cta{display:block;margin-top:16px;text-align:center;text-decoration:none;padding:12px 20px;border-radius:var(--r-xl);background:linear-gradient(135deg,var(--org-A400),#D44B74);color:#fff;font-size:.85rem;font-weight:700;border:1.5px solid rgba(255,107,149,.30);box-shadow:0 4px 20px rgba(255,107,149,.25);transition:transform .2s,box-shadow .2s}
+.mob-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,107,149,.38)}
+
+/* BUTTONS */
+
+.btn-ghost-cs{background:rgba(249, 170, 193, 0.65);backdrop-filter:blur(16px);border:1.5px solid rgba(79,70,229,.28);color:var(--cs)}
+.btn-ghost-cs:hover{background:rgba(235,240,255,.88);box-shadow:0 6px 20px rgba(79,70,229,.14)}
+[data-theme="dark"] .btn-ghost-cs{background:rgba(14,12,44,.70);border-color:rgba(129,140,248,.35);color:var(--cs)}
+.btn{position:relative;display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:var(--r-xl);font-family:var(--fb);font-size:.85rem;font-weight:600;cursor:pointer;border:none;outline:none;text-decoration:none;overflow:hidden;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s}
+.btn::before{content:'';position:absolute;left:0;top:0;right:0;height:50%;border-radius:var(--r-xl) var(--r-xl) 0 0;background:linear-gradient(180deg,rgba(255,255,255,.30),transparent);pointer-events:none}
+.btn:hover{transform:translateY(-2px) scale(1.02)}.btn:active{transform:scale(.97)}
+.btn-ocean{background:linear-gradient(135deg,var(--org-A400),#D44B74);border:1.5px solid rgba(255,107,149,.38);color:#fff;box-shadow:0 4px 20px rgba(255,107,149,.28),inset 0 1px 0 rgba(255,255,255,.20)}
+.btn-ocean:hover{box-shadow:0 8px 30px rgba(255,107,149,.42)}
+.btn-ghost{background:rgba(255,255,255,.65);backdrop-filter:blur(16px);border:1.5px solid rgba(13,146,216,.28);color:var(--org-600)}
+.btn-ghost:hover{background:rgba(235,247,255,.85);box-shadow:0 6px 20px rgba(13,146,216,.14)}
+[data-theme="dark"] .btn-ghost{background:rgba(12,20,44,.70);border-color:rgba(90,160,232,.35);color:var(--org-700)}
+.btn-sm{padding:8px 18px;font-size:.78rem}
+.btn-boys{background:linear-gradient(135deg,var(--org-500),var(--org-700));border:1.5px solid rgba(13,146,216,.35);color:#fff;box-shadow:0 4px 18px rgba(13,146,216,.28),inset 0 1px 0 rgba(255,255,255,.18)}
+.btn-boys:hover{box-shadow:0 8px 28px rgba(13,146,216,.40)}
+.btn-girls{background:linear-gradient(135deg,var(--org-A400),#D44B74);border:1.5px solid rgba(255,107,149,.35);color:#fff;box-shadow:0 4px 18px rgba(255,107,149,.28),inset 0 1px 0 rgba(255,255,255,.18)}
+.btn-girls:hover{box-shadow:0 8px 28px rgba(255,107,149,.40)}
+.btn-outline-boys{background:transparent;border:1.5px solid rgba(13,146,216,.40);color:var(--boys-clr)}
+.btn-outline-boys:hover{background:var(--boys-clr-lt);box-shadow:0 4px 14px rgba(13,146,216,.15)}
+.btn-outline-girls{background:transparent;border:1.5px solid rgba(255,107,149,.40);color:var(--girls-clr)}
+.btn-outline-girls:hover{background:var(--girls-clr-lt);box-shadow:0 4px 14px rgba(255,107,149,.15)}
+.rpl{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:ripAnim .5s ease-out forwards;pointer-events:none}
+@keyframes ripAnim{to{transform:scale(16);opacity:0}}
+
+/* SCROLL REVEAL */
+.rev{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+.rev.vis{opacity:1;transform:none}
+
+/* SECTION SYSTEM */
+.dark-sec{background:var(--dark-bg2);color:var(--tw)}
+.light-sec{background:var(--light-1);color:var(--td)}
+.white-sec{background:var(--light-2);color:var(--td)}
+.sec{padding:96px 6vw;transition:background .4s}
+.sec-lbl{font-family:var(--fb);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px}
+.dark-sec .sec-lbl{color:var(--org-A400)}
+.light-sec .sec-lbl,.white-sec .sec-lbl{color:var(--org-500)}
+[data-theme="dark"] .light-sec .sec-lbl,[data-theme="dark"] .white-sec .sec-lbl{color:var(--lav)}
+.sec-title{font-family:var(--fd);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:600;letter-spacing:-.02em;line-height:1.12}
+.sec-sub{font-size:.9rem;line-height:1.8;font-weight:400;margin-top:12px;max-width:560px}
+.dark-sec .sec-sub{color:var(--tw50)}
+.light-sec .sec-sub,.white-sec .sec-sub{color:var(--td60)}
+.sec-hd{margin-bottom:52px;text-align:center}
+.sec-hd .sec-sub{margin:12px auto 0}
+
+/* PAGE HERO */
+.page-hero{background:radial-gradient(ellipse 60% 55% at 5% 20%,rgba(13,146,216,.10) 0%,transparent 60%),radial-gradient(ellipse 55% 50% at 95% 80%,rgba(255,107,149,.10) 0%,transparent 60%),linear-gradient(160deg,var(--dark-bg) 0%,var(--light-1) 100%);color:var(--tw);padding:72px 6vw 60px;text-align:center;transition:background .4s}
+[data-theme="dark"] .page-hero{background:radial-gradient(ellipse 60% 55% at 5% 20%,rgba(90,160,232,.12) 0%,transparent 60%),radial-gradient(ellipse 55% 50% at 95% 80%,rgba(255,107,149,.12) 0%,transparent 60%),linear-gradient(160deg,#050812 0%,#080D1A 100%)}
+.page-hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.68);border:1.5px solid rgba(13,146,216,.18);backdrop-filter:blur(12px);border-radius:40px;padding:5px 16px 5px 10px;font-size:.82rem;color:var(--td60);margin-bottom:20px;animation:fadeUp .7s .1s both}
+[data-theme="dark"] .page-hero-eyebrow{background:rgba(12,20,44,.75);border-color:rgba(90,160,232,.28)}
+.page-hero-title{font-family:var(--fd);font-size:clamp(2.2rem,4.5vw,4rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;color:var(--td);animation:fadeUp .7s .25s both}
+.acc-boys{background:linear-gradient(90deg,var(--org-500),var(--org-400));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.acc-girls{background:linear-gradient(90deg,var(--org-A400),var(--lav));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-hero-sub{margin-top:16px;font-size:.92rem;line-height:1.8;color:var(--td60);font-weight:400;max-width:520px;margin-inline:auto;animation:fadeUp .7s .4s both}
+.hostel-badges{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:22px;animation:fadeUp .7s .45s both}
+.h-badge{display:inline-flex;align-items:center;gap:7px;padding:6px 18px;border-radius:30px;font-size:.78rem;font-weight:600;backdrop-filter:blur(10px)}
+.h-badge.boys{background:var(--boys-clr-lt);border:1.5px solid rgba(13,146,216,.30);color:var(--boys-clr)}
+.h-badge.girls{background:var(--girls-clr-lt);border:1.5px solid rgba(255,107,149,.30);color:var(--girls-clr)}
+.page-hero-back{display:inline-flex;align-items:center;gap:6px;margin-top:28px;padding:8px 20px;border-radius:30px;background:rgba(255,255,255,.65);border:1.5px solid rgba(13,146,216,.28);color:var(--org-600);font-size:.78rem;font-weight:600;text-decoration:none;backdrop-filter:blur(12px);transition:background .2s,box-shadow .2s;animation:fadeUp .7s .55s both}
+.page-hero-back:hover{background:rgba(235,247,255,.90);box-shadow:0 4px 16px rgba(13,146,216,.14)}
+[data-theme="dark"] .page-hero-back{background:rgba(12,20,44,.70);border-color:rgba(90,160,232,.35);color:var(--org-700)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* HOSTEL SECTION */
+#hostel-sec{background:radial-gradient(ellipse 55% 50% at 0% 40%,rgba(13,146,216,.07) 0%,transparent 60%),radial-gradient(ellipse 55% 50% at 100% 60%,rgba(255,107,149,.07) 0%,transparent 60%),var(--light-1)}
+[data-theme="dark"] #hostel-sec{background:radial-gradient(ellipse 55% 50% at 0% 40%,rgba(90,160,232,.10) 0%,transparent 60%),radial-gradient(ellipse 55% 50% at 100% 60%,rgba(255,107,149,.10) 0%,transparent 60%),var(--light-1)}
+.hostel-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.hostel-col{display:flex;flex-direction:column;gap:18px}
+.hostel-col-header{display:flex;align-items:center;gap:12px;padding:14px 20px;border-radius:var(--r-md);font-family:var(--fd);font-size:1rem;font-weight:700;letter-spacing:-.01em}
+.hostel-col.boys .hostel-col-header{background:var(--boys-clr-lt);border:1.5px solid rgba(13,146,216,.22);color:var(--boys-clr)}
+.hostel-col.girls .hostel-col-header{background:var(--girls-clr-lt);border:1.5px solid rgba(255,107,149,.22);color:var(--girls-clr)}
+.hostel-images{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hostel-img-slot{border-radius:var(--r-md);overflow:hidden;aspect-ratio:4/3;position:relative;display:flex;align-items:center;justify-content:center;font-size:2.2rem;transition:box-shadow .3s,transform .3s}
+.hostel-img-slot:hover{transform:scale(1.02)}
+.hostel-img-slot img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.hostel-col.boys .hostel-img-slot{background:linear-gradient(140deg,rgba(13,146,216,.12),rgba(13,146,216,.06));border:1.5px solid rgba(13,146,216,.20);color:rgba(13,146,216,.35)}
+.hostel-col.girls .hostel-img-slot{background:linear-gradient(140deg,rgba(255,107,149,.12),rgba(255,107,149,.05));border:1.5px solid rgba(255,107,149,.22);color:rgba(255,107,149,.35)}
+.hostel-img-caption{font-size:.62rem;text-align:center;margin-top:4px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--td30)}
+.hostel-desc-card{border-radius:var(--r-lg);padding:22px 24px;transition:box-shadow .3s}
+.hostel-col.boys .hostel-desc-card{background:rgba(255,255,255,.72);border:1.5px solid rgba(13,146,216,.16);backdrop-filter:blur(16px);box-shadow:0 2px 14px rgba(13,146,216,.08)}
+.hostel-col.girls .hostel-desc-card{background:rgba(255,255,255,.72);border:1.5px solid rgba(255,107,149,.16);backdrop-filter:blur(16px);box-shadow:0 2px 14px rgba(255,107,149,.08)}
+[data-theme="dark"] .hostel-col.boys .hostel-desc-card{background:rgba(10,18,44,.78);border-color:rgba(90,160,232,.22)}
+[data-theme="dark"] .hostel-col.girls .hostel-desc-card{background:rgba(28,10,20,.78);border-color:rgba(255,107,149,.22)}
+.hostel-desc-card h3{font-family:var(--fd);font-size:.95rem;font-weight:700;margin-bottom:10px}
+.hostel-col.boys .hostel-desc-card h3{color:var(--boys-clr)}
+.hostel-col.girls .hostel-desc-card h3{color:var(--girls-clr)}
+.hostel-desc-card p{font-size:.80rem;line-height:1.75;color:var(--td60);font-weight:400;margin-bottom:14px}
+.hostel-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+.hostel-tag{font-size:.65rem;font-weight:600;letter-spacing:.04em;padding:4px 12px;border-radius:20px;white-space:nowrap}
+.hostel-col.boys .hostel-tag{background:rgba(13,146,216,.10);border:1px solid rgba(13,146,216,.22);color:var(--boys-clr)}
+.hostel-col.girls .hostel-tag{background:rgba(255,107,149,.10);border:1px solid rgba(255,107,149,.22);color:var(--girls-clr)}
+.hostel-btns{display:flex;gap:10px;flex-wrap:wrap}
+.hostel-divider{display:none;height:1px;background:linear-gradient(90deg,transparent,rgba(13,146,216,.15) 30%,rgba(255,107,149,.15) 70%,transparent);margin:8px 0}
+
+/* ═══════════════════════════════════════════
+   WARDEN TABLES SECTION
+   Design rules:
+   • .wardens-stack  — single column, align-items:center → every block is centered
+   • .warden-block   — max-width:960px, so wide tables don't stretch full bleed
+   • .warden-table-wrap — overflow-x:auto for small screens
+   • Girls block first (Maitreyi → Gargi sub-tables), Boys block below
+═══════════════════════════════════════════ */
+#wardens-sec{
+  background:
+    radial-gradient(ellipse 50% 55% at 50% 0%,rgba(179,157,219,.12) 0%,transparent 55%),
+    var(--light-2);
+  padding:80px 6vw;
+  transition:background .4s;
+}
+[data-theme="dark"] #wardens-sec{
+  background:
+    radial-gradient(ellipse 50% 55% at 50% 0%,rgba(155,132,216,.14) 0%,transparent 55%),
+    var(--light-2);
+}
+
+/* Outer container: stacks blocks, centers each */
+.wardens-stack{
+  display:flex;
+  flex-direction:column;
+  gap:56px;
+  align-items:center;   /* ← this centers every .warden-block */
+}
+
+/* Each block capped so it never stretches too wide */
+.warden-block{
+  width:100%;
+  max-width:960px;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+/* Gender header */
+.warden-block-hd{
+  display:flex;align-items:center;gap:12px;
+  padding:13px 22px;border-radius:var(--r-md);
+  font-family:var(--fd);font-size:1rem;font-weight:700;
+}
+.warden-block.girls .warden-block-hd{background:var(--girls-clr-lt);border:1.5px solid rgba(255,107,149,.28);color:var(--girls-clr)}
+.warden-block.boys  .warden-block-hd{background:var(--boys-clr-lt);border:1.5px solid rgba(13,146,216,.28);color:var(--boys-clr)}
+[data-theme="dark"] .warden-block.girls .warden-block-hd{border-color:rgba(255,107,149,.40)}
+[data-theme="dark"] .warden-block.boys  .warden-block-hd{border-color:rgba(90,160,232,.40)}
+
+/* Sub-hostel label (Maitreyi / Gargi / Block A & B) */
+.warden-sub-label{
+  font-family:var(--fd);font-size:.78rem;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;padding:4px 0 8px;
+}
+.warden-sub-label::after{content:'';flex:1;height:1px}
+.warden-block.girls .warden-sub-label{color:var(--girls-clr)}
+.warden-block.girls .warden-sub-label::after{background:linear-gradient(90deg,rgba(255,107,149,.30),transparent)}
+.warden-block.boys  .warden-sub-label{color:var(--boys-clr)}
+.warden-block.boys  .warden-sub-label::after{background:linear-gradient(90deg,rgba(13,146,216,.25),transparent)}
+
+/* Card wrapper for each sub-table */
+.warden-card{border-radius:var(--r-md);overflow:hidden;border:1.5px solid}
+.warden-block.girls .warden-card{border-color:rgba(255,107,149,.20)}
+.warden-block.boys  .warden-card{border-color:rgba(13,146,216,.20)}
+[data-theme="dark"] .warden-block.girls .warden-card{border-color:rgba(255,107,149,.30)}
+[data-theme="dark"] .warden-block.boys  .warden-card{border-color:rgba(90,160,232,.28)}
+
+/* Horizontal scroll on narrow screens */
+.warden-table-wrap{
+  width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;
+}
+.warden-table-wrap::-webkit-scrollbar{height:3px}
+.warden-table-wrap::-webkit-scrollbar-track{background:transparent}
+.warden-table-wrap::-webkit-scrollbar-thumb{border-radius:2px}
+.warden-block.girls .warden-table-wrap::-webkit-scrollbar-thumb{background:rgba(255,107,149,.40)}
+.warden-block.boys  .warden-table-wrap::-webkit-scrollbar-thumb{background:rgba(13,146,216,.40)}
+
+/* TABLE */
+.warden-table{
+  width:100%;
+  min-width:520px;   /* prevents ugly wrapping before scroll kicks in */
+  border-collapse:collapse;
+  font-size:.80rem;
+}
+
+/* Header */
+.warden-table thead tr{font-family:var(--fd);font-size:.68rem;font-weight:700;letter-spacing:.10em;text-transform:uppercase}
+.warden-block.girls .warden-table thead tr{background:linear-gradient(90deg,rgba(255,107,149,.18),rgba(255,107,149,.09));color:var(--girls-clr)}
+.warden-block.boys  .warden-table thead tr{background:linear-gradient(90deg,rgba(13,146,216,.18),rgba(13,146,216,.09));color:var(--boys-clr)}
+[data-theme="dark"] .warden-block.girls .warden-table thead tr{background:linear-gradient(90deg,rgba(255,107,149,.20),rgba(255,107,149,.10))}
+[data-theme="dark"] .warden-block.boys  .warden-table thead tr{background:linear-gradient(90deg,rgba(90,160,232,.22),rgba(90,160,232,.10))}
+.warden-table th{padding:12px 14px;text-align:left;white-space:nowrap;border-bottom:2px solid}
+.warden-block.girls .warden-table th{border-bottom-color:rgba(255,107,149,.35)}
+.warden-block.boys  .warden-table th{border-bottom-color:rgba(13,146,216,.30)}
+[data-theme="dark"] .warden-block.girls .warden-table th{border-bottom-color:rgba(255,107,149,.45)}
+[data-theme="dark"] .warden-block.boys  .warden-table th{border-bottom-color:rgba(90,160,232,.40)}
+
+/* Body rows */
+.warden-table tbody tr{background:var(--light-2);transition:background .2s;border-bottom:1px solid}
+[data-theme="dark"] .warden-table tbody tr{background:rgba(10,15,32,.80)}
+.warden-block.girls .warden-table tbody tr{border-bottom-color:rgba(255,107,149,.07)}
+.warden-block.boys  .warden-table tbody tr{border-bottom-color:rgba(13,146,216,.07)}
+[data-theme="dark"] .warden-block.girls .warden-table tbody tr{border-bottom-color:rgba(255,107,149,.10)}
+[data-theme="dark"] .warden-block.boys  .warden-table tbody tr{border-bottom-color:rgba(90,160,232,.10)}
+.warden-table tbody tr:last-child{border-bottom:none}
+.warden-block.girls .warden-table tbody tr:hover{background:rgba(255,107,149,.05)}
+.warden-block.boys  .warden-table tbody tr:hover{background:rgba(13,146,216,.05)}
+[data-theme="dark"] .warden-block.girls .warden-table tbody tr:hover{background:rgba(255,107,149,.09)}
+[data-theme="dark"] .warden-block.boys  .warden-table tbody tr:hover{background:rgba(90,160,232,.09)}
+.warden-table td{padding:11px 14px;color:var(--td60);vertical-align:middle;word-break:break-word}
+.warden-table td:first-child{font-weight:700;font-size:.72rem;color:var(--td30);text-align:center;width:40px}
+.td-name{font-weight:600;color:var(--td);white-space:nowrap}
+[data-theme="dark"] .td-name{color:var(--tw80)}
+
+/* Photo cell */
+.td-photo{width:50px;text-align:center;padding:8px 8px}
+.warden-photo{
+  width:110px;height:140px;border-radius:20%;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;margin:0 auto;position:relative;border:2px solid;
+}
+.warden-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.warden-block.girls .warden-photo{background:linear-gradient(135deg,rgba(255,107,149,.18),rgba(255,107,149,.08));border-color:rgba(255,107,149,.35)}
+.warden-block.boys  .warden-photo{background:linear-gradient(135deg,rgba(13,146,216,.18),rgba(13,146,216,.08));border-color:rgba(13,146,216,.30)}
+[data-theme="dark"] .warden-block.girls .warden-photo{background:linear-gradient(135deg,rgba(255,107,149,.22),rgba(255,107,149,.10));border-color:rgba(255,107,149,.45)}
+[data-theme="dark"] .warden-block.boys  .warden-photo{background:linear-gradient(135deg,rgba(90,160,232,.22),rgba(90,160,232,.10));border-color:rgba(90,160,232,.42)}
+
+/* Designation badge */
+.desig-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.62rem;font-weight:700;letter-spacing:.04em;white-space:nowrap}
+.warden-block.girls .desig-badge{background:rgba(255,107,149,.10);border:1px solid rgba(255,107,149,.22);color:var(--girls-clr)}
+.warden-block.boys  .desig-badge{background:rgba(13,146,216,.10);border:1px solid rgba(13,146,216,.22);color:var(--boys-clr)}
+[data-theme="dark"] .warden-block.girls .desig-badge{background:rgba(255,107,149,.14);border-color:rgba(255,107,149,.35)}
+[data-theme="dark"] .warden-block.boys  .desig-badge{background:rgba(90,160,232,.14);border-color:rgba(90,160,232,.32)}
+
+/* Contact */
+.warden-contact{display:inline;text-decoration:none;font-size:.73rem;font-weight:500;transition:color .2s;word-break:break-all}
+.warden-block.girls .warden-contact{color:var(--girls-clr)}
+.warden-block.girls .warden-contact:hover{color:#D44B74}
+.warden-block.boys  .warden-contact{color:var(--boys-clr)}
+.warden-block.boys  .warden-contact:hover{color:var(--org-700)}
+
+/* Scroll hint — only on mobile */
+.scroll-hint{display:none;text-align:center;font-size:.62rem;color:var(--td30);padding:5px 0 2px;letter-spacing:.04em}
+
+/* GOV SITES */
+#gov_sites{background:radial-gradient(ellipse 65% 50% at 85% 20%,rgba(179,157,219,.14) 0%,transparent 60%),radial-gradient(ellipse 50% 55% at 15% 80%,rgba(255,107,149,.07) 0%,transparent 55%),var(--dark-bg4);padding:48px 20px;overflow:hidden}
+[data-theme="dark"] #gov_sites{background:radial-gradient(ellipse 65% 50% at 85% 20%,rgba(155,132,216,.18) 0%,transparent 60%),radial-gradient(ellipse 50% 55% at 15% 80%,rgba(255,107,149,.10) 0%,transparent 55%),var(--dark-bg4)}
+.students_site{display:flex;justify-content:center;width:100%}
+.students_site_link{display:flex;flex-wrap:wrap;justify-content:center;gap:32px;list-style:none;padding:20px 10px;margin:0;max-width:900px;width:100%}
+.students_site_link li{display:flex;align-items:center;justify-content:center}
+.students_site_link li a img{width:90px;height:auto;display:block;transition:transform .3s ease}
+.students_site_link li a img:hover{transform:scale(1.1)}
+
+/* CTA */
+#cta-sec{background:radial-gradient(ellipse 50% 80% at 0% 50%,rgba(255,107,149,.12) 0%,transparent 55%),radial-gradient(ellipse 50% 80% at 100% 50%,rgba(13,146,216,.10) 0%,transparent 55%),radial-gradient(ellipse 60% 60% at 50% 50%,rgba(179,157,219,.14) 0%,transparent 65%),linear-gradient(160deg,var(--lav-lt),var(--dark-bg),var(--light-1));padding:86px 6vw;text-align:center;color:var(--tw);transition:background .4s}
+[data-theme="dark"] #cta-sec{background:radial-gradient(ellipse 50% 80% at 0% 50%,rgba(255,107,149,.15) 0%,transparent 55%),radial-gradient(ellipse 50% 80% at 100% 50%,rgba(90,160,232,.14) 0%,transparent 55%),radial-gradient(ellipse 60% 60% at 50% 50%,rgba(155,132,216,.18) 0%,transparent 65%),linear-gradient(160deg,#0C0820,#080D1A,#0A0F1E)}
+.cta-title{font-family:var(--fd);font-size:clamp(1.7rem,3.2vw,2.8rem);font-weight:600;letter-spacing:-.02em;margin-bottom:14px;color:var(--td)}
+.cta-sub{font-size:.9rem;color:var(--td60);font-weight:400;margin-bottom:30px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER — all columns visible on every screen ── */
+footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-top:1.5px solid rgba(179,157,219,.20);padding:60px 6vw 28px;color:var(--tw);transition:background .4s,border-color .4s}
+[data-theme="dark"] footer{background:linear-gradient(180deg,#060912,#080D1E);border-top-color:rgba(155,132,216,.16)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.fb-name{font-family:var(--fd);font-size:1rem;font-weight:600;margin-bottom:8px;background:linear-gradient(90deg,var(--org-A400),var(--lav));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.fb-desc{font-size:.75rem;color:var(--td60);line-height:1.75;font-weight:400;max-width:230px;margin-top:7px}
+.fb-contact{margin-top:16px;display:flex;flex-direction:column;gap:5px}
+.fb-contact a,.fb-contact span{font-size:.72rem;color:var(--td60);text-decoration:none;transition:color .2s}
+.fb-contact a:hover{color:var(--org-A400)}
+.fc-h5{font-family:var(--fd);font-size:.8rem;font-weight:600;margin-bottom:14px;color:var(--td)}
+.fc-ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fc-ul li a{font-size:.72rem;color:var(--td60);text-decoration:none;font-weight:400;transition:color .2s}
+.fc-ul li a:hover{color:var(--org-500)}
+[data-theme="dark"] .fc-ul li a:hover{color:var(--org-700)}
+.footer-bottom{padding-top:22px;border-top:1px solid rgba(13,146,216,.10);display:flex;justify-content:space-between;align-items:center;font-size:.69rem;color:var(--td60);gap:16px;flex-wrap:wrap}
+[data-theme="dark"] .footer-bottom{border-top-color:rgba(90,160,232,.10)}
+.footer-bottom a{color:var(--td60);text-decoration:none;transition:color .2s}
+.footer-bottom a:hover{color:var(--org-A400)}
+.acc-row{display:flex;gap:8px;flex-wrap:wrap}
+.acc-badge{background:rgba(13,146,216,.08);border:1.5px solid rgba(13,146,216,.22);border-radius:7px;padding:3px 10px;font-size:.64rem;font-weight:700;color:var(--org-600);letter-spacing:.04em}
+[data-theme="dark"] .acc-badge{background:rgba(90,160,232,.10);border-color:rgba(90,160,232,.28);color:var(--org-700)}
+.map{display:flex;padding:20px;justify-content:center;align-items:center}
+.map img{width:280px;display:block;transition:transform .3s ease,box-shadow .3s ease;cursor:pointer;border-radius:15%;opacity:70%;box-shadow:0 9px 20px #9776c4}
+.map img:hover{transform:scale(1.1) translateY(-5px);box-shadow:0 10px 26px rgb(146,85,167)}
+.social_media-links{list-style:none;display:flex;gap:15px;padding:0;margin:0;flex-wrap:wrap}
+.social_media-links a{outline:none;-webkit-tap-highlight-color:transparent}
+.social_media img{width:38px;cursor:pointer;transition:transform .3s ease}
+.social_media img:hover{transform:scale(1.2)}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — TABLET ≤960px
+═══════════════════════════════════════════ */
+@media(max-width:960px){
+  :root{--ticker-h:32px}
+  .hostel-grid{grid-template-columns:1fr;gap:48px}
+  .hostel-divider{display:block}
+  /* footer: 2-col, info row spans both columns */
+  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .footer-grid > div:first-child{grid-column:1 / -1}
+  .nav-links{display:none}
+  .ham{display:flex}
+  nav{grid-template-columns:1fr auto;padding:8px 12px}
+  .nav-brand{justify-content:flex-start;padding-left:4px}
+  .nav-right{justify-content:flex-end}
+  .btn-apply{display:none}
+  .ticker-label{padding:0 10px;font-size:.57rem}
+  .t-item{padding:0 18px;font-size:.66rem}
+  .students_site_link{gap:24px}
+  .students_site_link li a img{width:75px}
+  .scroll-hint{display:block}
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — MOBILE ≤640px
+═══════════════════════════════════════════ */
+@media(max-width:640px){
+  :root{--ticker-h:30px}
+  .sec{padding:64px 5vw}
+  .sec-hd{margin-bottom:36px}
+  #wardens-sec{padding:60px 5vw}
+  #cta-sec{padding:60px 5vw}
+  .ticker-label{display:none}
+  .ticker-fade.lft{width:20px}
+  .t-item{padding:0 14px;font-size:.64rem}
+  .students_site_link{gap:16px;padding:12px 8px}
+  .students_site_link li a img{width:60px}
+  .map img{width:200px}
+  .hostel-images{grid-template-columns:1fr 1fr}
+  .hostel-btns{flex-direction:column}
+  .hostel-btns .btn{justify-content:center}
+  /* tables */
+  .warden-table{font-size:.72rem;min-width:440px}
+  .warden-table th,.warden-table td{padding:9px 10px}
+  .warden-photo{width:40px;height:40px;font-size:1rem}
+  .td-photo{width:56px;padding:6px 7px}
+  .desig-badge{font-size:.58rem;padding:2px 7px}
+  /* footer: keep 2-col, social spans full width */
+  .footer-grid{grid-template-columns:1fr 1fr;gap:18px}
+  .footer-grid > div:first-child{grid-column:1 / -1}
+  .footer-grid > .social_media{grid-column:1 / -1}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px}
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — SMALL PHONE ≤400px
+═══════════════════════════════════════════ */
+@media(max-width:400px){
+  .tb-l{gap:5px}
+  .students_site_link li a img{width:52px}
+  .students_site_link{gap:12px}
+  .hostel-images{grid-template-columns:1fr}
+  .warden-table{font-size:.66rem;min-width:360px}
+  .warden-table th,.warden-table td{padding:7px 7px}
+  .warden-photo{width:32px;height:32px;font-size:.85rem}
+  .td-photo{width:48px;padding:5px 5px}
+  /* footer fully single column at 400px */
+  .footer-grid{grid-template-columns:1fr}
+  .footer-grid > .social_media{grid-column:1}
+}
+
+/* MOBILE PERFORMANCE */
+@media(max-width:960px){
+  nav,.hostel-desc-card,.btn-ghost,.theme-toggle{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  nav{box-shadow:0 2px 12px rgba(13,146,216,.12)!important}
+  .rev{transition-delay:0s!important}
+}
+@media(hover:none){
+  .btn:hover,.btn-apply:hover,.hostel-img-slot:hover,.map img:hover,
+  .social_media img:hover,.students_site_link li a img:hover,.mob-cta:hover{transform:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .ticker-track{animation:none!important}
+  .rev{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ FIXED TICKER ══════ -->
+<div id="ticker" role="marquee" aria-label="Important announcements">
+  <div class="ticker-label">📢 Updates</div>
+  <div class="ticker-fade lft"></div>
+  <div class="ticker-viewport">
+    <div class="ticker-track" id="ticker-track">
+      <a href="#hostel-sec" class="t-item">Boys Hostel — Fully Wi-Fi Enabled Campus</a><span class="t-sep"></span>
+      <a href="#hostel-sec" class="t-item">Girls Hostel — 24/7 Security &amp; CCTV Surveillance</a><span class="t-sep"></span>
+      <a href="#cta-sec" class="t-item">Admissions Open 2026–27 — Apply Now →</a><span class="t-sep"></span>
+      <a href="v1.html#notices-sec" class="t-item">Hostel Allotment Notice 2026–27 <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#hostel-sec" class="t-item">Mess Facility · Recreation Room · Indoor Sports</a><span class="t-sep"></span>
+      <a href="v1.html#about" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
+      <a href="v1.html#notices-sec" class="t-item">Anti-Ragging Policy — Strictly Enforced</a><span class="t-sep"></span>
+      <a href="#hostel-sec" class="t-item">Boys Hostel — Fully Wi-Fi Enabled Campus</a><span class="t-sep"></span>
+      <a href="#hostel-sec" class="t-item">Girls Hostel — 24/7 Security &amp; CCTV Surveillance</a><span class="t-sep"></span>
+      <a href="#cta-sec" class="t-item">Admissions Open 2026–27 — Apply Now →</a><span class="t-sep"></span>
+      <a href="v1.html#notices-sec" class="t-item">Hostel Allotment Notice 2026–27 <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#hostel-sec" class="t-item">Mess Facility · Recreation Room · Indoor Sports</a><span class="t-sep"></span>
+      <a href="v1.html#about" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
+      <a href="v1.html#notices-sec" class="t-item">Anti-Ragging Policy — Strictly Enforced</a><span class="t-sep"></span>
+    </div>
+  </div>
+  <div class="ticker-fade rgt"></div>
+</div>
+
+<div id="mob-overlay"></div>
+
+<!-- ══════ MOBILE DRAWER ══════ -->
+<div id="mob-menu">
+  <div class="mob-header">
+    <span class="mob-title">CUSB</span>
+    <button class="mob-close" id="mob-close-btn" type="button" aria-label="Close menu">✕</button>
+  </div>
+  <div class="mob-section-lbl">Navigation</div>
+  <a class="mob-a" href="index.html">Home</a>
+  <a class="mob-a" href="index.html#about">About the University</a>
+  <div class="mob-divider"></div>
+  <div class="mob-section-lbl">Administration</div>
+  <a class="mob-a" href="president.html">Visitor</a>
+  <a class="mob-a" href="chancellor.html">Chancellor</a>
+  <a class="mob-a" href="vc.html">Vice-Chancellor</a>
+  <div class="mob-divider"></div>
+  <div class="mob-section-lbl">Academics</div>
+  <a class="mob-a" href="index.html#departments">All Departments</a>
+  <a class="mob-a" href="index.html#departments">Programs &amp; Courses</a>
+  <div class="mob-divider"></div>
+  <div class="mob-section-lbl">Hostel</div>
+  <a class="mob-a" href="#girls-hostel">Girls Hostel</a>
+  <a class="mob-a" href="#boys-hostel">Boys Hostel</a>
+  <a class="mob-a" href="#wardens-sec">Hostel Wardens</a>
+  <div class="mob-divider"></div>
+  <a class="mob-a" href="v1.html#notices-sec">Notices &amp; IQAC</a>
+  <a class="mob-a" href="#gov_sites">Gov</a>
+  <a class="mob-cta" href="#cta-sec">Apply 2026–27 →</a>
+</div>
+
+<!-- ══════ TOP BAR ══════ -->
+<div id="topbar">
+  <div class="tb-l">
+    <span>☎ 0631-2229 530</span><span class="tb-sep">|</span>
+    <a href="mailto:admission@cusb.ac.in">✉ admission@cusb.ac.in</a><span class="tb-sep">|</span>
+    <a href="#">RTI</a><span class="tb-sep">|</span>
+    <a href="#">Public Self Disclosure</a><span class="tb-sep">|</span>
+    <a href="#">Webmail</a><span class="tb-sep">|</span>
+    <a href="#">Feedback</a><span class="tb-sep">|</span>
+    <a href="http://naac.gov.in/" target="_blank">NAAC</a>
+  </div>
+</div>
+
+<!-- ══════ NAVBAR ══════ -->
+<div id="nav-wrap">
+  <nav>
+    <a href="v1.html" class="nav-brand">
+      <div class="nav-logo"><img src="culog.png" alt="CUSB Logo" onerror="this.style.display='none'"></div>
+      <div class="brand-txt"><div class="abbr">CUSB</div></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#leadership">Administration</a></li>
+      <li><a href="index.html#departments">Academics</a></li>
+      <li><a href="index.html#campus" class="act">Campus</a></li>
+      <li><a href="index.html#notices-sec">IQAC</a></li>
+      <li><a href="index.html#quicklinks">Students</a></li>
+      <li><a href="#gov_sites">Gov</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode">
+        <span class="ico-sun">☀️</span>
+        <span class="ico-moon">🌙</span>
+      </button>
+      <a href="#cta-sec" class="btn-apply">Apply 2026–27</a>
+      <button class="ham" id="ham-btn" type="button" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</div>
+<!-- PAGE HERO -->
+<header class="page-hero">
+  <div class="page-hero-eyebrow">Hostel Life</div>
+  <h1 class="page-hero-title">
+    <span class="acc-boys">Boys</span> &amp; <span class="acc-girls">Girls</span> Hostels
+  </h1>
+  <p class="page-hero-sub">Safe, comfortable, and fully equipped residential facilities for students of CUSB — designed for academic focus and holistic well-being.</p>
+  <div class="hostel-badges">
+    <span class="h-badge girls">Girls Hostel — Gargi Sadan &amp; Maitreyi Sadan</span>
+    <span class="h-badge boys">Boys Hostel — Block A &amp; B</span>
+    <a href="#wardens-sec" class="btn btn-ghost-cs">Meet the Wardens</a>
+  </div>
+  <a href="index.html" class="page-hero-back">← Back to Home</a>
+</header>
+
+<!-- HOSTEL SECTION -->
+<section id="hostel-sec" class="sec light-sec">
+  <div class="sec-hd rev">
+    <div class="sec-lbl">Residential Facilities</div>
+    <h2 class="sec-title">Hostel Facilities</h2>
+    <p class="sec-sub">Separate, well-maintained hostel blocks for boys and girls — with 24/7 security, mess, and recreational amenities.</p>
+  </div>
+
+  <div class="hostel-grid">
+
+    <!-- GIRLS HOSTEL -->
+    <div class="hostel-col girls" id="girls-hostel">
+      <div class="hostel-col-header rev">
+        Girls Hostel — Gargi Sadan &amp; Maitreyi Sadan
+      </div>
+      <div class="hostel-images rev">
+        <div>
+          <div class="hostel-img-slot">
+            <img src="gargi sadan.jpg" alt=" Gargi Sadan" onerror="this.style.display='none'">
+          </div>
+          <p class="hostel-img-caption">Gargi Sadan</p>
+        </div>
+        <div>
+          <div class="hostel-img-slot">
+            <img src="maitreyi.jpeg" alt="Maitreyi sadan" onerror="this.style.display='none'">
+          </div>
+          <p class="hostel-img-caption">Maitreyi Sadan</p>
+        </div>
+      </div>
+      <div class="hostel-desc-card rev">
+        <h3>Girls Hostel</h3>
+        <p>The hostel administration takes all care to provide quality accommodation to the students so that they may feel to be at home. The rooms are well-furnished with basic amenities for a comfortable living. There are separate blocks for the girls and boys with all essential facilities. The mess building is well organised with advanced kitchen equipment to provide quality services to the inmates. The hostel is also having ample open space with beautiful garden in its premises. The key facilities are as following:
+          <br><br>
+<em>-- Infrastructure and Amenities : --</em>
+<br><br>
+•Fully furnished rooms (on sharing basis) equipped with wooden bed, wardrobe and a study table with chair <br>
+• Mess Facilities <br>
+• Common washrooms <br>
+• RO-purified Drinking Water <br>
+• Reading Room <br>
+• Visitors’ Room <br>
+• Medical Room <br>
+• Recreational facility Room with Television <br>
+• Gymnasium cum Fitness Centre <br>
+• Geysers <br>
+• Fire Protection System <br>
+• Emergency contact numbers prominently displayed <br>
+• Safe assembly points <br>
+• Services (within and nearby): <br>
+ <br><br>
+<em>-- Laundry & Ironing Services --</em>
+<br><br>
+• 24×7 Medical Assistance & Ambulance Service <br>
+• Wi-Fi connectivity <br>
+• High Security Arrangements <br>
+• CCTV Coverage and Safety supervision <br>
+• 24×7 Electricity and Water supply <br>
+• Caretakers and housekeeping services <br>
+• Salon facilities <br>
+• ATM (within 100 metre range) <br>
+• Convenience shop & Canteen <br>
+• Sports Infrastructure (within and nearby) : <br>
+ <br><br>
+<em>-- Indoor Games facilities --</em>
+<br><br>
+• Table Tennis Room <br>
+• Badminton Court <br>
+• Adjacent play ground <br>
+• Basketball Court (Synthetic & Floor) <br>
+• Volleyball Court (Synthetic & Soil) <br>
+• Hockey ground <br>
+• Football ground <br>
+• Hand ball ground <br>
+• Athletic track <br>
+</p>
+        <div class="hostel-btns">
+          <a href="#" class="btn btn-girls btn-sm">Apply for Girls Hostel →</a>
+          <a href="https://www.cusb.ac.in/images/hostel/cusb_hostel_rules_regulations.pdf" target="_blank" class="btn btn-outline-girls btn-sm">Download Hostel Form</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hostel-divider"></div>
+
+    <!-- BOYS HOSTEL -->
+    <div class="hostel-col boys" id="boys-hostel">
+      <div class="hostel-col-header rev">
+         Boys Hostel — Block A &amp; B
+      </div>
+      <div class="hostel-images rev">
+        <div>
+          <div class="hostel-img-slot">
+            <img src="vds.jpg" alt="Boys Hostel Block A" onerror="this.style.display='none'">
+          </div>
+          <p class="hostel-img-caption">Block A</p>
+        </div>
+        <div>
+          <div class="hostel-img-slot">
+            <img src="blockB.jpg" alt="Block B" onerror="this.style.display='none'">
+          </div>
+          <p class="hostel-img-caption">Block B</p>
+        </div>
+      </div>
+      <div class="hostel-desc-card rev">
+        <h3>Boys Hostel</h3>
+        <p>The hostel administration takes all care to provide quality accommodation to the students so that they may feel to be at home. The rooms are well-furnished with basic amenities for a comfortable living. There are separate blocks for the girls and boys with all essential facilities. The mess building is well organised with advanced kitchen equipment to provide quality services to the inmates. The hostel is also having ample open space with beautiful garden in its premises. The key facilities are as following:
+          <br><br>
+<em>-- Infrastructure and Amenities : --</em>
+<br><br>
+•Fully furnished rooms (on sharing basis) equipped with wooden bed, wardrobe and a study table with chair <br>
+• Mess Facilities <br>
+• Common washrooms <br>
+• RO-purified Drinking Water <br>
+• Reading Room <br>
+• Visitors’ Room <br>
+• Medical Room <br>
+• Recreational facility Room with Television <br>
+• Gymnasium cum Fitness Centre <br>
+• Geysers <br>
+• Fire Protection System <br>
+• Emergency contact numbers prominently displayed <br>
+• Safe assembly points <br>
+• Services (within and nearby): <br>
+ <br><br>
+<em>-- Laundry & Ironing Services --</em>
+<br><br>
+• 24×7 Medical Assistance & Ambulance Service <br>
+• Wi-Fi connectivity <br>
+• High Security Arrangements <br>
+• CCTV Coverage and Safety supervision <br>
+• 24×7 Electricity and Water supply <br>
+• Caretakers and housekeeping services <br>
+• Salon facilities <br>
+• ATM (within 100 metre range) <br>
+• Convenience shop & Canteen <br>
+• Sports Infrastructure (within and nearby) : <br>
+ <br><br>
+<em>-- Indoor Games facilities --</em>
+<br><br>
+• Table Tennis Room <br>
+• Badminton Court <br>
+• Adjacent play ground <br>
+• Basketball Court (Synthetic & Floor) <br>
+• Volleyball Court (Synthetic & Soil) <br>
+• Hockey ground <br>
+• Football ground <br>
+• Hand ball ground <br>
+• Athletic track <br>
+</p>
+        <div class="hostel-btns">
+          <a href="#" class="btn btn-boys btn-sm">Apply for Boys Hostel →</a>
+          <a href="https://www.cusb.ac.in/images/hostel/cusb_hostel_rules_regulations.pdf" target="_blank" class="btn btn-outline-boys btn-sm">Download Hostel Form</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     HOSTEL WARDENS — Girls first, Boys below, all centered
+══════════════════════════════════════════ -->
+<section id="wardens-sec">
+  <div class="sec-hd rev">
+    <div class="sec-lbl">Hostel Administration</div>
+    <h2 class="sec-title">Meet the Wardens</h2>
+    <p class="sec-sub">Our dedicated warden team ensures a safe, supportive, and well-managed residential environment for all students.</p>
+  </div>
+
+  <div class="wardens-stack">
+
+    <!-- ══ GIRLS WARDENS (first) ══ -->
+    <div class="warden-block girls rev">
+      <div class="warden-block-hd"> Girls Hostel Wardens</div>
+
+      <!-- Maitreyi Sadan — 3 wardens -->
+      <div>
+        <div class="warden-sub-label">Maitreyi Sadan</div>
+        <div class="warden-card">
+          <div class="warden-table-wrap">
+            <table class="warden-table" aria-label="Maitreyi Sadan Wardens">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th class="td-photo">Photo</th>
+                  <th>Name</th>
+                  <th>Designation</th>
+                  <th>Department</th>
+                  <th>Contact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td class="td-photo"><div class="warden-photo"><img src="tarakashav.jpg" alt="Dr. Tara Kashav" onerror="this.style.display='none'"></div></td>
+                  <td class="td-name">Dr. Tara Kashav</td>
+                  <td><span class="desig-badge">Chief Warden</span></td>
+                  <td>Dept. of Hindi</td>
+                  <td><span class="warden-contact">tarakashav@cub.ac.in</span><br>0631-2229551</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td class="td-photo"><div class="warden-photo"><img src="chandana.jpg" alt="Ms. Chandana Suba" onerror="this.style.display='none'"></div></td>
+                  <td class="td-name">Ms. Chandana Suba</td>
+                  <td><span class="desig-badge">Warden</span></td>
+                  <td>Dept. of Sociology</td>
+                  <td><span class="warden-contact">chandana@cusb.ac.in</span><br>0631-2229551</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td class="td-photo"><div class="warden-photo"><img src="priti.jpg" alt="Dr. Priti Rai" onerror="this.style.display='none'"></div></td>
+                  <td class="td-name">Dr. Priti Rai</td>
+                  <td><span class="desig-badge">Warden</span></td>
+                  <td>Dept. of Economics</td>
+                  <td><span class="warden-contact">pritirai@cusb.ac.in</span><br>0631-2229551</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td class="td-photo"><div class="warden-photo"><img src="ekta.jpg" alt="Mrs. Ekta Kumari" onerror="this.style.display='none'"></div></td>
+                  <td class="td-name">Mrs. Ekta Kumari</td>
+                  <td><span class="desig-badge">Warden</span></td>
+                  <td>Dept. of Economics</td>
+                  <td><span class="warden-contact">pritirai@cusb.ac.in</span><br>0631-2229551</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="scroll-hint">← Scroll to see full table →</p>
+        </div>
+      </div>
+
+      <!-- Gargi Sadan — 3 wardens -->
+      <div>
+        <div class="warden-sub-label">Gargi Sadan</div>
+        <div class="warden-card">
+          <div class="warden-table-wrap">
+            <table class="warden-table" aria-label="Gargi Sadan Wardens">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th class="td-photo">Photo</th>
+                  <th>Name</th>
+                  <th>Designation</th>
+                  <th>Department</th>
+                  <th>Contact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td class="td-photo"><div class="warden-photo"><img src="renu.jpg" alt="Ms. Renu" onerror="this.style.display='none'"></div></td>
+                  <td class="td-name">Ms. Renu</td>
+                  <td><span class="desig-badge">Chief Warden</span></td>
+                  <td>Dept. of Commerce</td>
+                  <td><span class="warden-contact">cwgargisadan@cusb.ac.in</span><br>+91-98765-43204</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td class="td-photo"><div class="warden-photo"><img src="warden_g5.jpg" alt="Ms. Udrishna L Deori" onerror="this.style.display='none'"></div></td>
+                  <td class="td-name">Ms. Udrishna L Deori</td>
+                  <td><span class="desig-badge">Warden</span></td>
+                  <td>Dept. of History</td>
+                  <td><span class="warden-contact">udrishnaldeori@cusb.ac.in</span><br>+91 86597816</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td class="td-photo"><div class="warden-photo"><img src="pratishtha.jpg" alt="Dr. Pratishtha Sonker" onerror="this.style.display='none'"></div></td>
+                  <td class="td-name">Dr. Pratishtha Sonker</td>
+                  <td><span class="desig-badge">Asst. Warden</span></td>
+                  <td>Dept. of Psychology</td>
+                  <td><span class="warden-contact">pratishtha@cusb.ac.in</span><br>0631-2229552</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="scroll-hint">← Scroll to see full table →</p>
+        </div>
+      </div>
+    </div><!-- /girls -->
+
+    <!-- ══ BOYS WARDENS (below girls) ══ -->
+    <div class="warden-block boys rev">
+      <div class="warden-block-hd"> Boys Hostel Wardens</div>
+
+      <div>
+        <div class="warden-sub-label">Block A &amp; B</div>
+        <div class="warden-card">
+          <div class="warden-table-wrap">
+            <table class="warden-table" aria-label="Boys Hostel Wardens">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th class="td-photo">Photo</th>
+                  <th>Name</th>
+                  <th>Designation</th>
+                  <th>Department</th>
+                  <th>Contact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td class="td-photo"><div class="warden-photo"><img src="vipin.jpg" alt="Dr. Vipin Kumar Singh" onerror="this.style.display='none'"></div></td>
+                  <td class="td-name">Dr. Vipin Kumar Singh</td>
+                  <td><span class="desig-badge">Chief Warden</span></td>
+                  <td>Dept. of English</td>
+                  <td><span class="warden-contact">vipinsingh@cusb.ac.in</span><br>9407343432</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td class="td-photo"><div class="warden-photo"><img src="manjit.jpg" alt="Dr. Manjit Singh" onerror="this.style.display='none'"></div></td>
+                  <td class="td-name">Dr. Manjit Singh</td>
+                  <td><span class="desig-badge">Warden</span></td>
+                  <td>Dept. of Geology</td>
+                  <td><span class="warden-contact">manjitsingh@cusb.ac.in</span></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td class="td-photo"><div class="warden-photo"><img src="lakhwinder.jpg" alt="Dr. Lakhwinder Singh" onerror="this.style.display='none'"></div></td>
+                  <td class="td-name">Dr. Lakhwinder Singh</td>
+                  <td><span class="desig-badge">Warden</span></td>
+                  <td>Dept. of Physics</td>
+                  <td><span class="warden-contact">lakhwinder@cusb.ac.in</span><br>8427471769</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td class="td-photo"><div class="warden-photo"><img src="kishor.jpeg" alt="Dr. Kishor Kumar" onerror="this.style.display='none'"></div></td>
+                  <td class="td-name">Dr. Kishor Kumar</td>
+                  <td><span class="desig-badge">Warden</span></td>
+                  <td>Dept. of Teacher Education</td>
+                  <td><span class="warden-contact">kishor@cusb.ac.in</span><br>9991652181</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td class="td-photo"><div class="warden-photo"><img src="p-ranjan.jpg" alt="Dr. Priya Ranjan" onerror="this.style.display='none'"></div></td>
+                  <td class="td-name">Dr. Priya Ranjan</td>
+                  <td><span class="desig-badge">Warden</span></td>
+                  <td>Dept. of Sociology</td>
+                  <td><span class="warden-contact">Pranjan@cusb.ac.in</span><br>97177xxxxx</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td class="td-photo"><div class="warden-photo"><img src="santosh.jpg" alt="Mr. Santosh Kumar" onerror="this.style.display='none'"></div></td>
+                  <td class="td-name">Mr. Santosh Kumar</td>
+                  <td><span class="desig-badge">Hostel Attendant</span></td>
+                  <td>Hostel Admin</td>
+                  <td><span class="warden-contact">santoshkr@cusb.ac.in</span><br>9308108055</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="scroll-hint">← Scroll to see full table →</p>
+        </div>
+      </div>
+    </div><!-- /boys -->
+
+  </div><!-- /wardens-stack -->
+</section>
+
+<!-- ══════ GOV SITES ══════ -->
+<section id="gov_sites">
+  <div class="students_site">
+    <ul class="students_site_link">
+      <li><a href="https://swayam.gov.in/" target="_blank"><img src="swayam_logo.png" alt="Swayam Courses"></a></li>
+      <li><a href="https://www.swayamprabha.gov.in/" target="_blank"><img src="SWAYAM_PRABHA.png" alt="Swayam Prabha"></a></li>
+      <li><a href="https://ndl.iitkgp.ac.in/" target="_blank"><img src="national (1).png" alt="National Digital Library"></a></li>
+      <li><a href="https://aishe.gov.in/" target="_blank"><img src="AISHE.png" alt="AISHE"></a></li>
+      <li><a href="https://www.mygov.in/" target="_blank"><img src="mygov_0.png" alt="MyGov"></a></li>
+      <li><a href="https://www.india.gov.in/" target="_blank"><img src="Indiagovin.svg" alt="India.gov.in"></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════ CTA ══════ -->
+<section id="cta-sec">
+  <h2 class="cta-title rev">Begin Your Journey at CUSB</h2>
+  <p class="cta-sub rev">Admissions open for 2026–27. Apply now and secure your seat in one of Bihar's premier central universities.</p>
+  <div class="cta-btns rev">
+    <a href="#" class="btn btn-ocean">Apply for 2026–27 →</a>
+    <a href="#" class="btn btn-ghost">Contact Helpdesk</a>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer id="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="fb-name">Central University of South Bihar</div>
+      <p class="fb-desc">An institution of higher learning under the Ministry of Education, Government of India — committed to excellence, equity, and national development.</p>
+      <div class="fb-contact">
+        <a href="tel:06312229530">☎ 0631-2229 530</a>
+        <a href="mailto:admission@cusb.ac.in">✉ admission@cusb.ac.in</a>
+        <a href="mailto:webmaster@cusb.ac.in">✉ webmaster@cusb.ac.in</a>
+        <span>📍 Panchanpur, Gaya, Bihar – 824236</span>
+      </div>
+    </div>
+    <div>
+      <div class="fc-h5">About</div>
+      <ul class="fc-ul">
+        <li><a href="v1.html#about">The University</a></li>
+        <li><a href="v1.html#about">Vision &amp; Mission</a></li>
+        <li><a href="v1.html#leadership">Administration</a></li>
+        <li><a href="v1.html#about">Annual Reports</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fc-h5">Academics</div>
+      <ul class="fc-ul">
+        <li><a href="v1.html#departments">All Departments</a></li>
+        <li><a href="v1.html#departments">Programs</a></li>
+        <li><a href="v1.html#notices-sec">Exam Notices</a></li>
+        <li><a href="v1.html#notices-sec">Results</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fc-h5">Students</div>
+      <ul class="fc-ul">
+        <li><a href="#cta-sec">Admissions 2026–27</a></li>
+        <li><a href="v1.html#quicklinks">Scholarship</a></li>
+        <li><a href="#hostel-sec">Hostel</a></li>
+        <li><a href="#wardens-sec">Wardens</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fc-h5">Quick Links</div>
+      <ul class="fc-ul">
+        <li><a href="v1.html#notices-sec">IQAC</a></li>
+        <li><a href="v1.html#gallery">Photo Gallery</a></li>
+        <li><a href="#">RTI</a></li>
+        <li><a href="#">Webmail</a></li>
+      </ul>
+    </div>
+    <div class="social_media">
+      <ul class="social_media-links">
+        <li><a href="https://www.facebook.com/cusbofficial/" target="_blank"><img src="fb.png" alt="Facebook"></a></li>
+        <li><a href="https://x.com/CUSBofficial" target="_blank"><img src="X.png" alt="X"></a></li>
+        <li><a href="https://www.instagram.com/cusbofficialpage/?hl=en" target="_blank"><img src="insta.png" alt="Instagram"></a></li>
+        <li><a href="https://www.youtube.com/user/CUBofficialchannel" target="_blank"><img src="YouTube.webp" alt="YouTube"></a></li>
+        <li><a href="https://in.linkedin.com/school/cusbofficial/" target="_blank"><img src="linke.png" alt="LinkedIn"></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="map">
+    <a href="https://maps.google.com/?q=Central+University+of+South+Bihar+Gaya" target="_blank">
+      <img src="map.jpeg" alt="CUSB Location Map">
+    </a>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Central University of South Bihar, Gaya, India. All rights reserved.</span>
+    <div class="acc-row">
+      <span class="acc-badge">NAAC</span>
+      <span class="acc-badge">NEP 2020</span>
+      <span class="acc-badge">Viksit Bharat</span>
+    </div>
+    <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Sitemap</a></span>
+  </div>
+</footer>
+
+<script>
+/* NAV SCROLL GLASS */
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('sc',window.scrollY>60)},{passive:true});
+
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    const id=link.getAttribute('href').slice(1);
+    if(!id)return;
+    const target=document.getElementById(id);
+    if(!target)return;
+    e.preventDefault();
+    target.scrollIntoView({behavior:'smooth',block:'start'});
+    history.replaceState(null,'',`#${id}`);
+  });
+});
+
+/* SCROLL REVEAL */
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:0.08});
+document.querySelectorAll('.rev').forEach((el,i)=>{el.style.transitionDelay=(i%5)*0.07+'s';ro.observe(el)});
+
+/* BUTTON RIPPLE */
+document.querySelectorAll('.btn,.btn-apply').forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    const r=document.createElement('span');
+    r.className='rpl';
+    r.style.cssText=`left:${e.offsetX}px;top:${e.offsetY}px;width:8px;height:8px;margin:-4px`;
+    btn.appendChild(r);setTimeout(()=>r.remove(),520);
+  });
+});
+
+/* HAMBURGER */
+const mobMenu=document.getElementById('mob-menu'),mobOvr=document.getElementById('mob-overlay'),hamBtn=document.getElementById('ham-btn'),closeB=document.getElementById('mob-close-btn');
+const openM=()=>{mobMenu.classList.add('open');mobOvr.classList.add('show');hamBtn.classList.add('open');document.body.style.overflow='hidden'};
+const closeM=()=>{mobMenu.classList.remove('open');mobOvr.classList.remove('show');hamBtn.classList.remove('open');document.body.style.overflow=''};
+hamBtn.addEventListener('click',e=>{e.stopPropagation();mobMenu.classList.contains('open')?closeM():openM()});
+closeB.addEventListener('click',e=>{e.stopPropagation();closeM()});
+mobOvr.addEventListener('click',closeM);
+document.querySelectorAll('#mob-menu .mob-a,#mob-menu .mob-cta').forEach(a=>a.addEventListener('click',closeM));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+
+/* DARK / LIGHT THEME */
+const html=document.documentElement,tog=document.getElementById('theme-toggle-btn'),KEY='cusb-theme';
+(function(){const s=localStorage.getItem(KEY);if(s){html.setAttribute('data-theme',s);return}if(window.matchMedia('(prefers-color-scheme: dark)').matches)html.setAttribute('data-theme','dark')})();
+tog.addEventListener('click',()=>{const next=html.getAttribute('data-theme')==='dark'?'light':'dark';html.setAttribute('data-theme',next);localStorage.setItem(KEY,next)});
+
+/* TICKER PAUSE */
+const tickerTrack=document.getElementById('ticker-track');
+if(tickerTrack){
+  tickerTrack.addEventListener('mouseenter',()=>tickerTrack.style.animationPlayState='paused');
+  tickerTrack.addEventListener('mouseleave',()=>tickerTrack.style.animationPlayState='running');
+  let lastTap=0;
+  tickerTrack.addEventListener('touchstart',()=>{const now=Date.now();if(now-lastTap<300){const cur=tickerTrack.style.animationPlayState;tickerTrack.style.animationPlayState=(cur==='paused')?'running':'paused'}lastTap=now},{passive:true});
+}
+</script>
+</body>
+</html>

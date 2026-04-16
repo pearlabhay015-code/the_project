@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Department of Computer Science — CUSB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+:root{
+  --org-400:#2AA3E4;--org-500:#0D92D8;--org-600:#0B7EBD;--org-700:#096BA3;
+  --org-A200:#4EC9A8;--org-A400:#FF6B95;--org-A700:#FFAB6E;
+  --lav:#B39DDB;--lav-lt:#EDE7F6;
+  --dark-bg:#f2adaded;--dark-bg2:#eae4f8;--dark-bg4:#E4E0F5;
+  --light-1:#F0FBFF;--light-2:#FFFFFF;
+  --tw:#2C1A3E;--tw80:rgba(44,26,62,.82);--tw50:rgba(44,26,62,.50);
+  --td:#1A1A3E;--td60:#4A4A7A;--td30:#9090B8;
+  --lb06:rgba(13,146,216,.06);--lb14:rgba(13,146,216,.14);--lb25:rgba(13,146,216,.25);
+  --fd:'Syne','Segoe UI','Helvetica Neue',Arial,sans-serif;
+  --fb:'DM Sans','Segoe UI','Helvetica Neue',Arial,sans-serif;
+  --r-sm:10px;--r-md:18px;--r-lg:26px;--r-xl:50px;
+  --ticker-h:36px;--nav-h:68px;
+  --offset:calc(var(--ticker-h) + var(--nav-h) + 12px);
+  /* CS accent — electric indigo + cyan */
+  --cs:#4F46E5;--cs-lt:rgba(79,70,229,.10);--cs2:#06B6D4;--cs2-lt:rgba(6,182,212,.10);
+  --cs-glow:0 0 20px rgba(79,70,229,.35),0 0 40px rgba(79,70,229,.18);
+}
+[data-theme="dark"]{
+  --dark-bg:#310943;--dark-bg2:#0d1434;--dark-bg4:#131828;
+  --light-1:#0A0F1E;--light-2:#080D1A;
+  --tw:#E4DCFF;--tw80:rgba(228,220,255,.85);--tw50:rgba(228,220,255,.50);
+  --td:#EEE8FF;--td60:#A89FC8;--td30:#6B638A;
+  --org-400:#3A80D4;--org-500:#5AA0E8;--org-600:#7DB8F0;--org-700:#9FCCF7;
+  --lav:#9B84D8;--lav-lt:#150E35;
+  --lb06:rgba(90,160,232,.08);--lb14:rgba(90,160,232,.18);--lb25:rgba(90,160,232,.30);
+  --glow-blue:0 0 18px rgba(90,160,232,.45),0 0 40px rgba(90,160,232,.20);
+  --glow-rose:0 0 18px rgba(255,107,149,.45),0 0 40px rgba(255,107,149,.18);
+  --cs:#818CF8;--cs-lt:rgba(129,140,248,.12);--cs2:#22D3EE;--cs2-lt:rgba(34,211,238,.10);
+  --cs-glow:0 0 20px rgba(129,140,248,.40),0 0 44px rgba(129,140,248,.18);
+}
+
+/* ── BASE ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*{-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);overflow-x:hidden;background:var(--light-2);
+  transition:background .4s,color .4s;padding-top:var(--ticker-h)}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--lb06)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--cs),var(--lav));border-radius:4px}
+header[id],section[id]{scroll-margin-top:var(--offset)}
+
+/* ── TICKER ── */
+#ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);overflow:hidden;display:flex;align-items:center;background:linear-gradient(90deg,rgba(79,70,229,.90) 0%,rgba(6,182,212,.88) 50%,rgba(78,201,168,.90) 100%);backdrop-filter:blur(12px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.22);box-shadow:0 2px 16px rgba(79,70,229,.22)}
+[data-theme="dark"] #ticker{background:linear-gradient(90deg,#07091A 0%,#0A0C24 100%);border-bottom:1px solid rgba(129,140,248,.25);box-shadow:0 2px 20px rgba(0,0,0,.60),0 0 24px rgba(129,140,248,.14)}
+.ticker-label{flex-shrink:0;padding:0 14px;height:100%;display:flex;align-items:center;gap:6px;font-family:var(--fd);font-size:.60rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;white-space:nowrap;background:rgba(255,255,255,.18);border-right:1px solid rgba(255,255,255,.25);z-index:2}
+[data-theme="dark"] .ticker-label{background:rgba(129,140,248,.16);border-right-color:rgba(129,140,248,.28);color:#c7d2fe}
+.ticker-fade{position:absolute;top:0;bottom:0;width:56px;z-index:1;pointer-events:none}
+.ticker-fade.lft{left:0;background:linear-gradient(90deg,rgba(79,70,229,.55),transparent)}
+.ticker-fade.rgt{right:0;background:linear-gradient(-90deg,rgba(78,201,168,.55),transparent)}
+[data-theme="dark"] .ticker-fade.lft{background:linear-gradient(90deg,rgba(7,9,26,.95),transparent)}
+[data-theme="dark"] .ticker-fade.rgt{background:linear-gradient(-90deg,rgba(8,12,32,.95),transparent)}
+.ticker-viewport{flex:1;overflow:hidden}
+.ticker-track{display:flex;align-items:center;width:max-content;animation:tickerRoll 40s linear infinite;will-change:transform}
+.ticker-track:hover{animation-play-state:paused}
+@keyframes tickerRoll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.t-item{display:inline-flex;align-items:center;gap:8px;padding:0 24px;height:var(--ticker-h);font-size:.70rem;font-weight:500;color:#fff;white-space:nowrap;text-decoration:none;transition:text-shadow .2s}
+.t-item:hover{text-shadow:0 0 12px rgba(255,255,255,.80)}
+[data-theme="dark"] .t-item{color:#a5b4fc}
+.t-sep{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.38);flex-shrink:0}
+[data-theme="dark"] .t-sep{background:rgba(129,140,248,.35)}
+.t-badge{display:inline-block;padding:1px 7px;border-radius:8px;font-size:.56rem;font-weight:600;text-transform:uppercase;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.45);color:#ef0c18}
+[data-theme="dark"] .t-badge{background:rgba(129,140,248,.22);border-color:rgba(129,140,248,.48);color:#c7d2fe}
+
+/* ── NAVBAR ── */
+#nav-wrap{position:sticky;top:var(--ticker-h);z-index:800;display:flex;justify-content:center;padding:8px 3vw;pointer-events:none}
+nav{pointer-events:all;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:rgba(235,247,255,.84);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border:1.5px solid rgba(79,70,229,.22);border-radius:60px;padding:8px 16px;width:min(980px,94vw);box-shadow:0 4px 24px rgba(79,70,229,.12),0 1px 0 rgba(255,255,255,.9) inset;transition:background .3s,box-shadow .3s;animation:navIn .6s cubic-bezier(.16,1,.3,1) both}
+@keyframes navIn{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
+nav.sc{background:rgba(235,247,255,.96);box-shadow:0 6px 32px rgba(79,70,229,.16),0 1px 0 #fff inset}
+[data-theme="dark"] nav{background:rgba(8,13,30,.82);border-color:rgba(129,140,248,.22);box-shadow:0 4px 24px rgba(0,0,0,.50),0 0 0 1px rgba(129,140,248,.08) inset}
+[data-theme="dark"] nav.sc{background:rgba(8,13,30,.96)}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;justify-content:center}
+.nav-logo img{width:43px}
+.brand-txt .abbr{font-family:var(--fd);font-size:1.2rem;font-weight:600;background:linear-gradient(90deg,var(--cs),var(--cs2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;list-style:none;gap:2px}
+.nav-links a{display:block;padding:8px 13px;font-family:var(--fb);font-size:.78rem;font-weight:500;color:var(--td60);text-decoration:none;border-radius:30px;transition:color .2s,background .2s;white-space:nowrap}
+.nav-links a:hover,.nav-links a.act{color:var(--cs);background:var(--cs-lt)}
+[data-theme="dark"] .nav-links a:hover,[data-theme="dark"] .nav-links a.act{color:var(--cs);background:var(--cs-lt)}
+.nav-right{display:flex;justify-content:flex-end;align-items:center;gap:8px}
+.btn-apply{display:inline-flex;align-items:center;padding:7px 20px;border-radius:30px;font-family:var(--fb);font-size:.78rem;font-weight:700;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--cs),var(--cs2));border:1.5px solid rgba(79,70,229,.35);box-shadow:0 4px 18px rgba(79,70,229,.28);transition:transform .2s,box-shadow .2s;white-space:nowrap;flex-shrink:0}
+.btn-apply:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(79,70,229,.40);color:#fff}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(79,70,229,.28);background:rgba(235,247,255,.60);cursor:pointer;flex-shrink:0;transition:all .3s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;backdrop-filter:blur(12px)}
+.theme-toggle:hover{transform:rotate(20deg) scale(1.08)}
+.theme-toggle .ico-sun,.theme-toggle .ico-moon{position:absolute;font-size:1rem;transition:opacity .35s,transform .4s cubic-bezier(.16,1,.3,1)}
+.theme-toggle .ico-sun{opacity:1;transform:scale(1) rotate(0deg)}
+.theme-toggle .ico-moon{opacity:0;transform:scale(.4) rotate(-90deg)}
+[data-theme="dark"] .theme-toggle{border-color:rgba(129,140,248,.45);background:rgba(21,14,53,.70)}
+[data-theme="dark"] .theme-toggle .ico-sun{opacity:0;transform:scale(.4) rotate(90deg)}
+[data-theme="dark"] .theme-toggle .ico-moon{opacity:1;transform:scale(1) rotate(0deg)}
+.ham{display:none;width:31px;height:31px;border-radius:10px;background:var(--cs-lt);border:1.5px solid rgba(79,70,229,.22);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex-shrink:0;transition:background .2s;padding:0}
+.ham:hover{background:rgba(79,70,229,.18)}
+.ham span{display:block;width:15px;height:1px;background:var(--cs);border-radius:2px;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .25s,width .3s}
+.ham.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;width:0}
+.ham.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+[data-theme="dark"] .ham{background:var(--cs-lt);border-color:rgba(129,140,248,.28)}
+
+/* ── MOBILE DRAWER ── */
+#mob-overlay{position:fixed;inset:0;z-index:1998;background:rgba(10,8,30,.40);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s}
+#mob-overlay.show{opacity:1;pointer-events:all}
+#mob-menu{position:fixed;top:0;right:0;bottom:0;width:min(300px,86vw);z-index:1999;background:rgba(240,251,255,.97);backdrop-filter:blur(32px) saturate(220%);-webkit-backdrop-filter:blur(32px) saturate(220%);border-left:1.5px solid rgba(79,70,229,.18);box-shadow:-4px 0 32px rgba(79,70,229,.10);transform:translateX(100%);visibility:hidden;transition:transform .35s cubic-bezier(.16,1,.3,1),visibility .35s;overflow-y:auto;padding:72px 20px 40px;display:flex;flex-direction:column;gap:0}
+#mob-menu.open{transform:translateX(0);visibility:visible}
+[data-theme="dark"] #mob-menu{background:rgba(8,10,22,.97);border-left-color:rgba(129,140,248,.20)}
+.mob-header{position:absolute;top:0;left:0;right:0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(79,70,229,.10);background:rgba(235,247,255,.92)}
+.mob-title{font-family:var(--fd);font-size:.9rem;color:var(--tw80)}
+[data-theme="dark"] .mob-header{background:rgba(8,10,22,.95);border-bottom-color:rgba(129,140,248,.14)}
+.mob-close{width:34px;height:34px;border-radius:50%;background:var(--cs-lt);border:1.5px solid rgba(79,70,229,.22);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--cs);font-size:1rem;transition:background .2s}
+.mob-a{display:block;padding:11px 16px;border-radius:12px;font-size:.85rem;font-weight:500;color:var(--td60);text-decoration:none;transition:background .2s,color .2s;border:1px solid transparent}
+.mob-a:hover{background:var(--cs-lt);border-color:rgba(79,70,229,.14);color:var(--cs)}
+[data-theme="dark"] .mob-a:hover{background:rgba(129,140,248,.10);border-color:rgba(129,140,248,.22)}
+.mob-divider{height:1px;background:rgba(79,70,229,.08);margin:8px 0}
+[data-theme="dark"] .mob-divider{background:rgba(129,140,248,.10)}
+.mob-section-lbl{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cs);padding:6px 16px 2px}
+.mob-cta{display:block;margin-top:16px;text-align:center;text-decoration:none;padding:12px 20px;border-radius:var(--r-xl);background:linear-gradient(135deg,var(--cs),var(--cs2));color:#fff;font-size:.85rem;font-weight:700;border:1.5px solid rgba(79,70,229,.30);transition:transform .2s}
+.mob-cta:hover{transform:translateY(-2px)}
+
+/* ── BUTTONS ── */
+.btn{position:relative;display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:var(--r-xl);font-family:var(--fb);font-size:.85rem;font-weight:600;cursor:pointer;border:none;outline:none;text-decoration:none;overflow:hidden;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s}
+.btn::before{content:'';position:absolute;left:0;top:0;right:0;height:50%;border-radius:var(--r-xl) var(--r-xl) 0 0;background:linear-gradient(180deg,rgba(255,255,255,.30),transparent);pointer-events:none}
+.btn:hover{transform:translateY(-2px) scale(1.02)}.btn:active{transform:scale(.97)}
+.btn-cs{background:linear-gradient(135deg,var(--cs),var(--cs2));border:1.5px solid rgba(79,70,229,.38);color:#fff;box-shadow:0 4px 20px rgba(79,70,229,.28),inset 0 1px 0 rgba(255,255,255,.20)}
+.btn-cs:hover{box-shadow:0 8px 30px rgba(79,70,229,.42)}
+[data-theme="dark"] .btn-cs{box-shadow:0 4px 20px rgba(129,140,248,.25),var(--cs-glow)}
+.btn-ghost-cs{background:rgba(255,255,255,.65);backdrop-filter:blur(16px);border:1.5px solid rgba(79,70,229,.28);color:var(--cs)}
+.btn-ghost-cs:hover{background:rgba(235,240,255,.88);box-shadow:0 6px 20px rgba(79,70,229,.14)}
+[data-theme="dark"] .btn-ghost-cs{background:rgba(14,12,44,.70);border-color:rgba(129,140,248,.35);color:var(--cs)}
+.btn-sm{padding:8px 18px;font-size:.78rem}
+.btn-xs{padding:5px 12px;font-size:.70rem}
+.rpl{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:ripAnim .5s ease-out forwards;pointer-events:none}
+@keyframes ripAnim{to{transform:scale(16);opacity:0}}
+
+/* ── SCROLL REVEAL ── */
+.rev{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+.rev.vis{opacity:1;transform:none}
+
+/* ── SECTION SHELLS ── */
+.sec{padding:96px 6vw;transition:background .4s}
+.sec-lbl{font-family:var(--fb);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px;color:var(--cs)}
+.sec-title{font-family:var(--fd);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:600;letter-spacing:-.02em;line-height:1.12;color:var(--td)}
+[data-theme="dark"] .sec-title{color:var(--td)}
+.sec-sub{font-size:.9rem;line-height:1.8;font-weight:400;margin-top:12px;max-width:560px;color:var(--td60)}
+.sec-hd{margin-bottom:52px}
+.sec-hd.center{text-align:center}.sec-hd.center .sec-sub{margin-inline:auto}
+
+.bg-white{background:var(--light-2)}
+.bg-soft{background:var(--light-1)}
+[data-theme="dark"] .bg-white{background:var(--light-2)}
+[data-theme="dark"] .bg-soft{background:var(--light-1)}
+
+/* ═══════════════════════════════════
+   PAGE HERO — CS Edition
+   Animated circuit-grid background via CSS
+═══════════════════════════════════ */
+#cs-hero{
+  position:relative;overflow:hidden;
+  min-height:min(88vh,760px);
+  display:flex;align-items:center;
+  background:
+    radial-gradient(ellipse 65% 60% at 80% 30%,rgba(79,70,229,.16) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 55% at 15% 70%,rgba(6,182,212,.12) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%,rgba(179,157,219,.08) 0%,transparent 65%),
+    linear-gradient(160deg,#f5f3ff 0%,var(--light-1) 100%);
+  padding:100px 6vw 80px;
+  transition:background .4s;
+}
+[data-theme="dark"] #cs-hero{
+  background:
+    radial-gradient(ellipse 65% 60% at 80% 30%,rgba(129,140,248,.18) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 55% at 15% 70%,rgba(34,211,238,.12) 0%,transparent 60%),
+    linear-gradient(160deg,#080814 0%,#080D1A 100%);
+}
+/* subtle circuit dot grid overlay */
+#cs-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(circle,rgba(79,70,229,.18) 1px,transparent 1px);
+  background-size:32px 32px;
+  pointer-events:none;z-index:0;
+}
+[data-theme="dark"] #cs-hero::before{
+  background-image:radial-gradient(circle,rgba(129,140,248,.14) 1px,transparent 1px);
+}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;width:100%}
+.hero-left{}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(79,70,229,.10);border:1.5px solid rgba(79,70,229,.25);border-radius:40px;padding:5px 16px 5px 10px;font-size:.72rem;color:var(--cs);margin-bottom:22px;font-weight:600;letter-spacing:.04em;animation:fadeUp .7s .1s both}
+[data-theme="dark"] .hero-eyebrow{background:rgba(129,140,248,.14);border-color:rgba(129,140,248,.32)}
+.hero-title{font-family:var(--fd);font-size:clamp(2.4rem,4.5vw,4.2rem);font-weight:700;line-height:1.0;letter-spacing:-.03em;color:var(--td);animation:fadeUp .7s .25s both}
+.hero-title .grad{background:linear-gradient(90deg,var(--cs),var(--cs2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{margin-top:18px;font-size:.92rem;line-height:1.82;color:var(--td60);font-weight:400;max-width:460px;animation:fadeUp .7s .4s both}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;animation:fadeUp .7s .55s both}
+.hero-back{display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:7px 18px;border-radius:30px;background:rgba(255,255,255,.65);border:1.5px solid rgba(79,70,229,.22);color:var(--cs);font-size:.76rem;font-weight:600;text-decoration:none;backdrop-filter:blur(10px);transition:background .2s;animation:fadeUp .7s .62s both}
+.hero-back:hover{background:rgba(235,240,255,.90)}
+[data-theme="dark"] .hero-back{background:rgba(14,12,44,.70);border-color:rgba(129,140,248,.32);color:var(--cs)}
+
+/* Right: dept image placeholder */
+.hero-img-wrap{animation:fadeUp .7s .3s both}
+.hero-img-box{
+  border-radius:var(--r-lg);overflow:hidden;
+  aspect-ratio:4/3;position:relative;
+  background:linear-gradient(140deg,rgba(79,70,229,.14),rgba(6,182,212,.10));
+  border:1.5px solid rgba(79,70,229,.22);
+  box-shadow:0 12px 48px rgba(79,70,229,.16),0 2px 0 rgba(255,255,255,.8) inset;
+  display:flex;align-items:center;justify-content:center;
+}
+[data-theme="dark"] .hero-img-box{border-color:rgba(129,140,248,.28);box-shadow:0 12px 48px rgba(0,0,0,.60),var(--cs-glow)}
+.hero-img-box img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-img-box .ph-ico{font-size:4rem;opacity:.25}
+/* floating stats badges */
+.hero-stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;animation:fadeUp .7s .7s both}
+.h-stat{background:rgba(255,255,255,.75);border:1.5px solid rgba(79,70,229,.18);border-radius:14px;padding:10px 18px;backdrop-filter:blur(12px);text-align:center}
+[data-theme="dark"] .h-stat{background:rgba(14,12,44,.75);border-color:rgba(129,140,248,.22)}
+.h-stat .num{font-family:var(--fd);font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--cs),var(--cs2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.h-stat .lbl{font-size:.65rem;color:var(--td60);font-weight:400;letter-spacing:.04em;margin-top:2px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* ═══════════════════════════════════
+   DEPT INFO — image + detail table
+   side by side on desktop,
+   table below on mobile
+═══════════════════════════════════ */
+#dept-info{
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 20%,rgba(79,70,229,.08) 0%,transparent 60%),
+    var(--light-2);
+}
+[data-theme="dark"] #dept-info{background:radial-gradient(ellipse 60% 50% at 90% 20%,rgba(129,140,248,.10) 0%,transparent 60%),var(--light-2)}
+.dept-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+
+/* dept image */
+.dept-img-slot{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg,rgba(79,70,229,.12),rgba(6,182,212,.08));border:1.5px solid rgba(79,70,229,.18);display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative}
+[data-theme="dark"] .dept-img-slot{border-color:rgba(129,140,248,.24);background:linear-gradient(135deg,rgba(129,140,248,.14),rgba(34,211,238,.08))}
+.dept-img-slot img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+
+/* detail table */
+.dept-detail-title{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--td);margin-bottom:16px}
+.detail-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.detail-table tr{border-bottom:1px solid rgba(79,70,229,.08)}
+[data-theme="dark"] .detail-table tr{border-bottom-color:rgba(129,140,248,.10)}
+.detail-table tr:last-child{border-bottom:none}
+.detail-table td{padding:10px 12px;vertical-align:top;color:var(--td60)}
+.detail-table td:first-child{font-weight:700;color:var(--td);white-space:nowrap;width:40%;font-size:.75rem;letter-spacing:.03em;text-transform:uppercase}
+.detail-table td.val{color:var(--td60)}
+
+.dept-about{margin-top:22px;font-size:.84rem;line-height:1.82;color:var(--td60)}
+.dept-about strong{color:var(--cs);font-weight:700}
+
+/* ═══════════════════════════════════
+   FACULTY TABLE
+═══════════════════════════════════ */
+#faculty-sec{background:var(--light-1)}
+[data-theme="dark"] #faculty-sec{background:var(--light-1)}
+
+.faculty-table-wrap{overflow-x:auto;border-radius:var(--r-md);border:1.5px solid rgba(79,70,229,.16);box-shadow:0 2px 16px rgba(79,70,229,.06)}
+[data-theme="dark"] .faculty-table-wrap{border-color:rgba(129,140,248,.20);box-shadow:0 2px 16px rgba(0,0,0,.30)}
+.faculty-table-wrap::-webkit-scrollbar{height:3px}
+.faculty-table-wrap::-webkit-scrollbar-thumb{background:var(--cs);border-radius:2px}
+
+.faculty-table{width:100%;min-width:560px;border-collapse:collapse;font-size:.82rem}
+.faculty-table thead tr{font-family:var(--fd);font-size:.68rem;font-weight:700;letter-spacing:.10em;text-transform:uppercase;background:linear-gradient(90deg,rgba(79,70,229,.16),rgba(6,182,212,.10));color:var(--cs)}
+[data-theme="dark"] .faculty-table thead tr{background:linear-gradient(90deg,rgba(129,140,248,.18),rgba(34,211,238,.10))}
+.faculty-table th{padding:12px 16px;text-align:left;border-bottom:2px solid rgba(79,70,229,.28);white-space:nowrap}
+[data-theme="dark"] .faculty-table th{border-bottom-color:rgba(129,140,248,.38)}
+.faculty-table tbody tr{background:var(--light-2);transition:background .18s;border-bottom:1px solid rgba(79,70,229,.06)}
+[data-theme="dark"] .faculty-table tbody tr{background:rgba(10,12,32,.75);border-bottom-color:rgba(129,140,248,.08)}
+.faculty-table tbody tr:hover{background:rgba(79,70,229,.04)}
+[data-theme="dark"] .faculty-table tbody tr:hover{background:rgba(129,140,248,.08)}
+.faculty-table tbody tr:last-child{border-bottom:none}
+.faculty-table td{padding:12px 16px;color:var(--td60);vertical-align:middle}
+.faculty-table td:first-child{font-weight:700;color:var(--td30);text-align:center;width:42px;font-size:.72rem}
+.td-name-fac{font-weight:600;color:var(--td);white-space:nowrap}
+[data-theme="dark"] .td-name-fac{color:var(--tw80)}
+
+/* Faculty photo cell */
+.fac-photo-cell{width:90px;text-align:center;padding:8px 10px}
+.fac-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
+.fac-photo{width:110px;height:140px;border-radius:20%;overflow:hidden;border:2px solid rgba(79,70,229,.30);background:linear-gradient(135deg,rgba(79,70,229,.18),rgba(6,182,212,.10));display:flex;align-items:center;justify-content:center;font-size:1.3rem;position:relative}
+[data-theme="dark"] .fac-photo{background:linear-gradient(135deg,rgba(129,140,248,.18),rgba(34,211,238,.10));border-color:rgba(129,140,248,.38)}
+.fac-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.fac-view-btn{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:20px;font-size:.60rem;font-weight:700;color:var(--cs);background:var(--cs-lt);border:1px solid rgba(79,70,229,.22);text-decoration:none;transition:background .2s,color .2s;white-space:nowrap}
+.fac-view-btn:hover{background:var(--cs);color:#fff}
+[data-theme="dark"] .fac-view-btn{background:rgba(129,140,248,.12);border-color:rgba(129,140,248,.28)}
+.fac-view-btn svg{width:10px;height:10px}
+
+/* specialization tag */
+.spec-tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.64rem;font-weight:600;background:rgba(6,182,212,.10);border:1px solid rgba(6,182,212,.22);color:var(--cs2);margin:2px 3px 2px 0;white-space:nowrap}
+[data-theme="dark"] .spec-tag{background:rgba(34,211,238,.10);border-color:rgba(34,211,238,.25)}
+
+/* scroll hint */
+.scroll-hint-fac{display:none;text-align:center;font-size:.62rem;color:var(--td30);padding:5px 0;letter-spacing:.04em}
+
+/* ═══════════════════════════════════
+   PROGRAMS — card style, 75vw max, centered
+═══════════════════════════════════ */
+.prog-sec{transition:background .4s}
+.prog-sec.bg-white{background:var(--light-2)}
+.prog-sec.bg-soft{background:var(--light-1)}
+
+.prog-container{
+  max-width:75%;          /* 75% of viewport as specified */
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+/* Program card */
+.prog-card{
+  border-radius:var(--r-lg);padding:28px 30px;
+  background:rgba(255,255,255,.82);
+  border:1.5px solid rgba(79,70,229,.16);
+  backdrop-filter:blur(12px);
+  box-shadow:0 2px 16px rgba(79,70,229,.07);
+  transition:box-shadow .28s,border-color .28s,transform .28s;
+  display:flex;flex-direction:column;gap:14px;
+}
+.prog-card:hover{transform:translateY(-3px);border-color:rgba(79,70,229,.30);box-shadow:0 8px 28px rgba(79,70,229,.14)}
+[data-theme="dark"] .prog-card{background:rgba(10,12,36,.80);border-color:rgba(129,140,248,.20);box-shadow:0 2px 16px rgba(0,0,0,.40)}
+[data-theme="dark"] .prog-card:hover{border-color:rgba(129,140,248,.45);box-shadow:0 8px 28px rgba(0,0,0,.55),var(--cs-glow)}
+
+.prog-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.prog-card-title{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--td);margin-bottom:4px}
+[data-theme="dark"] .prog-card-title{color:var(--td)}
+.prog-card-sub{font-size:.78rem;color:var(--td60);font-weight:400;line-height:1.6}
+.prog-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:30px;font-size:.68rem;font-weight:700;letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
+.prog-badge.ug{background:rgba(79,70,229,.10);border:1.5px solid rgba(79,70,229,.25);color:var(--cs)}
+.prog-badge.pg{background:rgba(6,182,212,.10);border:1.5px solid rgba(6,182,212,.25);color:var(--cs2)}
+.prog-badge.ai{background:linear-gradient(135deg,rgba(79,70,229,.10),rgba(6,182,212,.10));border:1.5px solid rgba(79,70,229,.22);color:var(--cs)}
+.prog-badge.phd{background:rgba(179,157,219,.14);border:1.5px solid rgba(179,157,219,.35);color:var(--lav)}
+[data-theme="dark"] .prog-badge.ug{background:rgba(129,140,248,.12);border-color:rgba(129,140,248,.30);color:var(--cs)}
+[data-theme="dark"] .prog-badge.pg{background:rgba(34,211,238,.10);border-color:rgba(34,211,238,.28);color:var(--cs2)}
+[data-theme="dark"] .prog-badge.phd{background:rgba(155,132,216,.14);border-color:rgba(155,132,216,.35);color:var(--lav)}
+
+.prog-meta{display:flex;flex-wrap:wrap;gap:8px}
+.prog-meta-item{display:flex;align-items:center;gap:5px;font-size:.74rem;color:var(--td60);background:var(--lb06);border:1px solid var(--lb14);border-radius:8px;padding:4px 10px}
+[data-theme="dark"] .prog-meta-item{background:rgba(129,140,248,.06);border-color:rgba(129,140,248,.14)}
+.prog-meta-item svg{width:13px;height:13px;flex-shrink:0;opacity:.65}
+
+.prog-desc{font-size:.80rem;line-height:1.78;color:var(--td60)}
+
+.prog-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:12px;border-top:1px solid rgba(79,70,229,.08)}
+[data-theme="dark"] .prog-footer{border-top-color:rgba(129,140,248,.10)}
+.prog-syllabus-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 20px;border-radius:30px;font-size:.78rem;font-weight:600;color:var(--cs);background:var(--cs-lt);border:1.5px solid rgba(79,70,229,.25);text-decoration:none;transition:background .2s,color .2s,box-shadow .2s}
+.prog-syllabus-btn:hover{background:var(--cs);color:#fff;box-shadow:0 4px 18px rgba(79,70,229,.30)}
+[data-theme="dark"] .prog-syllabus-btn{background:rgba(129,140,248,.12);border-color:rgba(129,140,248,.30);color:var(--cs)}
+[data-theme="dark"] .prog-syllabus-btn:hover{background:var(--cs);color:#fff}
+.prog-syllabus-btn svg{width:15px;height:15px;flex-shrink:0}
+
+/* Section header pills */
+.prog-sec-hd{display:flex;align-items:center;gap:14px;margin-bottom:36px;flex-wrap:wrap}
+.prog-sec-icon{font-size:2rem}
+.prog-sec-title{font-family:var(--fd);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;letter-spacing:-.02em;color:var(--td)}
+
+/* ═══════════════════════════════════
+   GALLERY — collage with touching borders
+   Random-size mosaic via CSS grid areas
+═══════════════════════════════════ */
+#gallery-sec{
+  background:
+    radial-gradient(ellipse 55% 50% at 50% 50%,rgba(79,70,229,.08) 0%,transparent 65%),
+    var(--dark-bg2);
+  padding:80px 0;
+  overflow:hidden;
+}
+[data-theme="dark"] #gallery-sec{background:radial-gradient(ellipse 55% 50% at 50% 50%,rgba(129,140,248,.10) 0%,transparent 65%),var(--dark-bg2)}
+.gallery-hd{padding:0 6vw 48px;text-align:center}
+.gallery-hd .sec-lbl{color:var(--cs)}
+
+/* Masonry-style collage grid */
+.collage-grid{
+  display:grid;
+  /* 6 equal columns */
+  grid-template-columns:repeat(6,1fr);
+  grid-auto-rows:160px;
+  gap:0;              /* touching borders as specified */
+  width:100%;
+}
+/* Each cell */
+.collage-cell{
+  overflow:hidden;position:relative;
+  background:linear-gradient(135deg,rgba(79,70,229,.14),rgba(6,182,212,.10));
+  display:flex;align-items:center;justify-content:center;
+  font-size:2rem;color:rgba(79,70,229,.25);
+  transition:transform .4s cubic-bezier(.16,1,.3,1),z-index 0s;
+}
+[data-theme="dark"] .collage-cell{background:linear-gradient(135deg,rgba(129,140,248,.14),rgba(34,211,238,.08));color:rgba(129,140,248,.20)}
+.collage-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.16,1,.3,1),filter .4s}
+.collage-cell:hover{z-index:2}
+.collage-cell:hover img{transform:scale(1.08);filter:brightness(1.07) saturate(0.4)}
+/* subtle dark overlay for depth */
+.collage-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(79,70,229,.10),transparent 60%);pointer-events:none;opacity:0;transition:opacity .3s}
+.collage-cell:hover::after{opacity:1}
+
+/* Random sizes via col/row spans — 12 cells with varied spans */
+.collage-cell:nth-child(1) {grid-column:span 2;grid-row:span 2}  /* large */
+.collage-cell:nth-child(2) {grid-column:span 1;grid-row:span 1}  /* small */
+.collage-cell:nth-child(3) {grid-column:span 1;grid-row:span 2}  /* tall */
+.collage-cell:nth-child(4) {grid-column:span 2;grid-row:span 1}  /* wide */
+.collage-cell:nth-child(5) {grid-column:span 1;grid-row:span 1}  /* small */
+.collage-cell:nth-child(6) {grid-column:span 2;grid-row:span 1}  /* wide */
+.collage-cell:nth-child(7) {grid-column:span 1;grid-row:span 2}  /* tall */
+.collage-cell:nth-child(8) {grid-column:span 2;grid-row:span 1}  /* wide */
+.collage-cell:nth-child(9) {grid-column:span 1;grid-row:span 1}  /* small */
+.collage-cell:nth-child(10){grid-column:span 2;grid-row:span 2}  /* large */
+.collage-cell:nth-child(11){grid-column:span 1;grid-row:span 1}  /* small */
+.collage-cell:nth-child(12){grid-column:span 1;grid-row:span 1}  /* small */
+
+/* Label overlay on hover */
+.collage-label{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(10,8,30,.75),transparent);
+  color:#fff;font-size:.68rem;font-weight:600;letter-spacing:.06em;
+  padding:20px 12px 10px;opacity:0;transition:opacity .3s;
+  transform:translateY(6px);transition:opacity .3s,transform .3s;
+}
+.collage-cell:hover .collage-label{opacity:1;transform:translateY(0)}
+
+/* GOV SITES */
+#gov_sites{background:var(--dark-bg4);padding:48px 20px;overflow:hidden}
+[data-theme="dark"] #gov_sites{background:var(--dark-bg4)}
+.students_site{display:flex;justify-content:center;width:100%}
+.students_site_link{display:flex;flex-wrap:wrap;justify-content:center;gap:32px;list-style:none;padding:20px 10px;margin:0;max-width:900px;width:100%}
+.students_site_link li a img{width:90px;height:auto;display:block;transition:transform .3s ease}
+.students_site_link li a img:hover{transform:scale(1.1)}
+
+/* FOOTER */
+footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-top:1.5px solid rgba(79,70,229,.15);padding:60px 6vw 28px;color:var(--tw);transition:background .4s}
+[data-theme="dark"] footer{background:linear-gradient(180deg,#060912,#080D1E);border-top-color:rgba(129,140,248,.16)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.fb-name{font-family:var(--fd);font-size:1rem;font-weight:600;margin-bottom:8px;background:linear-gradient(90deg,var(--cs),var(--cs2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.fb-desc{font-size:.75rem;color:var(--td60);line-height:1.75;font-weight:400;max-width:230px;margin-top:7px}
+.fb-contact{margin-top:16px;display:flex;flex-direction:column;gap:5px}
+.fb-contact a,.fb-contact span{font-size:.72rem;color:var(--td60);text-decoration:none;transition:color .2s}
+.fb-contact a:hover{color:var(--cs)}
+.fc-h5{font-family:var(--fd);font-size:.8rem;font-weight:600;margin-bottom:14px;color:var(--td)}
+.fc-ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fc-ul li a{font-size:.72rem;color:var(--td60);text-decoration:none;font-weight:400;transition:color .2s}
+.fc-ul li a:hover{color:var(--cs)}
+.footer-bottom{padding-top:22px;border-top:1px solid rgba(79,70,229,.10);display:flex;justify-content:space-between;align-items:center;font-size:.69rem;color:var(--td60);gap:16px;flex-wrap:wrap}
+[data-theme="dark"] .footer-bottom{border-top-color:rgba(129,140,248,.10)}
+.footer-bottom a{color:var(--td60);text-decoration:none;transition:color .2s}
+.footer-bottom a:hover{color:var(--cs)}
+.acc-row{display:flex;gap:8px;flex-wrap:wrap}
+.acc-badge{background:var(--cs-lt);border:1.5px solid rgba(79,70,229,.22);border-radius:7px;padding:3px 10px;font-size:.64rem;font-weight:700;color:var(--cs);letter-spacing:.04em}
+[data-theme="dark"] .acc-badge{background:rgba(129,140,248,.10);border-color:rgba(129,140,248,.28);color:var(--cs)}
+.social_media-links{list-style:none;display:flex;gap:15px;padding:0;margin-top:16px;flex-wrap:wrap}
+.social_media img{width:36px;cursor:pointer;transition:transform .3s ease}
+.social_media img:hover{transform:scale(1.2)}
+
+/* map */
+
+.map{
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.map img{
+  width: 280px;
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border-radius: 15%;
+  opacity: 70%;
+  box-shadow: 0 9px 20px #9776c4;
+}
+
+.map img:hover{
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 10px 26px rgb(146, 85, 167);
+}
+
+/* ═══════════════════════════════════
+   RESPONSIVE — TABLET ≤960px
+═══════════════════════════════════ */
+@media(max-width:960px){
+  :root{--ticker-h:32px}
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .hero-img-wrap{order:-1}
+  .hero-img-box{aspect-ratio:16/9;max-height:280px}
+  .dept-layout{grid-template-columns:1fr}
+  .dept-img-slot{aspect-ratio:16/9;max-height:260px}
+  .nav-links{display:none}
+  .ham{display:flex}
+  nav{grid-template-columns:1fr auto;padding:8px 12px}
+  .nav-brand{justify-content:flex-start;padding-left:4px}
+  .nav-right{justify-content:flex-end}
+  .btn-apply{display:none}
+  .prog-container{max-width:90%}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .footer-grid > div:first-child{grid-column:1/-1}
+  .scroll-hint-fac{display:block}
+  .collage-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:140px}
+  /* re-span for 4-col */
+  .collage-cell:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .collage-cell:nth-child(2){grid-column:span 1;grid-row:span 1}
+  .collage-cell:nth-child(3){grid-column:span 1;grid-row:span 2}
+  .collage-cell:nth-child(4){grid-column:span 2;grid-row:span 1}
+  .collage-cell:nth-child(5){grid-column:span 1;grid-row:span 1}
+  .collage-cell:nth-child(6){grid-column:span 2;grid-row:span 1}
+  .collage-cell:nth-child(7){grid-column:span 1;grid-row:span 2}
+  .collage-cell:nth-child(8){grid-column:span 2;grid-row:span 1}
+  .collage-cell:nth-child(9){grid-column:span 1;grid-row:span 1}
+  .collage-cell:nth-child(10){grid-column:span 2;grid-row:span 2}
+  .collage-cell:nth-child(11){grid-column:span 1;grid-row:span 1}
+  .collage-cell:nth-child(12){grid-column:span 1;grid-row:span 1}
+  .students_site_link{gap:24px}
+  .students_site_link li a img{width:72px}
+}
+
+/* ═══════════════════════════════════
+   RESPONSIVE — MOBILE ≤640px
+═══════════════════════════════════ */
+@media(max-width:640px){
+  :root{--ticker-h:30px}
+  .sec{padding:64px 5vw}
+  .sec-hd{margin-bottom:36px}
+  #gallery-sec{padding:60px 0}
+  .gallery-hd{padding:0 5vw 36px}
+  .prog-container{max-width:100%}
+  .prog-card{padding:20px 18px}
+  .hero-stats{gap:8px}
+  .h-stat{padding:8px 14px}
+  .faculty-table{font-size:.72rem;min-width:480px}
+  .faculty-table th,.faculty-table td{padding:9px 11px}
+  .fac-photo{width:42px;height:42px;font-size:1rem}
+  .fac-photo-cell{width:72px;padding:6px 7px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:18px}
+  .footer-grid > div:first-child{grid-column:1/-1}
+  .footer-grid > .social_media{grid-column:1/-1}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px}
+  .ticker-label{display:none}
+  .ticker-fade.lft{width:20px}
+  .t-item{padding:0 14px;font-size:.64rem}
+  .collage-grid{grid-template-columns:repeat(3,1fr);grid-auto-rows:120px}
+  .collage-cell:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .collage-cell:nth-child(3){grid-column:span 1;grid-row:span 2}
+  .collage-cell:nth-child(4){grid-column:span 2;grid-row:span 1}
+  .collage-cell:nth-child(6){grid-column:span 2;grid-row:span 1}
+  .collage-cell:nth-child(7){grid-column:span 1;grid-row:span 2}
+  .collage-cell:nth-child(8){grid-column:span 2;grid-row:span 1}
+  .collage-cell:nth-child(10){grid-column:span 2;grid-row:span 2}
+  .students_site_link{gap:16px;padding:12px 8px}
+  .students_site_link li a img{width:58px}
+  .prog-sec-title{font-size:1.35rem}
+}
+
+@media(max-width:400px){
+  .footer-grid{grid-template-columns:1fr}
+  .footer-grid > .social_media{grid-column:1}
+  .collage-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:110px}
+  .collage-cell:nth-child(1){grid-column:span 2;grid-row:span 1}
+  .collage-cell:nth-child(3){grid-column:span 1;grid-row:span 1}
+  .collage-cell:nth-child(7){grid-column:span 1;grid-row:span 1}
+  .collage-cell:nth-child(10){grid-column:span 2;grid-row:span 1}
+}
+
+/* PERFORMANCE */
+@media(max-width:960px){
+  nav,.prog-card,.btn-ghost-cs,.theme-toggle{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  nav{box-shadow:0 2px 12px rgba(79,70,229,.12)!important}
+  .rev{transition-delay:0s!important}
+}
+@media(hover:none){
+  .btn:hover,.btn-apply:hover,.collage-cell:hover,.prog-card:hover,.mob-cta:hover{transform:none!important}
+  .collage-cell:hover img{transform:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .ticker-track{animation:none!important}
+  .rev{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════ TICKER ══════ -->
+<div id="ticker" role="marquee" aria-label="Department announcements">
+  <div class="ticker-label"> CS Dept</div>
+  <div class="ticker-fade lft"></div>
+  <div class="ticker-viewport">
+    <div class="ticker-track" id="ticker-track">
+      <a href="#bsc-sec" class="t-item">B.Sc. Computer Science Admissions 2026–27 <span class="t-badge">OPEN</span></a><span class="t-sep"></span>
+      <a href="#msc-ai-sec" class="t-item">New: M.Sc. Artificial Intelligence — First Batch 2026</a><span class="t-sep"></span>
+      <a href="#faculty-sec" class="t-item">Meet Our Faculty — Experts in AI, Systems &amp; Algorithms</a><span class="t-sep"></span>
+      <a href="#phd-sec" class="t-item">Ph.D. Programme — Applications Now Open</a><span class="t-sep"></span>
+      <a href="#gallery-sec" class="t-item">CS Department — Building India's Digital Future</a><span class="t-sep"></span>
+      <a href="index.html#about" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
+      <a href="#bsc-sec" class="t-item">B.Sc. Computer Science Admissions 2026–27 <span class="t-badge">OPEN</span></a><span class="t-sep"></span>
+      <a href="#msc-ai-sec" class="t-item">New: M.Sc. Artificial Intelligence — First Batch 2026</a><span class="t-sep"></span>
+      <a href="#faculty-sec" class="t-item">Meet Our Faculty — Experts in AI, Systems &amp; Algorithms</a><span class="t-sep"></span>
+      <a href="#phd-sec" class="t-item">Ph.D. Programme — Applications Now Open</a><span class="t-sep"></span>
+      <a href="#gallery-sec" class="t-item">CS Department — Building India's Digital Future</a><span class="t-sep"></span>
+      <a href="index.html#about" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
+    </div>
+  </div>
+  <div class="ticker-fade rgt"></div>
+</div>
+
+<div id="mob-overlay"></div>
+
+<!-- MOBILE DRAWER -->
+<div id="mob-menu">
+  <div class="mob-header">
+    <span class="mob-title">CS Dept — CUSB</span>
+    <button class="mob-close" id="mob-close-btn" type="button" aria-label="Close">✕</button>
+  </div>
+  <div class="mob-section-lbl">Navigation</div>
+  <a class="mob-a" href="index.html">← CUSB Home</a>
+  <a class="mob-a" href="#dept-info">About the Department</a>
+  <a class="mob-a" href="#faculty-sec">Faculty</a>
+  <div class="mob-divider"></div>
+  <div class="mob-section-lbl">Programs</div>
+  <a class="mob-a" href="#bsc-sec">B.Sc. Computer Science</a>
+  <a class="mob-a" href="#msc-sec">M.Sc. Computer Science</a>
+  <a class="mob-a" href="#msc-ai-sec">M.Sc. Artificial Intelligence</a>
+  <a class="mob-a" href="#phd-sec">Ph.D. Programme</a>
+  <div class="mob-divider"></div>
+  <a class="mob-a" href="#gallery-sec">Department Gallery</a>
+  <a class="mob-cta" href="#bsc-sec">Apply Now →</a>
+</div>
+
+<!-- NAVBAR -->
+<div id="nav-wrap">
+  <nav>
+    <a href="v1.html" class="nav-brand">
+      <div class="nav-logo"><img src="culog.png" alt="CUSB Logo" onerror="this.style.display='none'"></div>
+      <div class="brand-txt"><div class="abbr">CUSB</div></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#dept-info">About</a></li>
+      <li><a href="#faculty-sec">Faculty</a></li>
+      <li><a href="#bsc-sec" class="act">Programs</a></li>
+      <li><a href="#gallery-sec">Gallery</a></li>
+      <li><a href="index.html#notices-sec">IQAC</a></li>
+      <li><a href="#gov_sites">Gov</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode">
+        <span class="ico-sun">☀️</span>
+        <span class="ico-moon">🌙</span>
+      </button>
+      <a href="#bsc-sec" class="btn-apply">Apply 2026–27</a>
+      <button class="ham" id="ham-btn" type="button" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<!-- ══════ HERO ══════ -->
+<header id="cs-hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow"> School of Mathematics, Statistics &amp; Computer Science</div>
+      <h1 class="hero-title">Department of<br><span class="grad">Computer Science</span></h1>
+      <p class="hero-sub">Advancing knowledge at the intersection of theory and practice — from algorithms and systems to artificial intelligence. Shaping the next generation of India's tech leaders at CUSB, Gaya.</p>
+      <div class="hero-btns">
+        <a href="#bsc-sec" class="btn btn-cs">Explore Programs →</a>
+        <a href="#faculty-sec" class="btn btn-ghost-cs">Meet the Faculty</a>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat"><div class="num">6+</div><div class="lbl">Faculty Members</div></div>
+        <div class="h-stat"><div class="num">4</div><div class="lbl">Programs</div></div>
+        <div class="h-stat"><div class="num">350+</div><div class="lbl">Alumni</div></div>
+        <div class="h-stat"><div class="num">2010</div><div class="lbl">Established</div></div>
+      </div>
+      <a href="index.html" class="hero-back">← Back to CUSB Home</a>
+    </div>
+    <div class="hero-img-wrap">
+      <div class="hero-img-box">
+        <img src="aryabhatta.jpeg" alt="Computer Science Department" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════ DEPT INFO ══════ -->
+<section id="dept-info" class="sec bg-white">
+  <div class="sec-hd rev">
+    <div class="sec-lbl">About the Department</div>
+    <h2 class="sec-title">Our Identity &amp; Vision</h2>
+  </div>
+  <!-- side-by-side on desktop, table below on mobile via grid order -->
+  <div class="dept-layout">
+    <div class="rev">
+      <div class="dept-img-slot">
+        <img src="cs_lab.jpg" alt="CS Lab" onerror="this.style.display='none'">
+      </div>
+    </div>
+    <div class="rev">
+      <div class="dept-detail-title">Department at a Glance</div>
+      <table class="detail-table">
+        <tr><td>Established</td><td class="val">2009</td></tr>
+        <tr><td>School</td><td class="val">School of Mathematics, Statistics &amp; Computer Science</td></tr>
+        <tr><td>Location</td><td class="val">CUSB Campus, Panchanpur, Gaya, Bihar</td></tr>
+        <tr><td>HoD</td><td class="val">Prof. Prabhat Ranjan</td></tr>
+        <tr><td>Programs Offered</td><td class="val">B.Sc., M.Sc. CS, M.Sc. AI, Ph.D.</td></tr>
+        <tr><td>Research Areas</td><td class="val">Artificial Intelligence, Machine Learning, Data Science, Network Security, Algorithms</td></tr>
+        <tr><td>Annual Intake</td><td class="val">B.Sc.: 25 seats · M.Sc.: 40 seats · Ph.D.: As per vacancies</td></tr>
+        <tr><td>Admission Basis</td><td class="val">CUET (UG/PG) — conducted by NTA</td></tr>
+        <tr><td>Contact</td><td class="val">cs@cusb.ac.in · 0631-2229 5XX</td></tr>
+      </table>
+      <p class="dept-about">The Department of Computer Science at CUSB is committed to <strong>research-led teaching</strong> in foundational and applied computing. With a curriculum aligned to <strong>NEP 2020</strong> and industry requirements, students gain expertise in algorithms, artificial intelligence, data science, and software engineering — preparing them for careers in technology and research across India and globally.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FACULTY TABLE ══════ -->
+<section id="faculty-sec" class="sec bg-soft">
+  <div class="sec-hd center rev">
+    <div class="sec-lbl">Our Team</div>
+    <h2 class="sec-title">Faculty Members</h2>
+    <p class="sec-sub">Meet the educators shaping the future of computing at CUSB.</p>
+  </div>
+
+  <div class="faculty-table-wrap rev">
+    <table class="faculty-table" aria-label="CS Faculty">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th class="fac-photo-cell">Photo</th>
+          <th>Name</th>
+          <th>Specialization</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 1 -->
+        <tr>
+          <td>1</td>
+          <td class="fac-photo-cell">
+            <div class="fac-photo-wrap">
+              <div class="fac-photo"><img src="prabhat.jpeg" alt="Prof." onerror="this.style.display='none'"></div>
+              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/a4" target="_blank"  class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+            </div>
+          </td>
+          <td class="td-name-fac">Prof. Prabhat Ranjan<br><span style="font-weight:400;font-size:.72rem;color:var(--td60)">Professor &amp; Head of Department</span></td>
+          <td><span class="spec-tag">Big data, Distributed System, Software Engineering</span><span class="spec-tag">MNNIT Allahabad</span></td>
+        </tr>
+        <!-- 2 -->
+        <tr>
+          <td>2</td>
+          <td class="fac-photo-cell">
+            <div class="fac-photo-wrap">
+              <div class="fac-photo"><img src="jainath.jpeg" alt="Dr." onerror="this.style.display='none'"></div>
+              <a href="https://people.samarth.edu.in/index.php/profile/user/custom-profile/CUSB/nl" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+            </div>
+          </td>
+          <td class="td-name-fac">Dr. Jainath Yadav<br><span style="font-weight:400;font-size:.72rem;color:var(--td60)">Associate Professor</span></td>
+          <td><span class="spec-tag">Speech signal processing, Machine Learning, Image and Audio watermarking</span><span class="spec-tag">M. Tech &amp; PhD from IIT Kharagpur</span></td>
+        </tr>
+        <!-- 3 -->
+        <tr>
+          <td>3</td>
+          <td class="fac-photo-cell">
+            <div class="fac-photo-wrap">
+              <div class="fac-photo"><img src="nemisir.jpeg" alt="Dr." onerror="this.style.display='none'"></div>
+              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/ah" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+            </div>
+          </td>
+          <td class="td-name-fac">Dr.Nemi Chandra Rathore<br><span style="font-weight:400;font-size:.72rem;color:var(--td60)">Associate Professor</span></td>
+          <td><span class="spec-tag"> Security and Privacy in Online Social Networks</span><span class="spec-tag">M Tech(IT) &amp; PhD(IIT Patna)</span></td>
+        </tr>
+        <!-- 4 -->
+        <tr>
+          <td>4</td>
+          <td class="fac-photo-cell">
+            <div class="fac-photo-wrap">
+              <div class="fac-photo"><img src="piyush.jpeg" alt="Dr." onerror="this.style.display='none'"></div>
+              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/a9" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+            </div>
+          </td>
+          <td class="td-name-fac">Dr. Piyush Kumar Singh<br><span style="font-weight:400;font-size:.72rem;color:var(--td60)">Assistant Professor</span></td>
+          <td><span class="spec-tag">Image Processing, Parallel Computing, Wavelet Transform</span><span class="spec-tag">PhD (BHU)</span></td>
+        </tr>
+        <!-- 5 -->
+        <tr>
+          <td>5</td>
+          <td class="fac-photo-cell">
+            <div class="fac-photo-wrap">
+              <div class="fac-photo"><img src="mrityunjay.jpeg" alt="Dr." onerror="this.style.display='none'"></div>
+              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/ea" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+            </div>
+          </td>
+          <td class="td-name-fac">Dr. Mrityunjay Singh<br><span style="font-weight:400;font-size:.72rem;color:var(--td60)">Assistant Professor</span></td>
+          <td><span class="spec-tag">Theoretical Computer Science, Discrete Mathematics, Algorithms, Cryptography and Security</span><span class="spec-tag">PhD (IIT Guwahati)</span></td>
+        </tr>
+        <!-- 6 -->
+        <tr>
+          <td>6</td>
+          <td class="fac-photo-cell">
+            <div class="fac-photo-wrap">
+              <div class="fac-photo"><img src="prakash.jpeg" alt="Dr." onerror="this.style.display='none'"></div>
+              <a href="#" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+            </div>
+          </td>
+          <td class="td-name-fac">Dr. Prakash Kumar<br><span style="font-weight:400;font-size:.72rem;color:var(--td60)">Assistant Professor</span></td>
+          <td><span class="spec-tag">Network Security, Data Comunication and Computer</span><span class="spec-tag">PhD (B.R.A.B.U)</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="scroll-hint-fac rev">← Scroll table to see all columns →</p>
+</section>
+
+<!-- ══════ B.Sc. PROGRAMS ══════ -->
+<section id="bsc-sec" class="prog-sec sec bg-white">
+  <div class="prog-sec-hd rev">
+    <span class="prog-sec-icon"></span>
+    <div>
+      <div class="sec-lbl">5 yrs integrated UG &amp; PG</div>
+      <div class="prog-sec-title">B.Sc. Computer Science</div>
+    </div>
+  </div>
+  <div class="prog-container">
+
+    <div class="prog-card rev">
+      <div class="prog-card-top">
+        <div>
+          <div class="prog-card-title">B.Sc. (Hons.) Computer Science</div>
+          <div class="prog-card-sub">Five-year honours programme covering fundamentals of computing, programming, and applied technology.</div>
+        </div>
+        <span class="prog-badge ug">UG-PG integrated</span>
+      </div>
+      <div class="prog-meta">
+        <span class="prog-meta-item">5 Years (10 Semesters)</span>
+        <span class="prog-meta-item">25 Seats</span>
+        <span class="prog-meta-item">CUET (UG)</span>
+        <span class="prog-meta-item">10+2 with Mathematics</span>
+      </div>
+      <p class="prog-desc">The B.Sc. (Hons.) Computer Science programme provides a rigorous foundation in programming languages, data structures, algorithms, operating systems, database management, and computer networks. Students are introduced to modern fields like web development, mobile computing, and introductory artificial intelligence. The programme follows NEP 2020 with multiple exit options and credit-based flexibility.</p>
+      <div class="prog-footer">
+        <div style="font-size:.76rem;color:var(--td60)">Core subjects: C/C++, Java, Data Structures, DBMS, OS, Networks, Discrete Mathematics</div>
+        <a href="#" class="prog-syllabus-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Download Syllabus
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════ M.Sc. CS PROGRAMS ══════ -->
+<section id="msc-sec" class="prog-sec sec bg-soft">
+  <div class="prog-sec-hd rev">
+    <span class="prog-sec-icon"></span>
+    <div>
+      <div class="sec-lbl">Postgraduate</div>
+      <div class="prog-sec-title">M.Sc. Computer Science</div>
+    </div>
+  </div>
+  <div class="prog-container">
+
+    <div class="prog-card rev">
+      <div class="prog-card-top">
+        <div>
+          <div class="prog-card-title">M.Sc. Computer Science</div>
+          <div class="prog-card-sub">Advanced postgraduate programme for deep specialisation in core and applied computer science.</div>
+        </div>
+        <span class="prog-badge pg"> Postgraduate</span>
+      </div>
+      <div class="prog-meta">
+        <span class="prog-meta-item">2 Years (4 Semesters)</span>
+        <span class="prog-meta-item">40 Seats</span>
+        <span class="prog-meta-item">CUET (PG)</span>
+        <span class="prog-meta-item">B.Sc. CS / BCA / B.Tech.</span>
+      </div>
+      <p class="prog-desc">The M.Sc. Computer Science programme at CUSB is designed for graduates who wish to deepen their understanding of advanced algorithms, computer architecture, distributed systems, machine learning, and research methodologies. The programme emphasizes independent research culminating in a dissertation project in the final semester, equipping students for careers in research, academia, and industry.</p>
+      <div class="prog-footer">
+        <div style="font-size:.76rem;color:var(--td60)">Advanced Algorithms · Distributed Systems · ML · Cloud Computing · Research Dissertation</div>
+        <a href="https://www.cusb.ac.in/images/dept/computer_science/Syllabus/Msc_cs_syllabus.pdf" target="_blank" class="prog-syllabus-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Download Syllabus
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════ M.Sc. AI PROGRAMS ══════ -->
+<section id="msc-ai-sec" class="prog-sec sec bg-white">
+  <div class="prog-sec-hd rev">
+    <span class="prog-sec-icon"></span>
+    <div>
+      <div class="sec-lbl">Postgraduate · New Programme</div>
+      <div class="prog-sec-title">M.Sc. Artificial Intelligence</div>
+    </div>
+  </div>
+  <div class="prog-container">
+
+    <div class="prog-card rev">
+      <div class="prog-card-top">
+        <div>
+          <div class="prog-card-title">M.Sc. Artificial Intelligence</div>
+          <div class="prog-card-sub">India's growing AI ecosystem needs specialised talent. CUSB's M.Sc. AI programme delivers exactly that.</div>
+        </div>
+        <span class="prog-badge ai"> M.Sc. AI</span>
+      </div>
+      <div class="prog-meta">
+        <span class="prog-meta-item">2 Years (4 Semesters)</span>
+        <span class="prog-meta-item">20 Seats</span>
+        <span class="prog-meta-item">CUET (PG)</span>
+        <span class="prog-meta-item">>B.Sc. CS / BCA / B.Tech. (CS/IT)</span>
+      </div>
+      <p class="prog-desc">The M.Sc. Artificial Intelligence programme at CUSB is a cutting-edge postgraduate degree designed to equip students with the theoretical foundations and practical skills needed to build, deploy, and evaluate intelligent systems. Covering deep learning, natural language processing, computer vision, reinforcement learning, and AI ethics — this programme prepares students for careers in AI research, product companies, and national AI missions.</p>
+      <div class="prog-footer">
+        <div style="font-size:.76rem;color:var(--td60)">Deep Learning · NLP · Computer Vision · RL · PyTorch · TensorFlow · AI Ethics · Capstone Project</div>
+        <a href="https://www.cusb.ac.in/images/dept/computer_science/Syllabus/MScAI_Syllabus_whole.pdf" target="_blank" class="prog-syllabus-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Download Syllabus
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════ Ph.D. PROGRAMS ══════ -->
+<section id="phd-sec" class="prog-sec sec bg-soft">
+  <div class="prog-sec-hd rev">
+    <span class="prog-sec-icon"></span>
+    <div>
+      <div class="sec-lbl">Doctoral Research</div>
+      <div class="prog-sec-title">Ph.D. Programme</div>
+    </div>
+  </div>
+  <div class="prog-container">
+
+    <div class="prog-card rev">
+      <div class="prog-card-top">
+        <div>
+          <div class="prog-card-title">PhD — Computer Science</div>
+          <div class="prog-card-sub">Full-time and part-time doctoral research across all areas of computer science and AI.</div>
+        </div>
+        <span class="prog-badge phd"> Ph.D.</span>
+      </div>
+      <div class="prog-meta">
+        <span class="prog-meta-item">3 – 5 Years</span>
+        <span class="prog-meta-item">As per Vacancies</span>
+        <span class="prog-meta-item">Interview + Research Proposal</span>
+        <span class="prog-meta-item">M.Sc. / M.Tech. (55%+)</span>
+      </div>
+      <p class="prog-desc">The Ph.D. programme in Computer Science at CUSB offers full-time and part-time doctoral research under the guidance of experienced faculty. Research areas include artificial intelligence, machine learning, computer vision, natural language processing, network security, distributed computing, bioinformatics, and computational theory. Scholars receive CUET-NET/JRF fellowships as applicable.</p>
+      <div class="prog-footer">
+        <div style="font-size:.76rem;color:var(--td60)">Research Areas: AI · ML · Security · Distributed Systems · Bioinformatics · Theory of Computation</div>
+        <a href="https://www.cusb.ac.in/images/dept/computer_science/Syllabus/Phd_Syllabus_Computer_Science.pdf" class="prog-syllabus-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Download Syllabus
+        </a>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+<!-- ══════ GALLERY — Collage Form ══════ -->
+<section id="gallery-sec">
+  <div class="gallery-hd rev">
+    <div class="sec-lbl">Department Memories</div>
+    <h2 class="sec-title" style="font-family:var(--fd);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:600;letter-spacing:-.02em;line-height:1.12;color:var(--td);margin-bottom:10px">Life in the CS Department</h2>
+    <p class="sec-sub" style="margin:0 auto;text-align:center;color:var(--td60)">Workshops, hackathons, convocations, and everyday moments — captured in frames.</p>
+  </div>
+
+  <!-- Collage: 12 cells with touching borders, randomised sizes via CSS -->
+  <div class="collage-grid">
+    <div class="collage-cell">
+      <img src="aryabhatta.jpeg" alt="Hackathon 2025" onerror="this.style.display='none'">
+      <div class="collage-label">Hackathon 2025</div>
+    </div>
+    <div class="collage-cell">
+      <img src="admin.jpeg" alt="AI Workshop" onerror="this.style.display='none'">
+      <div class="collage-label">AI Workshop</div>
+    </div>
+    <div class="collage-cell">
+      <img src="malviya.jpeg" alt="Lab Sessions" onerror="this.style.display='none'">
+      <div class="collage-label">Lab Sessions</div>
+    </div>
+    <div class="collage-cell">
+      <img src="cs_lab.jpg" alt="Convocation" onerror="this.style.display='none'">
+      <div class="collage-label">Convocation Day</div>
+    </div>
+    <div class="collage-cell">
+      <img src="sports.jpeg" alt="Guest Lecture" onerror="this.style.display='none'">
+      <div class="collage-label">Guest Lecture</div>
+    </div>
+    <div class="collage-cell">
+      <img src="opengym.jpeg" alt="Code Sprint" onerror="this.style.display='none'">
+      <div class="collage-label">Code Sprint</div>
+    </div>
+    <div class="collage-cell">
+      <img src="gargi sadan.jpg" alt="Research Symposium" onerror="this.style.display='none'">
+      <div class="collage-label">Research Symposium</div>
+    </div>
+    <div class="collage-cell">
+      <img src="#" alt="Faculty Meet" onerror="this.style.display='none'">
+      <div class="collage-label">Faculty Meet</div>
+    </div>
+    <div class="collage-cell">
+      <img src="cs_g9.jpg" alt="Project Demo" onerror="this.style.display='none'">
+      <div class="collage-label">Project Demo Day</div>
+    </div>
+    <div class="collage-cell">
+      <img src="admin_good.jpeg" alt="Campus Life" onerror="this.style.display='none'">
+      <div class="collage-label">Campus Life</div>
+    </div>
+    <div class="collage-cell">
+      <img src="cs_g11.jpg" alt="Fresher Welcome" onerror="this.style.display='none'">
+      <div class="collage-label">Fresher's Welcome</div>
+    </div>
+    <div class="collage-cell">
+      <img src="malviya.jpeg" alt="Annual Fest" onerror="this.style.display='none'">
+      <div class="collage-label">Annual Fest</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ GOV SITES ══════ -->
+<section id="gov_sites">
+  <div class="students_site">
+    <ul class="students_site_link">
+      <li><a href="https://swayam.gov.in/" target="_blank"><img src="swayam_logo.png" alt="Swayam Courses"></a></li>
+      <li><a href="https://www.swayamprabha.gov.in/" target="_blank"><img src="SWAYAM_PRABHA.png" alt="Swayam Prabha"></a></li>
+      <li><a href="https://ndl.iitkgp.ac.in/" target="_blank"><img src="national (1).png" alt="National Digital Library"></a></li>
+      <li><a href="https://aishe.gov.in/" target="_blank"><img src="AISHE.png" alt="AISHE"></a></li>
+      <li><a href="https://www.mygov.in/" target="_blank"><img src="mygov_0.png" alt="MyGov"></a></li>
+      <li><a href="https://www.india.gov.in/" target="_blank"><img src="Indiagovin.svg" alt="India.gov.in"></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer id="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="fb-name">Central University of South Bihar</div>
+      <p class="fb-desc">An institution of higher learning under the Ministry of Education, Government of India — committed to excellence, equity, and national development.</p>
+      <div class="fb-contact">
+        <a href="tel:06312229530">☎ 0631-2229 530</a>
+        <a href="mailto:admission@cusb.ac.in">✉ admission@cusb.ac.in</a>
+        <a href="mailto:webmaster@cusb.ac.in">✉ webmaster@cusb.ac.in</a>
+        <span>📍 Panchanpur, Gaya, Bihar – 824236</span>
+      </div>
+    </div>
+    <div>
+      <div class="fc-h5">About</div>
+      <ul class="fc-ul">
+        <li><a href="#about">The University</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fc-h5">Academics</div>
+      <ul class="fc-ul">
+        <li><a href="#departments">All Departments</a></li>
+        <li><a href="#departments">Programs</a></li>
+        <li><a href="v1.html#notices-sec">Exam Notices</a></li>
+        <li><a href="#notices-sec">Results</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fc-h5">Students</div>
+      <ul class="fc-ul">
+        <li><a href="#cta-sec">Admissions 2026–27</a></li>
+        <li><a href="#quicklinks">Scholarship</a></li>
+        <li><a href="Hostel.html">Hostel</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fc-h5">Quick Links</div>
+      <ul class="fc-ul">
+        <li><a href="index.html#notices-sec">IQAC</a></li>
+        <li><a href="index.html#gallery">Photo Gallery</a></li>
+      </ul>
+    </div>
+    <div class="social_media">
+      <ul class="social_media-links">
+        <li><a href="https://www.facebook.com/cusbofficial/" target="_blank"><img src="fb.png" alt="Facebook"></a></li>
+        <li><a href="https://x.com/CUSBofficial" target="_blank"><img src="X.png" alt="X"></a></li>
+        <li><a href="https://www.instagram.com/cusbofficialpage/?hl=en" target="_blank"><img src="insta.png" alt="Insta"></a></li>
+        <li><a href="https://www.youtube.com/user/CUBofficialchannel" target="_blank"><img src="YouTube.webp" alt="Youtube"></a></li>
+        <li><a href="https://in.linkedin.com/school/cusbofficial/" target="_blank"><img src="linke.png" alt="Linkedin"></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="map">
+    <a href="https://maps.google.com/?q=Central+University+of+South+Bihar+Gaya" target="_blank">
+      <img src="map.jpeg" alt="map">
+    </a>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2025 Central University of South Bihar, Gaya, India. All rights reserved.</span>
+    <div class="acc-row">
+      <span class="acc-badge">NAAC</span>
+      <span class="acc-badge">NEP 2020</span>
+      <span class="acc-badge">Viksit Bharat</span>
+    </div>
+    <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Sitemap</a></span>
+  </div>
+</footer>
+
+<script>
+/* NAV SCROLL GLASS */
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('sc',window.scrollY>60)},{passive:true});
+
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    const id=link.getAttribute('href').slice(1);
+    if(!id)return;
+    const t=document.getElementById(id);
+    if(!t)return;
+    e.preventDefault();
+    t.scrollIntoView({behavior:'smooth',block:'start'});
+    history.replaceState(null,'',`#${id}`);
+  });
+});
+
+/* SCROLL REVEAL */
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')})},{threshold:0.07});
+document.querySelectorAll('.rev').forEach((el,i)=>{el.style.transitionDelay=(i%6)*0.07+'s';ro.observe(el)});
+
+/* BUTTON RIPPLE */
+document.querySelectorAll('.btn,.btn-apply').forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    const r=document.createElement('span');
+    r.className='rpl';
+    r.style.cssText=`left:${e.offsetX}px;top:${e.offsetY}px;width:8px;height:8px;margin:-4px`;
+    btn.appendChild(r);setTimeout(()=>r.remove(),520);
+  });
+});
+
+/* HAMBURGER */
+const mobMenu=document.getElementById('mob-menu'),mobOvr=document.getElementById('mob-overlay'),hamBtn=document.getElementById('ham-btn'),closeB=document.getElementById('mob-close-btn');
+const openM=()=>{mobMenu.classList.add('open');mobOvr.classList.add('show');hamBtn.classList.add('open');document.body.style.overflow='hidden'};
+const closeM=()=>{mobMenu.classList.remove('open');mobOvr.classList.remove('show');hamBtn.classList.remove('open');document.body.style.overflow=''};
+hamBtn.addEventListener('click',e=>{e.stopPropagation();mobMenu.classList.contains('open')?closeM():openM()});
+closeB.addEventListener('click',e=>{e.stopPropagation();closeM()});
+mobOvr.addEventListener('click',closeM);
+document.querySelectorAll('#mob-menu .mob-a,#mob-menu .mob-cta').forEach(a=>a.addEventListener('click',closeM));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
+
+/* THEME */
+const html=document.documentElement,tog=document.getElementById('theme-toggle-btn'),KEY='cusb-theme';
+(function(){const s=localStorage.getItem(KEY);if(s){html.setAttribute('data-theme',s);return}if(window.matchMedia('(prefers-color-scheme: dark)').matches)html.setAttribute('data-theme','dark')})();
+tog.addEventListener('click',()=>{const n=html.getAttribute('data-theme')==='dark'?'light':'dark';html.setAttribute('data-theme',n);localStorage.setItem(KEY,n)});
+
+/* TICKER PAUSE */
+const tt=document.getElementById('ticker-track');
+if(tt){
+  tt.addEventListener('mouseenter',()=>tt.style.animationPlayState='paused');
+  tt.addEventListener('mouseleave',()=>tt.style.animationPlayState='running');
+  let lp=0;
+  tt.addEventListener('touchstart',()=>{const n=Date.now();if(n-lp<300){const c=tt.style.animationPlayState;tt.style.animationPlayState=(c==='paused')?'running':'paused'}lp=n},{passive:true});
+}
+</script>
+</body>
+</html>
