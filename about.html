@@ -23,7 +23,7 @@
   --nm-in:inset 6px 6px 16px #b5b9c6,inset -6px -6px 16px #ffffff;
   --nm-in-sm:inset 3px 3px 8px #b9bdc8,inset -3px -3px 8px #ffffff;
   --nm-in-lg:inset 9px 9px 24px #adb1be,inset -9px -9px 24px #ffffff;
-  --acc:#e8496a; --acc2:#5b52d4; --acc3:#3db897;
+  --acc:#f69648; --acc2:#f14e64; --acc3:#3db897;
   --acc-glow:rgba(232,73,106,.30); --acc2-glow:rgba(91,82,212,.25);
   --tx-primary:#1e2236; --tx-secondary:#5a6080; --tx-muted:#8e93b0; --tx-light:#b8bdd4;
   --nm-border:rgba(255,255,255,.90); --nm-border-b:rgba(170,175,195,.35);
@@ -107,13 +107,13 @@ nav.sc{box-shadow:var(--nm-out-lg)}
 [data-theme="dark"] nav{box-shadow:var(--nm-out);border-color:rgba(255,106,0,.06)}
 [data-theme="dark"] nav.sc{box-shadow:var(--nm-out-lg)}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;justify-content:center}
-.nav-logo img{width:43px}
+.nav-logo img{width:43px;margin-top: 5.5px;}
 .brand-txt .abbr{font-family:var(--fd);font-size:1.2rem;font-weight:800;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 [data-theme="dark"] .brand-txt .abbr{background:linear-gradient(90deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;list-style:none;gap:2px;justify-content:flex-start}
 .nav-links a{display:block;padding:8px 13px;font-family:var(--fb);font-size:.78rem;font-weight:500;color:var(--tx-secondary);text-decoration:none;border-radius:30px;transition:color .25s,box-shadow .25s;white-space:nowrap}
-.nav-links a:hover,.nav-links a.act{color:var(--acc);box-shadow:var(--nm-in-sm)}
-[data-theme="dark"] .nav-links a:hover,[data-theme="dark"] .nav-links a.act{color:#FF8C42;box-shadow:var(--nm-in-sm);text-shadow:0 0 10px rgba(255,106,0,.40)}
+.nav-links a:hover{color:var(--acc);box-shadow:var(--nm-in-sm)}
+[data-theme="dark"] .nav-links a:hover{color:#FF8C42;box-shadow:var(--nm-in-sm);text-shadow:0 0 10px rgba(255,106,0,.40)}
 .nav-right{display:flex;justify-content:flex-end;align-items:center;gap:10px}
 
 /* Apply button */
