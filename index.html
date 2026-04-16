@@ -53,8 +53,8 @@
     inset -9px -9px 24px #ffffff;
 
   /* accent */
-  --acc:        #e8496a;
-  --acc2:       #5b52d4;
+  --acc:        #f69648;
+  --acc2:       #f14e64;
   --acc3:       #3db897;
   --acc-glow:   rgba(232,73,106,.30);
   --acc2-glow:  rgba(91,82,212,.25);
@@ -251,8 +251,8 @@ header[id],section[id]{scroll-margin-top:var(--offset)}
 #topbar{
   background:var(--nm-bg-alt);
   border-bottom:1px solid var(--nm-border-b);
-  padding:0 5vw;height:var(--topbar-h);
-  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 5vw;min-height:var(--topbar-h);
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center;justify-items:stretch;
   font-size:.72rem;color:var(--tx-secondary);
   box-shadow:0 3px 10px rgba(0,0,0,.10),0 1px 0 var(--nm-border) inset;
   transition:background .4s;
@@ -267,8 +267,15 @@ header[id],section[id]{scroll-margin-top:var(--offset)}
 #topbar a{color:var(--tx-secondary);text-decoration:none;transition:color .2s}
 #topbar a:hover{color:var(--acc)}
 [data-theme="dark"] #topbar a:hover{color:#FF8C42;text-shadow:0 0 8px rgba(255,106,0,.45)}
-.tb-l{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.tb-l{display:flex;gap:6px;align-items:center;flex-wrap:wrap;overflow:hidden}
 .tb-sep{opacity:.25}
+.tb-r{display:flex;gap:12px;align-items:center;justify-content:flex-end}
+.tb-img-slot{width:auto;max-width:100%;height:60px;border-radius:var(--r-sm);background:var(--nm-bg);box-shadow:var(--nm-in-sm);border:1px solid var(--nm-border);display:flex;align-items:center;justify-content:center;color:var(--tx-muted);font-size:.68rem;text-align:center;padding:8px;flex:1}
+[data-theme="dark"] .tb-img-slot{border-color:rgba(255,106,0,.07);box-shadow:var(--nm-in-sm)}
+.credits img{
+  width: 90px;
+}
+.tb-img-slot img{width:100%;height:100%;object-fit:cover;border-radius:calc(var(--r-sm) - 1px)}
 
 /* ──────────────────────────────────────
    NAVBAR — deeply raised pill
@@ -657,9 +664,9 @@ nav.sc{box-shadow:var(--nm-out-lg)}
 #hero{
   background:var(--nm-bg);
   color:var(--tx-primary);
-  min-height:min(91vh,820px);
-  padding:90px 6vw 70px;
-  display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  min-height:min(70vh,680px);
+  padding:50px 6vw 60px;
+  display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:flex-start;justify-items:start;
   position:relative;transition:background .4s;
 }
 /* subtle recessed grid texture */
@@ -707,7 +714,7 @@ nav.sc{box-shadow:var(--nm-out-lg)}
   50%{box-shadow:0 0 20px rgba(255,106,0,1),0 0 40px rgba(255,106,0,.55)}
 }
 .hero-title{
-  font-family:var(--fd);font-size:clamp(2.5rem,5vw,4.8rem);
+  font-family:var(--fd);font-size:clamp(2.5rem,5vw,4rem);
   font-weight:800;line-height:.96;letter-spacing:-.03em;
   animation:fadeUp .7s .35s both;color:var(--tx-primary);
 }
@@ -748,6 +755,7 @@ nav.sc{box-shadow:var(--nm-out-lg)}
 .hero-img-box{
   border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/3;
   background:var(--nm-bg-alt);
+  width: 85%;
   box-shadow:var(--nm-out-xl);
   border:1px solid var(--nm-border);
   position:relative;
@@ -816,7 +824,7 @@ nav.sc{box-shadow:var(--nm-out-lg)}
 .leader-card:hover{box-shadow:var(--nm-out-lg)}
 [data-theme="dark"] .leader-card:hover{box-shadow:var(--nm-out-glow)}
 .leader-photo{
-  width:min(160px,70%);height:auto;aspect-ratio:1/1;border-radius:50%;
+  width:min(360px,70%);height:auto;aspect-ratio:1/1;border-radius:50%;
   margin:0 auto 18px;
   box-shadow:var(--nm-out);
   border:3px solid var(--nm-border);
@@ -874,9 +882,9 @@ nav.sc{box-shadow:var(--nm-out-lg)}
   text-decoration:none;color:inherit;display:block;
   transition:box-shadow .25s,color .25s;
 }
-.infra-card:hover{box-shadow:var(--nm-out);color:var(--acc)}
+.infra-card:hover{box-shadow:var(--nm-in-sm);color:var(--acc)}
 .infra-card:hover .infra-name{color:var(--acc)}
-[data-theme="dark"] .infra-card:hover{box-shadow:var(--nm-out-glow-sm)}
+[data-theme="dark"] .infra-card:hover{box-shadow:var(--nm-in-sm)}
 [data-theme="dark"] .infra-card:hover .infra-name{color:#FF8C42}
 .infra-img-slot{
   width:100%;aspect-ratio:16/9;border-radius:var(--r-sm);
@@ -1221,13 +1229,24 @@ footer{
 .social_media img{width:26px;height:26px;object-fit:contain;display:block}
 
 /* ──────────────────────────────────────
+   RESPONSIVE — LAPTOP ≥961px
+────────────────────────────────────── */
+@media(min-width:961px){
+  .hero-title{font-size:clamp(2.5rem,5vw,2.5rem)}
+  .hero-img-box{max-height:500px}
+}
+
+/* ──────────────────────────────────────
    RESPONSIVE — TABLET ≤960px
 ────────────────────────────────────── */
 @media(max-width:960px){
+  #topbar{grid-template-columns:1fr 1fr;gap:12px;padding:10px 5vw}
+  .tb-r{gap:10px}
+  .tb-img-slot{height:54px}
   :root{--ticker-h:32px}
-  #hero{grid-template-columns:1fr;padding-top:50px;min-height:auto;gap:32px}
+  #hero{grid-template-columns:1fr;padding:40px 6vw;min-height:auto;gap:28px;align-items:center;justify-items:center}
   .hero-right{display:block}
-  .hero-img-box{aspect-ratio:16/9;max-height:280px}
+  .hero-img-box{aspect-ratio:16/9;max-height:250px}
   #about .about-grid{grid-template-columns:1fr}
   .leaders-grid{grid-template-columns:1fr 1fr}
   .notices-grid{grid-template-columns:1fr}
@@ -1254,6 +1273,11 @@ footer{
    RESPONSIVE — MOBILE ≤640px
 ────────────────────────────────────── */
 @media(max-width:640px){
+  #topbar{grid-template-columns:1fr 1fr;gap:10px;padding:10px 5vw}
+  .tb-l{gap:4px;font-size:.68rem}
+  .tb-r{gap:8px}
+  .tb-img-slot{height:52px}
+  #hero{padding:36px 4vw;gap:24px;align-items:center;justify-items:center}
   :root{--ticker-h:30px}
   .sec{padding:56px 4vw}
   .sec-hd{margin-bottom:32px}
@@ -1287,7 +1311,7 @@ footer{
   .gallery-arrow-left{left:10px}
   .gallery-arrow-right{right:10px}
   .map img{width:100%;max-width:260px}
-  .hero-img-box{aspect-ratio:4/3;max-height:230px}
+  .hero-img-box{aspect-ratio:4/3;max-height:200px}
   .leader-photo{width:min(110px,50%) !important}
   .notices-grid{gap:16px}
   .notice-col{padding:22px 18px}
@@ -1301,6 +1325,13 @@ footer{
    RESPONSIVE — SMALL PHONE ≤480px
 ────────────────────────────────────── */
 @media(max-width:480px){
+  #topbar{grid-template-columns:1fr;gap:12px;padding:10px 5vw}
+  .tb-l{gap:4px;font-size:.65rem}
+  .tb-sep{display:none}
+  .tb-l span:not(.tb-sep),.tb-l a{display:inline-block}
+  .tb-r{grid-column:1;gap:8px;justify-content:stretch}
+  .tb-img-slot{max-width:50%;height:50px;font-size:.6rem}
+  #hero{padding:32px 4vw;gap:20px;align-items:center;justify-items:center}
   .dept-grid{grid-template-columns:1fr 1fr}
   .infra-grid{grid-template-columns:1fr 1fr}
   .ql-grid{grid-template-columns:repeat(2,1fr)}
@@ -1314,7 +1345,6 @@ footer{
   .sec-title{font-size:clamp(1.5rem,7vw,2rem)}
   .h-stat .num{font-size:1.4rem}
   .hero-stats{gap:8px}
-  .tb-l{display:none}
   nav{padding:6px 10px}
   .students_site_link li a img{width:44px}
   .students_site_link li a{padding:8px}
@@ -1461,6 +1491,10 @@ footer{
     <span class="tb-sep">|</span>
     <a href="http://naac.gov.in/" target="_blank">NAAC</a>
   </div>
+  <div class="tb-r">
+    <div class="credits"><img src="NAAC.png"  loading="lazy" onerror="this.style.display='none'"></div>
+    <div class="credits"><img src="viksit.png"  loading="lazy" onerror="this.style.display='none'"></div>
+  </div>
 </div>
 
 <!-- ══════ NAVBAR ══════ -->
@@ -1473,8 +1507,8 @@ footer{
     <ul class="nav-links">
       <li><a href="#hero">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#departments">Academics</a></li>
       <li><a href="#leadership">Administration</a></li>
+      <li><a href="#departments">Academics</a></li>
       <li><a href="#campus">Campus</a></li>
       <li><a href="#notices-sec">IQAC</a></li>
       <li><a href="#quicklinks">Students</a></li>
@@ -1651,48 +1685,6 @@ footer{
   </div>
 </section>
 
-<!-- ════════════════════════════════
-     GALLERY SECTION
-════════════════════════════════ -->
-<section class="gallery-section" id="gallery">
-  <div class="gallery-header">
-    <div class="gallery-eyebrow">HIGHLIGHTS</div>
-    <h2 class="gallery-title">Life at <span>CUSB</span></h2>
-    <p class="gallery-subtitle">Moments that define us — from academic excellence to vibrant campus culture.</p>
-  </div>
-
-  <div class="gallery-stage">
-    <button class="gallery-arrow gallery-arrow-left" id="arrowLeft" aria-label="Scroll left">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"/>
-      </svg>
-    </button>
-    <div class="gallery-viewport" id="galleryViewport">
-      <div class="gallery-track" id="galleryTrack">
-        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde1ea,#eceef5)"><div class="gallery-card-inner"><img src="expansion.jpg" alt="Main Campus" loading="lazy" onerror="this.style.display='none'"></div></div>
-        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e8e0f5,#f0ecfc)"><div class="gallery-card-inner"><img src="2026.jpg" alt="Library" loading="lazy" onerror="this.style.display='none'"></div></div>
-        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ddf0eb,#e8f7f3)"><div class="gallery-card-inner"><img src="2013.jpg" alt="Convocation" loading="lazy" onerror="this.style.display='none'"></div></div>
-        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ffe0ec,#fff0f5)"><div class="gallery-card-inner"><img src="" alt="Sports Meet" loading="lazy" onerror="this.style.display='none'"></div></div>
-        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde8f5,#e8f0fc)"><div class="gallery-card-inner"><img src="" alt="Research Lab" loading="lazy" onerror="this.style.display='none'"></div></div>
-        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f5e8dd,#fdf0e8)"><div class="gallery-card-inner"><img src="" alt="Cultural Fest" loading="lazy" onerror="this.style.display='none'"></div></div>
-        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e0e8f8,#edf3fd)"><div class="gallery-card-inner"><img src="" alt="Seminar Hall" loading="lazy" onerror="this.style.display='none'"></div></div>
-        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ddf5f0,#e8fcf8)"><div class="gallery-card-inner"><img src="" alt="Hostel Life" loading="lazy" onerror="this.style.display='none'"></div></div>
-        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f8e0dd,#fdecea)"><div class="gallery-card-inner"><img src="" alt="Botanical Garden" loading="lazy" onerror="this.style.display='none'"></div></div>
-        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e8ddf5,#f3e8fd)"><div class="gallery-card-inner"><img src="" alt="Auditorium" loading="lazy" onerror="this.style.display='none'"></div></div>
-        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde8f0,#e8f0f8)"><div class="gallery-card-inner"><img src="" alt="Tech Expo" loading="lazy" onerror="this.style.display='none'"></div></div>
-        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f0f0dd,#f8f8e8)"><div class="gallery-card-inner"><img src="" alt="Graduation Day" loading="lazy" onerror="this.style.display='none'"></div></div>
-      </div><!-- /gallery-track -->
-    </div><!-- /gallery-viewport -->
-    <button class="gallery-arrow gallery-arrow-right" id="arrowRight" aria-label="Scroll right">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"/>
-      </svg>
-    </button>
-  </div><!-- /gallery-stage -->
-  <div class="gallery-dots" id="galleryDots"></div>
-  <p class="gallery-count" id="galleryCount"><span>01</span> / 12</p>
-</section>
-
 <!-- ══════ NOTICES ══════ -->
 <section id="notices-sec" class="sec dark-sec">
   <div class="sec-hd rev">
@@ -1741,6 +1733,50 @@ footer{
     <a href="#" class="ql-card rev"><span class="ql-ico">🌐</span><span class="ql-nm">Webmail</span></a>
   </div>
 </section>
+
+
+<!-- ════════════════════════════════
+     GALLERY SECTION
+════════════════════════════════ -->
+<section class="gallery-section" id="gallery">
+  <div class="gallery-header">
+    <div class="gallery-eyebrow">HIGHLIGHTS</div>
+    <h2 class="gallery-title">Life at <span>CUSB</span></h2>
+    <p class="gallery-subtitle">Moments that define us — from academic excellence to vibrant campus culture.</p>
+  </div>
+
+  <div class="gallery-stage">
+    <button class="gallery-arrow gallery-arrow-left" id="arrowLeft" aria-label="Scroll left">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </button>
+    <div class="gallery-viewport" id="galleryViewport">
+      <div class="gallery-track" id="galleryTrack">
+        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde1ea,#eceef5)"><div class="gallery-card-inner"><img src="expansion.jpg" alt="Main Campus" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e8e0f5,#f0ecfc)"><div class="gallery-card-inner"><img src="2026.jpg" alt="Library" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ddf0eb,#e8f7f3)"><div class="gallery-card-inner"><img src="2013.jpg" alt="Convocation" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ffe0ec,#fff0f5)"><div class="gallery-card-inner"><img src="" alt="Sports Meet" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde8f5,#e8f0fc)"><div class="gallery-card-inner"><img src="" alt="Research Lab" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f5e8dd,#fdf0e8)"><div class="gallery-card-inner"><img src="" alt="Cultural Fest" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e0e8f8,#edf3fd)"><div class="gallery-card-inner"><img src="" alt="Seminar Hall" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ddf5f0,#e8fcf8)"><div class="gallery-card-inner"><img src="" alt="Hostel Life" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f8e0dd,#fdecea)"><div class="gallery-card-inner"><img src="" alt="Botanical Garden" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e8ddf5,#f3e8fd)"><div class="gallery-card-inner"><img src="" alt="Auditorium" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde8f0,#e8f0f8)"><div class="gallery-card-inner"><img src="" alt="Tech Expo" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f0f0dd,#f8f8e8)"><div class="gallery-card-inner"><img src="" alt="Graduation Day" loading="lazy" onerror="this.style.display='none'"></div></div>
+      </div><!-- /gallery-track -->
+    </div><!-- /gallery-viewport -->
+    <button class="gallery-arrow gallery-arrow-right" id="arrowRight" aria-label="Scroll right">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6"/>
+      </svg>
+    </button>
+  </div><!-- /gallery-stage -->
+  <div class="gallery-dots" id="galleryDots"></div>
+  <p class="gallery-count" id="galleryCount"><span>01</span> / 12</p>
+</section>
+
 
 <!-- GOV_SITES -->
 <section id="gov_sites">
@@ -1977,11 +2013,10 @@ if(tickerTrack){
    GALLERY
 ══════════════════════════════════════════════ */
 (function(){
-  const isMobile = window.innerWidth <= 640;
-  const CARD_W   = isMobile ? 220 : 280;
   const GAP      = 24;
-  const STEP     = CARD_W + GAP;
-  const SPEED    = isMobile ? 0.45 : 0.75;
+  let CARD_W     = 280;
+  let STEP       = CARD_W + GAP;
+  let SPEED      = window.innerWidth <= 640 ? 0.45 : 0.75;
 
   const track    = document.getElementById('galleryTrack');
   const viewport = document.getElementById('galleryViewport');
@@ -1995,6 +2030,13 @@ if(tickerTrack){
   const sourceCards   = [...track.querySelectorAll('.gallery-card')];
   const originalCount = sourceCards.length;
   if(!originalCount) return;
+
+  function updateMetrics() {
+    const firstCard = sourceCards[0];
+    CARD_W = firstCard ? firstCard.offsetWidth : 280;
+    STEP   = CARD_W + GAP;
+    SPEED  = window.innerWidth <= 640 ? 0.45 : 0.75;
+  }
 
   function buildTrack() {
     sourceCards.forEach((c, i) => { c.dataset.idx = i; });
@@ -2148,8 +2190,20 @@ if(tickerTrack){
 
   buildTrack();
   buildDots();
+  updateMetrics();
   position = -oneSetWidth();
   applyTranslate();
+
+  window.addEventListener('resize', () => {
+    const prevStep = STEP;
+    updateMetrics();
+    if(prevStep !== STEP){
+      const currentSet = Math.round(position / -prevStep);
+      position = -(currentSet * STEP) + (position % -prevStep || 0);
+      applyTranslate();
+    }
+  });
+
   requestAnimationFrame(() => { updateCardStyles(); loop(); });
 
 })();
