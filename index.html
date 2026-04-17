@@ -622,8 +622,6 @@
       flex-shrink: 0;
       padding: 8px 14px;
       border-radius: 28px;
-      background: var(--nm-bg);
-      box-shadow: var(--nm-out-sm);
       pointer-events: all;
     }
 
@@ -638,15 +636,14 @@
     .nav-search-input {
       width: 100%;
       padding: 8px 40px 8px 14px;
-      border: 1px solid var(--nm-border);
+      border: 1px solid rgb(242, 213, 174);
       border-radius: 999px;
-      background: var(--nm-bg-sec);
+      background:rgb(252, 246, 238);
       color: var(--tx-primary);
       font-family: var(--fb);
       font-size: .9rem;
       box-shadow: inset 1px 1px 4px rgba(0, 0, 0, .05);
     }
-
     .nav-search-input:focus {
       outline: none;
       border-color: var(--acc);
@@ -1633,13 +1630,14 @@
     }
 
     .about-img-slot {
+      width: 100%;
       border-radius: var(--r-lg);
       overflow: hidden;
-      aspect-ratio: 4/5;
-      position: relative;
+      aspect-ratio: 4/3;
       background: var(--nm-bg-alt);
       box-shadow: var(--nm-out-xl);
       border: 1px solid var(--nm-border);
+      position: relative;
     }
 
     [data-theme="dark"] .about-img-slot {
@@ -3303,7 +3301,7 @@
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      background: var(--acc);
+      background:var(--acc);
       border: 1px solid var(--nm-border);
       box-shadow: var(--nm-out-sm);
       cursor: pointer;
@@ -3743,7 +3741,7 @@
       <form id="nav-search-form" class="nav-search-form" role="search">
         <label for="nav-search-input" class="sr-only">Search site</label>
         <div class="nav-search-field">
-          <input id="nav-search-input" class="nav-search-input" type="search" placeholder="Search this page..."
+          <input id="nav-search-input" class="nav-search-input" type="search" placeholder="Search ..."
             aria-label="Search site">
           <button type="submit" class="nav-search-submit" aria-label="Search"><span
               aria-hidden="true">🔎</span></button>
