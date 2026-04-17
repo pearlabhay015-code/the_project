@@ -283,7 +283,10 @@ header[id],section[id]{scroll-margin-top:var(--offset)}
 #nav-wrap{
   position:sticky;top:var(--ticker-h);z-index:800;
   display:flex;justify-content:center;
-  padding:10px 3vw;pointer-events:none;
+  align-items:flex-start;
+  gap:16px;
+  padding:10px 3vw;
+  pointer-events:none;
 }
 nav{
   pointer-events:all;
@@ -292,7 +295,8 @@ nav{
   box-shadow:var(--nm-out);
   border-radius:60px;
   border:1px solid var(--nm-border);
-  padding:8px 16px;width:min(980px,94vw);
+  padding:8px 16px;width:100%;max-width:980px;flex:1;
+  min-height:var(--nav-h);
   transition:box-shadow .3s,background .4s;
   animation:navIn .6s cubic-bezier(.16,1,.3,1) both;
 }
@@ -334,6 +338,67 @@ nav.sc{box-shadow:var(--nm-out-lg)}
   text-shadow:0 0 10px rgba(255,106,0,.40);
 }
 .nav-right{display:flex;justify-content:flex-end;align-items:center;gap:10px}
+
+.nav-search-bar{
+  position:relative;
+  width:280px;
+  flex-shrink:0;
+  padding:8px 14px;
+  border-radius:28px;
+  background:var(--nm-bg);
+  box-shadow:var(--nm-out-sm);
+  pointer-events:all;
+}
+.nav-search-form{
+  display:block;
+}
+.nav-search-field{
+  position:relative;
+}
+.nav-search-input{
+  width:100%;
+  padding:8px 40px 8px 14px;
+  border:1px solid var(--nm-border);
+  border-radius:999px;
+  background:var(--nm-bg-sec);
+  color:var(--tx-primary);
+  font-family:var(--fb);
+  font-size:.9rem;
+  box-shadow:inset 1px 1px 4px rgba(0,0,0,.05);
+}
+.nav-search-input:focus{
+  outline:none;
+  border-color:var(--acc);
+  box-shadow:0 0 0 4px rgba(246,150,72,.12);
+}
+.nav-search-submit{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  width:30px;
+  height:30px;
+  padding:0;
+  border:none;
+  border-radius:50%;
+  background:var(--acc);
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:var(--nm-out-sm);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.nav-search-submit span{
+  font-size:1rem;
+  line-height:1;
+}
+.nav-search-submit:hover{background:#e56f42;}
+.nav-search-input.search-error {
+  color: var(--acc2);
+}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 
 /* Apply button — deep convex, presses to concave on hover */
 .btn-apply{
@@ -1255,10 +1320,13 @@ footer{
   .footer-grid>div:first-child{grid-column:1 / -1}
   .nav-links{display:none}
   .ham{display:flex}
+  #nav-wrap{flex-wrap:wrap;}
   nav{grid-template-columns:1fr auto;padding:8px 12px}
   .nav-brand{justify-content:flex-start;padding-left:4px}
   .nav-right{justify-content:flex-end}
   .btn-apply{display:none}
+  .nav-search-bar{width:100%;max-width:980px;}
+  .nav-search-input{width:100%;}
   .ticker-label{padding:0 10px;font-size:.57rem}
   .t-item{padding:0 18px;font-size:.66rem}
   .vm-grid{grid-template-columns:1fr 1fr}
@@ -1595,6 +1663,15 @@ footer{
       </button>
     </div>
   </nav>
+  <div class="nav-search-bar" id="nav-search-bar">
+    <form id="nav-search-form" class="nav-search-form" role="search">
+      <label for="nav-search-input" class="sr-only">Search site</label>
+      <div class="nav-search-field">
+        <input id="nav-search-input" class="nav-search-input" type="search" placeholder="Search this page..." aria-label="Search site">
+        <button type="submit" class="nav-search-submit" aria-label="Search"><span aria-hidden="true">🔎</span></button>
+      </div>
+    </form>
+  </div>
 </div>
 
 <!-- ══════ HERO ══════ -->
@@ -1804,6 +1881,8 @@ footer{
     <a href="#" class="ql-card rev"><span class="ql-ico">📡</span><span class="ql-nm">RTI</span></a>
     <a href="#" class="ql-card rev"><span class="ql-ico">🔒</span><span class="ql-nm">Anti-Ragging</span></a>
     <a href="#" class="ql-card rev"><span class="ql-ico">🌐</span><span class="ql-nm">Webmail</span></a>
+    <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" class="ql-card rev"><span class="ql-ico">🖥️</span><span class="ql-nm">Samarth Login <br>Students</span></a>
+      <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" class="ql-card rev"><span class="ql-ico">🖥️</span><span class="ql-nm">Samarth Login <br>Employee</span></a>
   </div>
 </section>
 
@@ -2070,7 +2149,7 @@ if(hs)co.observe(hs);
 /* ─────────────────────────────────────
    BUTTON RIPPLE
 ───────────────────────────────────── */
-document.querySelectorAll('.btn,.btn-apply,#scroll-btn').forEach(btn=>{
+document.querySelectorAll('.btn,.btn-apply,#scroll-btn,.nav-search-submit').forEach(btn=>{
   btn.addEventListener('click',e=>{
     const r=document.createElement('span');
     r.className='rpl';
@@ -2079,6 +2158,53 @@ document.querySelectorAll('.btn,.btn-apply,#scroll-btn').forEach(btn=>{
     setTimeout(()=>r.remove(),520);
   });
 });
+
+const searchForm=document.getElementById('nav-search-form');
+const searchInput=document.getElementById('nav-search-input');
+let previousSearchTarget=null;
+
+if(searchForm){
+  searchInput.addEventListener('input', () => {
+    searchInput.classList.remove('search-error');
+  });
+  searchInput.addEventListener('focus', () => {
+    if (searchInput.classList.contains('search-error')) {
+       searchInput.value = '';
+       searchInput.classList.remove('search-error');
+    }
+  });
+
+  searchForm.addEventListener('submit',e=>{
+    e.preventDefault();
+    const raw=searchInput.value.trim();
+    if(!raw || searchInput.classList.contains('search-error')){
+      searchInput.value='Please type a search term.';
+      searchInput.classList.add('search-error');
+      return;
+    }
+    const query=raw.toLowerCase();
+    const pageText=document.body.innerText.toLowerCase();
+    if(!pageText.includes(query)){
+      searchInput.value=`No results found for “${raw}”.`;
+      searchInput.classList.add('search-error');
+      return;
+    }
+    const elements=[...document.querySelectorAll('h1,h2,h3,h4,p,a,li,span,button')];
+    const result=elements.find(el=>el.textContent.toLowerCase().includes(query));
+    if(previousSearchTarget){
+      previousSearchTarget.classList.remove('search-highlight');
+      previousSearchTarget=null;
+    }
+    if(result){
+      result.scrollIntoView({behavior:'smooth',block:'center'});
+      result.classList.add('search-highlight');
+      previousSearchTarget=result;
+    } else {
+      searchInput.value='Content found but exact element not highlightable.';
+      searchInput.classList.add('search-error');
+    }
+  });
+}
 
 /* ─────────────────────────────────────
    HAMBURGER MENU
