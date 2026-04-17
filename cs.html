@@ -6,140 +6,185 @@
 <title>Department of Computer Science — CUSB</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════
-   TOKENS
-═══════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════
+   CUSB · NEUMORPHIC DESIGN SYSTEM · DEEP DEPTH v3
+   LIGHT : #dde1ea — CS accent: indigo #4F46E5 + cyan #06B6D4
+   DARK  : #1c1e24 — orange glow depth + CS indigo/cyan accents
+═══════════════════════════════════════════════════════════ */
 :root{
-  --org-400:#2AA3E4;--org-500:#0D92D8;--org-600:#0B7EBD;--org-700:#096BA3;
-  --org-A200:#4EC9A8;--org-A400:#FF6B95;--org-A700:#FFAB6E;
-  --lav:#B39DDB;--lav-lt:#EDE7F6;
-  --dark-bg:#f2adaded;--dark-bg2:#eae4f8;--dark-bg4:#E4E0F5;
-  --light-1:#F0FBFF;--light-2:#FFFFFF;
-  --tw:#2C1A3E;--tw80:rgba(44,26,62,.82);--tw50:rgba(44,26,62,.50);
-  --td:#1A1A3E;--td60:#4A4A7A;--td30:#9090B8;
-  --lb06:rgba(13,146,216,.06);--lb14:rgba(13,146,216,.14);--lb25:rgba(13,146,216,.25);
-  --fd:'Syne','Segoe UI','Helvetica Neue',Arial,sans-serif;
-  --fb:'DM Sans','Segoe UI','Helvetica Neue',Arial,sans-serif;
-  --r-sm:10px;--r-md:18px;--r-lg:26px;--r-xl:50px;
-  --ticker-h:36px;--nav-h:68px;
+  --nm-bg:#dde1ea; --nm-bg-sec:#e2e6ef; --nm-bg-alt:#e8ecf3;
+  --nm-out:9px 9px 22px #b5b9c6,-9px -9px 22px #ffffff;
+  --nm-out-sm:5px 5px 12px #b9bdc8,-5px -5px 12px #ffffff;
+  --nm-out-lg:14px 14px 36px #adb1be,-14px -14px 36px #ffffff;
+  --nm-out-xl:20px 20px 50px #a5a9b8,-20px -20px 50px #ffffff;
+  --nm-in:inset 6px 6px 16px #b5b9c6,inset -6px -6px 16px #ffffff;
+  --nm-in-sm:inset 3px 3px 8px #b9bdc8,inset -3px -3px 8px #ffffff;
+  --nm-in-lg:inset 9px 9px 24px #adb1be,inset -9px -9px 24px #ffffff;
+  /* CS-specific accent — indigo + cyan */
+  --acc:#4F46E5; --acc2:#06B6D4; --acc3:#3db897;
+  --acc-glow:rgba(79,70,229,.28); --acc2-glow:rgba(6,182,212,.22);
+  --tx-primary:#1e2236; --tx-secondary:#5a6080; --tx-muted:#8e93b0; --tx-light:#b8bdd4;
+  --nm-border:rgba(255,255,255,.90); --nm-border-b:rgba(170,175,195,.35);
+  --fd:'Syne','Segoe UI',sans-serif; --fb:'DM Sans','Segoe UI',sans-serif;
+  --r-sm:12px; --r-md:20px; --r-lg:28px; --r-xl:50px;
+  --ticker-h:36px; --topbar-h:40px; --nav-h:68px;
   --offset:calc(var(--ticker-h) + var(--nav-h) + 12px);
-  /* CS accent — electric indigo + cyan */
-  --cs:#4F46E5;--cs-lt:rgba(79,70,229,.10);--cs2:#06B6D4;--cs2-lt:rgba(6,182,212,.10);
-  --cs-glow:0 0 20px rgba(79,70,229,.35),0 0 40px rgba(79,70,229,.18);
+  /* compat */
+  --td:var(--tx-primary); --td60:var(--tx-secondary); --td30:var(--tx-muted);
+  --tw50:rgba(30,34,54,.50); --lav:#B39DDB; --lav-lt:#EDE7F6;
+  --cs:var(--acc); --cs2:var(--acc2); --cs-lt:rgba(79,70,229,.10);
+  --lb06:rgba(79,70,229,.06); --lb14:rgba(79,70,229,.14);
 }
 [data-theme="dark"]{
-  --dark-bg:#310943;--dark-bg2:#0d1434;--dark-bg4:#131828;
-  --light-1:#0A0F1E;--light-2:#080D1A;
-  --tw:#E4DCFF;--tw80:rgba(228,220,255,.85);--tw50:rgba(228,220,255,.50);
-  --td:#EEE8FF;--td60:#A89FC8;--td30:#6B638A;
-  --org-400:#3A80D4;--org-500:#5AA0E8;--org-600:#7DB8F0;--org-700:#9FCCF7;
-  --lav:#9B84D8;--lav-lt:#150E35;
-  --lb06:rgba(90,160,232,.08);--lb14:rgba(90,160,232,.18);--lb25:rgba(90,160,232,.30);
-  --glow-blue:0 0 18px rgba(90,160,232,.45),0 0 40px rgba(90,160,232,.20);
-  --glow-rose:0 0 18px rgba(255,107,149,.45),0 0 40px rgba(255,107,149,.18);
-  --cs:#818CF8;--cs-lt:rgba(129,140,248,.12);--cs2:#22D3EE;--cs2-lt:rgba(34,211,238,.10);
-  --cs-glow:0 0 20px rgba(129,140,248,.40),0 0 44px rgba(129,140,248,.18);
+  --nm-bg:#1c1e24; --nm-bg-sec:#21232a; --nm-bg-alt:#262830;
+  --nm-out:10px 10px 26px #0e1016,-10px -10px 26px #2e3140;
+  --nm-out-sm:5px 5px 13px #10121a,-5px -5px 13px #2a2d3c;
+  --nm-out-lg:16px 16px 40px #0b0d14,-16px -16px 40px #333650;
+  --nm-out-xl:22px 22px 55px #090b11,-22px -22px 55px #373a56;
+  --nm-out-glow:10px 10px 26px #0e1016,-10px -10px 26px #2e3140,0 0 24px rgba(255,110,0,.28),0 0 8px rgba(255,110,0,.16) inset;
+  --nm-out-glow-sm:5px 5px 13px #10121a,-5px -5px 13px #2a2d3c,0 0 16px rgba(255,110,0,.22);
+  --nm-in:inset 7px 7px 18px #0e1016,inset -7px -7px 18px #2e3140;
+  --nm-in-sm:inset 3px 3px 9px #10121a,inset -3px -3px 9px #2a2d3c;
+  --nm-in-lg:inset 10px 10px 26px #0b0d14,inset -10px -10px 26px #333650;
+  /* dark theme keeps CUSB orange for depth, CS indigo for CS accent */
+  --acc:#FF6A00; --acc2:#FF8C42; --acc3:#FFB347;
+  --acc-glow:rgba(255,106,0,.50); --acc2-glow:rgba(255,140,66,.30);
+  --cs:#818CF8; --cs2:#22D3EE; --cs-lt:rgba(129,140,248,.12);
+  --lb06:rgba(129,140,248,.06); --lb14:rgba(129,140,248,.14);
+  --tx-primary:#f0f1f5; --tx-secondary:#8c90a8; --tx-muted:#4e5268; --tx-light:#2c2e3a;
+  --nm-border:rgba(255,255,255,.07); --nm-border-b:rgba(0,0,0,.40);
+  --td:#f0f1f5; --td60:#8c90a8; --td30:#4e5268; --tw50:rgba(240,241,245,.50);
+  --lav:#818CF8; --lav-lt:#140c00;
 }
 
-/* ── BASE ── */
+/* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 *{-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
-body{font-family:var(--fb);overflow-x:hidden;background:var(--light-2);
-  transition:background .4s,color .4s;padding-top:var(--ticker-h)}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:var(--lb06)}
-::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--cs),var(--lav));border-radius:4px}
+body{font-family:var(--fb);overflow-x:hidden;background:var(--nm-bg);color:var(--tx-primary);transition:background .4s,color .4s;padding-top:var(--ticker-h)}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--nm-bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--cs),var(--cs2));border-radius:4px}
 header[id],section[id]{scroll-margin-top:var(--offset)}
 
 /* ── TICKER ── */
-#ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);overflow:hidden;display:flex;align-items:center;background:linear-gradient(90deg,rgba(79,70,229,.90) 0%,rgba(6,182,212,.88) 50%,rgba(78,201,168,.90) 100%);backdrop-filter:blur(12px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.22);box-shadow:0 2px 16px rgba(79,70,229,.22)}
-[data-theme="dark"] #ticker{background:linear-gradient(90deg,#07091A 0%,#0A0C24 100%);border-bottom:1px solid rgba(129,140,248,.25);box-shadow:0 2px 20px rgba(0,0,0,.60),0 0 24px rgba(129,140,248,.14)}
-.ticker-label{flex-shrink:0;padding:0 14px;height:100%;display:flex;align-items:center;gap:6px;font-family:var(--fd);font-size:.60rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#fff;white-space:nowrap;background:rgba(255,255,255,.18);border-right:1px solid rgba(255,255,255,.25);z-index:2}
-[data-theme="dark"] .ticker-label{background:rgba(129,140,248,.16);border-right-color:rgba(129,140,248,.28);color:#c7d2fe}
-.ticker-fade{position:absolute;top:0;bottom:0;width:56px;z-index:1;pointer-events:none}
-.ticker-fade.lft{left:0;background:linear-gradient(90deg,rgba(79,70,229,.55),transparent)}
-.ticker-fade.rgt{right:0;background:linear-gradient(-90deg,rgba(78,201,168,.55),transparent)}
-[data-theme="dark"] .ticker-fade.lft{background:linear-gradient(90deg,rgba(7,9,26,.95),transparent)}
-[data-theme="dark"] .ticker-fade.rgt{background:linear-gradient(-90deg,rgba(8,12,32,.95),transparent)}
+#ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);overflow:hidden;display:flex;align-items:center;background:linear-gradient(90deg,var(--cs) 0%,var(--cs2) 55%,var(--acc3) 100%);box-shadow:0 4px 18px rgba(79,70,229,.30),0 2px 0 rgba(255,255,255,.25) inset}
+[data-theme="dark"] #ticker{background:linear-gradient(90deg,#0c0a07,#180f04,#0a0c09);box-shadow:0 5px 24px rgba(0,0,0,.85),0 0 32px rgba(255,106,0,.12),0 1px 0 rgba(255,106,0,.08) inset;border-bottom:1px solid rgba(255,106,0,.10)}
+.ticker-label{flex-shrink:0;padding:0 14px;height:100%;display:flex;align-items:center;gap:6px;font-family:var(--fd);font-size:.60rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#fff;white-space:nowrap;background:rgba(255,255,255,.18);border-right:1px solid rgba(255,255,255,.30);z-index:2}
+[data-theme="dark"] .ticker-label{background:rgba(255,106,0,.18);border-right-color:rgba(255,106,0,.28);color:#FF8C42;text-shadow:0 0 14px rgba(255,106,0,.70)}
+.ticker-fade{position:absolute;top:0;bottom:0;width:48px;z-index:1;pointer-events:none}
+.ticker-fade.lft{left:0;background:linear-gradient(90deg,var(--cs),transparent)}
+.ticker-fade.rgt{right:0;background:linear-gradient(-90deg,var(--acc3),transparent)}
+[data-theme="dark"] .ticker-fade.lft{background:linear-gradient(90deg,#0c0a07,transparent)}
+[data-theme="dark"] .ticker-fade.rgt{background:linear-gradient(-90deg,#0a0c09,transparent)}
 .ticker-viewport{flex:1;overflow:hidden}
-.ticker-track{display:flex;align-items:center;width:max-content;animation:tickerRoll 40s linear infinite;will-change:transform}
-.ticker-track:hover{animation-play-state:paused}
+.ticker-track{display:flex;align-items:center;width:max-content;animation:tickerRoll 42s linear infinite;will-change:transform}
+.ticker-track:hover,.ticker-track.paused{animation-play-state:paused}
 @keyframes tickerRoll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.t-item{display:inline-flex;align-items:center;gap:8px;padding:0 24px;height:var(--ticker-h);font-size:.70rem;font-weight:500;color:#fff;white-space:nowrap;text-decoration:none;transition:text-shadow .2s}
-.t-item:hover{text-shadow:0 0 12px rgba(255,255,255,.80)}
-[data-theme="dark"] .t-item{color:#a5b4fc}
-.t-sep{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.38);flex-shrink:0}
-[data-theme="dark"] .t-sep{background:rgba(129,140,248,.35)}
-.t-badge{display:inline-block;padding:1px 7px;border-radius:8px;font-size:.56rem;font-weight:600;text-transform:uppercase;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.45);color:#ef0c18}
-[data-theme="dark"] .t-badge{background:rgba(129,140,248,.22);border-color:rgba(129,140,248,.48);color:#c7d2fe}
+.t-item{display:inline-flex;align-items:center;gap:8px;padding:0 24px;height:var(--ticker-h);font-size:.70rem;font-weight:500;color:rgba(255,255,255,.92);white-space:nowrap;text-decoration:none;transition:color .2s,text-shadow .2s}
+.t-item:hover{color:#fff;text-shadow:0 0 14px rgba(255,255,255,.70)}
+[data-theme="dark"] .t-item{color:rgba(255,180,120,.50)}
+[data-theme="dark"] .t-item:hover{color:#FF8C42;text-shadow:0 0 14px rgba(255,106,0,.60)}
+.t-sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.45);flex-shrink:0}
+[data-theme="dark"] .t-sep{background:rgba(255,106,0,.40)}
+.t-badge{display:inline-block;padding:1px 7px;border-radius:8px;font-size:.56rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.50);color:#fff}
+[data-theme="dark"] .t-badge{background:rgba(255,106,0,.18);border-color:rgba(255,106,0,.45);color:#FF8C42;box-shadow:0 0 10px rgba(255,106,0,.35)}
+
+/* ── TOP BAR ── */
+#topbar{background:var(--nm-bg-alt);border-bottom:1px solid var(--nm-border-b);padding:0 5vw;height:var(--topbar-h);display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--tx-secondary);box-shadow:0 3px 10px rgba(0,0,0,.10),0 1px 0 var(--nm-border) inset;transition:background .4s}
+[data-theme="dark"] #topbar{background:var(--nm-bg-sec);border-bottom:1px solid rgba(255,106,0,.08);box-shadow:0 4px 16px rgba(0,0,0,.70),0 1px 0 rgba(255,255,255,.03) inset}
+#topbar a{color:var(--tx-secondary);text-decoration:none;transition:color .2s}
+#topbar a:hover{color:var(--cs)}
+[data-theme="dark"] #topbar a:hover{color:#FF8C42}
+.tb-l{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.tb-sep{opacity:.25}
 
 /* ── NAVBAR ── */
-#nav-wrap{position:sticky;top:var(--ticker-h);z-index:800;display:flex;justify-content:center;padding:8px 3vw;pointer-events:none}
-nav{pointer-events:all;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:rgba(235,247,255,.84);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border:1.5px solid rgba(79,70,229,.22);border-radius:60px;padding:8px 16px;width:min(980px,94vw);box-shadow:0 4px 24px rgba(79,70,229,.12),0 1px 0 rgba(255,255,255,.9) inset;transition:background .3s,box-shadow .3s;animation:navIn .6s cubic-bezier(.16,1,.3,1) both}
+#nav-wrap{position:sticky;top:var(--ticker-h);z-index:800;display:flex;justify-content:center;padding:10px 3vw;pointer-events:none}
+nav{pointer-events:all;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:var(--nm-bg);box-shadow:var(--nm-out);border-radius:60px;border:1px solid var(--nm-border);padding:8px 16px;width:min(980px,94vw);transition:box-shadow .3s,background .4s;animation:navIn .6s cubic-bezier(.16,1,.3,1) both}
 @keyframes navIn{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
-nav.sc{background:rgba(235,247,255,.96);box-shadow:0 6px 32px rgba(79,70,229,.16),0 1px 0 #fff inset}
-[data-theme="dark"] nav{background:rgba(8,13,30,.82);border-color:rgba(129,140,248,.22);box-shadow:0 4px 24px rgba(0,0,0,.50),0 0 0 1px rgba(129,140,248,.08) inset}
-[data-theme="dark"] nav.sc{background:rgba(8,13,30,.96)}
+nav.sc{box-shadow:var(--nm-out-lg)}
+[data-theme="dark"] nav{box-shadow:var(--nm-out);border-color:rgba(255,106,0,.06)}
+[data-theme="dark"] nav.sc{box-shadow:var(--nm-out-lg)}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;justify-content:center}
 .nav-logo img{width:43px}
-.brand-txt .abbr{font-family:var(--fd);font-size:1.2rem;font-weight:600;background:linear-gradient(90deg,var(--cs),var(--cs2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-links{display:flex;list-style:none;gap:2px}
-.nav-links a{display:block;padding:8px 13px;font-family:var(--fb);font-size:.78rem;font-weight:500;color:var(--td60);text-decoration:none;border-radius:30px;transition:color .2s,background .2s;white-space:nowrap}
-.nav-links a:hover,.nav-links a.act{color:var(--cs);background:var(--cs-lt)}
-[data-theme="dark"] .nav-links a:hover,[data-theme="dark"] .nav-links a.act{color:var(--cs);background:var(--cs-lt)}
-.nav-right{display:flex;justify-content:flex-end;align-items:center;gap:8px}
-.btn-apply{display:inline-flex;align-items:center;padding:7px 20px;border-radius:30px;font-family:var(--fb);font-size:.78rem;font-weight:700;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--cs),var(--cs2));border:1.5px solid rgba(79,70,229,.35);box-shadow:0 4px 18px rgba(79,70,229,.28);transition:transform .2s,box-shadow .2s;white-space:nowrap;flex-shrink:0}
-.btn-apply:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(79,70,229,.40);color:#fff}
-.theme-toggle{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(79,70,229,.28);background:rgba(235,247,255,.60);cursor:pointer;flex-shrink:0;transition:all .3s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;backdrop-filter:blur(12px)}
-.theme-toggle:hover{transform:rotate(20deg) scale(1.08)}
+.brand-txt .abbr{font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:1.2rem;font-weight:800;background:linear-gradient(90deg,var(--cs),var(--cs2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+[data-theme="dark"] .brand-txt .abbr{background:linear-gradient(90deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-links{display:flex;list-style:none;gap:2px;justify-content:flex-start}
+.nav-links a{display:block;padding:8px 13px;font-family:var(--fb);font-size:.78rem;font-weight:500;color:var(--tx-secondary);text-decoration:none;border-radius:30px;transition:color .25s,box-shadow .25s;white-space:nowrap}
+.nav-links a:hover{color:var(--cs);box-shadow:var(--nm-in-sm)}
+[data-theme="dark"] .nav-links a:hover{color:#FF8C42;box-shadow:var(--nm-in-sm);text-shadow:0 0 10px rgba(255,106,0,.40)}
+/* hover-only, no default .act highlight */
+.nav-links a.act{color:var(--tx-secondary);box-shadow:none}
+.nav-right{display:flex;justify-content:flex-end;align-items:center;gap:10px}
+
+/* ── APPLY BUTTON ── */
+.btn-apply{display:inline-flex;align-items:center;padding:9px 24px;border-radius:var(--r-xl);font-family:var(--fb);font-size:.78rem;font-weight:700;text-decoration:none;color:#fff;background:linear-gradient(145deg,var(--cs),#3b33c2);box-shadow:6px 6px 14px rgba(79,70,229,.40),-3px -3px 8px rgba(255,255,255,.25),0 2px 0 rgba(255,255,255,.18) inset;transition:box-shadow .22s;white-space:nowrap;flex-shrink:0}
+.btn-apply:hover{box-shadow:inset 4px 4px 10px rgba(50,40,160,.50),inset -2px -2px 6px rgba(255,255,255,.10);color:#fff}
+[data-theme="dark"] .btn-apply{background:linear-gradient(145deg,#FF6A00,#c94a00);box-shadow:6px 6px 16px rgba(0,0,0,.55),-4px -4px 10px rgba(255,255,255,.05),0 0 18px rgba(255,106,0,.32),0 2px 0 rgba(255,140,66,.18) inset}
+[data-theme="dark"] .btn-apply:hover{box-shadow:inset 4px 4px 12px rgba(0,0,0,.60),inset -3px -3px 8px rgba(255,255,255,.04),0 0 12px rgba(255,106,0,.20)}
+
+/* ── THEME TOGGLE ── */
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);cursor:pointer;flex-shrink:0;transition:box-shadow .25s;position:relative;overflow:hidden}
+.theme-toggle:hover{box-shadow:var(--nm-in-sm)}
 .theme-toggle .ico-sun,.theme-toggle .ico-moon{position:absolute;font-size:1rem;transition:opacity .35s,transform .4s cubic-bezier(.16,1,.3,1)}
 .theme-toggle .ico-sun{opacity:1;transform:scale(1) rotate(0deg)}
 .theme-toggle .ico-moon{opacity:0;transform:scale(.4) rotate(-90deg)}
-[data-theme="dark"] .theme-toggle{border-color:rgba(129,140,248,.45);background:rgba(21,14,53,.70)}
+[data-theme="dark"] .theme-toggle{box-shadow:var(--nm-out-sm);border-color:rgba(255,106,0,.08)}
+[data-theme="dark"] .theme-toggle:hover{box-shadow:var(--nm-in-sm)}
 [data-theme="dark"] .theme-toggle .ico-sun{opacity:0;transform:scale(.4) rotate(90deg)}
 [data-theme="dark"] .theme-toggle .ico-moon{opacity:1;transform:scale(1) rotate(0deg)}
-.ham{display:none;width:31px;height:31px;border-radius:10px;background:var(--cs-lt);border:1.5px solid rgba(79,70,229,.22);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex-shrink:0;transition:background .2s;padding:0}
-.ham:hover{background:rgba(79,70,229,.18)}
-.ham span{display:block;width:15px;height:1px;background:var(--cs);border-radius:2px;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .25s,width .3s}
+
+/* ── HAMBURGER ── */
+.ham{display:none;width:36px;height:36px;border-radius:var(--r-sm);background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex-shrink:0;transition:box-shadow .2s;padding:0}
+.ham:hover{box-shadow:var(--nm-in-sm)}
+.ham span{display:block;width:15px;height:1.5px;background:var(--tx-secondary);border-radius:2px;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .25s,width .3s}
 .ham.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0;width:0}
 .ham.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
-[data-theme="dark"] .ham{background:var(--cs-lt);border-color:rgba(129,140,248,.28)}
+[data-theme="dark"] .ham{border-color:rgba(255,106,0,.08)}
 
 /* ── MOBILE DRAWER ── */
-#mob-overlay{position:fixed;inset:0;z-index:1998;background:rgba(10,8,30,.40);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s}
+#mob-overlay{position:fixed;inset:0;z-index:1998;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .3s}
 #mob-overlay.show{opacity:1;pointer-events:all}
-#mob-menu{position:fixed;top:0;right:0;bottom:0;width:min(300px,86vw);z-index:1999;background:rgba(240,251,255,.97);backdrop-filter:blur(32px) saturate(220%);-webkit-backdrop-filter:blur(32px) saturate(220%);border-left:1.5px solid rgba(79,70,229,.18);box-shadow:-4px 0 32px rgba(79,70,229,.10);transform:translateX(100%);visibility:hidden;transition:transform .35s cubic-bezier(.16,1,.3,1),visibility .35s;overflow-y:auto;padding:72px 20px 40px;display:flex;flex-direction:column;gap:0}
+#mob-menu{position:fixed;top:0;right:0;bottom:0;width:min(300px,86vw);z-index:1999;background:var(--nm-bg);box-shadow:-10px 0 40px rgba(0,0,0,.25);border-left:1px solid var(--nm-border-b);transform:translateX(100%);visibility:hidden;transition:transform .35s cubic-bezier(.16,1,.3,1),visibility .35s;overflow-y:auto;padding:72px 20px 40px;display:flex;flex-direction:column;gap:0}
 #mob-menu.open{transform:translateX(0);visibility:visible}
-[data-theme="dark"] #mob-menu{background:rgba(8,10,22,.97);border-left-color:rgba(129,140,248,.20)}
-.mob-header{position:absolute;top:0;left:0;right:0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(79,70,229,.10);background:rgba(235,247,255,.92)}
-.mob-title{font-family:var(--fd);font-size:.9rem;color:var(--tw80)}
-[data-theme="dark"] .mob-header{background:rgba(8,10,22,.95);border-bottom-color:rgba(129,140,248,.14)}
-.mob-close{width:34px;height:34px;border-radius:50%;background:var(--cs-lt);border:1.5px solid rgba(79,70,229,.22);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--cs);font-size:1rem;transition:background .2s}
-.mob-a{display:block;padding:11px 16px;border-radius:12px;font-size:.85rem;font-weight:500;color:var(--td60);text-decoration:none;transition:background .2s,color .2s;border:1px solid transparent}
-.mob-a:hover{background:var(--cs-lt);border-color:rgba(79,70,229,.14);color:var(--cs)}
-[data-theme="dark"] .mob-a:hover{background:rgba(129,140,248,.10);border-color:rgba(129,140,248,.22)}
-.mob-divider{height:1px;background:rgba(79,70,229,.08);margin:8px 0}
-[data-theme="dark"] .mob-divider{background:rgba(129,140,248,.10)}
-.mob-section-lbl{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cs);padding:6px 16px 2px}
-.mob-cta{display:block;margin-top:16px;text-align:center;text-decoration:none;padding:12px 20px;border-radius:var(--r-xl);background:linear-gradient(135deg,var(--cs),var(--cs2));color:#fff;font-size:.85rem;font-weight:700;border:1.5px solid rgba(79,70,229,.30);transition:transform .2s}
-.mob-cta:hover{transform:translateY(-2px)}
+[data-theme="dark"] #mob-menu{box-shadow:-10px 0 50px rgba(0,0,0,.80);border-left:1px solid rgba(255,106,0,.08)}
+.mob-header{position:absolute;top:0;left:0;right:0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--nm-border-b);background:var(--nm-bg);box-shadow:0 3px 8px rgba(0,0,0,.08)}
+.mob-title{font-family:var(--fd);font-size:.9rem;color:var(--tx-primary);font-weight:700}
+.mob-close{width:34px;height:34px;border-radius:50%;background:var(--nm-bg);box-shadow:var(--nm-out-sm);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--cs);font-size:1rem;border:1px solid var(--nm-border);transition:box-shadow .2s}
+.mob-close:hover{box-shadow:var(--nm-in-sm)}
+.mob-a{display:block;padding:11px 16px;border-radius:var(--r-sm);font-size:.85rem;font-weight:500;color:var(--tx-secondary);text-decoration:none;transition:box-shadow .2s,color .2s;margin:3px 0}
+.mob-a:hover{color:var(--cs);box-shadow:var(--nm-in-sm);background:var(--nm-bg)}
+[data-theme="dark"] .mob-a:hover{color:#FF8C42}
+.mob-divider{height:1px;background:var(--nm-border-b);margin:8px 0}
+.mob-section-lbl{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cs);padding:6px 16px 2px;font-weight:700}
+[data-theme="dark"] .mob-section-lbl{color:#FF6A00;text-shadow:0 0 10px rgba(255,106,0,.50)}
+.mob-cta{display:block;margin-top:16px;text-align:center;text-decoration:none;padding:12px 20px;border-radius:var(--r-xl);background:linear-gradient(145deg,var(--cs),#3b33c2);color:#fff;font-size:.85rem;font-weight:700;box-shadow:4px 4px 14px rgba(79,70,229,.35),-2px -2px 6px rgba(255,255,255,.20);transition:box-shadow .22s}
+.mob-cta:hover{box-shadow:inset 3px 3px 8px rgba(50,40,160,.45),inset -2px -2px 5px rgba(255,255,255,.10)}
+[data-theme="dark"] .mob-cta{background:linear-gradient(145deg,#FF6A00,#c94a00);box-shadow:4px 4px 14px rgba(0,0,0,.60),-2px -2px 6px rgba(255,255,255,.04),0 0 16px rgba(255,106,0,.30)}
+[data-theme="dark"] .mob-cta:hover{box-shadow:inset 3px 3px 8px rgba(0,0,0,.55),inset -2px -2px 5px rgba(255,255,255,.03)}
 
 /* ── BUTTONS ── */
-.btn{position:relative;display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:var(--r-xl);font-family:var(--fb);font-size:.85rem;font-weight:600;cursor:pointer;border:none;outline:none;text-decoration:none;overflow:hidden;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s}
-.btn::before{content:'';position:absolute;left:0;top:0;right:0;height:50%;border-radius:var(--r-xl) var(--r-xl) 0 0;background:linear-gradient(180deg,rgba(255,255,255,.30),transparent);pointer-events:none}
-.btn:hover{transform:translateY(-2px) scale(1.02)}.btn:active{transform:scale(.97)}
-.btn-cs{background:linear-gradient(135deg,var(--cs),var(--cs2));border:1.5px solid rgba(79,70,229,.38);color:#fff;box-shadow:0 4px 20px rgba(79,70,229,.28),inset 0 1px 0 rgba(255,255,255,.20)}
-.btn-cs:hover{box-shadow:0 8px 30px rgba(79,70,229,.42)}
-[data-theme="dark"] .btn-cs{box-shadow:0 4px 20px rgba(129,140,248,.25),var(--cs-glow)}
-.btn-ghost-cs{background:rgba(255,255,255,.65);backdrop-filter:blur(16px);border:1.5px solid rgba(79,70,229,.28);color:var(--cs)}
-.btn-ghost-cs:hover{background:rgba(235,240,255,.88);box-shadow:0 6px 20px rgba(79,70,229,.14)}
-[data-theme="dark"] .btn-ghost-cs{background:rgba(14,12,44,.70);border-color:rgba(129,140,248,.35);color:var(--cs)}
+.btn{position:relative;display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:var(--r-xl);font-family:var(--fb);font-size:.85rem;font-weight:600;cursor:pointer;border:none;outline:none;text-decoration:none;overflow:hidden;transition:box-shadow .22s}
+.btn:active{transform:scale(.97)}
+/* CS primary — indigo */
+.btn-cs{background:linear-gradient(145deg,var(--cs),#3b33c2);color:#fff;box-shadow:6px 6px 16px rgba(79,70,229,.38),-4px -4px 10px rgba(255,255,255,.22),0 2px 0 rgba(255,255,255,.18) inset;transition:box-shadow .22s}
+.btn-cs:hover{box-shadow:inset 4px 4px 10px rgba(50,40,160,.45),inset -2px -2px 6px rgba(255,255,255,.12)}
+[data-theme="dark"] .btn-cs{background:linear-gradient(145deg,#FF6A00,#c94a00);box-shadow:6px 6px 18px rgba(0,0,0,.65),-4px -4px 10px rgba(255,255,255,.04),0 0 20px rgba(255,106,0,.35),0 2px 0 rgba(255, 138, 66, 0.747) inset}
+[data-theme="dark"] .btn-cs:hover{box-shadow:inset 4px 4px 12px rgba(0,0,0,.60),inset -3px -3px 8px rgba(255,255,255,.04),0 0 14px rgba(255,106,0,.22)}
+/* Ghost */
+.btn-ghost-cs{background:var(--nm-bg);color:var(--cs);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);transition:box-shadow .22s,color .22s}
+.btn-ghost-cs:hover{box-shadow:var(--nm-in-sm)}
+[data-theme="dark"] .btn-ghost-cs{box-shadow:var(--nm-out-sm)}
+[data-theme="dark"] .btn-ghost-cs:hover{color:#FF8C42;box-shadow:var(--nm-in-sm)}
+.btn-light{background:var(--nm-bg-alt);color:var(--tx-secondary);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);transition:box-shadow .22s,color .22s}
+.btn-light:hover{box-shadow:var(--nm-in-sm);color:var(--cs)}
+[data-theme="dark"] .btn-light:hover{color:#FF8C42;box-shadow:var(--nm-in-sm)}
 .btn-sm{padding:8px 18px;font-size:.78rem}
-.btn-xs{padding:5px 12px;font-size:.70rem}
 .rpl{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:ripAnim .5s ease-out forwards;pointer-events:none}
 @keyframes ripAnim{to{transform:scale(16);opacity:0}}
 
@@ -147,348 +192,286 @@ nav.sc{background:rgba(235,247,255,.96);box-shadow:0 6px 32px rgba(79,70,229,.16
 .rev{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
 .rev.vis{opacity:1;transform:none}
 
-/* ── SECTION SHELLS ── */
+/* ── SECTION SYSTEM ── */
 .sec{padding:96px 6vw;transition:background .4s}
+.bg-white{background:var(--nm-bg)}
+.bg-soft{background:var(--nm-bg-sec)}
+.bg-alt{background:var(--nm-bg-alt)}
 .sec-lbl{font-family:var(--fb);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px;color:var(--cs)}
-.sec-title{font-family:var(--fd);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:600;letter-spacing:-.02em;line-height:1.12;color:var(--td)}
-[data-theme="dark"] .sec-title{color:var(--td)}
-.sec-sub{font-size:.9rem;line-height:1.8;font-weight:400;margin-top:12px;max-width:560px;color:var(--td60)}
+[data-theme="dark"] .sec-lbl{color:#FF6A00;text-shadow:0 0 12px rgba(255,106,0,.50)}
+.sec-title{font-family:var(--fd);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;color:var(--tx-primary)}
+.sec-sub{font-size:.9rem;line-height:1.8;font-weight:400;margin-top:12px;max-width:560px;color:var(--tx-secondary)}
 .sec-hd{margin-bottom:52px}
-.sec-hd.center{text-align:center}.sec-hd.center .sec-sub{margin-inline:auto}
+.sec-hd.center{text-align:center}
+.sec-hd.center .sec-sub{margin:12px auto 0}
 
-.bg-white{background:var(--light-2)}
-.bg-soft{background:var(--light-1)}
-[data-theme="dark"] .bg-white{background:var(--light-2)}
-[data-theme="dark"] .bg-soft{background:var(--light-1)}
+/* ── CARDS ── */
+.card-dark{background:var(--nm-bg);border-radius:var(--r-lg);box-shadow:var(--nm-out);border:1px solid var(--nm-border);transition:box-shadow .3s}
+.card-dark:hover{box-shadow:var(--nm-out-lg)}
+[data-theme="dark"] .card-dark:hover{box-shadow:var(--nm-out-glow)}
+.card-light{background:var(--nm-bg-alt);border-radius:var(--r-lg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);transition:box-shadow .3s}
+.card-light:hover{box-shadow:var(--nm-out)}
+[data-theme="dark"] .card-light:hover{box-shadow:var(--nm-out-glow-sm)}
 
-/* ═══════════════════════════════════
-   PAGE HERO — CS Edition
-   Animated circuit-grid background via CSS
-═══════════════════════════════════ */
+/* ════════════════════════════════════════
+   HERO — CS Department
+════════════════════════════════════════ */
 #cs-hero{
-  position:relative;overflow:hidden;
-  min-height:min(88vh,760px);
+  background:var(--nm-bg);
+  min-height:min(60vh,500px);
   display:flex;align-items:center;
-  background:
-    radial-gradient(ellipse 65% 60% at 80% 30%,rgba(79,70,229,.16) 0%,transparent 60%),
-    radial-gradient(ellipse 50% 55% at 15% 70%,rgba(6,182,212,.12) 0%,transparent 60%),
-    radial-gradient(ellipse 40% 40% at 50% 50%,rgba(179,157,219,.08) 0%,transparent 65%),
-    linear-gradient(160deg,#f5f3ff 0%,var(--light-1) 100%);
-  padding:100px 6vw 80px;
+  padding:50px 6vw 60px;
+  position:relative;overflow:hidden;
   transition:background .4s;
 }
-[data-theme="dark"] #cs-hero{
-  background:
-    radial-gradient(ellipse 65% 60% at 80% 30%,rgba(129,140,248,.18) 0%,transparent 60%),
-    radial-gradient(ellipse 50% 55% at 15% 70%,rgba(34,211,238,.12) 0%,transparent 60%),
-    linear-gradient(160deg,#080814 0%,#080D1A 100%);
-}
-/* subtle circuit dot grid overlay */
-#cs-hero::before{
-  content:'';position:absolute;inset:0;
-  background-image:
-    radial-gradient(circle,rgba(79,70,229,.18) 1px,transparent 1px);
-  background-size:32px 32px;
-  pointer-events:none;z-index:0;
-}
-[data-theme="dark"] #cs-hero::before{
-  background-image:radial-gradient(circle,rgba(129,140,248,.14) 1px,transparent 1px);
-}
-.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;width:100%}
-.hero-left{}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(79,70,229,.10);border:1.5px solid rgba(79,70,229,.25);border-radius:40px;padding:5px 16px 5px 10px;font-size:.72rem;color:var(--cs);margin-bottom:22px;font-weight:600;letter-spacing:.04em;animation:fadeUp .7s .1s both}
-[data-theme="dark"] .hero-eyebrow{background:rgba(129,140,248,.14);border-color:rgba(129,140,248,.32)}
-.hero-title{font-family:var(--fd);font-size:clamp(2.4rem,4.5vw,4.2rem);font-weight:700;line-height:1.0;letter-spacing:-.03em;color:var(--td);animation:fadeUp .7s .25s both}
-.hero-title .grad{background:linear-gradient(90deg,var(--cs),var(--cs2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{margin-top:18px;font-size:.92rem;line-height:1.82;color:var(--td60);font-weight:400;max-width:460px;animation:fadeUp .7s .4s both}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;animation:fadeUp .7s .55s both}
-.hero-back{display:inline-flex;align-items:center;gap:6px;margin-top:20px;padding:7px 18px;border-radius:30px;background:rgba(255,255,255,.65);border:1.5px solid rgba(79,70,229,.22);color:var(--cs);font-size:.76rem;font-weight:600;text-decoration:none;backdrop-filter:blur(10px);transition:background .2s;animation:fadeUp .7s .62s both}
-.hero-back:hover{background:rgba(235,240,255,.90)}
-[data-theme="dark"] .hero-back{background:rgba(14,12,44,.70);border-color:rgba(129,140,248,.32);color:var(--cs)}
-
-/* Right: dept image placeholder */
-.hero-img-wrap{animation:fadeUp .7s .3s both}
-.hero-img-box{
-  border-radius:var(--r-lg);overflow:hidden;
-  aspect-ratio:4/3;position:relative;
-  background:linear-gradient(140deg,rgba(79,70,229,.14),rgba(6,182,212,.10));
-  border:1.5px solid rgba(79,70,229,.22);
-  box-shadow:0 12px 48px rgba(79,70,229,.16),0 2px 0 rgba(255,255,255,.8) inset;
-  display:flex;align-items:center;justify-content:center;
-}
-[data-theme="dark"] .hero-img-box{border-color:rgba(129,140,248,.28);box-shadow:0 12px 48px rgba(0,0,0,.60),var(--cs-glow)}
-.hero-img-box img{width:100%;height:100%;object-fit:cover;display:block}
-.hero-img-box .ph-ico{font-size:4rem;opacity:.25}
-/* floating stats badges */
-.hero-stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;animation:fadeUp .7s .7s both}
-.h-stat{background:rgba(255,255,255,.75);border:1.5px solid rgba(79,70,229,.18);border-radius:14px;padding:10px 18px;backdrop-filter:blur(12px);text-align:center}
-[data-theme="dark"] .h-stat{background:rgba(14,12,44,.75);border-color:rgba(129,140,248,.22)}
-.h-stat .num{font-family:var(--fd);font-size:1.5rem;font-weight:700;background:linear-gradient(135deg,var(--cs),var(--cs2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.h-stat .lbl{font-size:.65rem;color:var(--td60);font-weight:400;letter-spacing:.04em;margin-top:2px}
-
+/* circuit dot texture */
+#cs-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(79,70,229,.07) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;z-index:0}
+[data-theme="dark"] #cs-hero::before{background-image:radial-gradient(circle,rgba(255,106,0,.05) 1px,transparent 1px)}
+#cs-hero>*{position:relative;z-index:1}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;width:100%}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 
-/* ═══════════════════════════════════
-   DEPT INFO — image + detail table
-   side by side on desktop,
-   table below on mobile
-═══════════════════════════════════ */
-#dept-info{
-  background:
-    radial-gradient(ellipse 60% 50% at 90% 20%,rgba(79,70,229,.08) 0%,transparent 60%),
-    var(--light-2);
-}
-[data-theme="dark"] #dept-info{background:radial-gradient(ellipse 60% 50% at 90% 20%,rgba(129,140,248,.10) 0%,transparent 60%),var(--light-2)}
+/* eyebrow pill */
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);border-radius:40px;padding:6px 18px 6px 12px;font-size:.72rem;color:var(--tx-secondary);margin-bottom:26px;font-weight:600;animation:fadeUp .7s .1s both}
+[data-theme="dark"] .hero-eyebrow{border-color:rgba(255,106,0,.08)}
+.hero-title{font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size:clamp(2.4rem,4.5vw,3.2rem);font-weight:600;line-height:1.0;letter-spacing:-.03em;color:var(--tx-primary);animation:fadeUp .7s .25s both}
+.hero-title .grad{background:linear-gradient(90deg,var(--cs),var(--cs2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+[data-theme="dark"] .hero-title .grad{background:linear-gradient(90deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{margin-top:18px;font-size:.92rem;line-height:1.82;color:var(--tx-secondary);font-weight:400;max-width:460px;animation:fadeUp .7s .4s both}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;animation:fadeUp .7s .55s both}
+.hero-back{display:inline-flex;align-items:center;gap:7px;margin-top:20px;padding:9px 22px;border-radius:var(--r-xl);background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);color:var(--tx-secondary);font-size:.78rem;font-weight:600;text-decoration:none;transition:box-shadow .22s,color .22s;animation:fadeUp .7s .62s both}
+.hero-back:hover{box-shadow:var(--nm-in-sm);color:var(--cs)}
+[data-theme="dark"] .hero-back:hover{color:#FF8C42}
+/* hero stats row */
+.hero-stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;animation:fadeUp .7s .70s both}
+.h-stat{background:var(--nm-bg-alt);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);border-radius:var(--r-md);padding:12px 18px;text-align:center}
+[data-theme="dark"] .h-stat{box-shadow:var(--nm-out-sm)}
+.h-stat .num{font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--cs),var(--cs2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+[data-theme="dark"] .h-stat .num{background:linear-gradient(135deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.h-stat .lbl{font-size:.65rem;color:var(--tx-muted);font-weight:400;letter-spacing:.04em;margin-top:2px}
+/* hero image frame */
+.hero-img-wrap{animation:fadeUp .7s .3s both}
+.hero-img-box{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/9;background:var(--nm-bg-alt);box-shadow:var(--nm-out-xl);border:1px solid var(--nm-border);position:relative;display:flex;align-items:center;justify-content:center}
+[data-theme="dark"] .hero-img-box{box-shadow:20px 20px 55px #090b11,-20px -20px 55px #373a56,0 0 28px rgba(255,106,0,.07)}
+.hero-img-box img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ════════════════════════════════════════
+   DEPT INFO SECTION
+════════════════════════════════════════ */
 .dept-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-
-/* dept image */
-.dept-img-slot{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg,rgba(79,70,229,.12),rgba(6,182,212,.08));border:1.5px solid rgba(79,70,229,.18);display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative}
-[data-theme="dark"] .dept-img-slot{border-color:rgba(129,140,248,.24);background:linear-gradient(135deg,rgba(129,140,248,.14),rgba(34,211,238,.08))}
+/* dept image slot */
+.dept-img-slot{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:4/3;background:var(--nm-bg-alt);box-shadow:var(--nm-out-lg);border:1px solid var(--nm-border);display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative}
+[data-theme="dark"] .dept-img-slot{box-shadow:var(--nm-out-lg)}
 .dept-img-slot img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-
 /* detail table */
-.dept-detail-title{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--td);margin-bottom:16px}
+.dept-detail-title{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--tx-primary);margin-bottom:16px}
 .detail-table{width:100%;border-collapse:collapse;font-size:.82rem}
-.detail-table tr{border-bottom:1px solid rgba(79,70,229,.08)}
-[data-theme="dark"] .detail-table tr{border-bottom-color:rgba(129,140,248,.10)}
+.detail-table tr{border-bottom:1px solid var(--nm-border-b)}
 .detail-table tr:last-child{border-bottom:none}
-.detail-table td{padding:10px 12px;vertical-align:top;color:var(--td60)}
-.detail-table td:first-child{font-weight:700;color:var(--td);white-space:nowrap;width:40%;font-size:.75rem;letter-spacing:.03em;text-transform:uppercase}
-.detail-table td.val{color:var(--td60)}
-
-.dept-about{margin-top:22px;font-size:.84rem;line-height:1.82;color:var(--td60)}
+.detail-table td{padding:10px 12px;vertical-align:top;color:var(--tx-secondary)}
+.detail-table td:first-child{font-weight:700;color:var(--tx-primary);white-space:nowrap;width:40%;font-size:.75rem;letter-spacing:.03em;text-transform:uppercase}
+.dept-about{margin-top:22px;font-size:.84rem;line-height:1.82;color:var(--tx-secondary)}
 .dept-about strong{color:var(--cs);font-weight:700}
+[data-theme="dark"] .dept-about strong{color:#FF8C42}
 
-/* ═══════════════════════════════════
+/* ════════════════════════════════════════
    FACULTY TABLE
-═══════════════════════════════════ */
-#faculty-sec{background:var(--light-1)}
-[data-theme="dark"] #faculty-sec{background:var(--light-1)}
-
-.faculty-table-wrap{overflow-x:auto;border-radius:var(--r-md);border:1.5px solid rgba(79,70,229,.16);box-shadow:0 2px 16px rgba(79,70,229,.06)}
-[data-theme="dark"] .faculty-table-wrap{border-color:rgba(129,140,248,.20);box-shadow:0 2px 16px rgba(0,0,0,.30)}
+════════════════════════════════════════ */
+.faculty-table-wrap{
+  overflow-x:auto;border-radius:var(--r-md);
+  box-shadow:var(--nm-out);
+  border:1px solid var(--nm-border);
+}
+[data-theme="dark"] .faculty-table-wrap{box-shadow:var(--nm-out)}
 .faculty-table-wrap::-webkit-scrollbar{height:3px}
 .faculty-table-wrap::-webkit-scrollbar-thumb{background:var(--cs);border-radius:2px}
-
 .faculty-table{width:100%;min-width:560px;border-collapse:collapse;font-size:.82rem}
-.faculty-table thead tr{font-family:var(--fd);font-size:.68rem;font-weight:700;letter-spacing:.10em;text-transform:uppercase;background:linear-gradient(90deg,rgba(79,70,229,.16),rgba(6,182,212,.10));color:var(--cs)}
-[data-theme="dark"] .faculty-table thead tr{background:linear-gradient(90deg,rgba(129,140,248,.18),rgba(34,211,238,.10))}
-.faculty-table th{padding:12px 16px;text-align:left;border-bottom:2px solid rgba(79,70,229,.28);white-space:nowrap}
-[data-theme="dark"] .faculty-table th{border-bottom-color:rgba(129,140,248,.38)}
-.faculty-table tbody tr{background:var(--light-2);transition:background .18s;border-bottom:1px solid rgba(79,70,229,.06)}
-[data-theme="dark"] .faculty-table tbody tr{background:rgba(10,12,32,.75);border-bottom-color:rgba(129,140,248,.08)}
-.faculty-table tbody tr:hover{background:rgba(79,70,229,.04)}
-[data-theme="dark"] .faculty-table tbody tr:hover{background:rgba(129,140,248,.08)}
+.faculty-table thead tr{font-family:var(--fd);font-size:.68rem;font-weight:700;letter-spacing:.10em;text-transform:uppercase;background:var(--nm-bg-alt);color:var(--cs)}
+[data-theme="dark"] .faculty-table thead tr{background:var(--nm-bg-alt);color:#FF8C42}
+.faculty-table th{padding:12px 16px;text-align:left;border-bottom:2px solid var(--nm-border-b)}
+.faculty-table tbody tr{background:var(--nm-bg);transition:box-shadow .18s;border-bottom:1px solid var(--nm-border-b)}
 .faculty-table tbody tr:last-child{border-bottom:none}
-.faculty-table td{padding:12px 16px;color:var(--td60);vertical-align:middle}
-.faculty-table td:first-child{font-weight:700;color:var(--td30);text-align:center;width:42px;font-size:.72rem}
-.td-name-fac{font-weight:600;color:var(--td);white-space:nowrap}
-[data-theme="dark"] .td-name-fac{color:var(--tw80)}
-
+.faculty-table tbody tr:hover{box-shadow:var(--nm-in-sm)}
+.faculty-table td{padding:12px 16px;color:var(--tx-secondary);vertical-align:middle}
+.faculty-table td:first-child{font-weight:700;color:var(--tx-muted);text-align:center;width:42px;font-size:.72rem}
+.td-name-fac{font-weight:600;color:var(--tx-primary)}
 /* Faculty photo cell */
-.fac-photo-cell{width:90px;text-align:center;padding:8px 10px}
-.fac-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:6px}
-.fac-photo{width:110px;height:140px;border-radius:20%;overflow:hidden;border:2px solid rgba(79,70,229,.30);background:linear-gradient(135deg,rgba(79,70,229,.18),rgba(6,182,212,.10));display:flex;align-items:center;justify-content:center;font-size:1.3rem;position:relative}
-[data-theme="dark"] .fac-photo{background:linear-gradient(135deg,rgba(129,140,248,.18),rgba(34,211,238,.10));border-color:rgba(129,140,248,.38)}
+.fac-photo-cell{width:100px;text-align:center;padding:10px}
+.fac-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:7px}
+.fac-photo{
+  width:80px;height:100px;border-radius:var(--r-sm);overflow:hidden;
+  background:var(--nm-bg-alt);
+  box-shadow:var(--nm-out-sm);
+  border:1px solid var(--nm-border);
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;position:relative;
+}
+[data-theme="dark"] .fac-photo{box-shadow:var(--nm-out-sm)}
 .fac-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.fac-view-btn{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:20px;font-size:.60rem;font-weight:700;color:var(--cs);background:var(--cs-lt);border:1px solid rgba(79,70,229,.22);text-decoration:none;transition:background .2s,color .2s;white-space:nowrap}
-.fac-view-btn:hover{background:var(--cs);color:#fff}
-[data-theme="dark"] .fac-view-btn{background:rgba(129,140,248,.12);border-color:rgba(129,140,248,.28)}
+.fac-view-btn{
+  display:inline-flex;align-items:center;gap:3px;padding:4px 12px;border-radius:var(--r-xl);
+  font-size:.60rem;font-weight:700;color:var(--cs);
+  background:var(--nm-bg);
+  box-shadow:var(--nm-out-sm);
+  border:1px solid var(--nm-border);
+  text-decoration:none;transition:box-shadow .2s,color .2s;white-space:nowrap;
+}
+.fac-view-btn:hover{box-shadow:var(--nm-in-sm);color:var(--cs)}
+[data-theme="dark"] .fac-view-btn{box-shadow:var(--nm-out-sm)}
+[data-theme="dark"] .fac-view-btn:hover{color:#FF8C42;box-shadow:var(--nm-in-sm)}
 .fac-view-btn svg{width:10px;height:10px}
+/* specialisation tags */
+.spec-tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.64rem;font-weight:600;background:var(--nm-bg);box-shadow:var(--nm-in-sm);color:var(--cs);margin:2px 3px 2px 0;white-space:nowrap;border:1px solid var(--nm-border)}
+[data-theme="dark"] .spec-tag{color:#818CF8;box-shadow:var(--nm-in-sm)}
+.scroll-hint-fac{display:none;text-align:center;font-size:.62rem;color:var(--tx-muted);padding:6px 0;letter-spacing:.04em}
 
-/* specialization tag */
-.spec-tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.64rem;font-weight:600;background:rgba(6,182,212,.10);border:1px solid rgba(6,182,212,.22);color:var(--cs2);margin:2px 3px 2px 0;white-space:nowrap}
-[data-theme="dark"] .spec-tag{background:rgba(34,211,238,.10);border-color:rgba(34,211,238,.25)}
-
-/* scroll hint */
-.scroll-hint-fac{display:none;text-align:center;font-size:.62rem;color:var(--td30);padding:5px 0;letter-spacing:.04em}
-
-/* ═══════════════════════════════════
-   PROGRAMS — card style, 75vw max, centered
-═══════════════════════════════════ */
-.prog-sec{transition:background .4s}
-.prog-sec.bg-white{background:var(--light-2)}
-.prog-sec.bg-soft{background:var(--light-1)}
-
-.prog-container{
-  max-width:75%;          /* 75% of viewport as specified */
-  margin:0 auto;
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-
-/* Program card */
-.prog-card{
-  border-radius:var(--r-lg);padding:28px 30px;
-  background:rgba(255,255,255,.82);
-  border:1.5px solid rgba(79,70,229,.16);
-  backdrop-filter:blur(12px);
-  box-shadow:0 2px 16px rgba(79,70,229,.07);
-  transition:box-shadow .28s,border-color .28s,transform .28s;
-  display:flex;flex-direction:column;gap:14px;
-}
-.prog-card:hover{transform:translateY(-3px);border-color:rgba(79,70,229,.30);box-shadow:0 8px 28px rgba(79,70,229,.14)}
-[data-theme="dark"] .prog-card{background:rgba(10,12,36,.80);border-color:rgba(129,140,248,.20);box-shadow:0 2px 16px rgba(0,0,0,.40)}
-[data-theme="dark"] .prog-card:hover{border-color:rgba(129,140,248,.45);box-shadow:0 8px 28px rgba(0,0,0,.55),var(--cs-glow)}
-
-.prog-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.prog-card-title{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--td);margin-bottom:4px}
-[data-theme="dark"] .prog-card-title{color:var(--td)}
-.prog-card-sub{font-size:.78rem;color:var(--td60);font-weight:400;line-height:1.6}
-.prog-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:30px;font-size:.68rem;font-weight:700;letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
-.prog-badge.ug{background:rgba(79,70,229,.10);border:1.5px solid rgba(79,70,229,.25);color:var(--cs)}
-.prog-badge.pg{background:rgba(6,182,212,.10);border:1.5px solid rgba(6,182,212,.25);color:var(--cs2)}
-.prog-badge.ai{background:linear-gradient(135deg,rgba(79,70,229,.10),rgba(6,182,212,.10));border:1.5px solid rgba(79,70,229,.22);color:var(--cs)}
-.prog-badge.phd{background:rgba(179,157,219,.14);border:1.5px solid rgba(179,157,219,.35);color:var(--lav)}
-[data-theme="dark"] .prog-badge.ug{background:rgba(129,140,248,.12);border-color:rgba(129,140,248,.30);color:var(--cs)}
-[data-theme="dark"] .prog-badge.pg{background:rgba(34,211,238,.10);border-color:rgba(34,211,238,.28);color:var(--cs2)}
-[data-theme="dark"] .prog-badge.phd{background:rgba(155,132,216,.14);border-color:rgba(155,132,216,.35);color:var(--lav)}
-
-.prog-meta{display:flex;flex-wrap:wrap;gap:8px}
-.prog-meta-item{display:flex;align-items:center;gap:5px;font-size:.74rem;color:var(--td60);background:var(--lb06);border:1px solid var(--lb14);border-radius:8px;padding:4px 10px}
-[data-theme="dark"] .prog-meta-item{background:rgba(129,140,248,.06);border-color:rgba(129,140,248,.14)}
-.prog-meta-item svg{width:13px;height:13px;flex-shrink:0;opacity:.65}
-
-.prog-desc{font-size:.80rem;line-height:1.78;color:var(--td60)}
-
-.prog-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:12px;border-top:1px solid rgba(79,70,229,.08)}
-[data-theme="dark"] .prog-footer{border-top-color:rgba(129,140,248,.10)}
-.prog-syllabus-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 20px;border-radius:30px;font-size:.78rem;font-weight:600;color:var(--cs);background:var(--cs-lt);border:1.5px solid rgba(79,70,229,.25);text-decoration:none;transition:background .2s,color .2s,box-shadow .2s}
-.prog-syllabus-btn:hover{background:var(--cs);color:#fff;box-shadow:0 4px 18px rgba(79,70,229,.30)}
-[data-theme="dark"] .prog-syllabus-btn{background:rgba(129,140,248,.12);border-color:rgba(129,140,248,.30);color:var(--cs)}
-[data-theme="dark"] .prog-syllabus-btn:hover{background:var(--cs);color:#fff}
-.prog-syllabus-btn svg{width:15px;height:15px;flex-shrink:0}
-
-/* Section header pills */
+/* ════════════════════════════════════════
+   PROGRAM SECTIONS — 75% desktop, full mobile
+════════════════════════════════════════ */
+.prog-container{max-width:75%;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+/* section eyebrow */
 .prog-sec-hd{display:flex;align-items:center;gap:14px;margin-bottom:36px;flex-wrap:wrap}
 .prog-sec-icon{font-size:2rem}
-.prog-sec-title{font-family:var(--fd);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;letter-spacing:-.02em;color:var(--td)}
-
-/* ═══════════════════════════════════
-   GALLERY — collage with touching borders
-   Random-size mosaic via CSS grid areas
-═══════════════════════════════════ */
-#gallery-sec{
-  background:
-    radial-gradient(ellipse 55% 50% at 50% 50%,rgba(79,70,229,.08) 0%,transparent 65%),
-    var(--dark-bg2);
-  padding:80px 0;
-  overflow:hidden;
+.prog-sec-title{font-family:var(--fd);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;letter-spacing:-.02em;color:var(--tx-primary)}
+/* program card — convex resting */
+.prog-card{
+  border-radius:var(--r-lg);padding:28px 30px;
+  background:var(--nm-bg);
+  box-shadow:var(--nm-out);
+  border:1px solid var(--nm-border);
+  display:flex;flex-direction:column;gap:14px;
+  transition:box-shadow .28s;
 }
-[data-theme="dark"] #gallery-sec{background:radial-gradient(ellipse 55% 50% at 50% 50%,rgba(129,140,248,.10) 0%,transparent 65%),var(--dark-bg2)}
+.prog-card:hover{box-shadow:var(--nm-out-lg)}
+[data-theme="dark"] .prog-card{box-shadow:var(--nm-out)}
+[data-theme="dark"] .prog-card:hover{box-shadow:var(--nm-in-lg)}
+.prog-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.prog-card-title{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--tx-primary);margin-bottom:4px}
+.prog-card-sub{font-size:.78rem;color:var(--tx-secondary);font-weight:400;line-height:1.6}
+/* program badge — concave pill */
+.prog-badge{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:30px;
+  font-size:.68rem;font-weight:700;letter-spacing:.04em;white-space:nowrap;flex-shrink:0;
+  background:var(--nm-bg);
+  box-shadow:var(--nm-in-sm);
+  border:1px solid var(--nm-border);
+  color:var(--cs);
+}
+[data-theme="dark"] .prog-badge{color:#818CF8}
+.prog-badge.pg{color:var(--cs2)}
+[data-theme="dark"] .prog-badge.pg{color:#22D3EE}
+.prog-badge.ai{color:var(--cs)}
+.prog-badge.phd{color:var(--tx-secondary)}
+/* meta items — concave chips */
+.prog-meta{display:flex;flex-wrap:wrap;gap:8px}
+.prog-meta-item{
+  display:flex;align-items:center;gap:5px;font-size:.74rem;color:var(--tx-secondary);
+  background:var(--nm-bg-alt);
+  box-shadow:var(--nm-in-sm);
+  border-radius:var(--r-sm);padding:4px 12px;border:1px solid var(--nm-border);
+}
+[data-theme="dark"] .prog-meta-item{box-shadow:var(--nm-in-sm)}
+.prog-desc{font-size:.80rem;line-height:1.78;color:var(--tx-secondary)}
+.prog-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--nm-border-b)}
+/* syllabus button */
+.prog-syllabus-btn{
+  display:inline-flex;align-items:center;gap:6px;padding:8px 20px;border-radius:var(--r-xl);
+  font-size:.78rem;font-weight:600;color:var(--cs);
+  background:var(--nm-bg);
+  box-shadow:var(--nm-out-sm);
+  border:1px solid var(--nm-border);
+  text-decoration:none;transition:box-shadow .22s,color .22s;
+}
+.prog-syllabus-btn:hover{box-shadow:var(--nm-in-sm)}
+[data-theme="dark"] .prog-syllabus-btn{box-shadow:var(--nm-out-sm);color:#818CF8}
+[data-theme="dark"] .prog-syllabus-btn:hover{box-shadow:var(--nm-in-sm);color:#FF8C42}
+.prog-syllabus-btn svg{width:15px;height:15px;flex-shrink:0}
+
+/* ════════════════════════════════════════
+   GALLERY — mosaic collage, touching borders
+════════════════════════════════════════ */
+#gallery-sec{background:var(--nm-bg-sec);padding:80px 0;overflow:hidden}
 .gallery-hd{padding:0 6vw 48px;text-align:center}
-.gallery-hd .sec-lbl{color:var(--cs)}
-
-/* Masonry-style collage grid */
 .collage-grid{
-  display:grid;
-  /* 6 equal columns */
-  grid-template-columns:repeat(6,1fr);
-  grid-auto-rows:160px;
-  gap:0;              /* touching borders as specified */
-  width:100%;
+  display:grid;grid-template-columns:repeat(6,1fr);
+  grid-auto-rows:160px;gap:0;width:100%;
 }
-/* Each cell */
 .collage-cell{
   overflow:hidden;position:relative;
-  background:linear-gradient(135deg,rgba(79,70,229,.14),rgba(6,182,212,.10));
+  background:var(--nm-bg-alt);
   display:flex;align-items:center;justify-content:center;
-  font-size:2rem;color:rgba(79,70,229,.25);
-  transition:transform .4s cubic-bezier(.16,1,.3,1),z-index 0s;
+  font-size:2rem;color:var(--tx-muted);
 }
-[data-theme="dark"] .collage-cell{background:linear-gradient(135deg,rgba(129,140,248,.14),rgba(34,211,238,.08));color:rgba(129,140,248,.20)}
 .collage-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.16,1,.3,1),filter .4s}
 .collage-cell:hover{z-index:2}
-.collage-cell:hover img{transform:scale(1.08);filter:brightness(1.07) saturate(0.4)}
-/* subtle dark overlay for depth */
-.collage-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(79,70,229,.10),transparent 60%);pointer-events:none;opacity:0;transition:opacity .3s}
+.collage-cell:hover img{transform:scale(1.07);filter:brightness(1.06) saturate(1.10)}
+.collage-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(79,70,229,.08),transparent 60%);pointer-events:none;opacity:0;transition:opacity .3s}
 .collage-cell:hover::after{opacity:1}
+[data-theme="dark"] .collage-cell::after{background:linear-gradient(135deg,rgba(255,106,0,.08),transparent 60%)}
+/* col/row spans — mosaic layout */
+.collage-cell:nth-child(1){grid-column:span 2;grid-row:span 2}
+.collage-cell:nth-child(2){grid-column:span 1;grid-row:span 1}
+.collage-cell:nth-child(3){grid-column:span 1;grid-row:span 2}
+.collage-cell:nth-child(4){grid-column:span 2;grid-row:span 1}
+.collage-cell:nth-child(5){grid-column:span 1;grid-row:span 1}
+.collage-cell:nth-child(6){grid-column:span 2;grid-row:span 1}
+.collage-cell:nth-child(7){grid-column:span 1;grid-row:span 2}
+.collage-cell:nth-child(8){grid-column:span 2;grid-row:span 1}
+.collage-cell:nth-child(9){grid-column:span 1;grid-row:span 1}
+.collage-cell:nth-child(10){grid-column:span 2;grid-row:span 2}
+.collage-cell:nth-child(11){grid-column:span 1;grid-row:span 1}
+.collage-cell:nth-child(12){grid-column:span 1;grid-row:span 1}
 
-/* Random sizes via col/row spans — 12 cells with varied spans */
-.collage-cell:nth-child(1) {grid-column:span 2;grid-row:span 2}  /* large */
-.collage-cell:nth-child(2) {grid-column:span 1;grid-row:span 1}  /* small */
-.collage-cell:nth-child(3) {grid-column:span 1;grid-row:span 2}  /* tall */
-.collage-cell:nth-child(4) {grid-column:span 2;grid-row:span 1}  /* wide */
-.collage-cell:nth-child(5) {grid-column:span 1;grid-row:span 1}  /* small */
-.collage-cell:nth-child(6) {grid-column:span 2;grid-row:span 1}  /* wide */
-.collage-cell:nth-child(7) {grid-column:span 1;grid-row:span 2}  /* tall */
-.collage-cell:nth-child(8) {grid-column:span 2;grid-row:span 1}  /* wide */
-.collage-cell:nth-child(9) {grid-column:span 1;grid-row:span 1}  /* small */
-.collage-cell:nth-child(10){grid-column:span 2;grid-row:span 2}  /* large */
-.collage-cell:nth-child(11){grid-column:span 1;grid-row:span 1}  /* small */
-.collage-cell:nth-child(12){grid-column:span 1;grid-row:span 1}  /* small */
-
-/* Label overlay on hover */
-.collage-label{
-  position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(to top,rgba(10,8,30,.75),transparent);
-  color:#fff;font-size:.68rem;font-weight:600;letter-spacing:.06em;
-  padding:20px 12px 10px;opacity:0;transition:opacity .3s;
-  transform:translateY(6px);transition:opacity .3s,transform .3s;
-}
-.collage-cell:hover .collage-label{opacity:1;transform:translateY(0)}
-
-/* GOV SITES */
-#gov_sites{background:var(--dark-bg4);padding:48px 20px;overflow:hidden}
-[data-theme="dark"] #gov_sites{background:var(--dark-bg4)}
+/* ════════════════════════════════════════
+   GOV SITES
+════════════════════════════════════════ */
+#gov_sites{background:var(--nm-bg-alt);padding:52px 20px;overflow:hidden}
 .students_site{display:flex;justify-content:center;width:100%}
 .students_site_link{display:flex;flex-wrap:wrap;justify-content:center;gap:32px;list-style:none;padding:20px 10px;margin:0;max-width:900px;width:100%}
-.students_site_link li a img{width:90px;height:auto;display:block;transition:transform .3s ease}
-.students_site_link li a img:hover{transform:scale(1.1)}
+.students_site_link li{display:flex;align-items:center;justify-content:center}
+.students_site_link li a{display:block;padding:14px;border-radius:var(--r-md);background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);transition:box-shadow .25s}
+.students_site_link li a:hover{box-shadow:var(--nm-in-sm)}
+[data-theme="dark"] .students_site_link li a{border-color:rgba(255,106,0,.06)}
+.students_site_link li a img{width:80px;height:auto;display:block}
 
-/* FOOTER */
-footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-top:1.5px solid rgba(79,70,229,.15);padding:60px 6vw 28px;color:var(--tw);transition:background .4s}
-[data-theme="dark"] footer{background:linear-gradient(180deg,#060912,#080D1E);border-top-color:rgba(129,140,248,.16)}
+/* ════════════════════════════════════════
+   FOOTER
+════════════════════════════════════════ */
+footer{background:var(--nm-bg-sec);border-top:1px solid var(--nm-border-b);padding:60px 6vw 28px;color:var(--tx-primary);transition:background .4s;box-shadow:0 -4px 16px rgba(0,0,0,.06)}
+[data-theme="dark"] footer{border-top-color:rgba(255,106,0,.07);box-shadow:0 -4px 24px rgba(0,0,0,.60)}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
-.fb-name{font-family:var(--fd);font-size:1rem;font-weight:600;margin-bottom:8px;background:linear-gradient(90deg,var(--cs),var(--cs2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.fb-desc{font-size:.75rem;color:var(--td60);line-height:1.75;font-weight:400;max-width:230px;margin-top:7px}
+.fb-name{font-family:var(--fd);font-size:1rem;font-weight:700;margin-bottom:8px;background:linear-gradient(90deg,var(--cs),var(--cs2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+[data-theme="dark"] .fb-name{background:linear-gradient(90deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.fb-desc{font-size:.75rem;color:var(--tx-secondary);line-height:1.75;font-weight:400;max-width:230px;margin-top:7px}
 .fb-contact{margin-top:16px;display:flex;flex-direction:column;gap:5px}
-.fb-contact a,.fb-contact span{font-size:.72rem;color:var(--td60);text-decoration:none;transition:color .2s}
+.fb-contact a,.fb-contact span{font-size:.72rem;color:var(--tx-secondary);text-decoration:none;transition:color .2s}
 .fb-contact a:hover{color:var(--cs)}
-.fc-h5{font-family:var(--fd);font-size:.8rem;font-weight:600;margin-bottom:14px;color:var(--td)}
+[data-theme="dark"] .fb-contact a:hover{color:#FF8C42}
+.fc-h5{font-family:var(--fd);font-size:.8rem;font-weight:700;margin-bottom:14px;color:var(--tx-primary)}
 .fc-ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.fc-ul li a{font-size:.72rem;color:var(--td60);text-decoration:none;font-weight:400;transition:color .2s}
+.fc-ul li a{font-size:.72rem;color:var(--tx-secondary);text-decoration:none;font-weight:400;transition:color .2s}
 .fc-ul li a:hover{color:var(--cs)}
-.footer-bottom{padding-top:22px;border-top:1px solid rgba(79,70,229,.10);display:flex;justify-content:space-between;align-items:center;font-size:.69rem;color:var(--td60);gap:16px;flex-wrap:wrap}
-[data-theme="dark"] .footer-bottom{border-top-color:rgba(129,140,248,.10)}
-.footer-bottom a{color:var(--td60);text-decoration:none;transition:color .2s}
+[data-theme="dark"] .fc-ul li a:hover{color:#FF8C42}
+.footer-bottom{padding-top:22px;border-top:1px solid var(--nm-border-b);display:flex;justify-content:space-between;align-items:center;font-size:.69rem;color:var(--tx-muted);gap:16px;flex-wrap:wrap}
+.footer-bottom a{color:var(--tx-muted);text-decoration:none;transition:color .2s}
 .footer-bottom a:hover{color:var(--cs)}
-.acc-row{display:flex;gap:8px;flex-wrap:wrap}
-.acc-badge{background:var(--cs-lt);border:1.5px solid rgba(79,70,229,.22);border-radius:7px;padding:3px 10px;font-size:.64rem;font-weight:700;color:var(--cs);letter-spacing:.04em}
-[data-theme="dark"] .acc-badge{background:rgba(129,140,248,.10);border-color:rgba(129,140,248,.28);color:var(--cs)}
-.social_media-links{list-style:none;display:flex;gap:15px;padding:0;margin-top:16px;flex-wrap:wrap}
-.social_media img{width:36px;cursor:pointer;transition:transform .3s ease}
-.social_media img:hover{transform:scale(1.2)}
+[data-theme="dark"] .footer-bottom a:hover{color:#FF8C42}
+.acc-row{display:flex;gap:9px;flex-wrap:wrap}
+.acc-badge{background:var(--nm-bg);box-shadow:var(--nm-in-sm);border-radius:9px;padding:4px 12px;font-size:.64rem;font-weight:700;color:var(--cs);letter-spacing:.04em;border:1px solid var(--nm-border)}
+[data-theme="dark"] .acc-badge{color:#FF6A00;border-color:rgba(255,106,0,.10)}
+.map{display:flex;padding:20px;justify-content:center;align-items:center}
+.map img{width:280px;display:block;border-radius:22px;box-shadow:var(--nm-out-lg);border:1px solid var(--nm-border);opacity:.88;transition:box-shadow .3s}
+.map img:hover{box-shadow:var(--nm-out-xl)}
+[data-theme="dark"] .map img{box-shadow:14px 14px 36px #0b0d14,-14px -14px 36px #333650,0 0 20px rgba(255,106,0,.10)}
+.social_media-links{list-style:none;display:flex;gap:10px;padding:0;margin:0;flex-wrap:wrap}
+.social_media-links a{outline:none;-webkit-tap-highlight-color:transparent}
+.social_media-links li a{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);transition:box-shadow .25s}
+.social_media-links li a:hover{box-shadow:var(--nm-in-sm)}
+[data-theme="dark"] .social_media-links li a{border-color:rgba(255,106,0,.07)}
+.social_media img{width:26px;height:26px;object-fit:contain;display:block}
 
-/* map */
-
-.map{
-  display: flex;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.map img{
-  width: 280px;
-  display: block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  border-radius: 15%;
-  opacity: 70%;
-  box-shadow: 0 9px 20px #9776c4;
-}
-
-.map img:hover{
-  transform: scale(1.1) translateY(-5px);
-  box-shadow: 0 10px 26px rgb(146, 85, 167);
-}
-
-/* ═══════════════════════════════════
+/* ════════════════════════════════════════
    RESPONSIVE — TABLET ≤960px
-═══════════════════════════════════ */
+════════════════════════════════════════ */
 @media(max-width:960px){
   :root{--ticker-h:32px}
   .hero-inner{grid-template-columns:1fr;gap:40px}
@@ -496,18 +479,21 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
   .hero-img-box{aspect-ratio:16/9;max-height:280px}
   .dept-layout{grid-template-columns:1fr}
   .dept-img-slot{aspect-ratio:16/9;max-height:260px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .footer-grid>div:first-child{grid-column:1 / -1}
   .nav-links{display:none}
   .ham{display:flex}
   nav{grid-template-columns:1fr auto;padding:8px 12px}
   .nav-brand{justify-content:flex-start;padding-left:4px}
   .nav-right{justify-content:flex-end}
   .btn-apply{display:none}
+  .ticker-label{padding:0 10px;font-size:.57rem}
+  .t-item{padding:0 18px;font-size:.66rem}
   .prog-container{max-width:90%}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
-  .footer-grid > div:first-child{grid-column:1/-1}
   .scroll-hint-fac{display:block}
+  .students_site_link{gap:18px}
+  .students_site_link li a img{width:64px}
   .collage-grid{grid-template-columns:repeat(4,1fr);grid-auto-rows:140px}
-  /* re-span for 4-col */
   .collage-cell:nth-child(1){grid-column:span 2;grid-row:span 2}
   .collage-cell:nth-child(2){grid-column:span 1;grid-row:span 1}
   .collage-cell:nth-child(3){grid-column:span 1;grid-row:span 2}
@@ -520,34 +506,32 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
   .collage-cell:nth-child(10){grid-column:span 2;grid-row:span 2}
   .collage-cell:nth-child(11){grid-column:span 1;grid-row:span 1}
   .collage-cell:nth-child(12){grid-column:span 1;grid-row:span 1}
-  .students_site_link{gap:24px}
-  .students_site_link li a img{width:72px}
 }
 
-/* ═══════════════════════════════════
+/* ════════════════════════════════════════
    RESPONSIVE — MOBILE ≤640px
-═══════════════════════════════════ */
+════════════════════════════════════════ */
 @media(max-width:640px){
   :root{--ticker-h:30px}
-  .sec{padding:64px 5vw}
-  .sec-hd{margin-bottom:36px}
-  #gallery-sec{padding:60px 0}
-  .gallery-hd{padding:0 5vw 36px}
-  .prog-container{max-width:100%}
-  .prog-card{padding:20px 18px}
-  .hero-stats{gap:8px}
-  .h-stat{padding:8px 14px}
-  .faculty-table{font-size:.72rem;min-width:480px}
-  .faculty-table th,.faculty-table td{padding:9px 11px}
-  .fac-photo{width:42px;height:42px;font-size:1rem}
-  .fac-photo-cell{width:72px;padding:6px 7px}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:18px}
-  .footer-grid > div:first-child{grid-column:1/-1}
-  .footer-grid > .social_media{grid-column:1/-1}
+  .sec{padding:56px 4vw}
+  .sec-hd{margin-bottom:32px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .footer-grid>div:first-child{grid-column:1 / -1}
+  .footer-grid>.social_media{grid-column:1 / -1}
   .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px}
   .ticker-label{display:none}
   .ticker-fade.lft{width:20px}
-  .t-item{padding:0 14px;font-size:.64rem}
+  .t-item{padding:0 14px;font-size:.62rem}
+  .prog-container{max-width:100%}
+  .prog-card{padding:20px 18px}
+  .hero-stats{gap:8px}
+  .h-stat{padding:8px 12px}
+  .students_site_link{gap:12px;padding:12px 6px}
+  .students_site_link li a img{width:52px}
+  .students_site_link li a{padding:10px}
+  .map img{width:100%;max-width:260px}
+  #gallery-sec{padding:60px 0}
+  .gallery-hd{padding:0 4vw 36px}
   .collage-grid{grid-template-columns:repeat(3,1fr);grid-auto-rows:120px}
   .collage-cell:nth-child(1){grid-column:span 2;grid-row:span 2}
   .collage-cell:nth-child(3){grid-column:span 1;grid-row:span 2}
@@ -556,35 +540,58 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
   .collage-cell:nth-child(7){grid-column:span 1;grid-row:span 2}
   .collage-cell:nth-child(8){grid-column:span 2;grid-row:span 1}
   .collage-cell:nth-child(10){grid-column:span 2;grid-row:span 2}
-  .students_site_link{gap:16px;padding:12px 8px}
-  .students_site_link li a img{width:58px}
   .prog-sec-title{font-size:1.35rem}
+  .fac-photo{width:60px;height:75px}
+  .fac-photo-cell{width:80px;padding:8px 6px}
 }
 
-@media(max-width:400px){
+/* ════════════════════════════════════════
+   RESPONSIVE — SMALL PHONE ≤480px
+════════════════════════════════════════ */
+@media(max-width:480px){
   .footer-grid{grid-template-columns:1fr}
-  .footer-grid > .social_media{grid-column:1}
+  .footer-grid>.social_media{grid-column:1}
   .collage-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:110px}
   .collage-cell:nth-child(1){grid-column:span 2;grid-row:span 1}
   .collage-cell:nth-child(3){grid-column:span 1;grid-row:span 1}
   .collage-cell:nth-child(7){grid-column:span 1;grid-row:span 1}
   .collage-cell:nth-child(10){grid-column:span 2;grid-row:span 1}
+  nav{padding:6px 10px}
+  .tb-l{display:none}
+  .students_site_link li a img{width:44px}
+  .students_site_link li a{padding:8px}
+  .students_site_link{gap:10px}
 }
 
-/* PERFORMANCE */
+/* ── MOBILE PERFORMANCE ── */
 @media(max-width:960px){
-  nav,.prog-card,.btn-ghost-cs,.theme-toggle{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-  nav{box-shadow:0 2px 12px rgba(79,70,229,.12)!important}
-  .rev{transition-delay:0s!important}
+  .card-dark,.card-light,.prog-card,.h-stat,.fac-photo{
+    box-shadow:5px 5px 12px rgba(0,0,0,.12),-5px -5px 12px rgba(255,255,255,.70) !important;
+  }
+  [data-theme="dark"] .card-dark,[data-theme="dark"] .card-light,
+  [data-theme="dark"] .prog-card,[data-theme="dark"] .h-stat,
+  [data-theme="dark"] .fac-photo{
+    box-shadow:5px 5px 12px #0e1016,-5px -5px 12px #2e3140 !important;
+  }
+  nav{box-shadow:5px 5px 14px rgba(0,0,0,.12),-5px -5px 14px rgba(255,255,255,.72) !important}
+  [data-theme="dark"] nav{box-shadow:5px 5px 14px #0e1016,-5px -5px 14px #2e3140 !important}
+  .rev{transition-delay:0s !important}
+  #cs-hero::before{background-image:none !important}
+  .hero-img-box,.dept-img-slot{box-shadow:8px 8px 22px rgba(0,0,0,.14),-8px -8px 22px rgba(255,255,255,.70) !important}
+  [data-theme="dark"] .hero-img-box,[data-theme="dark"] .dept-img-slot{box-shadow:8px 8px 22px #0e1016,-8px -8px 22px #2e3140 !important}
 }
 @media(hover:none){
-  .btn:hover,.btn-apply:hover,.collage-cell:hover,.prog-card:hover,.mob-cta:hover{transform:none!important}
-  .collage-cell:hover img{transform:none!important}
+  .btn:hover,.btn-apply:hover,.prog-card:hover,.fac-view-btn:hover,
+  .students_site_link li a:hover,.map img:hover,
+  .social_media-links li a:hover,.mob-cta:hover,
+  .collage-cell:hover img{
+    box-shadow:inherit !important;transform:none !important;color:inherit !important;filter:none !important;
+  }
 }
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
-  .ticker-track{animation:none!important}
-  .rev{opacity:1!important;transform:none!important}
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .ticker-track{animation:none !important}
+  .rev{opacity:1 !important;transform:none !important}
 }
 </style>
 </head>
@@ -592,7 +599,7 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
 
 <!-- ══════ TICKER ══════ -->
 <div id="ticker" role="marquee" aria-label="Department announcements">
-  <div class="ticker-label"> CS Dept</div>
+  <div class="ticker-label">💻 CS Dept</div>
   <div class="ticker-fade lft"></div>
   <div class="ticker-viewport">
     <div class="ticker-track" id="ticker-track">
@@ -615,7 +622,7 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
 
 <div id="mob-overlay"></div>
 
-<!-- MOBILE DRAWER -->
+<!-- ══════ MOBILE DRAWER ══════ -->
 <div id="mob-menu">
   <div class="mob-header">
     <span class="mob-title">CS Dept — CUSB</span>
@@ -636,10 +643,27 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
   <a class="mob-cta" href="#bsc-sec">Apply Now →</a>
 </div>
 
-<!-- NAVBAR -->
+<!-- ══════ TOP BAR ══════ -->
+<div id="topbar">
+  <div class="tb-l">
+    <span>☎ 0631-2229 530</span>
+    <span class="tb-sep">|</span>
+    <a href="mailto:cs@cusb.ac.in">✉ cs@cusb.ac.in</a>
+    <span class="tb-sep">|</span>
+    <a href="index.html#quicklinks">RTI</a>
+    <span class="tb-sep">|</span>
+    <a href="#">Webmail</a>
+    <span class="tb-sep">|</span>
+    <a href="#">Feedback</a>
+    <span class="tb-sep">|</span>
+    <a href="http://naac.gov.in/" target="_blank">NAAC</a>
+  </div>
+</div>
+
+<!-- ══════ NAVBAR ══════ -->
 <div id="nav-wrap">
   <nav>
-    <a href="v1.html" class="nav-brand">
+    <a href="index.html" class="nav-brand">
       <div class="nav-logo"><img src="culog.png" alt="CUSB Logo" onerror="this.style.display='none'"></div>
       <div class="brand-txt"><div class="abbr">CUSB</div></div>
     </a>
@@ -647,7 +671,7 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
       <li><a href="index.html">Home</a></li>
       <li><a href="#dept-info">About</a></li>
       <li><a href="#faculty-sec">Faculty</a></li>
-      <li><a href="#bsc-sec" class="act">Programs</a></li>
+      <li><a href="#bsc-sec">Programs</a></li>
       <li><a href="#gallery-sec">Gallery</a></li>
       <li><a href="index.html#notices-sec">IQAC</a></li>
       <li><a href="#gov_sites">Gov</a></li>
@@ -669,7 +693,7 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
 <header id="cs-hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <div class="hero-eyebrow"> School of Mathematics, Statistics &amp; Computer Science</div>
+      <div class="hero-eyebrow">🎓 School of Mathematics, Statistics &amp; Computer Science</div>
       <h1 class="hero-title">Department of<br><span class="grad">Computer Science</span></h1>
       <p class="hero-sub">Advancing knowledge at the intersection of theory and practice — from algorithms and systems to artificial intelligence. Shaping the next generation of India's tech leaders at CUSB, Gaya.</p>
       <div class="hero-btns">
@@ -698,25 +722,25 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
     <div class="sec-lbl">About the Department</div>
     <h2 class="sec-title">Our Identity &amp; Vision</h2>
   </div>
-  <!-- side-by-side on desktop, table below on mobile via grid order -->
   <div class="dept-layout">
     <div class="rev">
       <div class="dept-img-slot">
         <img src="cs_lab.jpg" alt="CS Lab" onerror="this.style.display='none'">
+        💡
       </div>
     </div>
     <div class="rev">
       <div class="dept-detail-title">Department at a Glance</div>
       <table class="detail-table">
-        <tr><td>Established</td><td class="val">2009</td></tr>
-        <tr><td>School</td><td class="val">School of Mathematics, Statistics &amp; Computer Science</td></tr>
-        <tr><td>Location</td><td class="val">CUSB Campus, Panchanpur, Gaya, Bihar</td></tr>
-        <tr><td>HoD</td><td class="val">Prof. Prabhat Ranjan</td></tr>
-        <tr><td>Programs Offered</td><td class="val">B.Sc., M.Sc. CS, M.Sc. AI, Ph.D.</td></tr>
-        <tr><td>Research Areas</td><td class="val">Artificial Intelligence, Machine Learning, Data Science, Network Security, Algorithms</td></tr>
-        <tr><td>Annual Intake</td><td class="val">B.Sc.: 25 seats · M.Sc.: 40 seats · Ph.D.: As per vacancies</td></tr>
-        <tr><td>Admission Basis</td><td class="val">CUET (UG/PG) — conducted by NTA</td></tr>
-        <tr><td>Contact</td><td class="val">cs@cusb.ac.in · 0631-2229 5XX</td></tr>
+        <tr><td>Established</td><td>2009</td></tr>
+        <tr><td>School</td><td>School of Mathematics, Statistics &amp; Computer Science</td></tr>
+        <tr><td>Location</td><td>CUSB Campus, Panchanpur, Gaya, Bihar</td></tr>
+        <tr><td>HoD</td><td>Prof. Prabhat Ranjan</td></tr>
+        <tr><td>Programs Offered</td><td>B.Sc., M.Sc. CS, M.Sc. AI, Ph.D.</td></tr>
+        <tr><td>Research Areas</td><td>Artificial Intelligence, Machine Learning, Data Science, Network Security, Algorithms</td></tr>
+        <tr><td>Annual Intake</td><td>B.Sc.: 25 seats · M.Sc.: 40 seats · Ph.D.: As per vacancies</td></tr>
+        <tr><td>Admission Basis</td><td>CUET (UG/PG) — conducted by NTA</td></tr>
+        <tr><td>Contact</td><td>cs@cusb.ac.in · 0631-2229 5XX</td></tr>
       </table>
       <p class="dept-about">The Department of Computer Science at CUSB is committed to <strong>research-led teaching</strong> in foundational and applied computing. With a curriculum aligned to <strong>NEP 2020</strong> and industry requirements, students gain expertise in algorithms, artificial intelligence, data science, and software engineering — preparing them for careers in technology and research across India and globally.</p>
     </div>
@@ -730,7 +754,6 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
     <h2 class="sec-title">Faculty Members</h2>
     <p class="sec-sub">Meet the educators shaping the future of computing at CUSB.</p>
   </div>
-
   <div class="faculty-table-wrap rev">
     <table class="faculty-table" aria-label="CS Faculty">
       <thead>
@@ -742,77 +765,71 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
         </tr>
       </thead>
       <tbody>
-        <!-- 1 -->
         <tr>
           <td>1</td>
           <td class="fac-photo-cell">
             <div class="fac-photo-wrap">
-              <div class="fac-photo"><img src="prabhat.jpeg" alt="Prof." onerror="this.style.display='none'"></div>
-              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/a4" target="_blank"  class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+              <div class="fac-photo"><img src="prabhat.jpeg" alt="Prof. Prabhat Ranjan" onerror="this.style.display='none'">👤</div>
+              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/a4" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
             </div>
           </td>
-          <td class="td-name-fac">Prof. Prabhat Ranjan<br><span style="font-weight:400;font-size:.72rem;color:var(--td60)">Professor &amp; Head of Department</span></td>
-          <td><span class="spec-tag">Big data, Distributed System, Software Engineering</span><span class="spec-tag">MNNIT Allahabad</span></td>
+          <td><div class="td-name-fac">Prof. Prabhat Ranjan</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Professor &amp; Head of Department</span></td>
+          <td><span class="spec-tag">Big Data</span><span class="spec-tag">Distributed Systems</span><span class="spec-tag">Software Engineering</span><span class="spec-tag">MNNIT Allahabad</span></td>
         </tr>
-        <!-- 2 -->
         <tr>
           <td>2</td>
           <td class="fac-photo-cell">
             <div class="fac-photo-wrap">
-              <div class="fac-photo"><img src="jainath.jpeg" alt="Dr." onerror="this.style.display='none'"></div>
+              <div class="fac-photo"><img src="jainath.jpeg" alt="Dr. Jainath Yadav" onerror="this.style.display='none'">👤</div>
               <a href="https://people.samarth.edu.in/index.php/profile/user/custom-profile/CUSB/nl" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
             </div>
           </td>
-          <td class="td-name-fac">Dr. Jainath Yadav<br><span style="font-weight:400;font-size:.72rem;color:var(--td60)">Associate Professor</span></td>
-          <td><span class="spec-tag">Speech signal processing, Machine Learning, Image and Audio watermarking</span><span class="spec-tag">M. Tech &amp; PhD from IIT Kharagpur</span></td>
+          <td><div class="td-name-fac">Dr. Jainath Yadav</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Associate Professor</span></td>
+          <td><span class="spec-tag">Speech Signal Processing</span><span class="spec-tag">Machine Learning</span><span class="spec-tag">Image &amp; Audio Watermarking</span><span class="spec-tag">M.Tech &amp; PhD — IIT Kharagpur</span></td>
         </tr>
-        <!-- 3 -->
         <tr>
           <td>3</td>
           <td class="fac-photo-cell">
             <div class="fac-photo-wrap">
-              <div class="fac-photo"><img src="nemisir.jpeg" alt="Dr." onerror="this.style.display='none'"></div>
+              <div class="fac-photo"><img src="nemisir.jpeg" alt="Dr. Nemi Chandra Rathore" onerror="this.style.display='none'">👤</div>
               <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/ah" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
             </div>
           </td>
-          <td class="td-name-fac">Dr.Nemi Chandra Rathore<br><span style="font-weight:400;font-size:.72rem;color:var(--td60)">Associate Professor</span></td>
-          <td><span class="spec-tag"> Security and Privacy in Online Social Networks</span><span class="spec-tag">M Tech(IT) &amp; PhD(IIT Patna)</span></td>
+          <td><div class="td-name-fac">Dr. Nemi Chandra Rathore</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Associate Professor</span></td>
+          <td><span class="spec-tag">Security &amp; Privacy in OSN</span><span class="spec-tag">M.Tech (IT) &amp; PhD — IIT Patna</span></td>
         </tr>
-        <!-- 4 -->
         <tr>
           <td>4</td>
           <td class="fac-photo-cell">
             <div class="fac-photo-wrap">
-              <div class="fac-photo"><img src="piyush.jpeg" alt="Dr." onerror="this.style.display='none'"></div>
+              <div class="fac-photo"><img src="piyush.jpeg" alt="Dr. Piyush Kumar Singh" onerror="this.style.display='none'">👤</div>
               <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/a9" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
             </div>
           </td>
-          <td class="td-name-fac">Dr. Piyush Kumar Singh<br><span style="font-weight:400;font-size:.72rem;color:var(--td60)">Assistant Professor</span></td>
-          <td><span class="spec-tag">Image Processing, Parallel Computing, Wavelet Transform</span><span class="spec-tag">PhD (BHU)</span></td>
+          <td><div class="td-name-fac">Dr. Piyush Kumar Singh</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Assistant Professor</span></td>
+          <td><span class="spec-tag">Image Processing</span><span class="spec-tag">Parallel Computing</span><span class="spec-tag">Wavelet Transform</span><span class="spec-tag">PhD — BHU</span></td>
         </tr>
-        <!-- 5 -->
         <tr>
           <td>5</td>
           <td class="fac-photo-cell">
             <div class="fac-photo-wrap">
-              <div class="fac-photo"><img src="mrityunjay.jpeg" alt="Dr." onerror="this.style.display='none'"></div>
+              <div class="fac-photo"><img src="mrityunjay.jpeg" alt="Dr. Mrityunjay Singh" onerror="this.style.display='none'">👤</div>
               <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/ea" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
             </div>
           </td>
-          <td class="td-name-fac">Dr. Mrityunjay Singh<br><span style="font-weight:400;font-size:.72rem;color:var(--td60)">Assistant Professor</span></td>
-          <td><span class="spec-tag">Theoretical Computer Science, Discrete Mathematics, Algorithms, Cryptography and Security</span><span class="spec-tag">PhD (IIT Guwahati)</span></td>
+          <td><div class="td-name-fac">Dr. Mrityunjay Singh</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Assistant Professor</span></td>
+          <td><span class="spec-tag">Theoretical CS</span><span class="spec-tag">Discrete Mathematics</span><span class="spec-tag">Algorithms</span><span class="spec-tag">Cryptography &amp; Security</span><span class="spec-tag">PhD — IIT Guwahati</span></td>
         </tr>
-        <!-- 6 -->
         <tr>
           <td>6</td>
           <td class="fac-photo-cell">
             <div class="fac-photo-wrap">
-              <div class="fac-photo"><img src="prakash.jpeg" alt="Dr." onerror="this.style.display='none'"></div>
+              <div class="fac-photo"><img src="prakash.jpeg" alt="Dr. Prakash Kumar" onerror="this.style.display='none'">👤</div>
               <a href="#" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
             </div>
           </td>
-          <td class="td-name-fac">Dr. Prakash Kumar<br><span style="font-weight:400;font-size:.72rem;color:var(--td60)">Assistant Professor</span></td>
-          <td><span class="spec-tag">Network Security, Data Comunication and Computer</span><span class="spec-tag">PhD (B.R.A.B.U)</span></td>
+          <td><div class="td-name-fac">Dr. Prakash Kumar</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Assistant Professor</span></td>
+          <td><span class="spec-tag">Network Security</span><span class="spec-tag">Data Communication</span><span class="spec-tag">PhD — B.R.A.B.U</span></td>
         </tr>
       </tbody>
     </table>
@@ -822,22 +839,18 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
 
 <!-- ══════ B.Sc. PROGRAMS ══════ -->
 <section id="bsc-sec" class="prog-sec sec bg-white">
-  <div class="prog-sec-hd rev">
-    <span class="prog-sec-icon"></span>
-    <div>
-      <div class="sec-lbl">5 yrs integrated UG &amp; PG</div>
-      <div class="prog-sec-title">B.Sc. Computer Science</div>
+      <div class="sec-lbl">5 yrs Integrated UG &amp; PG</div>
+      <div class="prog-sec-title">UG - PG in Computer Science</div>
     </div>
   </div>
   <div class="prog-container">
-
     <div class="prog-card rev">
       <div class="prog-card-top">
         <div>
           <div class="prog-card-title">B.Sc. (Hons.) Computer Science</div>
-          <div class="prog-card-sub">Five-year honours programme covering fundamentals of computing, programming, and applied technology.</div>
+          <div class="prog-card-sub">Five-year integrated honours programme covering fundamentals of computing, programming, and applied technology.</div>
         </div>
-        <span class="prog-badge ug">UG-PG integrated</span>
+        <span class="prog-badge ug">UG-PG Integrated</span>
       </div>
       <div class="prog-meta">
         <span class="prog-meta-item">5 Years (10 Semesters)</span>
@@ -847,35 +860,30 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
       </div>
       <p class="prog-desc">The B.Sc. (Hons.) Computer Science programme provides a rigorous foundation in programming languages, data structures, algorithms, operating systems, database management, and computer networks. Students are introduced to modern fields like web development, mobile computing, and introductory artificial intelligence. The programme follows NEP 2020 with multiple exit options and credit-based flexibility.</p>
       <div class="prog-footer">
-        <div style="font-size:.76rem;color:var(--td60)">Core subjects: C/C++, Java, Data Structures, DBMS, OS, Networks, Discrete Mathematics</div>
+        <div style="font-size:.76rem;color:var(--tx-muted)">Core subjects: C/C++, Java, Data Structures, DBMS, OS, Networks, Discrete Mathematics</div>
         <a href="#" class="prog-syllabus-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Download Syllabus
         </a>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ══════ M.Sc. CS PROGRAMS ══════ -->
+<!-- ══════ M.Sc. CS ══════ -->
 <section id="msc-sec" class="prog-sec sec bg-soft">
-  <div class="prog-sec-hd rev">
-    <span class="prog-sec-icon"></span>
-    <div>
       <div class="sec-lbl">Postgraduate</div>
       <div class="prog-sec-title">M.Sc. Computer Science</div>
     </div>
   </div>
   <div class="prog-container">
-
     <div class="prog-card rev">
       <div class="prog-card-top">
         <div>
           <div class="prog-card-title">M.Sc. Computer Science</div>
           <div class="prog-card-sub">Advanced postgraduate programme for deep specialisation in core and applied computer science.</div>
         </div>
-        <span class="prog-badge pg"> Postgraduate</span>
+        <span class="prog-badge pg">Postgraduate</span>
       </div>
       <div class="prog-meta">
         <span class="prog-meta-item">2 Years (4 Semesters)</span>
@@ -885,73 +893,63 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
       </div>
       <p class="prog-desc">The M.Sc. Computer Science programme at CUSB is designed for graduates who wish to deepen their understanding of advanced algorithms, computer architecture, distributed systems, machine learning, and research methodologies. The programme emphasizes independent research culminating in a dissertation project in the final semester, equipping students for careers in research, academia, and industry.</p>
       <div class="prog-footer">
-        <div style="font-size:.76rem;color:var(--td60)">Advanced Algorithms · Distributed Systems · ML · Cloud Computing · Research Dissertation</div>
+        <div style="font-size:.76rem;color:var(--tx-muted)">Advanced Algorithms · Distributed Systems · ML · Cloud Computing · Research Dissertation</div>
         <a href="https://www.cusb.ac.in/images/dept/computer_science/Syllabus/Msc_cs_syllabus.pdf" target="_blank" class="prog-syllabus-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Download Syllabus
         </a>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ══════ M.Sc. AI PROGRAMS ══════ -->
+<!-- ══════ M.Sc. AI ══════ -->
 <section id="msc-ai-sec" class="prog-sec sec bg-white">
-  <div class="prog-sec-hd rev">
-    <span class="prog-sec-icon"></span>
-    <div>
       <div class="sec-lbl">Postgraduate · New Programme</div>
       <div class="prog-sec-title">M.Sc. Artificial Intelligence</div>
     </div>
   </div>
   <div class="prog-container">
-
     <div class="prog-card rev">
       <div class="prog-card-top">
         <div>
           <div class="prog-card-title">M.Sc. Artificial Intelligence</div>
           <div class="prog-card-sub">India's growing AI ecosystem needs specialised talent. CUSB's M.Sc. AI programme delivers exactly that.</div>
         </div>
-        <span class="prog-badge ai"> M.Sc. AI</span>
+        <span class="prog-badge ai">M.Sc. AI</span>
       </div>
       <div class="prog-meta">
         <span class="prog-meta-item">2 Years (4 Semesters)</span>
         <span class="prog-meta-item">20 Seats</span>
         <span class="prog-meta-item">CUET (PG)</span>
-        <span class="prog-meta-item">>B.Sc. CS / BCA / B.Tech. (CS/IT)</span>
+        <span class="prog-meta-item">B.Sc. CS / BCA / B.Tech. (CS/IT)</span>
       </div>
       <p class="prog-desc">The M.Sc. Artificial Intelligence programme at CUSB is a cutting-edge postgraduate degree designed to equip students with the theoretical foundations and practical skills needed to build, deploy, and evaluate intelligent systems. Covering deep learning, natural language processing, computer vision, reinforcement learning, and AI ethics — this programme prepares students for careers in AI research, product companies, and national AI missions.</p>
       <div class="prog-footer">
-        <div style="font-size:.76rem;color:var(--td60)">Deep Learning · NLP · Computer Vision · RL · PyTorch · TensorFlow · AI Ethics · Capstone Project</div>
+        <div style="font-size:.76rem;color:var(--tx-muted)">Deep Learning · NLP · Computer Vision · RL · PyTorch · TensorFlow · AI Ethics · Capstone Project</div>
         <a href="https://www.cusb.ac.in/images/dept/computer_science/Syllabus/MScAI_Syllabus_whole.pdf" target="_blank" class="prog-syllabus-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Download Syllabus
         </a>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ══════ Ph.D. PROGRAMS ══════ -->
+<!-- ══════ Ph.D. ══════ -->
 <section id="phd-sec" class="prog-sec sec bg-soft">
-  <div class="prog-sec-hd rev">
-    <span class="prog-sec-icon"></span>
-    <div>
       <div class="sec-lbl">Doctoral Research</div>
       <div class="prog-sec-title">Ph.D. Programme</div>
     </div>
   </div>
   <div class="prog-container">
-
     <div class="prog-card rev">
       <div class="prog-card-top">
         <div>
           <div class="prog-card-title">PhD — Computer Science</div>
           <div class="prog-card-sub">Full-time and part-time doctoral research across all areas of computer science and AI.</div>
         </div>
-        <span class="prog-badge phd"> Ph.D.</span>
+        <span class="prog-badge phd">Ph.D.</span>
       </div>
       <div class="prog-meta">
         <span class="prog-meta-item">3 – 5 Years</span>
@@ -961,77 +959,36 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
       </div>
       <p class="prog-desc">The Ph.D. programme in Computer Science at CUSB offers full-time and part-time doctoral research under the guidance of experienced faculty. Research areas include artificial intelligence, machine learning, computer vision, natural language processing, network security, distributed computing, bioinformatics, and computational theory. Scholars receive CUET-NET/JRF fellowships as applicable.</p>
       <div class="prog-footer">
-        <div style="font-size:.76rem;color:var(--td60)">Research Areas: AI · ML · Security · Distributed Systems · Bioinformatics · Theory of Computation</div>
-        <a href="https://www.cusb.ac.in/images/dept/computer_science/Syllabus/Phd_Syllabus_Computer_Science.pdf" class="prog-syllabus-btn">
+        <div style="font-size:.76rem;color:var(--tx-muted)">Research Areas: AI · ML · Security · Distributed Systems · Bioinformatics · Theory of Computation</div>
+        <a href="https://www.cusb.ac.in/images/dept/computer_science/Syllabus/Phd_Syllabus_Computer_Science.pdf" target="_blank" class="prog-syllabus-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Download Syllabus
         </a>
       </div>
     </div>
-
-
-
   </div>
 </section>
 
-<!-- ══════ GALLERY — Collage Form ══════ -->
+<!-- ══════ GALLERY ══════ -->
 <section id="gallery-sec">
   <div class="gallery-hd rev">
     <div class="sec-lbl">Department Memories</div>
-    <h2 class="sec-title" style="font-family:var(--fd);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:600;letter-spacing:-.02em;line-height:1.12;color:var(--td);margin-bottom:10px">Life in the CS Department</h2>
-    <p class="sec-sub" style="margin:0 auto;text-align:center;color:var(--td60)">Workshops, hackathons, convocations, and everyday moments — captured in frames.</p>
+    <h2 class="sec-title">Life in the CS Department</h2>
+    <p class="sec-sub" style="margin:0 auto;text-align:center">Workshops, hackathons, convocations, and everyday moments — captured in frames.</p>
   </div>
-
-  <!-- Collage: 12 cells with touching borders, randomised sizes via CSS -->
   <div class="collage-grid">
-    <div class="collage-cell">
-      <img src="aryabhatta.jpeg" alt="Hackathon 2025" onerror="this.style.display='none'">
-      <div class="collage-label">Hackathon 2025</div>
-    </div>
-    <div class="collage-cell">
-      <img src="admin.jpeg" alt="AI Workshop" onerror="this.style.display='none'">
-      <div class="collage-label">AI Workshop</div>
-    </div>
-    <div class="collage-cell">
-      <img src="malviya.jpeg" alt="Lab Sessions" onerror="this.style.display='none'">
-      <div class="collage-label">Lab Sessions</div>
-    </div>
-    <div class="collage-cell">
-      <img src="cs_lab.jpg" alt="Convocation" onerror="this.style.display='none'">
-      <div class="collage-label">Convocation Day</div>
-    </div>
-    <div class="collage-cell">
-      <img src="sports.jpeg" alt="Guest Lecture" onerror="this.style.display='none'">
-      <div class="collage-label">Guest Lecture</div>
-    </div>
-    <div class="collage-cell">
-      <img src="opengym.jpeg" alt="Code Sprint" onerror="this.style.display='none'">
-      <div class="collage-label">Code Sprint</div>
-    </div>
-    <div class="collage-cell">
-      <img src="gargi sadan.jpg" alt="Research Symposium" onerror="this.style.display='none'">
-      <div class="collage-label">Research Symposium</div>
-    </div>
-    <div class="collage-cell">
-      <img src="#" alt="Faculty Meet" onerror="this.style.display='none'">
-      <div class="collage-label">Faculty Meet</div>
-    </div>
-    <div class="collage-cell">
-      <img src="cs_g9.jpg" alt="Project Demo" onerror="this.style.display='none'">
-      <div class="collage-label">Project Demo Day</div>
-    </div>
-    <div class="collage-cell">
-      <img src="admin_good.jpeg" alt="Campus Life" onerror="this.style.display='none'">
-      <div class="collage-label">Campus Life</div>
-    </div>
-    <div class="collage-cell">
-      <img src="cs_g11.jpg" alt="Fresher Welcome" onerror="this.style.display='none'">
-      <div class="collage-label">Fresher's Welcome</div>
-    </div>
-    <div class="collage-cell">
-      <img src="malviya.jpeg" alt="Annual Fest" onerror="this.style.display='none'">
-      <div class="collage-label">Annual Fest</div>
-    </div>
+    <div class="collage-cell"><img src="aryabhatta.jpeg" alt="Aryabhatta Building" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"><img src="admin.jpeg" alt="Admin Block" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"><img src="malviya.jpeg" alt="Malviya Block" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"><img src="cs_lab.jpg" alt="CS Lab" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"><img src="sports.jpeg" alt="Sports Ground" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"><img src="opengym.jpeg" alt="Open Gym" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"><img src="gargi sadan.jpg" alt="Gargi Sadan" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"></div>
+    <div class="collage-cell"></div>
+    <div class="collage-cell"><img src="admin_good.jpeg" alt="Campus Life" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"></div>
+    <div class="collage-cell"><img src="malviya.jpeg" alt="Annual Fest" onerror="this.style.display='none'"></div>
   </div>
 </section>
 
@@ -1053,43 +1010,37 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
 <footer id="footer">
   <div class="footer-grid">
     <div>
-      <div class="fb-name">Central University of South Bihar</div>
-      <p class="fb-desc">An institution of higher learning under the Ministry of Education, Government of India — committed to excellence, equity, and national development.</p>
+      <div class="fb-name">Dept. of Computer Science — CUSB</div>
+      <p class="fb-desc">School of Mathematics, Statistics &amp; Computer Science, Central University of South Bihar, Panchanpur, Gaya, Bihar – 824236.</p>
       <div class="fb-contact">
+        <a href="mailto:cs@cusb.ac.in">✉ cs@cusb.ac.in</a>
         <a href="tel:06312229530">☎ 0631-2229 530</a>
-        <a href="mailto:admission@cusb.ac.in">✉ admission@cusb.ac.in</a>
-        <a href="mailto:webmaster@cusb.ac.in">✉ webmaster@cusb.ac.in</a>
-        <span>📍 Panchanpur, Gaya, Bihar – 824236</span>
+        <span>📍 CUSB Campus, Panchanpur, Gaya</span>
       </div>
     </div>
     <div>
       <div class="fc-h5">About</div>
       <ul class="fc-ul">
-        <li><a href="#about">The University</a></li>
+        <li><a href="#dept-info">The Department</a></li>
+        <li><a href="about.html">About CUSB</a></li>
       </ul>
     </div>
     <div>
-      <div class="fc-h5">Academics</div>
+      <div class="fc-h5">Programs</div>
       <ul class="fc-ul">
-        <li><a href="#departments">All Departments</a></li>
-        <li><a href="#departments">Programs</a></li>
-        <li><a href="v1.html#notices-sec">Exam Notices</a></li>
-        <li><a href="#notices-sec">Results</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="fc-h5">Students</div>
-      <ul class="fc-ul">
-        <li><a href="#cta-sec">Admissions 2026–27</a></li>
-        <li><a href="#quicklinks">Scholarship</a></li>
-        <li><a href="Hostel.html">Hostel</a></li>
+        <li><a href="#bsc-sec">B.Sc. Computer Science</a></li>
+        <li><a href="#msc-sec">M.Sc. Computer Science</a></li>
+        <li><a href="#msc-ai-sec">M.Sc. Artificial Intelligence</a></li>
+        <li><a href="#phd-sec">Ph.D. Programme</a></li>
       </ul>
     </div>
     <div>
       <div class="fc-h5">Quick Links</div>
       <ul class="fc-ul">
-        <li><a href="index.html#notices-sec">IQAC</a></li>
-        <li><a href="index.html#gallery">Photo Gallery</a></li>
+        <li><a href="index.html#notices-sec">NAAC / IQAC</a></li>
+        <li><a href="index.html#quicklinks">Student Resources</a></li>
+        <li><a href="#">Webmail</a></li>
+        <li><a href="#">RTI</a></li>
       </ul>
     </div>
     <div class="social_media">
@@ -1107,9 +1058,8 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
       <img src="map.jpeg" alt="map">
     </a>
   </div>
-
   <div class="footer-bottom">
-    <span>© 2025 Central University of South Bihar, Gaya, India. All rights reserved.</span>
+    <span>© 2025 Department of Computer Science, Central University of South Bihar. All rights reserved.</span>
     <div class="acc-row">
       <span class="acc-badge">NAAC</span>
       <span class="acc-badge">NEP 2020</span>
@@ -1120,7 +1070,7 @@ footer{background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));border-to
 </footer>
 
 <script>
-/* NAV SCROLL GLASS */
+/* NAV SCROLL */
 window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('sc',window.scrollY>60)},{passive:true});
 
 /* SMOOTH SCROLL */
