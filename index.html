@@ -86,7 +86,7 @@
       /* layout */
       --ticker-h: 36px;
       --topbar-h: 40px;
-      --nav-h: 56px;
+      --nav-h: 40px;
       --offset: calc(var(--ticker-h) + var(--nav-h) + 12px);
 
       /* compat aliases */
@@ -496,7 +496,7 @@
       z-index: 800;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       gap: 16px;
       padding: 10px 3vw;
       pointer-events: none;
@@ -1307,6 +1307,8 @@
       justify-items: start;
       position: relative;
       transition: background .4s;
+      max-width: 1276px;
+      margin: 0 auto;
     }
 
     /* subtle recessed grid texture */
@@ -1481,7 +1483,7 @@
     }
 
     .hero-img-box {
-      width: 85%;
+      width: 100%;
       border-radius: var(--r-lg);
       overflow: hidden;
       aspect-ratio: 4/3;
@@ -3283,6 +3285,229 @@
     }
 
     /* ──────────────────────────────────────
+   CHATBOT WIDGET
+   Floating neumorphic chat assistant
+────────────────────────────────────── */
+    .chatbot-container {
+      position: fixed;
+      bottom: 100px;
+      right: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 998;
+      max-width: 380px;
+    }
+
+    .chatbot-toggle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--acc);
+      border: 1px solid var(--nm-border);
+      box-shadow: var(--nm-out-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all .3s cubic-bezier(.16, 1, .3, 1);
+      align-self: flex-end;
+      margin-right: 0;
+    }
+
+    .chatbot-toggle:hover {
+      box-shadow: var(--nm-out);
+    }
+
+    [data-theme="dark"] .chatbot-toggle {
+      border-color: rgba(255, 106, 0, .08);
+      box-shadow: var(--nm-out-sm);
+    }
+
+    [data-theme="dark"] .chatbot-toggle:hover {
+      box-shadow: 0 0 20px rgba(255, 106, 0, .25), var(--nm-out-sm);
+    }
+
+    .chatbot-window {
+      background: var(--nm-bg);
+      border: 1px solid var(--nm-border);
+      border-radius: var(--r-md);
+      box-shadow: var(--nm-out);
+      display: flex;
+      flex-direction: column;
+      max-height: 500px;
+      min-height: 400px;
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(.9) translateY(20px);
+      transform-origin: bottom right;
+      transition: all .3s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .chatbot-window.active {
+      opacity: 1;
+      pointer-events: all;
+      transform: scale(1) translateY(0);
+    }
+
+    [data-theme="dark"] .chatbot-window {
+      box-shadow: 10px 10px 26px #0e1016, -10px -10px 26px #2e3140;
+      border-color: rgba(255, 106, 0, .06);
+    }
+
+    .chatbot-header {
+      background: linear-gradient(135deg, var(--acc), var(--acc2));
+      color: white;
+      padding: 16px;
+      border-radius: var(--r-md) var(--r-md) 0 0;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    [data-theme="dark"] .chatbot-header {
+      background: linear-gradient(135deg, #FF6A00, #FF8C42);
+    }
+
+    .chatbot-close {
+      background: rgba(255, 255, 255, .2);
+      border: none;
+      color: white;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all .2s;
+    }
+
+    .chatbot-close:hover {
+      background: rgba(255, 255, 255, .3);
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .chatbot-message {
+      display: flex;
+      gap: 8px;
+      animation: slideUp .3s ease-out;
+    }
+
+    .chatbot-message.user {
+      justify-content: flex-end;
+    }
+
+    .chatbot-message-bubble {
+      max-width: 70%;
+      padding: 10px 14px;
+      border-radius: 14px;
+      font-size: .85rem;
+      line-height: 1.4;
+      word-wrap: break-word;
+    }
+
+    .chatbot-message.bot .chatbot-message-bubble {
+      background: var(--nm-bg-alt);
+      color: var(--tx-primary);
+      border: 1px solid var(--nm-border);
+    }
+
+    .chatbot-message.user .chatbot-message-bubble {
+      background: var(--acc);
+      color: white;
+    }
+
+    [data-theme="dark"] .chatbot-message.bot .chatbot-message-bubble {
+      background: #262830;
+      border-color: rgba(255, 106, 0, .1);
+    }
+
+    [data-theme="dark"] .chatbot-message.user .chatbot-message-bubble {
+      background: #FF6A00;
+    }
+
+    .chatbot-input-group {
+      padding: 12px;
+      border-top: 1px solid var(--nm-border);
+      display: flex;
+      gap: 8px;
+    }
+
+    .chatbot-input-group input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid var(--nm-border);
+      border-radius: 20px;
+      background: var(--nm-bg-sec);
+      color: var(--tx-primary);
+      font-family: var(--fb);
+      font-size: .85rem;
+      transition: all .2s;
+    }
+
+    .chatbot-input-group input:focus {
+      outline: none;
+      border-color: var(--acc);
+      box-shadow: 0 0 0 3px rgba(246, 150, 72, .12);
+    }
+
+    .chatbot-input-group button {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--acc);
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      transition: all .2s;
+    }
+
+    .chatbot-input-group button:hover {
+      box-shadow: var(--nm-out-sm);
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media(max-width:768px) {
+      .chatbot-container {
+        bottom: 84px;
+        right: 20px;
+        max-width: 320px;
+      }
+
+      .chatbot-window {
+        min-height: 350px;
+        max-height: 450px;
+      }
+    }
+
+    /* ──────────────────────────────────────
    SCROLL TO TOP/BOTTOM BUTTON
    Neumorphic floating action button
 ────────────────────────────────────── */
@@ -3356,9 +3581,9 @@
     @media(max-width:768px) {
       #scroll-btn {
         bottom: 28px;
-        right: 28px;
-        width: 48px;
-        height: 48px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
       }
 
       #scroll-btn svg {
@@ -4044,6 +4269,28 @@
     </div>
   </footer>
 
+  <!-- ══════ CHATBOT WIDGET ══════ -->
+  <div class="chatbot-container" id="chatbot-container">
+    <div class="chatbot-window" id="chatbot-window">
+      <div class="chatbot-header">
+        <span>CUSB Assistant 🤖</span>
+        <button class="chatbot-close" id="chatbot-close" aria-label="Close chat">×</button>
+      </div>
+      <div class="chatbot-messages" id="chatbot-messages">
+        <div class="chatbot-message bot">
+          <div class="chatbot-message-bubble">
+            Hi! 👋 I'm the CUSB Assistant. Ask me about admissions, programs, campus, or anything about the university!
+          </div>
+        </div>
+      </div>
+      <div class="chatbot-input-group">
+        <input type="text" id="chatbot-input" placeholder="Ask me anything..." aria-label="Chat input">
+        <button id="chatbot-send" aria-label="Send message">→</button>
+      </div>
+    </div>
+    <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open chat">🤖</button>
+  </div>
+
   <!-- ══════ SCROLL TO TOP/BOTTOM BUTTON ══════ -->
   <button id="scroll-btn" class="to-top" aria-label="Scroll to top" title="Scroll to top">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -4094,6 +4341,116 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         window.scrollTo({ top: maxScroll, behavior: 'smooth' });
+      }
+    });
+
+    /* ─────────────────────────────────────
+       CHATBOT WIDGET
+    ───────────────────────────────────── */
+    const chatbotToggle = document.getElementById('chatbot-toggle');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const chatbotClose = document.getElementById('chatbot-close');
+    const chatbotInput = document.getElementById('chatbot-input');
+    const chatbotSend = document.getElementById('chatbot-send');
+    const chatbotMessages = document.getElementById('chatbot-messages');
+
+    // Pre-defined Q&A pairs
+    const chatbotQA = {
+      'admissions': {
+        keywords: ['admission', 'apply', 'apply now', 'how to apply', 'application', 'enroll', 'registration'],
+        response: 'You can apply for 2026–27 admissions through our portal. Visit the Admissions 2026–27 section or click "Apply for 2026–27" button. For more details, visit about.html or contact admission@cusb.ac.in or 0631-2229 530.'
+      },
+      'programs': {
+        keywords: ['program', 'course', 'degree', 'academic', 'study', 'major', 'bachelor', 'master'],
+        response: 'CUSB offers 51+ academic programmes across various disciplines. Visit the Academics section to explore all programs and departments. You can also check academics.html for detailed information.'
+      },
+      'campus': {
+        keywords: ['campus', 'location', 'facilities', 'infrastructure', 'hostel', 'library', 'lab'],
+        response: 'Our 300-acre permanent campus is located at Panchanpur, approximately 15 km from Gaya, Bihar. It features state-of-the-art facilities including libraries, labs, hostels, and recreational areas. Visit campus.html for more details.'
+      },
+      'about': {
+        keywords: ['about', 'university', 'cusb', 'history', 'mission', 'vision', 'information'],
+        response: 'Central University of South Bihar (CUSB) is one of 54 Central Universities under the Ministry of Education. We are committed to excellence, equity, and national development. Visit about.html to learn more.'
+      },
+      'contact': {
+        keywords: ['contact', 'phone', 'email', 'address', 'telephone', 'message', 'reach'],
+        response: 'Phone: 0631-2229 530 | Email: admission@cusb.ac.in or webmaster@cusb.ac.in | Address: Panchanpur, Gaya, Bihar – 824236. You can also use the Contact Helpdesk option.'
+      },
+      'hostel': {
+        keywords: ['hostel', 'accommodation', 'dormitory', 'residence', 'living'],
+        response: 'CUSB provides quality hostel facilities for both boys and girls. For details about hostel operations, wardens, and facilities, visit hostel.html or contact the hostel administration.'
+      },
+      'events': {
+        keywords: ['event', 'happening', 'schedule', 'seminar', 'conference', 'festival'],
+        response: 'Check out our Events section for ongoing and upcoming activities at CUSB. Visit events.html to stay updated about seminars, conferences, cultural programs, and other university events.'
+      },
+      'scholarship': {
+        keywords: ['scholarship', 'financial aid', 'fee', 'fee waiver', 'support'],
+        response: 'CUSB offers various scholarship programs for eligible students. Visit the Students section or quicklinks for scholarship information, or contact admission@cusb.ac.in for details.'
+      },
+      'placement': {
+        keywords: ['placement', 'job', 'career', 'recruitment', 'intern'],
+        response: 'Our Placement Cell supports career development and placement opportunities for students. Visit the Students section or quicklinks for placement cell information and opportunities.'
+      },
+      'default': 'I can help with questions about admissions, programs, campus facilities, accommodation, events, and more. What would you like to know?'
+    };
+
+    function findAnswer(userMessage) {
+      const lowerMessage = userMessage.toLowerCase();
+      
+      for (const [key, value] of Object.entries(chatbotQA)) {
+        if (key !== 'default') {
+          if (value.keywords.some(keyword => lowerMessage.includes(keyword))) {
+            return value.response;
+          }
+        }
+      }
+      
+      return chatbotQA.default;
+    }
+
+    function addMessage(text, isUser = false) {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
+      messageDiv.innerHTML = `<div class="chatbot-message-bubble">${text}</div>`;
+      chatbotMessages.appendChild(messageDiv);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    function sendMessage() {
+      const message = chatbotInput.value.trim();
+      if (!message) return;
+
+      addMessage(message, true);
+      chatbotInput.value = '';
+
+      // Simulate typing delay
+      setTimeout(() => {
+        const response = findAnswer(message);
+        addMessage(response, false);
+      }, 500);
+    }
+
+    // Toggle chatbot window
+    chatbotToggle.addEventListener('click', () => {
+      chatbotWindow.classList.toggle('active');
+      if (chatbotWindow.classList.contains('active')) {
+        chatbotInput.focus();
+      }
+    });
+
+    // Close chatbot
+    chatbotClose.addEventListener('click', () => {
+      chatbotWindow.classList.remove('active');
+    });
+
+    // Send message on button click
+    chatbotSend.addEventListener('click', sendMessage);
+
+    // Send message on Enter key
+    chatbotInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
       }
     });
 
