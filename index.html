@@ -5113,12 +5113,14 @@
       if (currentFontSize > 80) {
         applyFontSize(currentFontSize - 10);
       }
+      decreaseBtn.blur();
     });
 
     increaseBtn.addEventListener('click', () => {
       if (currentFontSize < 150) {
         applyFontSize(currentFontSize + 10);
       }
+      increaseBtn.blur();
     });
 
     // Update display on window resize
