@@ -446,6 +446,81 @@
       opacity: .25
     }
 
+    .font-size-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .font-size-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      background: var(--nm-bg);
+      border: 1px solid var(--nm-border);
+      box-shadow: var(--nm-out-sm);
+      color: var(--tx-secondary);
+      cursor: pointer;
+      font-size: .75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .2s, box-shadow .2s, background .2s, color .2s;
+    }
+
+    .font-size-btn:hover {
+      transform: translateY(-1px);
+      background: var(--nm-bg-alt);
+      color: var(--acc);
+      box-shadow: var(--nm-in-sm);
+    }
+
+    .font-size-btn:focus {
+      outline: none;
+      box-shadow: var(--nm-out-sm);
+    }
+
+    [data-theme="dark"] .font-size-btn {
+      background: var(--nm-bg-sec);
+      border-color: rgba(255, 255, 255, .08);
+      box-shadow: var(--nm-out-sm);
+      color: var(--tx-secondary);
+    }
+
+    [data-theme="dark"] .font-size-btn:hover {
+      transform: translateY(-1px);
+      background: var(--nm-bg);
+      color: #FF8C42;
+      box-shadow: var(--nm-in-sm);
+    }
+
+    .font-size-btn:active {
+      transform: translateY(0);
+      box-shadow: var(--nm-in-sm);
+    }
+
+    .font-size-btn:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+      box-shadow: var(--nm-out-sm);
+      transform: none;
+    }
+
+    .font-size-btn:disabled:hover {
+      background: var(--nm-bg);
+      color: var(--tx-secondary);
+      border-color: var(--nm-border);
+      box-shadow: var(--nm-out-sm);
+    }
+
+    [data-theme="dark"] .font-size-btn:disabled:hover {
+      background: var(--nm-bg-sec);
+      color: var(--tx-secondary);
+      border-color: rgba(255, 255, 255, .08);
+      box-shadow: var(--nm-out-sm);
+    }
+
     .tb-r {
       display: flex;
       gap: 12px;
@@ -513,7 +588,7 @@
       border: 1px solid var(--nm-border);
       padding: 8px 16px;
       width: 100%;
-      max-width: 980px;
+      max-width: 1100px;
       flex: 1;
       min-height: var(--nav-h);
       transition: box-shadow .3s, background .4s;
@@ -649,6 +724,10 @@
       outline: none;
       border-color: var(--acc);
       box-shadow: 0 0 0 4px rgba(246, 150, 72, .12);
+    }
+
+    [data-theme="dark"] .nav-search-input {
+      color: #1e2236;
     }
 
     .nav-search-submit {
@@ -1305,8 +1384,7 @@
       justify-items: start;
       position: relative;
       transition: background .4s;
-      max-width: 1276px;
-      margin: 0 auto;
+      width: 100%;
     }
 
     /* subtle recessed grid texture */
@@ -1477,11 +1555,13 @@
 
     /* Hero image — deeply framed */
     .hero-img-wrap {
-      animation: fadeUp .7s .4s both
+      animation: fadeUp .7s .4s both;
+      margin-left: auto;
     }
 
     .hero-img-box {
       width: 100%;
+      max-width: 560px;
       border-radius: var(--r-lg);
       overflow: hidden;
       aspect-ratio: 4/3;
@@ -3479,7 +3559,7 @@
     <div class="tb-l">
       <span>0631-2229 530</span>
       <span class="tb-sep">|</span>
-      <a href="mailto:admission@cusb.ac.in">✉ admission@cusb.ac.in</a>
+      <a href="mailto:admission@cusb.ac.in"> admission@cusb.ac.in</a>
       <span class="tb-sep">|</span>
       <a href="https://rtionline.gov.in/" target="_blank">RTI</a>
       <span class="tb-sep">|</span>
@@ -3492,6 +3572,11 @@
       <a href="http://naac.gov.in/" target="_blank">NAAC</a>
     </div>
     <div class="tb-r">
+      <div class="font-size-controls">
+        <button class="font-size-btn" id="font-decrease-btn" title="Decrease font size" aria-label="Decrease font size">−</button>
+        <span style="font-size: .75rem; color: var(--tx-secondary);">A</span>
+        <button class="font-size-btn" id="font-increase-btn" title="Increase font size" aria-label="Increase font size">+</button>
+      </div>
       <div class="credits"><img src="NAAC.png" loading="lazy" onerror="this.style.display='none'"></div>
       <div class="credits"><img src="viksit.png" loading="lazy" onerror="this.style.display='none'"></div>
     </div>
@@ -3511,6 +3596,8 @@
         <li><a href="#about">About</a></li>
         <li><a href="#leadership">Administration</a></li>
         <li><a href="#departments">Academics</a></li>
+        <li><a href="#alumni">Alumni</a></li>
+        <li><a href="#alumni">Research</a></li>
         <li><a href="#campus">Campus</a></li>
         <li><a href="#notices-sec">IQAC</a></li>
         <li><a href="#quicklinks">Students</a></li>
@@ -4595,6 +4682,41 @@
       requestAnimationFrame(() => { updateCardStyles(); loop(); });
 
     })();
+
+    /* ─────────────────────────────────────
+       FONT SIZE CONTROL
+    ───────────────────────────────────── */
+    const decreaseBtn = document.getElementById('font-decrease-btn');
+    const increaseBtn = document.getElementById('font-increase-btn');
+    const root = document.documentElement;
+
+    // Get saved font size from localStorage or default to 100%
+    let currentFontSize = parseInt(localStorage.getItem('fontSizePercent') || '100');
+
+    // Initialize with saved font size
+    applyFontSize(currentFontSize);
+
+    function applyFontSize(percent) {
+      root.style.fontSize = percent + '%';
+      currentFontSize = percent;
+      localStorage.setItem('fontSizePercent', percent.toString());
+      
+      // Update button states
+      decreaseBtn.disabled = percent <= 80;
+      increaseBtn.disabled = percent >= 150;
+    }
+
+    decreaseBtn.addEventListener('click', () => {
+      if (currentFontSize > 80) {
+        applyFontSize(currentFontSize - 10);
+      }
+    });
+
+    increaseBtn.addEventListener('click', () => {
+      if (currentFontSize < 150) {
+        applyFontSize(currentFontSize + 10);
+      }
+    });
   </script>
 </body>
 
