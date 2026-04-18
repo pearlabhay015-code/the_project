@@ -338,7 +338,7 @@
       gap: 8px;
       padding: 0 24px;
       height: var(--ticker-h);
-      font-size: .70rem;
+      font-size: .90rem;
       font-weight: 500;
       color: rgba(255, 255, 255, .92);
       white-space: nowrap;
@@ -405,7 +405,7 @@
       gap: 16px;
       align-items: center;
       justify-items: stretch;
-      font-size: .72rem;
+      font-size: .88rem;
       color: var(--tx-secondary);
       box-shadow: 0 3px 10px rgba(0, 0, 0, .10), 0 1px 0 var(--nm-border) inset;
       transition: background .4s;
@@ -618,8 +618,9 @@
 
     .nav-search-bar {
       position: relative;
-      width: 280px;
-      flex-shrink: 0;
+      width: 100%;
+      max-width: 400px;
+      margin: 5px auto 0;
       padding: 8px 14px;
       border-radius: 28px;
       pointer-events: all;
@@ -2358,7 +2359,8 @@
     #gov_sites {
       background: var(--nm-bg-sec);
       padding: 52px 20px;
-      overflow: hidden
+      overflow: hidden;
+      text-align: center;
     }
 
     [data-theme="dark"] #gov_sites {
@@ -2727,7 +2729,7 @@
       }
 
       .tb-img-slot {
-        height: 54px
+        height: 64px
       }
 
       :root {
@@ -2852,6 +2854,17 @@
     }
 
     /* ──────────────────────────────────────
+   RESPONSIVE — TABLET 769px–960px
+────────────────────────────────────── */
+    @media(min-width:769px) and (max-width:960px) {
+      .nav-search-bar {
+        width: auto;
+        max-width: 500px;
+        margin: 5px 0 0 3vw;
+      }
+    }
+
+    /* ──────────────────────────────────────
    RESPONSIVE — MOBILE ≤640px
 ────────────────────────────────────── */
     @media(max-width:640px) {
@@ -2961,7 +2974,7 @@
 
       .t-item {
         padding: 0 14px;
-        font-size: .62rem
+        font-size: .72rem
       }
 
       .students_site_link {
@@ -3071,7 +3084,7 @@
 
       .tb-l {
         gap: 4px;
-        font-size: .65rem
+        font-size: .75rem
       }
 
       .tb-l span:not(.tb-sep),
@@ -3283,229 +3296,6 @@
     }
 
     /* ──────────────────────────────────────
-   CHATBOT WIDGET
-   Floating neumorphic chat assistant
-────────────────────────────────────── */
-    .chatbot-container {
-      position: fixed;
-      bottom: 100px;
-      right: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      z-index: 998;
-      max-width: 380px;
-    }
-
-    .chatbot-toggle {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background:var(--acc);
-      border: 1px solid var(--nm-border);
-      box-shadow: var(--nm-out-sm);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      transition: all .3s cubic-bezier(.16, 1, .3, 1);
-      align-self: flex-end;
-      margin-right: 0;
-    }
-
-    .chatbot-toggle:hover {
-      box-shadow: var(--nm-out);
-    }
-
-    [data-theme="dark"] .chatbot-toggle {
-      border-color: rgba(255, 106, 0, .08);
-      box-shadow: var(--nm-out-sm);
-    }
-
-    [data-theme="dark"] .chatbot-toggle:hover {
-      box-shadow: 0 0 20px rgba(255, 106, 0, .25), var(--nm-out-sm);
-    }
-
-    .chatbot-window {
-      background: var(--nm-bg);
-      border: 1px solid var(--nm-border);
-      border-radius: var(--r-md);
-      box-shadow: var(--nm-out);
-      display: flex;
-      flex-direction: column;
-      max-height: 500px;
-      min-height: 400px;
-      opacity: 0;
-      pointer-events: none;
-      transform: scale(.9) translateY(20px);
-      transform-origin: bottom right;
-      transition: all .3s cubic-bezier(.16, 1, .3, 1);
-    }
-
-    .chatbot-window.active {
-      opacity: 1;
-      pointer-events: all;
-      transform: scale(1) translateY(0);
-    }
-
-    [data-theme="dark"] .chatbot-window {
-      box-shadow: 10px 10px 26px #0e1016, -10px -10px 26px #2e3140;
-      border-color: rgba(255, 106, 0, .06);
-    }
-
-    .chatbot-header {
-      background: linear-gradient(135deg, var(--acc), var(--acc2));
-      color: white;
-      padding: 16px;
-      border-radius: var(--r-md) var(--r-md) 0 0;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-
-    [data-theme="dark"] .chatbot-header {
-      background: linear-gradient(135deg, #FF6A00, #FF8C42);
-    }
-
-    .chatbot-close {
-      background: rgba(255, 255, 255, .2);
-      border: none;
-      color: white;
-      cursor: pointer;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      transition: all .2s;
-    }
-
-    .chatbot-close:hover {
-      background: rgba(255, 255, 255, .3);
-    }
-
-    .chatbot-messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .chatbot-message {
-      display: flex;
-      gap: 8px;
-      animation: slideUp .3s ease-out;
-    }
-
-    .chatbot-message.user {
-      justify-content: flex-end;
-    }
-
-    .chatbot-message-bubble {
-      max-width: 70%;
-      padding: 10px 14px;
-      border-radius: 14px;
-      font-size: .85rem;
-      line-height: 1.4;
-      word-wrap: break-word;
-    }
-
-    .chatbot-message.bot .chatbot-message-bubble {
-      background: var(--nm-bg-alt);
-      color: var(--tx-primary);
-      border: 1px solid var(--nm-border);
-    }
-
-    .chatbot-message.user .chatbot-message-bubble {
-      background: var(--acc);
-      color: white;
-    }
-
-    [data-theme="dark"] .chatbot-message.bot .chatbot-message-bubble {
-      background: #262830;
-      border-color: rgba(255, 106, 0, .1);
-    }
-
-    [data-theme="dark"] .chatbot-message.user .chatbot-message-bubble {
-      background: #FF6A00;
-    }
-
-    .chatbot-input-group {
-      padding: 12px;
-      border-top: 1px solid var(--nm-border);
-      display: flex;
-      gap: 8px;
-    }
-
-    .chatbot-input-group input {
-      flex: 1;
-      padding: 10px 12px;
-      border: 1px solid var(--nm-border);
-      border-radius: 20px;
-      background: var(--nm-bg-sec);
-      color: var(--tx-primary);
-      font-family: var(--fb);
-      font-size: .85rem;
-      transition: all .2s;
-    }
-
-    .chatbot-input-group input:focus {
-      outline: none;
-      border-color: var(--acc);
-      box-shadow: 0 0 0 3px rgba(246, 150, 72, .12);
-    }
-
-    .chatbot-input-group button {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: var(--acc);
-      border: none;
-      color: white;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: .9rem;
-      transition: all .2s;
-    }
-
-    .chatbot-input-group button:hover {
-      box-shadow: var(--nm-out-sm);
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media(max-width:768px) {
-      .chatbot-container {
-        bottom: 84px;
-        right: 20px;
-        max-width: 320px;
-      }
-
-      .chatbot-window {
-        min-height: 350px;
-        max-height: 450px;
-      }
-    }
-
-    /* ──────────────────────────────────────
    SCROLL TO TOP/BOTTOM BUTTON
    Neumorphic floating action button
 ────────────────────────────────────── */
@@ -3513,8 +3303,8 @@
       position: fixed;
       bottom: 40px;
       right: 40px;
-      width: 52px;
-      height: 52px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: var(--acc);
       border: 1px solid var(--nm-border);
@@ -3687,7 +3477,7 @@
   <!-- ══════ TOP BAR ══════ -->
   <div id="topbar">
     <div class="tb-l">
-      <span>☎ 0631-2229 530</span>
+      <span>0631-2229 530</span>
       <span class="tb-sep">|</span>
       <a href="mailto:admission@cusb.ac.in">✉ admission@cusb.ac.in</a>
       <span class="tb-sep">|</span>
@@ -3737,17 +3527,17 @@
         </button>
       </div>
     </nav>
-    <div class="nav-search-bar" id="nav-search-bar">
-      <form id="nav-search-form" class="nav-search-form" role="search">
-        <label for="nav-search-input" class="sr-only">Search site</label>
-        <div class="nav-search-field">
-          <input id="nav-search-input" class="nav-search-input" type="search" placeholder="Search ..."
-            aria-label="Search site">
-          <button type="submit" class="nav-search-submit" aria-label="Search"><span
-              aria-hidden="true">🔎</span></button>
-        </div>
-      </form>
-    </div>
+  </div>
+  <div class="nav-search-bar" id="nav-search-bar">
+    <form id="nav-search-form" class="nav-search-form" role="search">
+      <label for="nav-search-input" class="sr-only">Search site</label>
+      <div class="nav-search-field">
+        <input id="nav-search-input" class="nav-search-input" type="search" placeholder="Search ..."
+          aria-label="Search site">
+        <button type="submit" class="nav-search-submit" aria-label="Search"><span
+            aria-hidden="true">🔎</span></button>
+      </div>
+    </form>
   </div>
 
   <!-- ══════ HERO ══════ -->
@@ -3774,7 +3564,7 @@
         </div>
         <div class="h-stat">
           <div class="num" data-to="4100" data-s="+">0</div>
-          <div class="lbl">Established</div>
+          <div class="lbl">Students</div>
         </div>
         <div class="h-stat">
           <div class="num" data-to="300">0</div>
@@ -4060,10 +3850,10 @@
       <a href="#" class="ql-card rev"><span class="ql-ico">🏆</span><span class="ql-nm">Semester Results</span></a>
       <a href="#" class="ql-card rev"><span class="ql-ico">📥</span><span class="ql-nm">Downloads</span></a>
       <a href="#" class="ql-card rev"><span class="ql-ico">🎓</span><span class="ql-nm">Convocation</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">💰</span><span class="ql-nm">Scholarship</span></a>
+      <a href="https://scholarships.gov.in/" class="ql-card rev"><span class="ql-ico">💰</span><span class="ql-nm">Scholarship</span></a>
       <a href="hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">📡</span><span class="ql-nm">RTI</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🔒</span><span class="ql-nm">Anti-Ragging</span></a>
+      <a href="https://rtionline.gov.in/" class="ql-card rev"><span class="ql-ico">📡</span><span class="ql-nm">RTI</span></a>
+      <a href="https://www.antiragging.in/" class="ql-card rev"><span class="ql-ico">🔒</span><span class="ql-nm">Anti-Ragging</span></a>
       <a href="#" class="ql-card rev"><span class="ql-ico">🌐</span><span class="ql-nm">Webmail</span></a>
       <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" class="ql-card rev"><span
           class="ql-ico">🖥️</span><span class="ql-nm">Samarth Login <br>Students</span></a>
@@ -4154,6 +3944,7 @@
 
   <!-- GOV_SITES -->
   <section id="gov_sites">
+     <div class="gallery-eyebrow">Govt. Portals</div>
     <div class="students_site">
       <ul class="students_site_link">
         <li><a href="https://swayam.gov.in/" target="_blank"><img src="swayam_logo.png" alt="Swayam Courses"></a></li>
@@ -4175,7 +3966,7 @@
       <p class="cta-sub rev">Admissions open for 2026–27. Join thousands of students shaping India's future from the
         heartland of Bihar.</p>
       <div class="cta-btns rev">
-        <a href="#" class="btn btn-ocean">Apply for 2026–27 →</a>
+        <a href="https://cuet.samarth.ac.in/" class="btn btn-ocean">Apply for 2026–27 →</a>
         <a href="#quicklinks" class="btn btn-ghost">Download Prospectus</a>
         <a href="#" class="btn btn-ghost">Contact Helpdesk</a>
       </div>
@@ -4301,45 +4092,25 @@
        SCROLL TO TOP/BOTTOM BUTTON
     ───────────────────────────────────── */
     const scrollBtn = document.getElementById('scroll-btn');
-    let isAtTop = true;
-    const scrollThreshold = 300;
 
     // Show/hide button and toggle arrow direction
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const isNearTop = scrollY < scrollThreshold;
-      const isNearBottom = scrollY > maxScroll - scrollThreshold;
 
-      if (scrollY > scrollThreshold || scrollY > 0) {
+      if (scrollY > 0) {
         scrollBtn.classList.add('show');
-      } else {
-        scrollBtn.classList.remove('show');
-      }
-
-      if (isNearBottom) {
         scrollBtn.classList.remove('to-bottom');
         scrollBtn.classList.add('to-top');
         scrollBtn.setAttribute('aria-label', 'Scroll to top');
         scrollBtn.setAttribute('title', 'Scroll to top');
-        isAtTop = true;
       } else {
-        scrollBtn.classList.remove('to-top');
-        scrollBtn.classList.add('to-bottom');
-        scrollBtn.setAttribute('aria-label', 'Scroll to bottom');
-        scrollBtn.setAttribute('title', 'Scroll to bottom');
-        isAtTop = false;
+        scrollBtn.classList.remove('show');
       }
     }, { passive: true });
 
     // Scroll on button click
     scrollBtn.addEventListener('click', () => {
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      if (isAtTop) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        window.scrollTo({ top: maxScroll, behavior: 'smooth' });
-      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     /* ─────────────────────────────────────
