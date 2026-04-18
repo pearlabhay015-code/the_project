@@ -1,973 +1,600 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CUSB — History &amp; Development</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
-</head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CUSB — History &amp; Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════════════
-   DESIGN TOKENS
-═══════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════
+   CUSB · NEUMORPHIC DESIGN SYSTEM · DEEP DEPTH v3
+   ═══════════════════════════════════════════════════════════ */
 :root {
-  --org-50:  #EBF7FF; --org-100: #C8E9FB; --org-200: #96D3F7; --org-300: #5BB8EC;
-  --org-400: #2AA3E4; --org-500: #0D92D8; --org-600: #0B7EBD; --org-700: #096BA3;
-  --org-800: #075589; --org-900: #053D6E;
-  --org-A100: #E4F9F4; --org-A200: #4EC9A8; --org-A400: #FF6B95; --org-A700: #FFAB6E;
-  --lav: #B39DDB; --lav-lt: #EDE7F6;
-  --dark-bg: #f8d4df; --dark-bg2: #eae4f8; --dark-bg3: #e8dcfb; --dark-bg4: #E4E0F5;
-  --light-1: #F0FBFF; --light-2: #FFFFFF; --light-3: #E8F9F4;
-  --tw: #2C1A3E; --tw80: rgba(44,26,62,.82); --tw50: rgba(44,26,62,.50);
-  --tw20: rgba(44,26,62,.20); --tw10: rgba(44,26,62,.10); --tw06: rgba(44,26,62,.06);
-  --td: #1A1A3E; --td60: #4A4A7A; --td30: #9090B8;
-  --lb06: rgba(13,146,216,.06); --lb14: rgba(13,146,216,.14); --lb25: rgba(13,146,216,.25);
-  --fd: 'Syne', sans-serif; --fb: 'DM Sans', sans-serif;
-  --r-sm:10px; --r-md:18px; --r-lg:26px; --r-xl:50px;
-  --ticker-h: 36px; --topbar-h: 40px; --nav-h: 68px;
-  --offset: calc(var(--ticker-h) + var(--nav-h) + 12px);
+  --nm-bg:#dde1ea; --nm-bg-sec:#e2e6ef; --nm-bg-alt:#e8ecf3;
+  --nm-out:9px 9px 22px #b5b9c6,-9px -9px 22px #ffffff;
+  --nm-out-sm:5px 5px 12px #b9bdc8,-5px -5px 12px #ffffff;
+  --nm-out-lg:14px 14px 36px #adb1be,-14px -14px 36px #ffffff;
+  --nm-out-xl:20px 20px 50px #a5a9b8,-20px -20px 50px #ffffff;
+  --nm-in:inset 6px 6px 16px #b5b9c6,inset -6px -6px 16px #ffffff;
+  --nm-in-sm:inset 3px 3px 8px #b9bdc8,inset -3px -3px 8px #ffffff;
+  --nm-in-lg:inset 9px 9px 24px #adb1be,inset -9px -9px 24px #ffffff;
+  --acc:#f69648; --acc2:#f14e64; --acc3:#3db897;
+  --acc-glow:rgba(232,73,106,.30);
+  --tx-primary:#1e2236; --tx-secondary:#5a6080; --tx-muted:#8e93b0; --tx-light:#b8bdd4;
+  --nm-border:rgba(255,255,255,.90); --nm-border-b:rgba(170,175,195,.35);
+  --fd:'Syne','Segoe UI',sans-serif; --fb:'DM Sans','Segoe UI',sans-serif;
+  --r-sm:12px; --r-md:20px; --r-lg:28px; --r-xl:50px;
+  --ticker-h:36px; --topbar-h:40px; --nav-h:68px;
+  --offset:calc(var(--ticker-h) + var(--nav-h) + 12px);
 }
-
-/* ═══════════════════════════════════════════
-   DARK THEME
-═══════════════════════════════════════════ */
 [data-theme="dark"] {
-  --dark-bg:#070B18; --dark-bg2:#0C1022; --dark-bg3:#10152E; --dark-bg4:#131828;
-  --light-1:#0A0F1E; --light-2:#080D1A; --light-3:#0E1428;
-  --tw:#E4DCFF; --tw80:rgba(228,220,255,.85); --tw50:rgba(228,220,255,.50);
-  --tw20:rgba(228,220,255,.20); --tw10:rgba(228,220,255,.10); --tw06:rgba(228,220,255,.06);
-  --td:#EEE8FF; --td60:#A89FC8; --td30:#6B638A;
-  --org-50:#0D1836; --org-100:#0F1F44; --org-200:#1A3A6E; --org-300:#2255A4;
-  --org-400:#3A80D4; --org-500:#5AA0E8; --org-600:#7DB8F0; --org-700:#9FCCF7;
-  --org-800:#BFE0FA; --org-900:#DDEFFE;
-  --lav:#9B84D8; --lav-lt:#150E35;
-  --lb06:rgba(90,160,232,.08); --lb14:rgba(90,160,232,.18); --lb25:rgba(90,160,232,.30);
-  --glow-blue: 0 0 18px rgba(90,160,232,.45),0 0 40px rgba(90,160,232,.20);
-  --glow-purple:0 0 18px rgba(155,132,216,.45),0 0 40px rgba(155,132,216,.18);
-  --glow-rose:  0 0 18px rgba(255,107,149,.45),0 0 40px rgba(255,107,149,.18);
-  --glow-mint:  0 0 16px rgba(78,201,168,.38), 0 0 34px rgba(78,201,168,.16);
+  --nm-bg:#1c1e24; --nm-bg-sec:#21232a; --nm-bg-alt:#262830;
+  --nm-out:10px 10px 26px #0e1016,-10px -10px 26px #2e3140;
+  --nm-out-sm:5px 5px 13px #10121a,-5px -5px 13px #2a2d3c;
+  --nm-out-lg:16px 16px 40px #0b0d14,-16px -16px 40px #333650;
+  --nm-out-xl:22px 22px 55px #090b11,-22px -22px 55px #373a56;
+  --nm-out-glow:10px 10px 26px #0e1016,-10px -10px 26px #2e3140,0 0 24px rgba(255,110,0,.28),0 0 8px rgba(255,110,0,.16) inset;
+  --nm-out-glow-sm:5px 5px 13px #10121a,-5px -5px 13px #2a2d3c,0 0 16px rgba(255,110,0,.22);
+  --nm-in:inset 7px 7px 18px #0e1016,inset -7px -7px 18px #2e3140;
+  --nm-in-sm:inset 3px 3px 9px #10121a,inset -3px -3px 9px #2a2d3c;
+  --nm-in-lg:inset 10px 10px 26px #0b0d14,inset -10px -10px 26px #333650;
+  --acc:#FF6A00; --acc2:#FF8C42; --acc3:#FFB347;
+  --acc-glow:rgba(255,106,0,.50);
+  --tx-primary:#f0f1f5; --tx-secondary:#8c90a8; --tx-muted:#4e5268; --tx-light:#2c2e3a;
+  --nm-border:rgba(255,255,255,.07); --nm-border-b:rgba(0,0,0,.40);
 }
-
-/* ═══════════════════════════════════════════
-   BASE
-═══════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+*{-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
-body{font-family:var(--fb);overflow-x:hidden;background:var(--light-2);
-     transition:background .4s,color .4s;padding-top:var(--ticker-h)}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:var(--org-50)}
-::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--org-A400),var(--lav));border-radius:4px}
-
-/* ── Scroll offset for every anchored section ── */
+body{font-family:var(--fb);overflow-x:hidden;background:var(--nm-bg);color:var(--tx-primary);transition:background .4s,color .4s;padding-top:var(--ticker-h)}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--nm-bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--acc),var(--acc2));border-radius:4px}
 header[id],section[id]{scroll-margin-top:var(--offset)}
 
-/* ═══════════════════════════════════════════
-   TICKER MARQUEE — fixed at very top
-═══════════════════════════════════════════ */
-#ticker{
-  position:fixed;top:0;left:0;right:0;z-index:1100;
-  height:var(--ticker-h);overflow:hidden;
-  display:flex;align-items:center;
-  background:linear-gradient(90deg,
-    rgba(255,107,149,.90) 0%,rgba(179,157,219,.92) 28%,
-    rgba(13,146,216,.92) 58%,rgba(78,201,168,.90) 100%);
-  backdrop-filter:blur(12px) saturate(180%);
-  border-bottom:1px solid rgba(255,255,255,.22);
-  box-shadow:0 2px 16px rgba(13,146,216,.18);
-  transition:background .4s;
-}
-[data-theme="dark"] #ticker{
-  background:linear-gradient(90deg,#07091A 0%,#0A0C24 40%,#080C20 100%);
-  border-bottom:1px solid rgba(90,160,232,.20);
-  box-shadow:0 2px 20px rgba(0,0,0,.60),0 0 24px rgba(90,160,232,.12);
-}
+/* SKIP LINK */
+.skip-link{position:absolute;top:-100px;left:16px;z-index:9999;padding:10px 20px;background:var(--acc);color:#fff;font-family:var(--fb);font-size:.85rem;font-weight:700;border-radius:var(--r-sm);text-decoration:none;transition:top .2s;box-shadow:var(--nm-out-sm)}
+.skip-link:focus{top:calc(var(--ticker-h) + 8px)}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:4px}
+:focus:not(:focus-visible){outline:none}
 
-.ticker-label{
-  flex-shrink:0;padding:0 14px;height:100%;
-  display:flex;align-items:center;gap:6px;
-  font-family:var(--fd);font-size:.60rem;font-weight:700;letter-spacing:.16em;
-  text-transform:uppercase;color:#fff;white-space:nowrap;
-  background:rgba(255,255,255,.18);border-right:1px solid rgba(255,255,255,.25);
-  z-index:2;
-}
-[data-theme="dark"] .ticker-label{
-  background:rgba(90,160,232,.14);border-right-color:rgba(90,160,232,.22);
-  color:var(--org-700);
-}
-
-.ticker-fade{position:absolute;top:0;bottom:0;width:56px;z-index:1;pointer-events:none}
-.ticker-fade.lft{left:0;background:linear-gradient(90deg,rgba(255,107,149,.55),transparent)}
-.ticker-fade.rgt{right:0;background:linear-gradient(-90deg,rgba(78,201,168,.55),transparent)}
-[data-theme="dark"] .ticker-fade.lft{background:linear-gradient(90deg,rgba(7,9,26,.95),transparent)}
-[data-theme="dark"] .ticker-fade.rgt{background:linear-gradient(-90deg,rgba(8,12,32,.95),transparent)}
-
-.ticker-viewport{flex:1;overflow:hidden;position:relative}
-
-.ticker-track{
-  display:flex;align-items:center;width:max-content;
-  animation:tickerRoll 42s linear infinite;
-  will-change:transform;
-}
-.ticker-track:hover,
-.ticker-track.paused{animation-play-state:paused}
-
+/* ── TICKER ── */
+#ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);overflow:hidden;display:flex;align-items:center;background:linear-gradient(90deg,var(--acc) 0%,var(--acc2) 55%,var(--acc3) 100%);box-shadow:0 4px 18px rgba(232,73,106,.35),0 2px 0 rgba(255,255,255,.25) inset}
+[data-theme="dark"] #ticker{background:linear-gradient(90deg,#0c0a07,#180f04,#0a0c09);box-shadow:0 5px 24px rgba(0,0,0,.85),0 0 32px rgba(255,106,0,.12),0 1px 0 rgba(255,106,0,.08) inset;border-bottom:1px solid rgba(255,106,0,.10)}
+.ticker-label{flex-shrink:0;padding:0 14px;height:100%;display:flex;align-items:center;gap:6px;font-family:var(--fd);font-size:.60rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#fff;white-space:nowrap;background:rgba(255,255,255,.18);border-right:1px solid rgba(255,255,255,.30);z-index:2}
+[data-theme="dark"] .ticker-label{background:rgba(255,106,0,.18);border-right-color:rgba(255,106,0,.28);color:#FF8C42;text-shadow:0 0 14px rgba(255,106,0,.70)}
+.ticker-fade{position:absolute;top:0;bottom:0;width:48px;z-index:1;pointer-events:none}
+.ticker-fade.lft{left:0;background:linear-gradient(90deg,var(--acc),transparent)}
+.ticker-fade.rgt{right:0;background:linear-gradient(-90deg,var(--acc3),transparent)}
+[data-theme="dark"] .ticker-fade.lft{background:linear-gradient(90deg,#0c0a07,transparent)}
+[data-theme="dark"] .ticker-fade.rgt{background:linear-gradient(-90deg,#0a0c09,transparent)}
+.ticker-viewport{flex:1;overflow:hidden}
+.ticker-track{display:flex;align-items:center;width:max-content;animation:tickerRoll 42s linear infinite;will-change:transform}
+.ticker-track:hover{animation-play-state:paused}
 @keyframes tickerRoll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.t-item{display:inline-flex;align-items:center;gap:8px;padding:0 24px;height:var(--ticker-h);font-size:.90rem;font-weight:500;color:rgba(255,255,255,.92);white-space:nowrap;text-decoration:none;transition:color .2s}
+.t-item:hover{color:#fff;text-shadow:0 0 14px rgba(255,255,255,.70)}
+[data-theme="dark"] .t-item{color:rgba(255,180,120,.50)}
+[data-theme="dark"] .t-item:hover{color:#FF8C42}
+.t-sep{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.45);flex-shrink:0}
+[data-theme="dark"] .t-sep{background:rgba(255,106,0,.40)}
+.t-badge{display:inline-block;padding:1px 7px;border-radius:8px;font-size:.56rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.50);color:#fff}
+[data-theme="dark"] .t-badge{background:rgba(255,106,0,.18);border-color:rgba(255,106,0,.45);color:#FF8C42}
 
-.t-item{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:0 26px;height:var(--ticker-h);
-  font-size:.70rem;font-weight:500;color:#fff;
-  white-space:nowrap;text-decoration:none;
-  transition:color .2s,text-shadow .2s;
-  cursor:pointer;
-}
-.t-item:hover{text-shadow:0 0 14px rgba(255,255,255,.75)}
-[data-theme="dark"] .t-item{color:var(--td60)}
-[data-theme="dark"] .t-item:hover{color:var(--org-700);text-shadow:0 0 14px rgba(90,160,232,.55)}
+/* ── TOP BAR ── */
+#topbar{background:var(--nm-bg-alt);border-bottom:1px solid var(--nm-border-b);padding:12px 5vw;min-height:var(--topbar-h);display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--tx-secondary);box-shadow:0 3px 10px rgba(0,0,0,.10),0 1px 0 var(--nm-border) inset;transition:background .4s}
+[data-theme="dark"] #topbar{background:var(--nm-bg-sec);border-bottom:1px solid rgba(255,106,0,.08);box-shadow:0 4px 16px rgba(0,0,0,.70)}
+#topbar a{color:var(--tx-secondary);text-decoration:none;transition:color .2s}
+#topbar a:hover{color:var(--acc)}
+[data-theme="dark"] #topbar a:hover{color:#FF8C42}
+.tb-l{display:flex;gap:6px;align-items:center;flex-wrap:wrap;overflow:hidden}
+.tb-sep{opacity:.25}
 
-.t-sep{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.38);flex-shrink:0}
-[data-theme="dark"] .t-sep{background:rgba(90,160,232,.28)}
-
-.t-badge{
-  display:inline-block;padding:1px 7px;border-radius:8px;
-  font-size:.56rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
-  background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.45);color:#ef0c18;
-}
-[data-theme="dark"] .t-badge{
-  background:rgba(155,132,216,.22);border-color:rgba(155,132,216,.48);color:var(--lav);
-}
-
-/* ═══════════════════════════════════════════
-   TOP BAR
-═══════════════════════════════════════════ */
-#topbar{
-  background:linear-gradient(90deg,var(--dark-bg),var(--light-1));
-  border-bottom:1px solid rgba(255,255,255,.60);
-  padding:0 5vw;height:var(--topbar-h);
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:.72rem;color:var(--tw50);z-index:600;transition:background .4s;
-}
-[data-theme="dark"] #topbar{border-bottom-color:rgba(90,160,232,.12)}
-#topbar a{color:var(--tw50);text-decoration:none;transition:color .2s}
-#topbar a:hover{color:var(--org-A400)}
-.tb-l{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.tb-sep{opacity:.2}
-
-/* ═══════════════════════════════════════════
-   NAVBAR — sticky below fixed ticker
-═══════════════════════════════════════════ */
-#nav-wrap{
-  position:sticky;top:var(--ticker-h);z-index:800;
-  display:flex;justify-content:center;
-  padding:8px 3vw;pointer-events:none;
-}
-nav{
-  pointer-events:all;
-  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-  background:rgba(235,247,255,.84);
-  backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);
-  border:1.5px solid rgba(13,146,216,.22);border-radius:60px;
-  padding:8px 16px;width:min(980px,94vw);
-  box-shadow:0 4px 24px rgba(13,146,216,.12),0 1px 0 rgba(255,255,255,.9) inset;
-  transition:background .3s,box-shadow .3s,border-color .4s;
-  animation:navIn .6s cubic-bezier(.16,1,.3,1) both;
-}
+/* ── NAVBAR ── */
+#nav-wrap{position:sticky;top:var(--ticker-h);z-index:800;display:flex;justify-content:center;align-items:center;padding:10px 3vw;pointer-events:none}
+nav{pointer-events:all;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:var(--nm-bg);box-shadow:var(--nm-out);border-radius:60px;border:1px solid var(--nm-border);padding:8px 16px;width:100%;max-width:1100px;min-height:var(--nav-h);transition:box-shadow .3s,background .4s;animation:navIn .6s cubic-bezier(.16,1,.3,1) both}
 @keyframes navIn{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
-nav.sc{background:rgba(235,247,255,.96);box-shadow:0 6px 32px rgba(13,146,216,.18),0 1px 0 #fff inset}
-[data-theme="dark"] nav{
-  background:rgba(8,13,30,.82);border-color:rgba(90,160,232,.22);
-  box-shadow:0 4px 24px rgba(0,0,0,.50),0 0 0 1px rgba(155,132,216,.08) inset;
-}
-[data-theme="dark"] nav.sc{background:rgba(8,13,30,.96);box-shadow:0 6px 32px rgba(0,0,0,.60),0 0 28px rgba(90,160,232,.10)}
-
+nav.sc{box-shadow:var(--nm-out-lg)}
+[data-theme="dark"] nav{border-color:rgba(255,106,0,.06)}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;justify-content:center}
-.nav-logo img{width:43px}
-.brand-txt .abbr{
-  font-family:var(--fd);font-size:1.2rem;font-weight:600;
-  background:linear-gradient(90deg,var(--org-A400),var(--lav));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-
+.nav-logo img{width:43px;margin-top:5.5px}
+.brand-txt .abbr{font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+[data-theme="dark"] .brand-txt .abbr{background:linear-gradient(90deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;list-style:none;gap:2px;justify-content:flex-start}
-.nav-links a{
-  display:block;padding:8px 13px;
-  font-family:var(--fb);font-size:.78rem;font-weight:500;
-  color:var(--td60);text-decoration:none;border-radius:30px;
-  transition:color .2s,background .2s;white-space:nowrap;
-}
-.nav-links a:hover,.nav-links a.act{color:var(--org-600);background:rgba(13,146,216,.09)}
-[data-theme="dark"] .nav-links a:hover,
-[data-theme="dark"] .nav-links a.act{color:var(--org-600);background:rgba(90,160,232,.12)}
-
-.nav-right{display:flex;justify-content:flex-end;align-items:center;gap:8px}
-
-.btn-apply{
-  display:inline-flex;align-items:center;padding:7px 20px;border-radius:30px;
-  font-family:var(--fb);font-size:.78rem;font-weight:700;
-  text-decoration:none;color:#fff;
-  background:linear-gradient(135deg,var(--org-A400),#D44B74);
-  border:1.5px solid rgba(255,107,149,.35);
-  box-shadow:0 4px 18px rgba(255,107,149,.30);
-  transition:transform .2s,box-shadow .2s;white-space:nowrap;flex-shrink:0;
-}
-.btn-apply:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,107,149,.45);color:#fff}
-[data-theme="dark"] .btn-apply{box-shadow:0 4px 18px rgba(255,107,149,.25),var(--glow-rose)}
-[data-theme="dark"] .btn-apply:hover{box-shadow:0 8px 28px rgba(255,107,149,.40),0 0 28px rgba(255,107,149,.30)}
-
-/* Theme toggle */
-.theme-toggle{
-  display:flex;align-items:center;justify-content:center;
-  width:34px;height:34px;border-radius:50%;
-  border:1.5px solid rgba(13,146,216,.28);
-  background:rgba(235,247,255,.60);
-  cursor:pointer;flex-shrink:0;
-  transition:all .3s cubic-bezier(.16,1,.3,1);
-  position:relative;overflow:hidden;backdrop-filter:blur(12px);
-}
-.theme-toggle:hover{transform:rotate(20deg) scale(1.08);border-color:rgba(90,160,232,.55)}
-.theme-toggle .ico-sun,.theme-toggle .ico-moon{
-  position:absolute;font-size:1rem;
-  transition:opacity .35s,transform .4s cubic-bezier(.16,1,.3,1);
-}
-.theme-toggle .ico-sun {opacity:1;transform:scale(1) rotate(0deg)}
+.nav-links a{display:block;padding:8px 13px;font-family:var(--fb);font-size:.78rem;font-weight:500;color:var(--tx-secondary);text-decoration:none;border-radius:30px;transition:color .25s,box-shadow .25s;white-space:nowrap}
+.nav-links a:hover{color:var(--acc);box-shadow:var(--nm-in-sm)}
+.nav-links a.act{color:var(--tx-secondary);box-shadow:none}
+[data-theme="dark"] .nav-links a:hover{color:#FF8C42;box-shadow:var(--nm-in-sm)}
+.nav-right{display:flex;justify-content:flex-end;align-items:center;gap:10px}
+.btn-apply{display:inline-flex;align-items:center;padding:9px 24px;border-radius:var(--r-xl);font-family:var(--fb);font-size:.78rem;font-weight:700;text-decoration:none;color:#fff;background:linear-gradient(145deg,var(--acc),#c22050);box-shadow:6px 6px 14px rgba(160,20,50,.45),-3px -3px 8px rgba(255,255,255,.25),0 2px 0 rgba(255,255,255,.18) inset;transition:box-shadow .22s;white-space:nowrap;flex-shrink:0}
+.btn-apply:hover{box-shadow:inset 4px 4px 10px rgba(140,10,40,.50),inset -2px -2px 6px rgba(255,255,255,.10);color:#fff}
+[data-theme="dark"] .btn-apply{background:linear-gradient(145deg,#FF6A00,#c94a00);box-shadow:6px 6px 16px rgba(0,0,0,.55),-4px -4px 10px rgba(255,255,255,.05),0 0 18px rgba(255,106,0,.32),0 2px 0 rgba(255,140,66,.18) inset}
+[data-theme="dark"] .btn-apply:hover{box-shadow:inset 4px 4px 12px rgba(0,0,0,.60),inset -3px -3px 8px rgba(255,255,255,.04)}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);cursor:pointer;flex-shrink:0;transition:box-shadow .25s;position:relative;overflow:hidden}
+.theme-toggle:hover{box-shadow:var(--nm-in-sm)}
+.theme-toggle .ico-sun,.theme-toggle .ico-moon{position:absolute;font-size:1rem;transition:opacity .35s,transform .4s cubic-bezier(.16,1,.3,1)}
+.theme-toggle .ico-sun{opacity:1;transform:scale(1) rotate(0deg)}
 .theme-toggle .ico-moon{opacity:0;transform:scale(.4) rotate(-90deg)}
-[data-theme="dark"] .theme-toggle{border-color:rgba(155,132,216,.45);background:rgba(21,14,53,.70);box-shadow:0 0 12px rgba(155,132,216,.30)}
-[data-theme="dark"] .theme-toggle:hover{box-shadow:0 0 20px rgba(155,132,216,.55)}
-[data-theme="dark"] .theme-toggle .ico-sun {opacity:0;transform:scale(.4) rotate(90deg)}
+[data-theme="dark"] .theme-toggle{border-color:rgba(255,106,0,.08)}
+[data-theme="dark"] .theme-toggle .ico-sun{opacity:0;transform:scale(.4) rotate(90deg)}
 [data-theme="dark"] .theme-toggle .ico-moon{opacity:1;transform:scale(1) rotate(0deg)}
-
-/* Hamburger */
-.ham{
-  display:none;width:31px;height:31px;border-radius:10px;
-  background:rgba(13,146,216,.10);border:1.5px solid rgba(13,146,216,.22);
-  cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;
-  flex-shrink:0;transition:background .2s;padding:0;
-}
-.ham:hover{background:rgba(13,146,216,.18)}
-.ham span{display:block;width:15px;height:1px;background:var(--org-600);border-radius:2px;
-  transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .25s,width .3s}
+.ham{display:none;width:36px;height:36px;border-radius:var(--r-sm);background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex-shrink:0;transition:box-shadow .2s;padding:0}
+.ham:hover{box-shadow:var(--nm-in-sm)}
+.ham span{display:block;width:15px;height:1.5px;background:var(--tx-secondary);border-radius:2px;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .25s,width .3s}
 .ham.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
 .ham.open span:nth-child(2){opacity:0;width:0}
 .ham.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
-[data-theme="dark"] .ham{background:rgba(90,160,232,.10);border-color:rgba(90,160,232,.22)}
-[data-theme="dark"] .ham:hover{background:rgba(90,160,232,.20)}
-[data-theme="dark"] .ham span{background:var(--org-700)}
+[data-theme="dark"] .ham{border-color:rgba(255,106,0,.08)}
 
-/* ═══════════════════════════════════════════
-   MOBILE DRAWER
-═══════════════════════════════════════════ */
-#mob-overlay{
-  position:fixed;inset:0;z-index:1998;
-  background:rgba(44,26,62,.30);backdrop-filter:blur(4px);
-  opacity:0;pointer-events:none;transition:opacity .3s;
-}
+/* ── MOBILE DRAWER ── */
+#mob-overlay{position:fixed;inset:0;z-index:1998;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .3s}
 #mob-overlay.show{opacity:1;pointer-events:all}
-#mob-menu{
-  position:fixed;top:0;right:0;bottom:0;
-  width:min(300px,86vw);z-index:1999;
-  background:rgba(240,251,255,.97);
-  backdrop-filter:blur(32px) saturate(220%);-webkit-backdrop-filter:blur(32px) saturate(220%);
-  border-left:1.5px solid rgba(13,146,216,.18);
-  box-shadow:-4px 0 32px rgba(13,146,216,.10);
-  transform:translateX(100%);visibility:hidden;
-  transition:transform .35s cubic-bezier(.16,1,.3,1),visibility .35s;
-  overflow-y:auto;padding:72px 20px 40px;display:flex;flex-direction:column;gap:0;
-}
+#mob-menu{position:fixed;top:0;right:0;bottom:0;width:min(300px,86vw);z-index:1999;background:var(--nm-bg);box-shadow:-10px 0 40px rgba(0,0,0,.25);border-left:1px solid var(--nm-border-b);transform:translateX(100%);visibility:hidden;transition:transform .35s cubic-bezier(.16,1,.3,1),visibility .35s;overflow-y:auto;padding:72px 20px 40px;display:flex;flex-direction:column;gap:0}
 #mob-menu.open{transform:translateX(0);visibility:visible}
-[data-theme="dark"] #mob-menu{background:rgba(8,10,22,.97);border-left-color:rgba(90,160,232,.20);box-shadow:-4px 0 40px rgba(0,0,0,.70)}
+[data-theme="dark"] #mob-menu{box-shadow:-10px 0 50px rgba(0,0,0,.80);border-left:1px solid rgba(255,106,0,.08)}
+.mob-header{position:absolute;top:0;left:0;right:0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--nm-border-b);background:var(--nm-bg);box-shadow:0 3px 8px rgba(0,0,0,.08)}
+.mob-title{font-family:var(--fd);font-size:.9rem;color:var(--tx-primary);font-weight:700}
+.mob-close{width:34px;height:34px;border-radius:50%;background:var(--nm-bg);box-shadow:var(--nm-out-sm);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--acc);font-size:1rem;border:1px solid var(--nm-border);transition:box-shadow .2s}
+.mob-close:hover{box-shadow:var(--nm-in-sm)}
+.mob-a{display:block;padding:11px 16px;border-radius:var(--r-sm);font-size:.85rem;font-weight:500;color:var(--tx-secondary);text-decoration:none;transition:box-shadow .2s,color .2s;margin:3px 0}
+.mob-a:hover{color:var(--acc);box-shadow:var(--nm-in-sm);background:var(--nm-bg)}
+[data-theme="dark"] .mob-a:hover{color:#FF8C42}
+.mob-divider{height:1px;background:var(--nm-border-b);margin:8px 0}
+.mob-section-lbl{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);padding:6px 16px 2px;font-weight:700}
+[data-theme="dark"] .mob-section-lbl{color:#FF6A00}
+.mob-cta{display:block;margin-top:16px;text-align:center;text-decoration:none;padding:12px 20px;border-radius:var(--r-xl);background:linear-gradient(145deg,var(--acc),#c22050);color:#fff;font-size:.85rem;font-weight:700;box-shadow:4px 4px 14px rgba(200,30,70,.40),-2px -2px 6px rgba(255,255,255,.20);transition:box-shadow .22s}
+.mob-cta:hover{box-shadow:inset 3px 3px 8px rgba(140,10,40,.45)}
+[data-theme="dark"] .mob-cta{background:linear-gradient(145deg,#FF6A00,#c94a00)}
 
-.mob-header{
-  position:absolute;top:0;left:0;right:0;
-  padding:14px 20px;display:flex;align-items:center;justify-content:space-between;
-  border-bottom:1px solid rgba(13,146,216,.10);background:rgba(235,247,255,.92);
-}
-.mob-title{font-family:var(--fd);font-size:.9rem;color:var(--tw80)}
-[data-theme="dark"] .mob-header{background:rgba(8,10,22,.95);border-bottom-color:rgba(90,160,232,.14)}
-.mob-close{
-  width:34px;height:34px;border-radius:50%;
-  background:rgba(255,107,149,.10);border:1.5px solid rgba(255,107,149,.22);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;color:var(--org-A400);font-size:1rem;transition:background .2s;
-}
-.mob-close:hover{background:rgba(255,107,149,.20);color:#D44B74}
-.mob-a{
-  display:block;padding:11px 16px;border-radius:12px;
-  font-size:.85rem;font-weight:500;color:var(--td60);
-  text-decoration:none;transition:background .2s,color .2s;border:1px solid transparent;
-}
-.mob-a:hover{background:rgba(13,146,216,.07);border-color:rgba(13,146,216,.14);color:var(--org-600)}
-[data-theme="dark"] .mob-a:hover{background:rgba(90,160,232,.10);border-color:rgba(90,160,232,.22)}
-.mob-divider{height:1px;background:rgba(13,146,216,.08);margin:8px 0}
-[data-theme="dark"] .mob-divider{background:rgba(90,160,232,.10)}
-.mob-section-lbl{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--org-400);padding:6px 16px 2px}
-.mob-cta{
-  display:block;margin-top:16px;text-align:center;text-decoration:none;
-  padding:12px 20px;border-radius:var(--r-xl);
-  background:linear-gradient(135deg,var(--org-A400),#D44B74);
-  color:#fff;font-size:.85rem;font-weight:700;
-  border:1.5px solid rgba(255,107,149,.30);box-shadow:0 4px 20px rgba(255,107,149,.25);
-  transition:transform .2s,box-shadow .2s;
-}
-.mob-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,107,149,.38)}
-
-/* ═══════════════════════════════════════════
-   BUTTONS
-═══════════════════════════════════════════ */
-.btn{
-  position:relative;display:inline-flex;align-items:center;gap:7px;
-  padding:12px 26px;border-radius:var(--r-xl);
-  font-family:var(--fb);font-size:.85rem;font-weight:600;
-  cursor:pointer;border:none;outline:none;text-decoration:none;
-  overflow:hidden;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s;
-}
-.btn::before{content:'';position:absolute;left:0;top:0;right:0;height:50%;
-  border-radius:var(--r-xl) var(--r-xl) 0 0;
-  background:linear-gradient(180deg,rgba(255,255,255,.30),transparent);pointer-events:none}
-.btn:hover{transform:translateY(-2px) scale(1.02)}.btn:active{transform:scale(.97)}
-
-.btn-ocean{background:linear-gradient(135deg,var(--org-A400),#D44B74);border:1.5px solid rgba(255,107,149,.38);color:#fff;box-shadow:0 4px 20px rgba(255,107,149,.28),inset 0 1px 0 rgba(255,255,255,.20)}
-.btn-ocean:hover{box-shadow:0 8px 30px rgba(255,107,149,.42)}
-[data-theme="dark"] .btn-ocean{box-shadow:0 4px 20px rgba(255,107,149,.25),var(--glow-rose)}
-[data-theme="dark"] .btn-ocean:hover{box-shadow:0 8px 30px rgba(255,107,149,.40),0 0 32px rgba(255,107,149,.28)}
-
-.btn-ghost{background:rgba(255,255,255,.65);backdrop-filter:blur(16px);border:1.5px solid rgba(13,146,216,.28);color:var(--org-600)}
-.btn-ghost:hover{background:rgba(235,247,255,.85);box-shadow:0 6px 20px rgba(13,146,216,.14)}
-[data-theme="dark"] .btn-ghost{background:rgba(12,20,44,.70);border-color:rgba(90,160,232,.35);color:var(--org-700)}
-[data-theme="dark"] .btn-ghost:hover{background:rgba(18,28,58,.88);box-shadow:0 6px 20px rgba(0,0,0,.40),var(--glow-blue);border-color:rgba(90,160,232,.65)}
-
-.btn-light{background:rgba(13,146,216,.07);backdrop-filter:blur(16px);border:1.5px solid rgba(13,146,216,.28);color:var(--org-700)}
-.btn-light:hover{background:rgba(13,146,216,.13);box-shadow:0 6px 20px rgba(13,146,216,.15)}
-[data-theme="dark"] .btn-light{background:rgba(12,20,44,.60);border-color:rgba(90,160,232,.32)}
-[data-theme="dark"] .btn-light:hover{background:rgba(18,28,58,.80);box-shadow:var(--glow-blue);border-color:rgba(90,160,232,.60)}
-
-.btn-solid{background:linear-gradient(135deg,var(--org-500),var(--org-700));border:1.5px solid rgba(13,146,216,.30);color:#fff;box-shadow:0 4px 16px rgba(13,146,216,.28)}
-.btn-solid:hover{box-shadow:0 8px 28px rgba(13,146,216,.40)}
-[data-theme="dark"] .btn-solid{background:linear-gradient(135deg,var(--org-400),var(--lav));box-shadow:0 4px 16px rgba(90,160,232,.25),var(--glow-blue)}
-[data-theme="dark"] .btn-solid:hover{box-shadow:0 8px 28px rgba(90,160,232,.35),0 0 36px rgba(90,160,232,.22)}
-
+/* ── BUTTONS ── */
+.btn{position:relative;display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:var(--r-xl);font-family:var(--fb);font-size:.85rem;font-weight:600;cursor:pointer;border:none;outline:none;text-decoration:none;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.btn:active{transform:scale(.97)}
+.btn-ocean{background:linear-gradient(145deg,var(--acc),#c22050);color:#fff;box-shadow:6px 6px 16px rgba(200,30,70,.40),-4px -4px 10px rgba(255,255,255,.22),0 2px 0 rgba(255,255,255,.18) inset;transition:box-shadow .22s}
+.btn-ocean:hover{box-shadow:inset 4px 4px 10px rgba(150,10,40,.45),inset -2px -2px 6px rgba(255,255,255,.12)}
+[data-theme="dark"] .btn-ocean{background:linear-gradient(145deg,#FF6A00,#c94a00);box-shadow:6px 6px 18px rgba(0,0,0,.65),-4px -4px 10px rgba(255,255,255,.04),0 0 20px rgba(255,106,0,.35)}
+.btn-ghost{background:var(--nm-bg);color:var(--tx-secondary);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);transition:box-shadow .22s,color .22s}
+.btn-ghost:hover{box-shadow:var(--nm-in-sm);color:var(--acc)}
+[data-theme="dark"] .btn-ghost:hover{color:#FF8C42;box-shadow:var(--nm-in-sm)}
 .btn-sm{padding:8px 18px;font-size:.78rem}
 .rpl{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:ripAnim .5s ease-out forwards;pointer-events:none}
 @keyframes ripAnim{to{transform:scale(16);opacity:0}}
 
-/* ═══════════════════════════════════════════
-   SCROLL REVEAL
-═══════════════════════════════════════════ */
+/* ── SCROLL REVEAL ── */
 .rev{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
 .rev.vis{opacity:1;transform:none}
-/* ═══════════════════════════════════════════════
-   SECTION SHELL + BACKGROUND DEPTH
-═══════════════════════════════════════════════ */
-#history {
-  position: relative;
-  overflow: hidden;
-  padding: 96px 6vw 120px;
-  color: var(--tw);
 
-  /* Base gradient */
-  background:
-    radial-gradient(ellipse 60% 55% at 15% 75%, rgba(78,201,168,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 55% 50% at 85% 25%, rgba(255,107,149,0.09) 0%, transparent 55%),
-    radial-gradient(ellipse 40% 35% at 50% 50%, rgba(179,157,219,0.07) 0%, transparent 60%),
-    linear-gradient(160deg, var(--light-3), var(--light-1));
-}
-
-/* ═══════════════════════════════════════════
-   SECTION SYSTEM
-═══════════════════════════════════════════ */
-.dark-sec{background:var(--dark-bg2);color:var(--tw)}
-.darker-sec{background:var(--dark-bg);color:var(--tw)}
-.light-sec{background:var(--light-1);color:var(--td)}
-.white-sec{background:var(--light-2);color:var(--td)}
-.sec{padding:96px 6vw;transition:background .4s}
-
-.sec-lbl{font-family:var(--fb);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px}
-.dark-sec .sec-lbl,.darker-sec .sec-lbl{color:var(--org-A400)}
-.light-sec .sec-lbl,.white-sec .sec-lbl{color:var(--org-500)}
-[data-theme="dark"] .light-sec .sec-lbl,
-[data-theme="dark"] .white-sec .sec-lbl{color:var(--lav)}
-
-.sec-title{font-family:var(--fd);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:600;letter-spacing:-.02em;line-height:1.12}
-.sec-sub{font-size:.9rem;line-height:1.8;font-weight:300;margin-top:12px;max-width:560px}
-.dark-sec .sec-sub,.darker-sec .sec-sub{color:var(--tw50)}
-.light-sec .sec-sub,.white-sec .sec-sub{color:var(--td60)}
+/* ── SECTION ── */
+.sec{padding:80px 6vw;transition:background .4s}
+.sec-lbl{font-family:var(--fb);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px;color:var(--acc)}
+[data-theme="dark"] .sec-lbl{color:#FF6A00;text-shadow:0 0 12px rgba(255,106,0,.50)}
+.sec-title{font-family:var(--fd);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;color:var(--tx-primary)}
+.sec-sub{font-size:.9rem;line-height:1.8;font-weight:400;margin-top:12px;max-width:560px;color:var(--tx-secondary)}
 .sec-hd{margin-bottom:52px}
 .sec-hd.center{text-align:center}
 .sec-hd.center .sec-sub{margin:12px auto 0}
 
-/* ═══════════════════════════════════════════
-   QUICK LINKS
-═══════════════════════════════════════════ */
-#quicklinks{background:var(--light-2)}
-.ql-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
-.ql-card{border-radius:var(--r-md);padding:22px 14px;text-align:center;text-decoration:none;transition:transform .22s,box-shadow .22s,border-color .22s,background .22s}
-.ql-card:hover{transform:translateY(-4px)}
-.white-sec .ql-card,.light-sec .ql-card{background:rgba(255,255,255,.88);border:1.5px solid rgba(78,201,168,.18);backdrop-filter:blur(12px);color:var(--td);box-shadow:0 2px 10px rgba(78,201,168,.07)}
-.white-sec .ql-card:hover,.light-sec .ql-card:hover{background:rgba(228,249,244,.92);border-color:rgba(78,201,168,.38);box-shadow:0 8px 24px rgba(78,201,168,.15)}
-[data-theme="dark"] .white-sec .ql-card,
-[data-theme="dark"] .light-sec .ql-card{background:rgba(8,14,28,.80);border-color:rgba(78,201,168,.18);color:var(--td)}
-[data-theme="dark"] .white-sec .ql-card:hover,
-[data-theme="dark"] .light-sec .ql-card:hover{background:rgba(8,20,30,.90);border-color:rgba(78,201,168,.50);box-shadow:0 8px 24px rgba(0,0,0,.50),var(--glow-mint)}
-.ql-ico{font-size:1.5rem;display:block;margin-bottom:8px}
-.ql-nm{font-size:.76rem;font-weight:600;color:var(--td)}
+/* ══════════════════════════════════════
+   PAGE HERO BANNER
+══════════════════════════════════════ */
+#history-hero {
+  background: var(--nm-bg-sec);
+  padding: 72px 6vw 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--nm-border-b);
+  transition: background .4s;
+}
+#history-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+[data-theme="dark"] #history-hero::before {
+  background-image: radial-gradient(circle, rgba(255,106,0,.05) 1px, transparent 1px);
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--nm-bg);
+  box-shadow: var(--nm-out-sm);
+  border: 1px solid var(--nm-border);
+  border-radius: 40px;
+  padding: 6px 18px 6px 12px;
+  font-size: .72rem;
+  color: var(--tx-secondary);
+  margin-bottom: 22px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--acc);
+  box-shadow: 0 0 10px rgba(255,107,149,.80);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%,100% { box-shadow: 0 0 8px rgba(255,107,149,.70) }
+  50%      { box-shadow: 0 0 16px rgba(255,107,149,1) }
+}
+[data-theme="dark"] .hero-eyebrow .dot {
+  background: #FF6A00;
+  animation: pulse-dark 2s ease-in-out infinite;
+}
+@keyframes pulse-dark {
+  0%,100% { box-shadow: 0 0 10px rgba(255,106,0,.80) }
+  50%      { box-shadow: 0 0 20px rgba(255,106,0,1),0 0 40px rgba(255,106,0,.50) }
+}
+.history-page-title {
+  font-family: var(--fd);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1;
+  color: var(--tx-primary);
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+.history-page-title .acc {
+  background: linear-gradient(90deg, var(--acc), var(--acc2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+[data-theme="dark"] .history-page-title .acc {
+  background: linear-gradient(90deg, #FF6A00, #FF8C42);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.history-page-sub {
+  font-size: .92rem;
+  color: var(--tx-secondary);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.75;
+  position: relative;
+  z-index: 1;
+}
 
-/* ── Diagonal line-grid overlay (depth layer 1) ── */
+/* ══════════════════════════════════════
+   HISTORY SECTION
+══════════════════════════════════════ */
+#history {
+  background: var(--nm-bg);
+  padding: 80px 6vw 100px;
+  position: relative;
+  overflow: hidden;
+  transition: background .4s;
+}
 #history::before {
   content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(
-      -52deg,
-      transparent 0px,
-      transparent 88px,
-      rgba(13,146,216,0.035) 88px,
-      rgba(13,146,216,0.035) 89px
-    ),
-    repeating-linear-gradient(
-      38deg,
-      transparent 0px,
-      transparent 130px,
-      rgba(179,157,219,0.045) 130px,
-      rgba(179,157,219,0.045) 131px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent 0px,
-      transparent 200px,
-      rgba(255,107,149,0.018) 200px,
-      rgba(255,107,149,0.018) 201px
-    );
-  pointer-events: none;
-  z-index: 0;
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none; z-index: 0;
 }
+[data-theme="dark"] #history::before {
+  background-image: radial-gradient(circle, rgba(255,106,0,.04) 1px, transparent 1px);
+}
+#history > * { position: relative; z-index: 1; }
 
-/* ── Floating soft orbs (depth layer 2) ── */
-#history::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(circle 220px at 8%  18%, rgba(13,146,216,0.07)  0%, transparent 70%),
-    radial-gradient(circle 180px at 92% 60%, rgba(255,107,149,0.06) 0%, transparent 70%),
-    radial-gradient(circle 150px at 50% 90%, rgba(78,201,168,0.08)  0%, transparent 70%),
-    radial-gradient(circle 120px at 75% 10%, rgba(179,157,219,0.07) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ═══════════════════════════════════════════════
-   SECTION HEADER
-═══════════════════════════════════════════════ */
-.sec-hd {
-  position: relative;
-  z-index: 2;
-  margin-bottom: 64px;
-}
-.sec-hd.center { text-align: center; }
-.sec-hd.center .sec-sub { margin: 12px auto 0; }
-
-.sec-lbl {
-  font-family: var(--fb);
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  color: var(--org-A400);
-}
-.sec-title {
-  font-family: var(--fb);
-  font-size: clamp(1.9rem, 3vw, 2.8rem);
-  font-weight: 600;
-  letter-spacing: -.02em;
-  line-height: 1.12;
-  color: var(--td);
-}
-.sec-sub {
-  font-size: .9rem;
-  line-height: 1.8;
-  font-weight: 300;
-  margin-top: 12px;
-  max-width: 560px;
-  color: var(--tw50);
-}
-
-/* ═══════════════════════════════════════════════
-   TIMELINE WRAPPER
-═══════════════════════════════════════════════ */
+/* Timeline wrap + spine */
 .tl-wrap {
   position: relative;
-  max-width: 860px;
+  max-width: 920px;
   margin: 0 auto;
-  z-index: 1;
 }
-
-/* ── SVG criss-cross line container ── */
-.tl-svg-layer {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  overflow: visible;
-}
-
-.tl-path-trail {
-  fill: none;
-  stroke: url(#lineGrad);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-}
-
-.tl-path-glow {
-  fill: none;
-  stroke: url(#lineGradGlow);
-  stroke-width: 6;
-  stroke-linecap: round;
-  opacity: 0.25;
-}
-
-/* ── Timeline row grid ── */
-.tl-row {
-  display: grid;
-  grid-template-columns: 1fr 52px 1fr;
-  gap: 20px;
-  margin-bottom: 52px;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-}
-
-/* Left-card row */
-.tl-row.tl-l .tl-c  { grid-column: 1; text-align: right; }
-.tl-row.tl-l .tl-mid { grid-column: 2; }
-.tl-row.tl-l .tl-e  { grid-column: 3; }
-
-/* Right-card row */
-.tl-row.tl-r .tl-e  { grid-column: 1; }
-.tl-row.tl-r .tl-mid { grid-column: 2; }
-.tl-row.tl-r .tl-c  { grid-column: 3; text-align: left; }
-
-.tl-mid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 3;
-}
-
-/* ── Node dot ── */
-.tl-node {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.96);
-  border: 2px solid rgba(13,146,216,0.40);
-  box-shadow:
-    0 0 0 6px rgba(13,146,216,0.07),
-    0 0 0 11px rgba(13,146,216,0.03),
-    0 2px 12px rgba(13,146,216,0.18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--fd);
-  font-size: .7rem;
-  font-weight: 700;
-  color: var(--org-500);
-  flex-shrink: 0;
-  position: relative;
-  z-index: 4;
-  transition: box-shadow .3s, transform .3s;
-}
-.tl-node:hover {
-  transform: scale(1.12);
-  box-shadow:
-    0 0 0 8px rgba(13,146,216,0.10),
-    0 0 0 16px rgba(13,146,216,0.04),
-    0 4px 20px rgba(13,146,216,0.25);
-}
-
-/* ── Content card ── */
-.tl-c {
-  padding: 24px 26px;
-  transition: box-shadow .3s, transform .3s;
-  position: relative;
-  z-index: 2;
-}
-.tl-c:hover {
-  box-shadow: 0 9px 42px rgba(13,146,216,0.54);
-  transform: translateY(-3px);
-}
-
-.tl-year {
-  font-family: var(--fd);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--org-A400);
-  margin-bottom: 6px;
-}
-.tl-name {
-  font-family: var(--fd);
-  font-size: .88rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--td);
-}
-.tl-desc {
-  font-size: .75rem;
-  color: var(--td60);
-  line-height: 1.7;
-  font-weight: 300;
-}
-
-/* ── Image slot (opposite side) ── */
-.tl-e {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tl-img-slot {
-  width: 100%;
-  aspect-ratio: 4/3;
-  border-radius: var(--r-md);
-  overflow: hidden;
-  position: relative;
-  border: 1.5px rgba(1, 43, 65, 0.965);
-  box-shadow: 0 9px 42px rgba(13,146,216,0.34);
-  background:
-    radial-gradient(ellipse at 30% 40%, rgba(78,201,168,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse at 70% 70%, rgba(179,157,219,0.10) 0%, transparent 60%),
-    rgba(255, 255, 255, 0.038);
-  backdrop-filter: blur(10px);
-  transition: border-color .3s, box-shadow .3s;
-  cursor: pointer;
-}
-.tl-img-slot:hover {
-  border-color: rgba(198, 159, 230, 0.105);
-  box-shadow: 0 9px 34px rgba(13,146,216,0.612);
-}
-
-/* Slot — decorative corner lines */
-.tl-img-slot::before,
-.tl-img-slot::after {
+.tl-wrap::before {
   content: '';
   position: absolute;
-  width: 16px; height: 16px;
-  border-color: rgba(13,146,216,0.35);
-  border-style: solid;
-  pointer-events: none;
+  top: 24px; bottom: 24px;
+  left: 50%; transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(180deg, transparent 0%, var(--acc) 8%, var(--acc2) 50%, var(--acc3) 92%, transparent 100%);
+  border-radius: 2px;
+  opacity: .30;
+  z-index: 0;
 }
-.tl-img-slot::before {
-  top: 8px; left: 8px;
-  border-width: 2px 0 0 2px;
-  border-radius: 3px 0 0 0;
-}
-.tl-img-slot::after {
-  bottom: 8px; right: 8px;
-  border-width: 0 2px 2px 0;
-  border-radius: 0 0 3px 0;
+[data-theme="dark"] .tl-wrap::before {
+  opacity: .20;
+  background: linear-gradient(180deg, transparent 0%, #FF6A00 8%, #FF8C42 50%, #FFB347 92%, transparent 100%);
 }
 
-.img-inner {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+/* Row */
+.tl-row {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  gap: 24px;
+  margin-bottom: 60px;
+  align-items: start;
+  position: relative; z-index: 2;
+  opacity: 0;
 }
-.img-plus {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: rgba(13,146,216,0.08);
-  border: 1.5px solid rgba(13,146,216,0.25);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem;
-  color: var(--org-500);
-  transition: transform .3s;
-}
-.img-label {
-  font-family: var(--fb);
-  font-size: .65rem;
-  font-weight: 600;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--org-500);
-  opacity: 0.65;
-}
+.tl-row.visible { animation: fadeUpRow .65s cubic-bezier(.22,.6,.36,1) both }
+@keyframes fadeUpRow { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
 
-.tl-row.tl-l .img-year-tag { right: 10px; }
-.tl-row.tl-r .img-year-tag { left: 10px; }
+.tl-row.tl-l .tl-c   { grid-column:1; text-align:right }
+.tl-row.tl-l .tl-mid { grid-column:2 }
+.tl-row.tl-l .tl-e   { grid-column:3 }
+.tl-row.tl-r .tl-e   { grid-column:1 }
+.tl-row.tl-r .tl-mid { grid-column:2 }
+.tl-row.tl-r .tl-c   { grid-column:3; text-align:left }
 
-/* ── Actual inserted image style ── */
+.tl-mid { display:flex; justify-content:center; align-items:flex-start; padding-top:28px; z-index:3 }
+
+/* Node */
+.tl-node {
+  width:48px; height:48px; border-radius:50%;
+  background:var(--nm-bg);
+  box-shadow:var(--nm-out);
+  border:2px solid var(--acc);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--fd); font-size:.72rem; font-weight:800; color:var(--acc);
+  flex-shrink:0; transition:box-shadow .3s,transform .3s; z-index:4; position:relative;
+}
+.tl-node:hover { box-shadow:var(--nm-in-lg) }
+[data-theme="dark"] .tl-node { border-color:#FF6A00; color:#FF6A00; box-shadow:var(--nm-out),0 0 14px rgba(255,106,0,.30) }
+[data-theme="dark"] .tl-node:hover { box-shadow:var(--nm-out-lg),0 0 22px rgba(255,106,0,.45) }
+
+/* Content card */
+.tl-c {
+  padding:26px 28px;
+  background:var(--nm-bg);
+  border-radius:var(--r-lg);
+  box-shadow:var(--nm-out);
+  border:1px solid var(--nm-border);
+  transition:box-shadow .3s,transform .3s;
+  z-index:2;
+}
+.tl-c:hover { box-shadow:var(--nm-out-lg); transform:translateY(-3px) }
+[data-theme="dark"] .tl-c { border-color:rgba(255,106,0,.06) }
+[data-theme="dark"] .tl-c:hover { box-shadow:var(--nm-out-glow) }
+
+.tl-year { font-family:var(--fd); font-size:1rem; font-weight:800; color:var(--acc); margin-bottom:6px }
+[data-theme="dark"] .tl-year { color:#FF6A00; text-shadow:0 0 10px rgba(255,106,0,.40) }
+.tl-name { font-family:var(--fd); font-size:.88rem; font-weight:700; margin-bottom:10px; color:var(--tx-primary) }
+.tl-desc { font-size:.76rem; color:var(--tx-secondary); line-height:1.75; font-weight:400 }
+.tl-desc em { color:var(--acc); font-style:normal; font-weight:600 }
+[data-theme="dark"] .tl-desc em { color:#FF8C42 }
+
+/* Image column */
+.tl-e { display:flex; align-items:flex-start; justify-content:center }
+
+.tl-img-slot {
+  width:100%; aspect-ratio:4/3;
+  border-radius:var(--r-lg); overflow:hidden;
+  position:relative;
+  box-shadow:var(--nm-out-xl);
+  border:1px solid var(--nm-border);
+  background:var(--nm-bg-alt);
+  transition:box-shadow .3s,transform .3s;
+}
+.tl-img-slot:hover { transform:translateY(-3px) }
+[data-theme="dark"] .tl-img-slot { border-color:rgba(255,106,0,.07); box-shadow:var(--nm-out-xl),0 0 20px rgba(255,106,0,.08) }
+
+/* Corner accents */
+.tl-img-slot::before,.tl-img-slot::after {
+  content:''; position:absolute; width:18px; height:18px;
+  border-color:var(--acc); border-style:solid; opacity:.45; pointer-events:none; z-index:2;
+}
+.tl-img-slot::before { top:8px; left:8px; border-width:2px 0 0 2px; border-radius:3px 0 0 0 }
+.tl-img-slot::after  { bottom:8px; right:8px; border-width:0 2px 2px 0; border-radius:0 0 3px 0 }
+
 .tl-img-slot img {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  border-radius: var(--r-md);
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  border-radius:calc(var(--r-lg) - 1px);
+  display:block;
 }
+.tl-img-placeholder {
+  position:absolute; inset:0;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  gap:8px; color:var(--tx-muted);
+  font-size:.68rem; font-weight:600;
+  letter-spacing:.08em; text-transform:uppercase;
+}
+.tl-img-placeholder span { font-size:2rem; opacity:.30 }
 
-/* ══════════════════════════════════════════
-   GLASS CARDS
-══════════════════════════════════════════ */
-.card-dark {
-  background: rgba(55, 77, 95, 0.035);
-  border: 1.5px solid rgba(13,146,216,0.16);
-  backdrop-filter: blur(18px) saturate(200%);
-  -webkit-backdrop-filter: blur(18px) saturate(200%);
-  border-radius: var(--r-lg);
-  box-shadow: 0 2px 14px rgba(13,146,216,0.08);
-}
-.card-dark:hover {
-  background: rgba(103, 64, 107, 0.044);
-  border-color: rgba(13,146,216,0.30);
-  box-shadow: 0 8px 28px rgba(13,146,216,0.13);
-}
+/* ══════════════════════════════════════
+   QUICK LINKS
+══════════════════════════════════════ */
+#quicklinks { background:var(--nm-bg-alt); padding:80px 6vw; transition:background .4s }
+.ql-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:16px }
+.ql-card { border-radius:var(--r-md); padding:26px 16px; text-align:center; text-decoration:none; background:var(--nm-bg-alt); box-shadow:var(--nm-out-sm); border:1px solid var(--nm-border); transition:box-shadow .22s,color .22s; color:var(--tx-primary) }
+.ql-card:hover { box-shadow:var(--nm-in-sm); color:var(--acc) }
+[data-theme="dark"] .ql-card:hover { color:#FF8C42; box-shadow:var(--nm-in-sm) }
+.ql-ico { font-size:1.65rem; display:block; margin-bottom:10px }
+.ql-nm { font-size:.76rem; font-weight:600 }
 
-/* ══════════════════════════════════════════
-   ENTRY ANIMATIONS
-══════════════════════════════════════════ */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.tl-row { opacity: 0; }
-.tl-row.visible {
-  animation: fadeUp .65s cubic-bezier(.22,.6,.36,1) both;
-}
+/* ══════════════════════════════════════
+   GOV SITES
+══════════════════════════════════════ */
+#gov_sites { background:var(--nm-bg-sec); padding:52px 20px; overflow:hidden; transition:background .4s }
+.students_site { display:flex; justify-content:center; width:100% }
+.students_site_link { display:flex; flex-wrap:wrap; justify-content:center; gap:32px; list-style:none; padding:20px 10px; margin:0; max-width:900px; width:100% }
+.students_site_link li { display:flex; align-items:center; justify-content:center }
+.students_site_link li a { display:block; padding:14px; border-radius:var(--r-md); background:var(--nm-bg); box-shadow:var(--nm-out-sm); border:1px solid var(--nm-border); transition:box-shadow .25s }
+.students_site_link li a:hover { box-shadow:var(--nm-in-sm) }
+[data-theme="dark"] .students_site_link li a { border-color:rgba(255,106,0,.06) }
+.students_site_link li a img { width:80px; height:auto; display:block }
 
-/* ══════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════ */
-@media (max-width: 700px) {
-  .tl-row {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto auto;
-  }
-  .tl-row.tl-l .tl-c,
-  .tl-row.tl-r .tl-c  { grid-column: 1; text-align: left; }
-  .tl-row.tl-l .tl-mid,
-  .tl-row.tl-r .tl-mid { grid-column: 1; justify-content: flex-start; }
-  .tl-row.tl-l .tl-e,
-  .tl-row.tl-r .tl-e  { grid-column: 1; }
-  .tl-svg-layer { display: none; }
-}
-
-
-/* ═══════════════════════════════════════════
-   GOVERNMENT SITES
-═══════════════════════════════════════════ */
-#gov_sites{
-  background:
-    radial-gradient(ellipse 65% 50% at 85% 20%,rgba(179,157,219,.14) 0%,transparent 60%),
-    radial-gradient(ellipse 50% 55% at 15% 80%,rgba(255,107,149,.07) 0%,transparent 55%),
-    var(--dark-bg4);
-  padding:48px 20px;overflow:hidden;
-}
-[data-theme="dark"] #gov_sites{
-  background:
-    radial-gradient(ellipse 65% 50% at 85% 20%,rgba(155,132,216,.18) 0%,transparent 60%),
-    radial-gradient(ellipse 50% 55% at 15% 80%,rgba(255,107,149,.10) 0%,transparent 55%),
-    var(--dark-bg4);
-}
-.students_site{display:flex;justify-content:center;width:100%}
-.students_site_link{
-  display:flex;flex-wrap:wrap;justify-content:center;
-  gap:32px;list-style:none;padding:20px 10px;
-  margin:0;max-width:900px;width:100%;
-}
-.students_site_link li{display:flex;align-items:center;justify-content:center}
-.students_site_link li a img{width:90px;height:auto;display:block;transition:transform .3s ease}
-.students_site_link li a img:hover{transform:scale(1.1)}
-
-/* ═══════════════════════════════════════════
+/* ══════════════════════════════════════
    CTA
-═══════════════════════════════════════════ */
-#cta-sec{
-  background:
-    radial-gradient(ellipse 50% 80% at 0% 50%,rgba(255,107,149,.12) 0%,transparent 55%),
-    radial-gradient(ellipse 50% 80% at 100% 50%,rgba(13,146,216,.10) 0%,transparent 55%),
-    radial-gradient(ellipse 60% 60% at 50% 50%,rgba(179,157,219,.14) 0%,transparent 65%),
-    linear-gradient(160deg,var(--lav-lt),var(--dark-bg),var(--light-1));
-  padding:86px 6vw;text-align:center;color:var(--tw);transition:background .4s;
-}
-[data-theme="dark"] #cta-sec{
-  background:
-    radial-gradient(ellipse 50% 80% at 0% 50%,rgba(255,107,149,.15) 0%,transparent 55%),
-    radial-gradient(ellipse 50% 80% at 100% 50%,rgba(90,160,232,.14) 0%,transparent 55%),
-    radial-gradient(ellipse 60% 60% at 50% 50%,rgba(155,132,216,.18) 0%,transparent 65%),
-    linear-gradient(160deg,#0C0820,#080D1A,#0A0F1E);
-}
-.cta-title{font-family:var(--fd);font-size:clamp(1.7rem,3.2vw,2.8rem);font-weight:600;letter-spacing:-.02em;margin-bottom:14px;color:var(--td)}
-.cta-sub{font-size:.9rem;color:var(--td60);font-weight:400;margin-bottom:30px}
-.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+══════════════════════════════════════ */
+#cta-sec { background:var(--nm-bg); padding:86px 6vw; text-align:center; transition:background .4s }
+.cta-inner { display:inline-block; padding:50px 60px; border-radius:var(--r-lg); background:var(--nm-bg-sec); box-shadow:var(--nm-in-lg); border:1px solid var(--nm-border); max-width:700px; width:100% }
+[data-theme="dark"] .cta-inner { border-color:rgba(255,106,0,.07) }
+.cta-title { font-family:var(--fd); font-size:clamp(1.7rem,3.2vw,2.8rem); font-weight:800; letter-spacing:-.02em; margin-bottom:14px; color:var(--tx-primary) }
+.cta-sub { font-size:.9rem; color:var(--tx-secondary); font-weight:400; margin-bottom:30px }
+.cta-btns { display:flex; gap:14px; justify-content:center; flex-wrap:wrap }
 
-
-/* ═══════════════════════════════════════════
+/* ══════════════════════════════════════
    FOOTER
-═══════════════════════════════════════════ */
-footer{
-  background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));
-  border-top:1.5px solid rgba(179,157,219,.20);
-  padding:60px 6vw 28px;color:var(--tw);transition:background .4s,border-color .4s;
-}
-[data-theme="dark"] footer{background:linear-gradient(180deg,#060912,#080D1E);border-top-color:rgba(155,132,216,.16)}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
-.fb-name{font-family:var(--fd);font-size:1rem;font-weight:600;margin-bottom:8px;background:linear-gradient(90deg,var(--org-A400),var(--lav));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.fb-desc{font-size:.75rem;color:var(--td60);line-height:1.75;font-weight:300;max-width:230px;margin-top:7px}
-.fb-contact{margin-top:16px;display:flex;flex-direction:column;gap:5px}
-.fb-contact a,.fb-contact span{font-size:.72rem;color:var(--td60);text-decoration:none;transition:color .2s}
-.fb-contact a:hover{color:var(--org-A400)}
-.fc-h5{font-family:var(--fd);font-size:.8rem;font-weight:600;margin-bottom:14px;color:var(--td)}
-.fc-ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.fc-ul li a{font-size:.72rem;color:var(--td60);text-decoration:none;font-weight:300;transition:color .2s}
-.fc-ul li a:hover{color:var(--org-500)}
-[data-theme="dark"] .fc-ul li a:hover{color:var(--org-700)}
-.footer-bottom{padding-top:22px;border-top:1px solid rgba(13,146,216,.10);display:flex;justify-content:space-between;align-items:center;font-size:.69rem;color:var(--td60);gap:16px;flex-wrap:wrap}
-[data-theme="dark"] .footer-bottom{border-top-color:rgba(90,160,232,.10)}
-.footer-bottom a{color:var(--td60);text-decoration:none;transition:color .2s}
-.footer-bottom a:hover{color:var(--org-A400)}
-.acc-row{display:flex;gap:8px}
-.acc-badge{background:rgba(13,146,216,.08);border:1.5px solid rgba(13,146,216,.22);border-radius:7px;padding:3px 10px;font-size:.64rem;font-weight:700;color:var(--org-600);letter-spacing:.04em;transition:box-shadow .3s}
-[data-theme="dark"] .acc-badge{background:rgba(90,160,232,.10);border-color:rgba(90,160,232,.28);color:var(--org-700);box-shadow:0 0 10px rgba(90,160,232,.20)}
+══════════════════════════════════════ */
+footer { background:var(--nm-bg-sec); border-top:1px solid var(--nm-border-b); padding:60px 6vw 28px; color:var(--tx-primary); transition:background .4s; box-shadow:0 -4px 16px rgba(0,0,0,.06) }
+[data-theme="dark"] footer { border-top-color:rgba(255,106,0,.07); box-shadow:0 -4px 24px rgba(0,0,0,.60) }
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:40px; margin-bottom:40px }
+.fb-name { font-family:var(--fd); font-size:1rem; font-weight:700; margin-bottom:8px; background:linear-gradient(90deg,var(--acc),var(--acc2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text }
+[data-theme="dark"] .fb-name { background:linear-gradient(90deg,#FF6A00,#FF8C42); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text }
+.fb-desc { font-size:.75rem; color:var(--tx-secondary); line-height:1.75; font-weight:400; max-width:230px; margin-top:7px }
+.fb-contact { margin-top:16px; display:flex; flex-direction:column; gap:5px }
+.fb-contact a,.fb-contact span { font-size:.72rem; color:var(--tx-secondary); text-decoration:none; transition:color .2s }
+.fb-contact a:hover { color:var(--acc) }
+.fc-h5 { font-family:var(--fd); font-size:.8rem; font-weight:700; margin-bottom:14px; color:var(--tx-primary) }
+.fc-ul { list-style:none; display:flex; flex-direction:column; gap:8px }
+.fc-ul li a { font-size:.72rem; color:var(--tx-secondary); text-decoration:none; font-weight:400; transition:color .2s }
+.fc-ul li a:hover { color:var(--acc) }
+[data-theme="dark"] .fc-ul li a:hover { color:#FF8C42 }
+.footer-bottom { padding-top:22px; border-top:1px solid var(--nm-border-b); display:flex; justify-content:space-between; align-items:center; font-size:.69rem; color:var(--tx-muted); gap:16px; flex-wrap:wrap }
+.footer-bottom a { color:var(--tx-muted); text-decoration:none; transition:color .2s }
+.footer-bottom a:hover { color:var(--acc) }
+.acc-row { display:flex; gap:9px; flex-wrap:wrap }
+.acc-badge { background:var(--nm-bg); box-shadow:var(--nm-in-sm); border-radius:9px; padding:4px 12px; font-size:.64rem; font-weight:700; color:var(--acc); letter-spacing:.04em; border:1px solid var(--nm-border) }
+[data-theme="dark"] .acc-badge { color:#FF6A00; border-color:rgba(255,106,0,.10) }
+.map { display:flex; padding:20px; justify-content:center; align-items:center }
+.map img { width:280px; display:block; border-radius:22px; box-shadow:var(--nm-out-lg); border:1px solid var(--nm-border); opacity:.88; transition:box-shadow .3s }
+.map img:hover { box-shadow:var(--nm-out-xl) }
+[data-theme="dark"] .map img { box-shadow:14px 14px 36px #030304,-14px -14px 36px #252930; border-color:rgba(255,106,0,.08) }
+.social_media-links { list-style:none; display:flex; gap:10px; padding:0; margin:0; flex-wrap:wrap }
+.social_media-links li a { display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:var(--nm-bg); box-shadow:var(--nm-out-sm); border:1px solid var(--nm-border); transition:box-shadow .25s }
+.social_media-links li a:hover { box-shadow:var(--nm-in-sm) }
+[data-theme="dark"] .social_media-links li a { border-color:rgba(255,106,0,.07) }
+.social_media img { width:26px; height:26px; object-fit:contain; display:block }
 
-/* =====================================
-   SOCIAL MEDIA
-===================================== */
+/* ══════════════════════════════════════
+   RESPONSIVE — TABLET ≤960px
+══════════════════════════════════════ */
+@media(max-width:960px) {
+  :root { --ticker-h:32px }
+  .nav-links { display:none } .ham { display:flex }
+  nav { grid-template-columns:1fr auto; padding:8px 12px }
+  .nav-brand { justify-content:flex-start; padding-left:4px }
+  .nav-right { justify-content:flex-end }
+  .btn-apply { display:none }
+  .ticker-label { padding:0 10px; font-size:.57rem }
+  .t-item { padding:0 18px; font-size:.66rem }
+  .footer-grid { grid-template-columns:1fr 1fr; gap:24px }
+  .footer-grid > div:first-child { grid-column:1 / -1 }
 
-.social_media-links {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    padding: 0;
-    margin: 0;
-}
-
-.social_media-links a {
-    outline: none;
-    -webkit-tap-highlight-color: transparent; /* for mobile */
-}
-
-.social_media-links a:focus,
-.social_media-links a:active {
-    outline: none;
-    box-shadow: none;
-}
-
-.social_media img {
-    width: 38px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.social_media img:hover {
-    transform: scale(1.2);
-}
-
-.map{
-  display: flex;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+  /* Timeline: left-rail, images visible below text */
+  .tl-wrap::before { left:23px; transform:none }
+  .tl-row {
+    grid-template-columns: 48px 1fr;
+    grid-template-rows: auto auto;
+    gap: 0 16px;
+    margin-bottom: 44px;
+    align-items: start;
+  }
+  .tl-row.tl-l .tl-mid,
+  .tl-row.tl-r .tl-mid { grid-column:1; grid-row:1; padding-top:4px }
+  .tl-row.tl-l .tl-c,
+  .tl-row.tl-r .tl-c   { grid-column:2; grid-row:1; text-align:left }
+  /* IMAGE: span below, always visible */
+  .tl-row.tl-l .tl-e,
+  .tl-row.tl-r .tl-e   { grid-column:2; grid-row:2; margin-top:14px; display:flex }
 }
 
-.map img{
-  width: 280px;
-  display: block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  border-radius: 15%;
-  opacity: 70%;
-  box-shadow: 0 9px 20px #9776c4;
+/* ══════════════════════════════════════
+   RESPONSIVE — MOBILE ≤640px
+══════════════════════════════════════ */
+@media(max-width:640px) {
+  :root { --ticker-h:30px }
+  .ticker-label { display:none }
+  .ticker-fade.lft { width:20px }
+  .t-item { padding:0 14px; font-size:.62rem }
+  .sec { padding:56px 4vw }
+  .footer-grid { grid-template-columns:1fr }
+  .footer-grid > div:first-child { grid-column:1 }
+  .footer-bottom { flex-direction:column; align-items:flex-start; gap:8px }
+  #history { padding:60px 4vw 72px }
+  #quicklinks { padding:60px 4vw }
+  #cta-sec { padding:56px 4vw }
+  .cta-inner { padding:28px 16px }
+  .cta-btns { flex-direction:column; align-items:stretch }
+  .cta-btns .btn { text-align:center; justify-content:center }
+  .tl-wrap::before { left:19px }
+  .tl-row { grid-template-columns:40px 1fr; gap:0 12px; margin-bottom:36px }
+  .tl-node { width:40px; height:40px; font-size:.66rem }
+  .tl-c { padding:18px 16px }
+  .tl-year { font-size:.88rem }
+  .tl-name { font-size:.82rem }
+  /* Image: slightly taller aspect on mobile for better visibility */
+  .tl-img-slot { aspect-ratio:3/2 }
+  .students_site_link { gap:12px; padding:12px 6px }
+  .students_site_link li a { padding:10px }
+  .students_site_link li a img { width:52px }
+  .history-page-title { font-size:clamp(1.9rem,9vw,2.8rem) }
+  #history-hero { padding:56px 4vw 44px }
 }
 
-.map img:hover{
-  transform: scale(1.1) translateY(-5px);
-  box-shadow: 0 10px 26px rgb(146, 85, 167);
+@media(max-width:480px) {
+  .ql-grid { grid-template-columns:repeat(2,1fr) }
 }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════ */
-@media(max-width:960px){
-  :root{--ticker-h:32px}
-  #hero{grid-template-columns:1fr;padding-top:50px}
-  .hero-right{display:none}
-  #about .about-grid{grid-template-columns:1fr}
-  .leaders-grid{grid-template-columns:1fr 1fr}
-  .notices-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .nav-links{display:none}
-  .ham{display:flex}
-  nav{grid-template-columns:1fr auto;padding:8px 12px}
-  .nav-brand{justify-content:flex-start;padding-left:4px}
-  .nav-right{justify-content:flex-end}
-  .btn-apply{display:none}
-  .ticker-label{padding:0 10px;font-size:.57rem}
-  .t-item{padding:0 18px;font-size:.66rem}
-  /* Timeline mobile */
-  .tl-wrap::before{left:20px;transform:none}
-  .tl-row{display:grid;grid-template-columns:42px 1fr;grid-template-rows:auto;gap:0 14px;align-items:start;margin-bottom:32px}
-  .tl-mid{grid-column:1;grid-row:1;display:flex;justify-content:center;padding-top:4px}
-  .tl-row.tl-l .tl-c,.tl-row.tl-r .tl-c{grid-column:2;grid-row:1;text-align:left}
-  .tl-row.tl-l .tl-e,.tl-row.tl-r .tl-e{display:none}
-  .vm-grid{grid-template-columns:1fr}
+/* Performance: simplify shadows on mobile */
+@media(max-width:960px) {
+  .tl-c, .ql-card, .tl-img-slot {
+    box-shadow:5px 5px 12px rgba(0,0,0,.12),-5px -5px 12px rgba(255,255,255,.70) !important;
+  }
+  [data-theme="dark"] .tl-c,
+  [data-theme="dark"] .ql-card,
+  [data-theme="dark"] .tl-img-slot {
+    box-shadow:5px 5px 12px #0e1016,-5px -5px 12px #2e3140 !important;
+  }
+  nav { box-shadow:5px 5px 14px rgba(0,0,0,.12),-5px -5px 14px rgba(255,255,255,.72) !important }
+  [data-theme="dark"] nav { box-shadow:5px 5px 14px #0e1016,-5px -5px 14px #2e3140 !important }
+  #history::before { background-image:none !important }
+  .rev { transition-delay:0s !important }
 }
-
-@media(max-width:640px){
-  :root{--ticker-h:30px}
-  .leaders-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
-  .hero-stats{gap:16px}
-  #cta-sec{padding:60px 6vw}
-  .ticker-label{display:none}
-  .ticker-fade.lft{width:20px}
-  .t-item{padding:0 14px;font-size:.64rem}
-  .tl-wrap::before{left:17px}
-  .tl-row{grid-template-columns:36px 1fr;gap:0 10px}
-  .tl-c{padding:16px 14px}
-  .tl-node{width:36px;height:36px;font-size:.62rem}
+@media(hover:none) {
+  .btn:hover,.btn-apply:hover,.ql-card:hover,.tl-img-slot:hover,
+  .map img:hover,.students_site_link li a:hover { box-shadow:inherit !important; filter:none !important }
 }
-
-@media(max-width:400px){
-  .tb-l .tb-sep,.tb-l a[href="#"],
-  .tb-l{gap:5px}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important }
+  .ticker-track { animation:none !important }
+  .rev { opacity:1 !important; transform:none !important }
+  .tl-row { opacity:1 !important }
 }
 </style>
+</head>
 <body>
-  <!-- ══════ FIXED TICKER ══════ -->
+
+<a href="#history" class="skip-link">Skip to main content</a>
+
+<!-- TICKER -->
 <div id="ticker" role="marquee" aria-label="Important announcements">
   <div class="ticker-label">📢 Updates</div>
   <div class="ticker-fade lft"></div>
   <div class="ticker-viewport">
     <div class="ticker-track" id="ticker-track">
-      <!-- SET A -->
-      <a href="#notices-sec" class="t-item">CUSB Admission Bulletin 2026 (CUET-PG) <span class="t-badge">NEW</span></a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">NCET-2026 — 4-Year Integrated Teacher Education Programme <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#" class="t-item">CUSB Admission Bulletin 2026 (CUET-PG) <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#" class="t-item">NCET-2026 — 4-Year Integrated Teacher Education Programme <span class="t-badge">NEW</span></a><span class="t-sep"></span>
       <a href="#cta-sec" class="t-item">Admissions Open 2026–27 — Apply Now →</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">45th INCA International Congress — CUSB, March 2026</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Competition on Smart Design for Website Development — Register from 14 Feb 2026</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Ph.D. Admission Notice — All Departments</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Recruitment Notification — Non-Teaching Posts</a><span class="t-sep"></span>
-      <a href="#about" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Semester Exam Schedule — Even Semester 2025–26</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">NAAC Peer Team Visit Preparation — Circular Available</a><span class="t-sep"></span>
-      <!-- SET B — exact mirror for seamless loop -->
-      <a href="#notices-sec" class="t-item">CUSB Admission Bulletin 2026 (CUET-PG) <span class="t-badge">NEW</span></a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">NCET-2026 — 4-Year Integrated Teacher Education Programme <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#" class="t-item">45th INCA International Congress — CUSB, March 2026</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Ph.D. Admission Notice — All Departments</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Recruitment Notification — Non-Teaching Posts</a><span class="t-sep"></span>
+      <a href="#history" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Semester Exam Schedule — Even Semester 2025–26</a><span class="t-sep"></span>
+      <a href="#" class="t-item">NAAC Peer Team Visit Preparation — Circular Available</a><span class="t-sep"></span>
+      <a href="#" class="t-item">CUSB Admission Bulletin 2026 (CUET-PG) <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#" class="t-item">NCET-2026 — 4-Year Integrated Teacher Education Programme <span class="t-badge">NEW</span></a><span class="t-sep"></span>
       <a href="#cta-sec" class="t-item">Admissions Open 2026–27 — Apply Now →</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">45th INCA International Congress — CUSB, March 2026</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Competition on Smart Design for Website Development — Register from 14 Feb 2026</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Ph.D. Admission Notice — All Departments</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Recruitment Notification — Non-Teaching Posts</a><span class="t-sep"></span>
-      <a href="#about" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Semester Exam Schedule — Even Semester 2025–26</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">NAAC Peer Team Visit Preparation — Circular Available</a><span class="t-sep"></span>
+      <a href="#" class="t-item">45th INCA International Congress — CUSB, March 2026</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Ph.D. Admission Notice — All Departments</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Recruitment Notification — Non-Teaching Posts</a><span class="t-sep"></span>
+      <a href="#history" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Semester Exam Schedule — Even Semester 2025–26</a><span class="t-sep"></span>
+      <a href="#" class="t-item">NAAC Peer Team Visit Preparation — Circular Available</a><span class="t-sep"></span>
     </div>
   </div>
   <div class="ticker-fade rgt"></div>
@@ -975,15 +602,16 @@ footer{
 
 <div id="mob-overlay"></div>
 
-<!-- ══════ MOBILE DRAWER ══════ -->
-<div id="mob-menu">
+<!-- MOBILE DRAWER -->
+<div id="mob-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="mob-header">
     <span class="mob-title">CUSB</span>
     <button class="mob-close" id="mob-close-btn" type="button" aria-label="Close menu">✕</button>
   </div>
   <div class="mob-section-lbl">Navigation</div>
-  <a class="mob-a" href="v1.html">Home</a>
-  <a class="mob-a" href="#about">About the University</a>
+  <a class="mob-a" href="index.html">Home</a>
+  <a class="mob-a" href="about.html">About</a>
+  <a class="mob-a" href="history.html">History</a>
   <div class="mob-divider"></div>
   <div class="mob-section-lbl">Administration</div>
   <a class="mob-a" href="president.html">Visitor</a>
@@ -991,175 +619,152 @@ footer{
   <a class="mob-a" href="vc.html">Vice-Chancellor</a>
   <div class="mob-divider"></div>
   <div class="mob-section-lbl">Academics</div>
-  <a class="mob-a" href="#departments">Programs &amp; Courses</a>
-  <a class="mob-a" href="#notices-sec">Exam Notices &amp; Results</a>
+  <a class="mob-a" href="academics.html">Departments &amp; Courses</a>
+  <a class="mob-a" href="cs.html">Computer Science</a>
   <div class="mob-divider"></div>
   <div class="mob-section-lbl">Campus Life</div>
-  <a class="mob-a" href="#campus">Library</a>
-  <a class="mob-a" href="#campus">Hostel &amp; Sports</a>
-  <a class="mob-a" href="#campus">Smart Classrooms</a>
-  <a class="mob-a" href="#campus">Health Care</a>
+  <a class="mob-a" href="hostel.html">Hostel</a>
   <div class="mob-divider"></div>
   <div class="mob-section-lbl">Students</div>
-  <a class="mob-a" href="#quicklinks">Prospectus</a>
-  <a class="mob-a" href="#quicklinks">Placement Cell</a>
-  <a class="mob-a" href="#quicklinks">NSS / NCC</a>
-  <a class="mob-a" href="#quicklinks">Scholarship</a>
-  <a class="mob-a" href="#quicklinks">Alumni</a>
+  <a class="mob-a" href="https://scholarships.gov.in/" target="_blank" rel="noopener">Scholarship</a>
+  <a class="mob-a" href="https://www.antiragging.in/" target="_blank" rel="noopener">Anti-Ragging</a>
   <div class="mob-divider"></div>
-  <a class="mob-a" href="#notices-sec">IQAC</a>
-  <a class="mob-a" href="#notices-sec">Notices &amp; Events</a>
-  <a class="mob-cta" href="#cta-sec">Apply 2026–27 →</a>
+  <a class="mob-cta" href="https://cuet.samarth.ac.in/" target="_blank" rel="noopener">Apply 2026–27 →</a>
 </div>
 
-<!-- ══════ TOP BAR ══════ -->
+<!-- TOP BAR -->
 <div id="topbar">
   <div class="tb-l">
     <span>☎ 0631-2229 530</span>
     <span class="tb-sep">|</span>
     <a href="mailto:admission@cusb.ac.in">✉ admission@cusb.ac.in</a>
     <span class="tb-sep">|</span>
-    <a href="#">RTI</a>
+    <a href="https://rtionline.gov.in/" target="_blank" rel="noopener">RTI</a>
     <span class="tb-sep">|</span>
     <a href="#">Public Self Disclosure</a>
     <span class="tb-sep">|</span>
     <a href="#">Webmail</a>
     <span class="tb-sep">|</span>
-    <a href="#">Feedback</a>
-    <span class="tb-sep">|</span>
-    <a href="http://naac.gov.in/" target="_blank">NAAC</a>
+    <a href="http://naac.gov.in/" target="_blank" rel="noopener">NAAC</a>
   </div>
 </div>
 
-<!-- ══════ NAVBAR ══════ -->
+<!-- NAVBAR -->
 <div id="nav-wrap">
   <nav>
-    <a href="#hero" class="nav-brand">
-      <div class="nav-logo"><img src="culog.png" alt="CUSB Logo" onerror="this.style.display='none'"></div>
+    <a href="index.html" class="nav-brand">
+      <div class="nav-logo"><img src="culog.png" alt="Central University of South Bihar logo" onerror="this.style.display='none'"></div>
       <div class="brand-txt"><div class="abbr">CUSB</div></div>
     </a>
     <ul class="nav-links">
-      <li><a href="v1.html">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="#leadership">Administration</a></li>
-      <li><a href="#departments">Academics</a></li>
-      <li><a href="#campus">Campus</a></li>
-      <li><a href="#notices-sec">Notices</a></li>
-      <li><a href="#quicklinks">Students</a></li>
-      <li><a href="#notices-sec">IQAC</a></li>
+      <li><a href="index.html#leadership">Administration</a></li>
+      <li><a href="academics.html">Academics</a></li>
+      <li><a href="index.html#campus">Campus</a></li>
+      <li><a href="index.html#notices-sec">IQAC</a></li>
+      <li><a href="index.html#quicklinks">Students</a></li>
+      <li><a href="index.html#quicklinks">Gov</a></li>
+      <li><a href="index.html#quicklinks"></a></li>
     </ul>
     <div class="nav-right">
-      <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode">
+      <button class="theme-toggle" id="theme-toggle-btn" aria-label="Switch to dark mode">
         <span class="ico-sun">☀️</span>
         <span class="ico-moon">🌙</span>
       </button>
-      <a href="#cta-sec" class="btn-apply">Apply 2026–27</a>
-      <button class="ham" id="ham-btn" type="button" aria-label="Open menu">
+      <a href="https://cuet.samarth.ac.in/" target="_blank" rel="noopener" class="btn-apply">Apply 2026–27</a>
+      <button class="ham" id="ham-btn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 </div>
 
-<section id="history">
-  <div class="sec-hd center">
-    <div class="sec-lbl">Our Journey</div>
-    <h2 class="sec-title">History &amp; Development</h2>
-    <p class="sec-sub">From a founding act to a thriving 300-acre campus — the story of CUSB's growth.</p>
-  </div>
+<!-- PAGE HERO BANNER -->
+<header id="history-hero">
+  <div class="hero-eyebrow rev"><span class="dot"></span>Our Journey Since 2009</div>
+  <h1 class="history-page-title rev">History &amp; <span class="acc">Development</span></h1>
+  <p class="history-page-sub rev">From a founding act to a thriving 300-acre campus — the story of CUSB's growth across fifteen years.</p>
+</header>
 
+<!-- TIMELINE -->
+<section id="history">
   <div class="tl-wrap" id="tlWrap">
 
-
-    <!-- ── ROW I: Left card ── -->
+    <!-- ROW I — 2009–2013 -->
     <div class="tl-row tl-l" data-row="0">
-      <div class="tl-c card-dark">
-        <div class="tl-year">2009–2013</div>
+      <div class="tl-c">
+        <div class="tl-year">2009 – 2013</div>
         <div class="tl-name">Foundation — Central University of Bihar</div>
         <p class="tl-desc">
-          Established under the Central Universities Act, 2009 (Section 25), the university began from a single room at Hindi Bhawan, Patna, with the first Vice-Chancellor Prof. Janak Pandey joining on 2nd March, 2009.
-          <br><br>
-          <em>2009–10:</em> Centre for Development Studies founded; first PG programme launched under the School of Social Sciences and Policy.
-          <br><br>
-          <em>2010–11:</em> Five PG programmes added — Biotechnology, Computer Science, Environmental Sciences, Mathematics, and Statistics.
-          <br><br>
-          <em>2011–12:</em> Bioinformatics, Communication &amp; Media Studies, and Psychology added. Seven more followed: Life Science, Economics, English, Hindi, Political Science &amp; International Relations, Sociology, and MTech (CS).
-          <br><br>
-          <em>2013:</em> First Convocation held 26th September — graced by Vice President M. Hamid Ansari; 156 graduates from the first three batches were awarded degrees.
+          Established under the Central Universities Act, 2009 (Section&nbsp;25), the university began from a single room at Hindi Bhawan, Patna, with the first Vice-Chancellor Prof.&nbsp;Janak Pandey joining on 2nd March, 2009.<br><br>
+          <em>2009–10:</em> Centre for Development Studies founded; first PG programme launched under the School of Social Sciences and Policy.<br><br>
+          <em>2010–11:</em> Five PG programmes added — Biotechnology, Computer Science, Environmental Sciences, Mathematics, and Statistics.<br><br>
+          <em>2011–12:</em> Bioinformatics, Communication &amp; Media Studies, and Psychology added. Seven more followed: Life Science, Economics, English, Hindi, Political Science &amp; International Relations, Sociology, and MTech (CS).<br><br>
+          <em>2013:</em> First Convocation held 26th September — graced by Vice President M.&nbsp;Hamid Ansari; 156 graduates from the first three batches were awarded degrees.
         </p>
       </div>
       <div class="tl-mid"><div class="tl-node">I</div></div>
       <div class="tl-e">
         <div class="tl-img-slot">
-          <div class="img-inner">
-           <img src="2009.avif" >
-          </div>
+          <img src="2009.avif" alt="CUSB founding year 2009 — Hindi Bhawan Patna" onerror="this.style.display='none'">
+          <div class="tl-img-placeholder"><span>🏛️</span>2009 — Foundation</div>
         </div>
       </div>
     </div>
 
-    <!-- ── ROW II: Right card ── -->
+    <!-- ROW II — 2013–2014 -->
     <div class="tl-row tl-r" data-row="1">
       <div class="tl-e">
         <div class="tl-img-slot">
-          <div class="img-inner">
-          </div>
-          <img src="2013.jpg">
+          <img src="2013.jpg" alt="First Convocation of CUSB in 2013" onerror="this.style.display='none'">
+          <div class="tl-img-placeholder"><span>🎓</span>2013 — First Convocation</div>
         </div>
       </div>
       <div class="tl-mid"><div class="tl-node">II</div></div>
-      <div class="tl-c card-dark">
-        <div class="tl-year">2013–2014</div>
+      <div class="tl-c">
+        <div class="tl-year">2013 – 2014</div>
         <div class="tl-name">Renamed to CUSB</div>
         <p class="tl-desc">
-          The Central Universities (Amendment) Act, 2014 renamed the institution to Central University of South Bihar — better reflecting its regional identity and scope.
-          <br><br>
-          Integrated BA.BEd; BSc.BEd; BA.LLB (Hons); BSc.LLB (Hons); and Integrated M.Phil–Ph.D. programmes in Bioinformatics, Biotechnology, CS, Development Studies, Economics, Environmental Science, Hindi, Life Science, Mathematics, Political Science &amp; IR, and Statistics were introduced.
-          <em>(Integrated MPhil–PhD was replaced with PhD w.e.f. AY 2016–17.)</em>
+          The Central Universities (Amendment) Act, 2014 renamed the institution to Central University of South Bihar — better reflecting its regional identity and scope.<br><br>
+          Integrated BA.BEd, BSc.BEd, BA.LLB&nbsp;(Hons), BSc.LLB&nbsp;(Hons), and Integrated M.Phil–Ph.D. programmes across multiple departments were introduced.<br><br>
+          <em>Note:</em> Integrated MPhil–PhD was replaced with PhD w.e.f.&nbsp;AY&nbsp;2016–17.
         </p>
       </div>
     </div>
 
-    <!-- ── ROW III: Left card ── -->
+    <!-- ROW III — 2014–2018 -->
     <div class="tl-row tl-l" data-row="2">
-      <div class="tl-c card-dark">
-        <div class="tl-year">2014–2018</div>
+      <div class="tl-c">
+        <div class="tl-year">2014 – 2018</div>
         <div class="tl-name">Permanent Campus &amp; Expansion</div>
         <p class="tl-desc">
-          Shifted to its permanent 300-acre campus at Panchanpur, Gaya. New schools, departments, and infrastructure including the Central Instrumental Facility were commissioned.
-          <br><br>
-          <em>2014–15:</em> B.Voc (Arts &amp; Crafts) introduced under School of Vocational Studies (withdrawn from 2017–18 for technical reasons).
-          <br><br>
-          <em>2016–17:</em> LLM launched under School of Law &amp; Governance. Ph.D. programmes started across 17 departments including Biotechnology, Life Science, Environmental Science, Mathematics, Statistics, CS, Hindi, English, Sociology, Economics, Political Science &amp; IR, Education, Law, and Bioinformatics.
-          <br><br>
-          <em>2017–18:</em> M.Ed. programme introduced under Department of Teacher Education.
-          <br><br>
-          <em>2018–19:</em> Five new PG programmes: Chemistry, Physics, Social Work, M.Com, and History.
-          <br><br>
+          Shifted to the permanent 300-acre campus at Panchanpur, Gaya. New schools, departments, and infrastructure including the Central Instrumental Facility were commissioned.<br><br>
+          <em>2016–17:</em> LLM launched under School of Law &amp; Governance. Ph.D. programmes started across 17 departments.<br><br>
+          <em>2017–18:</em> M.Ed. programme introduced under Department of Teacher Education.<br><br>
+          <em>2018–19:</em> Five new PG programmes: Chemistry, Physics, Social Work, M.Com, and History.<br><br>
           <em>2019–20:</em> Ph.D. in Chemistry added under School of Physical &amp; Chemical Sciences.
         </p>
       </div>
       <div class="tl-mid"><div class="tl-node">III</div></div>
       <div class="tl-e">
         <div class="tl-img-slot">
-          <div class="img-inner">
-          </div>
-          <img src="expansion.jpg">
+          <img src="expansion.jpg" alt="CUSB permanent campus expansion at Panchanpur Gaya" onerror="this.style.display='none'">
+          <div class="tl-img-placeholder"><span>🏗️</span>Panchanpur Campus</div>
         </div>
       </div>
     </div>
 
-    <!-- ── ROW IV: Right card ── -->
+    <!-- ROW IV — 2023 -->
     <div class="tl-row tl-r" data-row="3">
       <div class="tl-e">
-        <div class="tl-img-slot">
-          <div class="img-inner">
-          </div>
-          <img src="naac.webp">
+        <div class="tl-img-slot" style="background:var(--nm-bg-alt)">
+          <img src="NAAC.png" alt="NAAC Accreditation badge awarded to CUSB in 2023" onerror="this.style.display='none'" style="object-fit:contain;padding:18px">
+          <div class="tl-img-placeholder"><span>🏅</span>NAAC Accreditation</div>
         </div>
       </div>
       <div class="tl-mid"><div class="tl-node">IV</div></div>
-      <div class="tl-c card-dark">
+      <div class="tl-c">
         <div class="tl-year">2023</div>
         <div class="tl-name">NAAC Accreditation</div>
         <p class="tl-desc">
@@ -1168,30 +773,30 @@ footer{
       </div>
     </div>
 
-    <!-- ── ROW V: Left card ── -->
+    <!-- ROW V — 2026 -->
     <div class="tl-row tl-l" data-row="4">
-      <div class="tl-c card-dark">
+      <div class="tl-c">
         <div class="tl-year">2026</div>
         <div class="tl-name">Towards Future Excellence</div>
         <p class="tl-desc">
-          Admissions open for 2026–27 under NEP 2020. CUSB grows with new ITEP programmes and robust research pathways via CUET-PG routes — shaping the next generation of scholars from South Bihar.
+          Admissions open for 2026–27 under NEP&nbsp;2020. CUSB grows with new ITEP programmes and robust research pathways via CUET-PG routes — shaping the next generation of scholars from South Bihar.
         </p>
       </div>
       <div class="tl-mid"><div class="tl-node">V</div></div>
       <div class="tl-e">
         <div class="tl-img-slot">
-          <div class="img-inner">
-          </div>
-          <img src="2026.jpg">
+          <img src="2026.jpg" alt="CUSB campus life and future plans 2026" onerror="this.style.display='none'">
+          <div class="tl-img-placeholder"><span>🚀</span>2026 &amp; Beyond</div>
         </div>
       </div>
     </div>
 
   </div><!-- /.tl-wrap -->
 </section>
-<!-- ══════ QUICK LINKS ══════ -->
-<section id="quicklinks" class="sec white-sec">
-  <div class="sec-hd rev">
+
+<!-- QUICK LINKS -->
+<section id="quicklinks" class="sec">
+  <div class="sec-hd center rev">
     <div class="sec-lbl">Quick Access</div>
     <h2 class="sec-title">Student Resources</h2>
     <p class="sec-sub">Everything you need, one click away.</p>
@@ -1202,41 +807,45 @@ footer{
     <a href="#" class="ql-card rev"><span class="ql-ico">🏆</span><span class="ql-nm">Semester Results</span></a>
     <a href="#" class="ql-card rev"><span class="ql-ico">📥</span><span class="ql-nm">Downloads</span></a>
     <a href="#" class="ql-card rev"><span class="ql-ico">🎓</span><span class="ql-nm">Convocation</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">💰</span><span class="ql-nm">Scholarship</span></a>
-    <a href="Hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">💼</span><span class="ql-nm">Placement Cell</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">🖼️</span><span class="ql-nm">Photo Gallery</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">📡</span><span class="ql-nm">RTI</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">🔒</span><span class="ql-nm">Anti-Ragging</span></a>
+    <a href="https://scholarships.gov.in/" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico">💰</span><span class="ql-nm">Scholarship</span></a>
+    <a href="hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
+    <a href="https://rtionline.gov.in/" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico">📡</span><span class="ql-nm">RTI</span></a>
+    <a href="https://www.antiragging.in/" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico">🔒</span><span class="ql-nm">Anti-Ragging</span></a>
     <a href="#" class="ql-card rev"><span class="ql-ico">🌐</span><span class="ql-nm">Webmail</span></a>
+    <a href="https://cusb.samarth.edu.in/" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico">🖥️</span><span class="ql-nm">Samarth Login</span></a>
+    <a href="index.html#gallery" class="ql-card rev"><span class="ql-ico">🖼️</span><span class="ql-nm">Photo Gallery</span></a>
   </div>
 </section>
-<!-- ══════ GOV SITES ══════ -->
-<section id="gov_sites">
+
+<!-- GOV SITES -->
+<section id="gov_sites" aria-labelledby="gov-heading">
+  <div style="text-align:center;padding-bottom:4px"><p id="gov-heading" class="sec-lbl" style="display:inline-block">Government Portals</p></div>
   <div class="students_site">
     <ul class="students_site_link">
-      <li><a href="https://swayam.gov.in/" target="_blank"><img src="swayam_logo.png" alt="Swayam Courses"></a></li>
-      <li><a href="https://www.swayamprabha.gov.in/" target="_blank"><img src="SWAYAM_PRABHA.png" alt="swayam prabha"></a></li>
-      <li><a href="https://ndl.iitkgp.ac.in/" target="_blank"><img src="national (1).png" alt="national digital library"></a></li>
-      <li><a href="https://aishe.gov.in/" target="_blank"><img src="AISHE.png" alt="AISHE"></a></li>
-      <li><a href="https://www.mygov.in/" target="_blank"><img src="mygov_0.png" alt="mygov"></a></li>
-      <li><a href="https://www.india.gov.in/" target="_blank"><img src="Indiagovin.svg" alt="indiagov"></a></li>
+      <li><a href="https://swayam.gov.in/" target="_blank" rel="noopener"><img src="swayam_logo.png" alt="Swayam online courses portal"></a></li>
+      <li><a href="https://www.swayamprabha.gov.in/" target="_blank" rel="noopener"><img src="SWAYAM_PRABHA.png" alt="Swayam Prabha educational TV channel"></a></li>
+      <li><a href="https://ndl.iitkgp.ac.in/" target="_blank" rel="noopener"><img src="national (1).png" alt="National Digital Library of India"></a></li>
+      <li><a href="https://aishe.gov.in/" target="_blank" rel="noopener"><img src="AISHE.png" alt="AISHE higher education statistics portal"></a></li>
+      <li><a href="https://www.mygov.in/" target="_blank" rel="noopener"><img src="mygov_0.png" alt="MyGov India citizen engagement platform"></a></li>
+      <li><a href="https://www.india.gov.in/" target="_blank" rel="noopener"><img src="Indiagovin.svg" alt="India.gov.in national government portal"></a></li>
     </ul>
   </div>
 </section>
 
-<!-- ══════ CTA ══════ -->
+<!-- CTA -->
 <section id="cta-sec">
-  <h2 class="cta-title rev">Begin Your Journey at CUSB</h2>
-  <p class="cta-sub rev">Admissions open for 2026–27. Join thousands of students shaping India's future from the heartland of Bihar.</p>
-  <div class="cta-btns rev">
-    <a href="#" class="btn btn-ocean">Apply for 2026–27 →</a>
-    <a href="#" class="btn btn-ghost">Contact Helpdesk</a>
+  <div class="cta-inner">
+    <h2 class="cta-title rev">Begin Your Journey at CUSB</h2>
+    <p class="cta-sub rev">Admissions open for 2026–27. Join thousands of students shaping India's future from the heartland of Bihar.</p>
+    <div class="cta-btns rev">
+      <a href="https://cuet.samarth.ac.in/" target="_blank" rel="noopener" class="btn btn-ocean">Apply for 2026–27 →</a>
+      <a href="index.html#quicklinks" class="btn btn-ghost">Download Prospectus</a>
+      <a href="mailto:admission@cusb.ac.in" class="btn btn-ghost">Contact Helpdesk</a>
+    </div>
   </div>
 </section>
 
-
-<!-- ══════ FOOTER ══════ -->
+<!-- FOOTER -->
 <footer id="footer">
   <div class="footer-grid">
     <div>
@@ -1252,46 +861,53 @@ footer{
     <div>
       <div class="fc-h5">About</div>
       <ul class="fc-ul">
-        <li><a href="#about">The University</a></li>
+        <li><a href="about.html">The University</a></li>
+        <li><a href="about.html">Vision &amp; Mission</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="about.html">Annual Reports</a></li>
       </ul>
     </div>
     <div>
       <div class="fc-h5">Academics</div>
       <ul class="fc-ul">
-        <li><a href="#departments">All Departments</a></li>
-        <li><a href="#departments">Programs</a></li>
-        <li><a href="v1.html#notices-sec">Exam Notices</a></li>
-        <li><a href="#notices-sec">Results</a></li>
+        <li><a href="academics.html">All Departments</a></li>
+        <li><a href="academics.html">Programs</a></li>
+        <li><a href="index.html#notices-sec">Exam Notices</a></li>
+        <li><a href="index.html#notices-sec">Results</a></li>
       </ul>
     </div>
     <div>
       <div class="fc-h5">Students</div>
       <ul class="fc-ul">
-        <li><a href="#cta-sec">Admissions 2026–27</a></li>
-        <li><a href="#quicklinks">Scholarship</a></li>
-        <li><a href="Hostel.html">Hostel</a></li>
+        <li><a href="https://cuet.samarth.ac.in/" target="_blank" rel="noopener">Admissions 2026–27</a></li>
+        <li><a href="https://scholarships.gov.in/" target="_blank" rel="noopener">Scholarship</a></li>
+        <li><a href="hostel.html">Hostel</a></li>
+        <li><a href="index.html#quicklinks">Placement Cell</a></li>
       </ul>
     </div>
     <div>
       <div class="fc-h5">Quick Links</div>
       <ul class="fc-ul">
-        <li><a href="v1.html#notices-sec">IQAC</a></li>
-        <li><a href="v1.html#gallery">Photo Gallery</a></li>
+        <li><a href="index.html#notices-sec">NAAC / IQAC</a></li>
+        <li><a href="https://rtionline.gov.in/" target="_blank" rel="noopener">RTI</a></li>
+        <li><a href="index.html#notices-sec">Tenders</a></li>
+        <li><a href="index.html#gallery">Photo Gallery</a></li>
+        <li><a href="#">Webmail</a></li>
       </ul>
     </div>
-      <div class="social_media">
-      <ul class="social_media-links" >
-        <li><a href="https://www.facebook.com/cusbofficial/" target="_blank"><img src="fb.png" alt="Facebook"></a></li>
-        <li><a href="https://x.com/CUSBofficial" target="_blank"><img src="X.png" alt="X"></a></li>
-        <li><a href="https://www.instagram.com/cusbofficialpage/?hl=en" target="_blank"><img src="insta.png" alt="Insta"></a></li>
-        <li><a href="https://www.youtube.com/user/CUBofficialchannel" target="_blank"><img src="YouTube.webp" alt="Youtube"></a></li>
-        <li><a href="https://in.linkedin.com/school/cusbofficial/" target="_blank"><img src="linke.png" alt="Linkedin"></a></li>
+    <div class="social_media">
+      <ul class="social_media-links">
+        <li><a href="https://www.facebook.com/cusbofficial/" target="_blank" rel="noopener" aria-label="CUSB on Facebook"><img src="fb.png" alt="" aria-hidden="true"></a></li>
+        <li><a href="https://x.com/CUSBofficial" target="_blank" rel="noopener" aria-label="CUSB on X"><img src="X.png" alt="" aria-hidden="true"></a></li>
+        <li><a href="https://www.instagram.com/cusbofficialpage/?hl=en" target="_blank" rel="noopener" aria-label="CUSB on Instagram"><img src="insta.png" alt="" aria-hidden="true"></a></li>
+        <li><a href="https://www.youtube.com/user/CUBofficialchannel" target="_blank" rel="noopener" aria-label="CUSB on YouTube"><img src="YouTube.webp" alt="" aria-hidden="true"></a></li>
+        <li><a href="https://in.linkedin.com/school/cusbofficial/" target="_blank" rel="noopener" aria-label="CUSB on LinkedIn"><img src="linke.png" alt="" aria-hidden="true"></a></li>
       </ul>
     </div>
-
+  </div>
   <div class="map">
-    <a href="https://maps.google.com/?q=Central+University+of+South+Bihar+Gaya" target="_blank">
-      <img src="map.jpeg" alt="map">
+    <a href="https://maps.google.com/?q=Central+University+of+South+Bihar+Gaya" target="_blank" rel="noopener">
+      <img src="map.jpeg" alt="Map showing CUSB campus location at Panchanpur, Gaya, Bihar">
     </a>
   </div>
   <div class="footer-bottom">
@@ -1305,156 +921,95 @@ footer{
   </div>
 </footer>
 
-
 <script>
+/* NAV SHADOW */
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('sc',window.scrollY>60)},{passive:true});
 
-
-/* ═══════════════════════════════════════════════
-   SCROLL REVEAL — fade-up rows
-═══════════════════════════════════════════════ */
-(function() {
-  const rows = document.querySelectorAll('.tl-row');
-  const delays = [0, 80, 160, 240, 320];
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const i = parseInt(entry.target.dataset.row || 0);
-        entry.target.style.animationDelay = (delays[i] || 0) + 'ms';
-        entry.target.classList.add('visible');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  rows.forEach(r => io.observe(r));
-})();
-/* ─────────────────────────────────────
-   NAV GLASS ON SCROLL
-───────────────────────────────────── */
-window.addEventListener('scroll',()=>{
-  document.querySelector('nav').classList.toggle('sc',window.scrollY>60);
-},{passive:true});
-
-/* ─────────────────────────────────────
-   SMOOTH SCROLL — all anchor links
-   scroll-margin-top on sections handles
-   the ticker + nav offset automatically
-───────────────────────────────────── */
+/* SMOOTH SCROLL */
 document.querySelectorAll('a[href^="#"]').forEach(link=>{
   link.addEventListener('click',e=>{
     const id=link.getAttribute('href').slice(1);
     if(!id)return;
-    const target=document.getElementById(id);
-    if(!target)return;
+    const t=document.getElementById(id);
+    if(!t)return;
     e.preventDefault();
-    target.scrollIntoView({behavior:'smooth',block:'start'});
+    t.scrollIntoView({behavior:'smooth',block:'start'});
     history.replaceState(null,'',`#${id}`);
   });
 });
 
-
-/* ─────────────────────────────────────
-   SCROLL REVEAL
-───────────────────────────────────── */
+/* SCROLL REVEAL .rev */
 const ro=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')});
 },{threshold:0.08});
-document.querySelectorAll('.rev').forEach((el,i)=>{
-  el.style.transitionDelay=(i%5)*0.07+'s';
-  ro.observe(el);
-});
+document.querySelectorAll('.rev').forEach((el,i)=>{el.style.transitionDelay=(i%5)*0.07+'s';ro.observe(el)});
 
-/* ─────────────────────────────────────
-   COUNTER ANIMATION
-───────────────────────────────────── */
-const co=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    e.target.querySelectorAll('[data-to]').forEach(el=>{
-      const target=+el.dataset.to,suffix=el.dataset.s||'';
-      let t0=null;
-      const step=ts=>{
-        if(!t0)t0=ts;
-        const p=Math.min((ts-t0)/1500,1);
-        el.textContent=Math.floor((1-Math.pow(1-p,3))*target).toLocaleString()+suffix;
-        p<1?requestAnimationFrame(step):el.textContent=target.toLocaleString()+suffix;
-      };
-      requestAnimationFrame(step);
+/* TIMELINE ROW REVEAL */
+(function(){
+  const rows=document.querySelectorAll('.tl-row');
+  const delays=[0,100,180,260,340];
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const i=parseInt(entry.target.dataset.row||0);
+        entry.target.style.animationDelay=(delays[i]||0)+'ms';
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
     });
-    co.disconnect();
-  });
-},{threshold:0.5});
-const hs=document.querySelector('.hero-stats');
-if(hs)co.observe(hs);
+  },{threshold:0.10});
+  rows.forEach(r=>io.observe(r));
+})();
 
-/* ─────────────────────────────────────
-   BUTTON RIPPLE
-───────────────────────────────────── */
+/* BUTTON RIPPLE */
 document.querySelectorAll('.btn,.btn-apply').forEach(btn=>{
   btn.addEventListener('click',e=>{
     const r=document.createElement('span');
     r.className='rpl';
     r.style.cssText=`left:${e.offsetX}px;top:${e.offsetY}px;width:8px;height:8px;margin:-4px`;
-    btn.appendChild(r);
-    setTimeout(()=>r.remove(),520);
+    btn.appendChild(r);setTimeout(()=>r.remove(),520);
   });
 });
 
-/* ─────────────────────────────────────
-   HAMBURGER MENU
-───────────────────────────────────── */
+/* HAMBURGER */
 const mobMenu=document.getElementById('mob-menu');
-const mobOvr =document.getElementById('mob-overlay');
-const hamBtn =document.getElementById('ham-btn');
-const closeB =document.getElementById('mob-close-btn');
-
-const openM =()=>{mobMenu.classList.add('open');mobOvr.classList.add('show');hamBtn.classList.add('open');document.body.style.overflow='hidden'};
-const closeM=()=>{mobMenu.classList.remove('open');mobOvr.classList.remove('show');hamBtn.classList.remove('open');document.body.style.overflow=''};
-
+const mobOvr=document.getElementById('mob-overlay');
+const hamBtn=document.getElementById('ham-btn');
+const closeB=document.getElementById('mob-close-btn');
+const openM=()=>{mobMenu.classList.add('open');mobOvr.classList.add('show');hamBtn.classList.add('open');hamBtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'};
+const closeM=()=>{mobMenu.classList.remove('open');mobOvr.classList.remove('show');hamBtn.classList.remove('open');hamBtn.setAttribute('aria-expanded','false');document.body.style.overflow=''};
 hamBtn.addEventListener('click',e=>{e.stopPropagation();mobMenu.classList.contains('open')?closeM():openM()});
 closeB.addEventListener('click',e=>{e.stopPropagation();closeM()});
 mobOvr.addEventListener('click',closeM);
 document.querySelectorAll('#mob-menu .mob-a,#mob-menu .mob-cta').forEach(a=>a.addEventListener('click',closeM));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
 
-/* ─────────────────────────────────────
-   DARK / LIGHT THEME TOGGLE
-───────────────────────────────────── */
+/* THEME */
 const html=document.documentElement;
-const tog =document.getElementById('theme-toggle-btn');
-const KEY ='cusb-theme';
+const tog=document.getElementById('theme-toggle-btn');
+const KEY='cusb-theme';
+function applyTheme(t){html.setAttribute('data-theme',t);tog.setAttribute('aria-label',t==='dark'?'Switch to light mode':'Switch to dark mode')}
+(function(){const s=localStorage.getItem(KEY);if(s){applyTheme(s);return}if(window.matchMedia('(prefers-color-scheme: dark)').matches)applyTheme('dark')})();
+tog.addEventListener('click',()=>{const n=html.getAttribute('data-theme')==='dark'?'light':'dark';applyTheme(n);localStorage.setItem(KEY,n)});
 
-(function(){
-  const s=localStorage.getItem(KEY);
-  if(s){html.setAttribute('data-theme',s);return}
-  if(window.matchMedia('(prefers-color-scheme: dark)').matches)html.setAttribute('data-theme','dark');
-})();
-
-tog.addEventListener('click',()=>{
-  const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
-  html.setAttribute('data-theme',next);
-  localStorage.setItem(KEY,next);
-});
-
-/* ─────────────────────────────────────
-   TICKER — pause on hover / touch
-───────────────────────────────────── */
-const track=document.getElementById('ticker-track');
-if(track){
-  track.addEventListener('mouseenter',()=>track.style.animationPlayState='paused');
-  track.addEventListener('mouseleave',()=>track.style.animationPlayState='running');
-  // Double-tap on mobile to pause/resume
-  let lastTap=0;
-  track.addEventListener('touchstart',()=>{
-    const now=Date.now();
-    if(now-lastTap<300){
-      const cur=track.style.animationPlayState;
-      track.style.animationPlayState=(cur==='paused')?'running':'paused';
-    }
-    lastTap=now;
-  },{passive:true});
+/* TICKER */
+const tt=document.getElementById('ticker-track');
+if(tt){
+  tt.addEventListener('mouseenter',()=>tt.style.animationPlayState='paused');
+  tt.addEventListener('mouseleave',()=>tt.style.animationPlayState='running');
+  let lt=0;
+  tt.addEventListener('touchstart',()=>{const n=Date.now();if(n-lt<300){const c=tt.style.animationPlayState;tt.style.animationPlayState=(c==='paused')?'running':'paused'}lt=n},{passive:true});
 }
+
+/* HIDE placeholder when image loads */
+document.querySelectorAll('.tl-img-slot img').forEach(img=>{
+  const ph=img.closest('.tl-img-slot').querySelector('.tl-img-placeholder');
+  if(!ph)return;
+  const hide=()=>{ph.style.display='none'};
+  if(img.complete&&img.naturalWidth>0){hide();return}
+  img.addEventListener('load',hide);
+  img.addEventListener('error',()=>{img.style.display='none'});
+});
 </script>
 </body>
 </html>

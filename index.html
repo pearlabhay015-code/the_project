@@ -87,6 +87,7 @@
       --ticker-h: 36px;
       --topbar-h: 40px;
       --nav-h: 40px;
+      --nav-max-width: 1100px;
       --offset: calc(var(--ticker-h) + var(--nav-h) + 12px);
 
       /* compat aliases */
@@ -588,10 +589,10 @@
       border: 1px solid var(--nm-border);
       padding: 8px 16px;
       width: 100%;
-      max-width: 1100px;
+      max-width: var(--nav-max-width);
       flex: 1;
       min-height: var(--nav-h);
-      transition: box-shadow .3s, background .4s;
+      transition: box-shadow .3s, background .4s, max-width .2s ease-out;
       animation: navIn .6s cubic-bezier(.16, 1, .3, 1) both;
     }
 
@@ -751,6 +752,13 @@
     .nav-search-submit span {
       font-size: 1.1rem;
       line-height: 1;
+    }
+
+    .nav-search-submit svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      transition: stroke .2s;
     }
 
     .nav-search-submit:hover {
@@ -3446,6 +3454,357 @@
       transform: rotate(180deg)
     }
 
+    /* ──────────────────────────────────────
+   CHATBOT WIDGET
+   Fixed positioning, isolated from page flow
+────────────────────────────────────── */
+    .chatbot-container {
+      position: fixed;
+      bottom: 100px;
+      right: 40px;
+      z-index: 1000;
+      font-family: var(--fb);
+      pointer-events: none;
+    }
+
+    .chatbot-container * {
+      pointer-events: all;
+    }
+
+    .chatbot-toggle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--nm-bg);
+      border: 1px solid var(--nm-border);
+      box-shadow: var(--nm-out-sm);
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .3s cubic-bezier(.16, 1, .3, 1);
+      flex-shrink: 0;
+    }
+
+    .chatbot-toggle:hover {
+      box-shadow: var(--nm-out);
+    }
+
+    .chatbot-toggle:active {
+      transform: scale(.97);
+    }
+
+    [data-theme="dark"] .chatbot-toggle {
+      background: var(--nm-bg-sec);
+      border-color: rgba(255, 106, 0, 0.757);
+      box-shadow: var(--nm-out-sm);
+    }
+
+    [data-theme="dark"] .chatbot-toggle:hover {
+      box-shadow: 0 0 20px rgba(255, 106, 0, .35), var(--nm-out);
+    }
+
+    .chatbot-window {
+      position: absolute;
+      bottom: 60px;
+      right: 0;
+      width: 360px;
+      height: 500px;
+      background: var(--nm-bg);
+      border: 1px solid var(--nm-border);
+      border-radius: 20px;
+      box-shadow: var(--nm-out-lg);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px) scale(0.95);
+      transition: all .3s cubic-bezier(.16, 1, .3, 1);
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .chatbot-window.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      pointer-events: all;
+    }
+
+    [data-theme="dark"] .chatbot-window {
+      background: var(--nm-bg-sec);
+      border-color: rgba(255, 106, 0, .08);
+      box-shadow:
+        16px 16px 40px #0b0d14,
+        -16px -16px 40px #333650,
+        0 0 24px rgba(255, 106, 0, .08);
+    }
+
+    .chatbot-header {
+      padding: 16px;
+      background: linear-gradient(90deg, var(--acc), var(--acc2));
+      color: white;
+      font-weight: 600;
+      font-size: .9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+      border-radius: 20px 20px 0 0;
+    }
+
+    [data-theme="dark"] .chatbot-header {
+      background: linear-gradient(90deg, #FF6A00, #FF8C42);
+    }
+
+    .chatbot-close {
+      background: rgba(255, 255, 255, .25);
+      border: 1px solid rgba(255, 255, 255, .4);
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+      padding: 0;
+      font-weight: bold;
+    }
+
+    .chatbot-close:hover {
+      background: rgba(255, 255, 255, .35);
+      transform: scale(1.1);
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--nm-bg);
+    }
+
+    [data-theme="dark"] .chatbot-messages {
+      background: var(--nm-bg-sec);
+    }
+
+    .chatbot-message {
+      display: flex;
+      animation: fadeIn .3s ease-out;
+    }
+
+    .chatbot-message.user {
+      justify-content: flex-end;
+    }
+
+    .chatbot-message.bot {
+      justify-content: flex-start;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .chatbot-message-bubble {
+      max-width: 75%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: .85rem;
+      line-height: 1.5;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .chatbot-message.user .chatbot-message-bubble {
+      background: var(--acc);
+      color: white;
+      border-radius: 12px 0 12px 12px;
+    }
+
+    [data-theme="dark"] .chatbot-message.user .chatbot-message-bubble {
+      background: #FF6A00;
+    }
+
+    .chatbot-message.bot .chatbot-message-bubble {
+      background: var(--nm-bg-alt);
+      color: var(--tx-primary);
+      border-radius: 0 12px 12px 12px;
+      border: 1px solid var(--nm-border);
+    }
+
+    [data-theme="dark"] .chatbot-message.bot .chatbot-message-bubble {
+      background: var(--nm-bg);
+      color: var(--tx-primary);
+      border-color: rgba(255, 106, 0, .08);
+    }
+
+    .chatbot-input-group {
+      padding: 12px;
+      display: flex;
+      gap: 8px;
+      background: var(--nm-bg);
+      border-top: 1px solid var(--nm-border);
+      flex-shrink: 0;
+    }
+
+    [data-theme="dark"] .chatbot-input-group {
+      background: var(--nm-bg-sec);
+      border-top-color: rgba(255, 106, 0, .08);
+    }
+
+    #chatbot-input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid var(--nm-border);
+      border-radius: 20px;
+      background: var(--nm-bg-alt);
+      color: var(--tx-primary);
+      font-family: var(--fb);
+      font-size: .85rem;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    #chatbot-input:focus {
+      border-color: var(--acc);
+      box-shadow: 0 0 0 3px rgba(246, 150, 72, .12);
+    }
+
+    [data-theme="dark"] #chatbot-input {
+      background: var(--nm-bg);
+      color: var(--tx-primary);
+      border-color: rgba(255, 106, 0, .08);
+    }
+
+    [data-theme="dark"] #chatbot-input:focus {
+      border-color: #FF6A00;
+      box-shadow: 0 0 0 3px rgba(255, 106, 0, .12);
+    }
+
+    #chatbot-send {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--acc);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    #chatbot-send:hover {
+      background: var(--acc2);
+      transform: scale(1.05);
+    }
+
+    #chatbot-send:active {
+      transform: scale(0.95);
+    }
+
+    [data-theme="dark"] #chatbot-send {
+      background: #FF6A00;
+    }
+
+    [data-theme="dark"] #chatbot-send:hover {
+      background: #FF8C42;
+    }
+
+    /* Scrollbar styling for chatbot messages */
+    .chatbot-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .chatbot-messages::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .chatbot-messages::-webkit-scrollbar-thumb {
+      background: var(--tx-muted);
+      border-radius: 3px;
+    }
+
+    .chatbot-messages::-webkit-scrollbar-thumb:hover {
+      background: var(--tx-secondary);
+    }
+
+    [data-theme="dark"] .chatbot-messages::-webkit-scrollbar-thumb {
+      background: rgba(255, 106, 0, .3);
+    }
+
+    [data-theme="dark"] .chatbot-messages::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 106, 0, .5);
+    }
+
+    @media(max-width:768px) {
+      .chatbot-window {
+        width: 85vw;
+        height: 60vh;
+        max-height: 600px;
+        bottom: 60px;
+      }
+
+      .chatbot-toggle {
+        width: 50px;
+        height: 50px;
+      }
+
+      .chatbot-container {
+        bottom: 100px;
+        right: 20px;
+      }
+    }
+
+    @media(max-width:480px) {
+      .chatbot-container {
+        bottom: 88px;
+        right: 16px;
+      }
+
+      .chatbot-window {
+        width: 90vw;
+        height: 65vh;
+        max-height: 550px;
+        bottom: 60px;
+      }
+
+      .chatbot-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
+
+      .chatbot-message-bubble {
+        max-width: 85%;
+        font-size: .8rem;
+      }
+    }
+
+    @media(hover:none) {
+      .chatbot-toggle:hover {
+        box-shadow: var(--nm-out) !important;
+        transform: scale(1) !important;
+      }
+    }
+
     @media(max-width:768px) {
       #scroll-btn {
         bottom: 28px;
@@ -3551,6 +3910,8 @@
     <div class="mob-section-lbl">Students</div>
     <a class="mob-a" href="#quicklinks">Quick Links</a>
     <a class="mob-a" href="#gov_sites">Gov Links</a>
+    <a class="mob-a" href="#gov_sites">Alumini</a>
+    <a class="mob-a" href="#gov_sites">Research</a>
     <a class="mob-cta" href="#cta-sec">Apply 2026–27 →</a>
   </div>
 
@@ -3596,12 +3957,12 @@
         <li><a href="#about">About</a></li>
         <li><a href="#leadership">Administration</a></li>
         <li><a href="#departments">Academics</a></li>
-        <li><a href="#alumni">Alumni</a></li>
-        <li><a href="#alumni">Research</a></li>
         <li><a href="#campus">Campus</a></li>
         <li><a href="#notices-sec">IQAC</a></li>
         <li><a href="#quicklinks">Students</a></li>
         <li><a href="#gov_sites">Gov</a></li>
+        <li><a href="#alumni">Alumni</a></li>
+        <li><a href="#alumni">Research</a></li>
       </ul>
       <div class="nav-right">
         <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode">
@@ -3621,8 +3982,12 @@
       <div class="nav-search-field">
         <input id="nav-search-input" class="nav-search-input" type="search" placeholder="Search ..."
           aria-label="Search site">
-        <button type="submit" class="nav-search-submit" aria-label="Search"><span
-            aria-hidden="true">🔎</span></button>
+        <button type="submit" class="nav-search-submit" aria-label="Search">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
       </div>
     </form>
   </div>
@@ -3937,6 +4302,7 @@
       <a href="#" class="ql-card rev"><span class="ql-ico">🏆</span><span class="ql-nm">Semester Results</span></a>
       <a href="#" class="ql-card rev"><span class="ql-ico">📥</span><span class="ql-nm">Downloads</span></a>
       <a href="#" class="ql-card rev"><span class="ql-ico">🎓</span><span class="ql-nm">Convocation</span></a>
+      <a href="#" class="ql-card rev"><span class="ql-ico">🙋‍♂️</span><span class="ql-nm">Complain Box</span></a>
       <a href="https://scholarships.gov.in/" class="ql-card rev"><span class="ql-ico">💰</span><span class="ql-nm">Scholarship</span></a>
       <a href="hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
       <a href="https://rtionline.gov.in/" class="ql-card rev"><span class="ql-ico">📡</span><span class="ql-nm">RTI</span></a>
@@ -4698,6 +5064,9 @@
 
     function applyFontSize(percent) {
       root.style.fontSize = percent + '%';
+      // Scale navbar width proportionally with font size
+      const navMaxWidth = (1100 * percent) / 100;
+      root.style.setProperty('--nav-max-width', navMaxWidth + 'px');
       currentFontSize = percent;
       localStorage.setItem('fontSizePercent', percent.toString());
       
