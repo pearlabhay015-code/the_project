@@ -1515,14 +1515,16 @@
     }
 
     .school-tabs {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 9px;
-      flex-wrap: wrap;
-      justify-content: center;
+      align-items: stretch;
       margin-bottom: 28px
     }
 
     .school-tab {
+      width: 100%;
+      height: 100%;
       padding: 9px 20px;
       border-radius: var(--r-xl);
       font-family: var(--fb);
@@ -1534,7 +1536,9 @@
       box-shadow: var(--nm-out-sm);
       color: var(--tx-secondary);
       transition: box-shadow .22s, color .22s;
-      white-space: nowrap
+      white-space: normal;
+      text-align: center;
+      line-height: 1.35
     }
 
     .school-tab:hover {
@@ -1579,10 +1583,10 @@
       box-shadow: var(--nm-out);
       border: 1px solid var(--nm-border);
       padding: 14px;
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 10px;
-      justify-content: center;
+      align-items: stretch;
     }
 
     [data-theme="dark"] .dept-sidebar {
@@ -1591,7 +1595,8 @@
 
     /* DEPT BUTTON */
     .dept-btn {
-      width: auto;
+      width: 100%;
+      min-height: 100%;
       text-align: left;
       padding: 8px 16px;
       border-radius: var(--r-xl);
@@ -1607,7 +1612,9 @@
       align-items: center;
       gap: 8px;
       margin: 0;
-      box-shadow: var(--nm-out-sm)
+      box-shadow: var(--nm-out-sm);
+      white-space: normal;
+      line-height: 1.35
     }
 
     .dept-btn:hover {
