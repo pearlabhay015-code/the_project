@@ -565,6 +565,15 @@ footer { background:var(--nm-bg-sec); border-top:1px solid var(--nm-border-b); p
   .rev { opacity:1 !important; transform:none !important }
   .tl-row { opacity:1 !important }
 }
+    /* Theme Switch Performance - disables transitions during toggle */
+    html.theme-switching,
+    html.theme-switching *,
+    html.theme-switching *::before,
+    html.theme-switching *::after {
+      transition: none !important;
+      animation-duration: 0s !important;
+    }
+
 </style>
 </head>
 <body>
@@ -990,7 +999,16 @@ const tog=document.getElementById('theme-toggle-btn');
 const KEY='cusb-theme';
 function applyTheme(t){html.setAttribute('data-theme',t);tog.setAttribute('aria-label',t==='dark'?'Switch to light mode':'Switch to dark mode')}
 (function(){const s=localStorage.getItem(KEY);if(s){applyTheme(s);return}if(window.matchMedia('(prefers-color-scheme: dark)').matches)applyTheme('dark')})();
-tog.addEventListener('click',()=>{const n=html.getAttribute('data-theme')==='dark'?'light':'dark';applyTheme(n);localStorage.setItem(KEY,n)});
+tog.addEventListener('click',()=>{
+  html.classList.add('theme-switching');
+  const n=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  applyTheme(n);
+  localStorage.setItem(KEY,n);
+  void html.offsetWidth;
+  requestAnimationFrame(()=>{
+    html.classList.remove('theme-switching');
+  });
+});
 
 /* TICKER */
 const tt=document.getElementById('ticker-track');

@@ -179,6 +179,15 @@
       --tw50: rgba(237, 237, 240, .50);
     }
 
+    /* Theme Switch Performance - disables transitions during toggle */
+    html.theme-switching,
+    html.theme-switching *,
+    html.theme-switching *::before,
+    html.theme-switching *::after {
+      transition: none !important;
+      animation-duration: 0s !important;
+    }
+
     /* ──────────────────────────────────────
    BASE RESET
 ────────────────────────────────────── */
@@ -4947,9 +4956,18 @@
     })();
 
     tog.addEventListener('click', () => {
+      html.classList.add('theme-switching');
+
       const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', next);
       localStorage.setItem(KEY, next);
+
+      // Trigger reflow
+      void html.offsetWidth;
+
+      requestAnimationFrame(() => {
+        html.classList.remove('theme-switching');
+      });
     });
 
     /* ─────────────────────────────────────

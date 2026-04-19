@@ -51,6 +51,15 @@
   --glow-mint:0 0 16px rgba(78,201,168,.38),0 0 34px rgba(78,201,168,.16);
 }
 
+    /* Theme Switch Performance - disables transitions during toggle */
+    html.theme-switching,
+    html.theme-switching *,
+    html.theme-switching *::before,
+    html.theme-switching *::after {
+      transition: none !important;
+      animation-duration: 0s !important;
+    }
+
 /* ═══════════════════════════════════════════
    BASE
 ═══════════════════════════════════════════ */
@@ -945,9 +954,14 @@ const KEY ='cusb-theme';
   if(window.matchMedia('(prefers-color-scheme: dark)').matches)html.setAttribute('data-theme','dark');
 })();
 tog.addEventListener('click',()=>{
+  html.classList.add('theme-switching');
   const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
   html.setAttribute('data-theme',next);
   localStorage.setItem(KEY,next);
+  void html.offsetWidth;
+  requestAnimationFrame(()=>{
+    html.classList.remove('theme-switching');
+  });
 });
 
 /* TICKER PAUSE */

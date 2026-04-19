@@ -60,6 +60,15 @@
   --lav:#818CF8; --lav-lt:#140c00;
 }
 
+    /* Theme Switch Performance - disables transitions during toggle */
+    html.theme-switching,
+    html.theme-switching *,
+    html.theme-switching *::before,
+    html.theme-switching *::after {
+      transition: none !important;
+      animation-duration: 0s !important;
+    }
+
 /* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 *{-webkit-tap-highlight-color:transparent}
@@ -1113,7 +1122,16 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
 /* THEME */
 const html=document.documentElement,tog=document.getElementById('theme-toggle-btn'),KEY='cusb-theme';
 (function(){const s=localStorage.getItem(KEY);if(s){html.setAttribute('data-theme',s);return}if(window.matchMedia('(prefers-color-scheme: dark)').matches)html.setAttribute('data-theme','dark')})();
-tog.addEventListener('click',()=>{const n=html.getAttribute('data-theme')==='dark'?'light':'dark';html.setAttribute('data-theme',n);localStorage.setItem(KEY,n)});
+tog.addEventListener('click',()=>{
+  html.classList.add('theme-switching');
+  const n=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',n);
+  localStorage.setItem(KEY,n);
+  void html.offsetWidth;
+  requestAnimationFrame(()=>{
+    html.classList.remove('theme-switching');
+  });
+});
 
 /* TICKER PAUSE */
 const tt=document.getElementById('ticker-track');

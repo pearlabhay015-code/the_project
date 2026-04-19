@@ -56,6 +56,15 @@
   --td:#f0f1f5; --td60:#8c90a8; --td30:#4e5268; --tw50:rgba(240,241,245,.50);
 }
 
+    /* Theme Switch Performance - disables transitions during toggle */
+    html.theme-switching,
+    html.theme-switching *,
+    html.theme-switching *::before,
+    html.theme-switching *::after {
+      transition: none !important;
+      animation-duration: 0s !important;
+    }
+
 /* ── RESET ── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 *{-webkit-tap-highlight-color:transparent}
@@ -843,9 +852,14 @@ const KEY='cusb-theme';
   if(window.matchMedia('(prefers-color-scheme: dark)').matches)html.setAttribute('data-theme','dark');
 })();
 tog.addEventListener('click',()=>{
+  html.classList.add('theme-switching');
   const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
   html.setAttribute('data-theme',next);
   localStorage.setItem(KEY,next);
+  void html.offsetWidth;
+  requestAnimationFrame(()=>{
+    html.classList.remove('theme-switching');
+  });
 });
 
 /* TICKER */
