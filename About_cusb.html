@@ -12,20 +12,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
     rel="stylesheet">
-  <style>
-    /* ═══════════════════════════════════════════════════════════
-   CUSB  ·  NEUMORPHIC DESIGN SYSTEM  ·  DEEP DEPTH  v3
-   ─────────────────────────────────────────────────────────
-   LIGHT : #dde1ea  →  crisp white highlights + steel shadows
-   DARK  : #0e0f11  →  near-black + ORANGE + white depth
-           Shadows are extreme so the raised/pressed feel
-           is physically convincing at every element.
-   ═══════════════════════════════════════════════════════════ */
-
-    /* ──────────────────────────────────────
-   LIGHT THEME TOKENS
-────────────────────────────────────── */
-    :root {
+<style>
+       :root {
       /* surfaces */
       --nm-bg: #dde1ea;
       --nm-bg-sec: #e2e6ef;
@@ -1398,279 +1386,8 @@
       box-shadow: var(--nm-out-glow-sm)
     }
 
-    /* ──────────────────────────────────────
-   HERO
-────────────────────────────────────── */
-    #hero {
-      background: var(--nm-bg);
-      color: var(--tx-primary);
-      min-height: min(70vh, 680px);
-      padding: 50px 6vw 60px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 50px;
-      align-items: flex-start;
-      justify-items: start;
-      position: relative;
-      transition: background .4s;
-      width: 100%;
-    }
+    
 
-    /* subtle recessed grid texture */
-    #hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(0, 0, 0, .05) 1px, transparent 1px);
-      background-size: 28px 28px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    [data-theme="dark"] #hero::before {
-      background-image: radial-gradient(circle, rgba(255, 106, 0, .05) 1px, transparent 1px);
-    }
-
-    #hero>* {
-      position: relative;
-      z-index: 1
-    }
-
-    /* eyebrow pill — convex */
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--nm-bg);
-      box-shadow: var(--nm-out-sm);
-      border: 1px solid var(--nm-border);
-      border-radius: 40px;
-      padding: 6px 18px 6px 12px;
-      font-size: .72rem;
-      color: var(--tx-secondary);
-      margin-bottom: 26px;
-      animation: fadeUp .7s .2s both;
-      font-weight: 600;
-    }
-
-    [data-theme="dark"] .hero-eyebrow {
-      box-shadow: var(--nm-out-sm);
-      border-color: rgba(255, 106, 0, .08);
-    }
-
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--acc);
-      box-shadow: 0 0 10px rgba(255, 107, 149, .80);
-      animation: pulse-light 2s ease-in-out infinite;
-    }
-
-    [data-theme="dark"] .live-dot {
-      background: #FF6A00;
-      box-shadow: 0 0 12px rgba(255, 106, 0, .90), 0 0 24px rgba(255, 106, 0, .40);
-      animation: pulse-dark 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-light {
-
-      0%,
-      100% {
-        box-shadow: 0 0 10px rgba(255, 107, 149, .70)
-      }
-
-      50% {
-        box-shadow: 0 0 18px rgba(255, 107, 149, 1)
-      }
-    }
-
-    @keyframes pulse-dark {
-
-      0%,
-      100% {
-        box-shadow: 0 0 12px rgba(255, 106, 0, .80), 0 0 22px rgba(255, 106, 0, .35)
-      }
-
-      50% {
-        box-shadow: 0 0 20px rgba(255, 106, 0, 1), 0 0 40px rgba(255, 106, 0, .55)
-      }
-    }
-
-    .hero-title {
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 800;
-      line-height: .96;
-      letter-spacing: -.03em;
-      animation: fadeUp .7s .35s both;
-      color: var(--tx-primary);
-    }
-
-    .hero-title .acc {
-      background: linear-gradient(90deg, var(--acc), var(--acc2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    [data-theme="dark"] .hero-title .acc {
-      background: linear-gradient(90deg, #FF6A00, #FF8C42);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-sub {
-      margin-top: 20px;
-      font-size: .92rem;
-      line-height: 1.3;
-      color: var(--tx-secondary);
-      font-weight: 400;
-      max-width: 455px;
-      animation: fadeUp .7s .5s both;
-    }
-
-    .hero-sub em {
-      color: var(--acc2);
-      font-style: italic;
-      font-weight: 600
-    }
-
-    [data-theme="dark"] .hero-sub em {
-      color: #FF8C42
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 32px;
-      animation: fadeUp .7s .64s both
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-      animation: fadeUp .7s .78s both;
-    }
-
-    .h-stat .num {
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      font-size: 1.75rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, var(--acc), var(--acc2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    [data-theme="dark"] .h-stat .num {
-      background: linear-gradient(135deg, #FF6A00, #FF8C42);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .h-stat .lbl {
-      font-size: .68rem;
-      color: var(--tx-muted);
-      margin-top: 3px;
-      font-weight: 400;
-      letter-spacing: .03em
-    }
-
-    /* Hero image — deeply framed */
-    .hero-img-wrap {
-      animation: fadeUp .7s .4s both;
-      margin-left: auto;
-    }
-
-    .hero-img-box {
-      width: 100%;
-      max-width: 660px;
-      border-radius: var(--r-lg);
-      overflow: hidden;
-      aspect-ratio: 4/3;
-      background: var(--nm-bg-alt);
-      box-shadow: var(--nm-out-xl);
-      border: 1px solid var(--nm-border);
-      position: relative;
-    }
-
-    [data-theme="dark"] .hero-img-box {
-      box-shadow:
-        20px 20px 55px #020203,
-        -20px -20px 55px #292d36,
-        0 0 30px rgba(255, 106, 0, .08);
-      border-color: rgba(255, 106, 0, .07);
-    }
-
-    .hero-img-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block
-    }
-
-    .img-ph {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      color: var(--tx-muted);
-      font-size: .78rem
-    }
-
-    .img-ph .ph-i {
-      font-size: 3rem;
-      opacity: .25
-    }
-
-    .hero-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, .10), transparent);
-      padding: 24px 20px 20px
-    }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 28px;
-      left: 6vw;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--tx-muted);
-      font-size: .68rem;
-      letter-spacing: .14em;
-      animation: fadeUp .7s 1s both
-    }
-
-    .s-line {
-      width: 34px;
-      height: 1px;
-      background: linear-gradient(90deg, var(--acc), transparent)
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(24px)
-      }
-
-      to {
-        opacity: 1;
-        transform: none
-      }
-    }
 
     /* ──────────────────────────────────────
    ABOUT
@@ -1764,643 +1481,8 @@
       display: block
     }
 
-    /* ──────────────────────────────────────
-   LEADERSHIP
-────────────────────────────────────── */
-    #leadership {
-      background: var(--nm-bg-sec)
-    }
 
-    .leaders-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px
-    }
-
-    .leader-card {
-      padding: 34px 24px;
-      text-align: center;
-      background: var(--nm-bg-sec);
-      border-radius: var(--r-lg);
-      box-shadow: var(--nm-out);
-      border: 1px solid var(--nm-border);
-      transition: box-shadow .3s;
-    }
-
-    .leader-card:hover {
-      box-shadow: var(--nm-out-lg)
-    }
-
-    [data-theme="dark"] .leader-card:hover {
-      box-shadow: var(--nm-out-glow)
-    }
-
-    .leader-photo {
-      width: min(360px, 70%);
-      height: auto;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      margin: 0 auto 18px;
-      box-shadow: var(--nm-out);
-      border: 3px solid var(--nm-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.9rem;
-      overflow: hidden;
-      transition: box-shadow .3s;
-    }
-
-    [data-theme="dark"] .leader-photo {
-      box-shadow:
-        8px 8px 22px #030304,
-        -8px -8px 22px #1e2228,
-        0 0 16px rgba(255, 106, 0, .14);
-      border-color: rgba(255, 106, 0, .10);
-    }
-
-    .leader-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%
-    }
-
-    .leader-name {
-      font-family: var(--fd);
-      font-size: .9rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-      color: var(--tx-primary)
-    }
-
-    .leader-role {
-      font-size: .9rem;
-      color: var(--acc);
-      font-weight: 700;
-      margin-bottom: 9px
-    }
-
-    [data-theme="dark"] .leader-role {
-      color: #FF6A00;
-      text-shadow: 0 0 10px rgba(255, 106, 0, .45)
-    }
-
-    .leader-note {
-      font-size: .8rem;
-      line-height: 1.6;
-      font-weight: 400;
-      color: var(--tx-secondary)
-    }
-
-    /* ──────────────────────────────────────
-   DEPARTMENTS
-────────────────────────────────────── */
-    .school-blk {
-      margin-bottom: 38px
-    }
-
-    .school-title {
-      font-family: var(--fb);
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--nm-border-b);
-      margin-bottom: 14px;
-      color: var(--acc);
-    }
-
-    [data-theme="dark"] .school-title {
-      color: #FF6A00;
-      text-shadow: 0 0 10px rgba(255, 106, 0, .40)
-    }
-
-    .dept-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 10px
-    }
-
-    .dept-card {
-      border-radius: var(--r-sm);
-      padding: 12px 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      background: var(--nm-bg);
-      box-shadow: var(--nm-out-sm);
-      border: 1px solid var(--nm-border);
-      transition: box-shadow .22s, color .22s;
-    }
-
-    .dept-card:hover {
-      box-shadow: var(--nm-in-sm);
-      color: var(--acc)
-    }
-
-    [data-theme="dark"] .dept-card:hover {
-      box-shadow: var(--nm-in-sm);
-      color: #FF8C42
-    }
-
-    .dept-card .di {
-      font-size: .95rem;
-      flex-shrink: 0
-    }
-
-    .dept-card .dn {
-      font-size: .76rem;
-      line-height: 1.4;
-      font-weight: 500;
-      color: var(--tx-primary)
-    }
-
-    /* ──────────────────────────────────────
-   CAMPUS
-────────────────────────────────────── */
-    .infra-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 20px
-    }
-
-    .infra-card {
-      padding: 26px 20px;
-      background: var(--nm-bg-alt);
-      border-radius: var(--r-lg);
-      box-shadow: var(--nm-out-sm);
-      border: 1px solid var(--nm-border);
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      transition: box-shadow .25s, color .25s;
-    }
-
-    .infra-card:hover {
-      box-shadow: var(--nm-in-sm);
-      color: var(--acc)
-    }
-
-    .infra-card:hover .infra-name {
-      color: var(--acc)
-    }
-
-    [data-theme="dark"] .infra-card:hover {
-      box-shadow: var(--nm-in-sm)
-    }
-
-    [data-theme="dark"] .infra-card:hover .infra-name {
-      color: #FF8C42
-    }
-
-    .infra-img-slot {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border-radius: var(--r-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.9rem;
-      margin-bottom: 14px;
-      background: var(--nm-bg);
-      box-shadow: var(--nm-in-sm);
-      border: 1px solid var(--nm-border);
-      overflow: hidden;
-    }
-
-    .infra-name {
-      font-family: var(--fd);
-      font-size: .84rem;
-      font-weight: 700;
-      margin-bottom: 5px;
-      color: var(--tx-primary)
-    }
-
-    .infra-note {
-      font-size: .72rem;
-      line-height: 1.55;
-      font-weight: 400;
-      color: var(--tx-secondary)
-    }
-
-    /* ──────────────────────────────────────
-   GALLERY
-────────────────────────────────────── */
-    .gallery-section {
-      position: relative;
-      width: 100%;
-      padding: 96px 0 80px;
-      background: var(--nm-bg);
-      overflow: hidden;
-    }
-
-    .gallery-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(circle, rgba(0, 0, 0, .04) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
-    }
-
-    [data-theme="dark"] .gallery-section::before {
-      background-image: radial-gradient(circle, rgba(255, 106, 0, .04) 1px, transparent 1px);
-    }
-
-    .gallery-header {
-      text-align: center;
-      margin-bottom: 56px;
-      position: relative;
-      z-index: 2;
-      padding: 0 24px
-    }
-
-    .gallery-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--fd);
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--acc);
-      margin-bottom: 14px;
-    }
-
-    [data-theme="dark"] .gallery-eyebrow {
-      color: #FF6A00;
-      text-shadow: 0 0 12px rgba(255, 106, 0, .50)
-    }
-
-    .gallery-eyebrow::before,
-    .gallery-eyebrow::after {
-      content: '';
-      width: 28px;
-      height: 1.5px;
-      background: linear-gradient(90deg, transparent, var(--acc));
-      border-radius: 2px;
-    }
-
-    .gallery-eyebrow::after {
-      transform: scaleX(-1)
-    }
-
-    .gallery-title {
-      font-family: var(--fd);
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800;
-      color: var(--tx-primary);
-      line-height: 1.1;
-      letter-spacing: -.02em;
-    }
-
-    .gallery-title span {
-      background: linear-gradient(135deg, var(--acc), var(--acc2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    [data-theme="dark"] .gallery-title span {
-      background: linear-gradient(135deg, #FF6A00, #FF8C42);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .gallery-subtitle {
-      margin-top: 12px;
-      font-size: 1rem;
-      color: var(--tx-secondary);
-      max-width: 380px;
-      margin-inline: auto;
-      line-height: 1.65
-    }
-
-    .gallery-stage {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      display: flex;
-      align-items: center
-    }
-
-    .gallery-stage::before,
-    .gallery-stage::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 150px;
-      z-index: 10;
-      pointer-events: none;
-    }
-
-    .gallery-stage::before {
-      left: 0;
-      background: linear-gradient(90deg, var(--nm-bg), transparent)
-    }
-
-    .gallery-stage::after {
-      right: 0;
-      background: linear-gradient(270deg, var(--nm-bg), transparent)
-    }
-
-    .gallery-viewport {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      position: relative
-    }
-
-    .gallery-track {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      height: 100%;
-      will-change: transform
-    }
-
-    /* Each gallery card — prominent convex frame */
-    .gallery-card {
-      flex: 0 0 auto;
-      width: 280px;
-      height: 300px;
-      border-radius: var(--r-lg);
-      overflow: hidden;
-      position: relative;
-      cursor: pointer;
-      box-shadow: var(--nm-out);
-      border: 1px solid var(--nm-border);
-    }
-
-    [data-theme="dark"] .gallery-card {
-      box-shadow: var(--nm-out);
-      border-color: rgba(255, 106, 0, .06);
-    }
-
-    .gallery-card-inner {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-      background: var(--ph-bg, linear-gradient(145deg, var(--nm-bg-alt), var(--nm-bg)));
-    }
-
-    .gallery-card-inner::before {
-      content: '';
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, .08);
-      position: absolute;
-      top: -22px;
-      right: -22px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .gallery-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      position: relative;
-      z-index: 1;
-      transition: transform .6s ease;
-      pointer-events: none;
-      -webkit-user-drag: none;
-      user-select: none;
-    }
-
-    .gallery-card img[src=""],
-    .gallery-card img:not([src]) {
-      display: none
-    }
-
-    .gallery-card:hover img {
-      transform: scale(1.07)
-    }
-
-    /* Gallery arrow — circular convex button */
-    .gallery-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 20;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: var(--nm-bg);
-      box-shadow: var(--nm-out);
-      border: 1px solid var(--nm-border);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: box-shadow .25s;
-      color: var(--acc);
-    }
-
-    .gallery-arrow:hover {
-      box-shadow: var(--nm-in-sm);
-      transform: translateY(-50%)
-    }
-
-    [data-theme="dark"] .gallery-arrow {
-      border-color: rgba(255, 106, 0, .07);
-      color: #FF6A00
-    }
-
-    [data-theme="dark"] .gallery-arrow:hover {
-      box-shadow: var(--nm-in-sm)
-    }
-
-    .gallery-arrow svg {
-      width: 20px;
-      height: 20px;
-      stroke-width: 2.2
-    }
-
-    .gallery-arrow-left {
-      left: 20px
-    }
-
-    .gallery-arrow-right {
-      right: 20px
-    }
-
-    /* Dots */
-    .gallery-dots {
-      display: flex;
-      justify-content: center;
-      gap: 9px;
-      margin-top: 36px;
-      position: relative;
-      z-index: 2
-    }
-
-    .gallery-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--nm-bg);
-      box-shadow: var(--nm-in-sm);
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      transition: all .3s ease;
-    }
-
-    .gallery-dot.active {
-      width: 26px;
-      border-radius: 5px;
-      background: linear-gradient(90deg, var(--acc), var(--acc2));
-      box-shadow: 3px 3px 8px var(--acc-glow), -2px -2px 5px rgba(255, 255, 255, .20);
-    }
-
-    [data-theme="dark"] .gallery-dot.active {
-      background: linear-gradient(90deg, #FF6A00, #FF8C42);
-      box-shadow: 3px 3px 10px rgba(255, 106, 0, .55), -2px -2px 5px rgba(255, 255, 255, .04);
-    }
-
-    .gallery-count {
-      text-align: center;
-      margin-top: 16px;
-      font-family: var(--fd);
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      color: var(--tx-muted);
-      text-transform: uppercase;
-    }
-
-    .gallery-count span {
-      color: var(--acc)
-    }
-
-    [data-theme="dark"] .gallery-count span {
-      color: #FF6A00
-    }
-
-    /* ──────────────────────────────────────
-   NOTICES
-────────────────────────────────────── */
-    #notices-sec {
-      background: var(--nm-bg-sec)
-    }
-
-    .notices-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px
-    }
-
-    .notice-col {
-      padding: 30px;
-      background: var(--nm-bg-sec);
-      border-radius: var(--r-lg);
-      box-shadow: var(--nm-out);
-      border: 1px solid var(--nm-border);
-    }
-
-    [data-theme="dark"] .notice-col {
-      box-shadow: var(--nm-out);
-      border-color: rgba(255, 106, 0, .07);
-    }
-
-    .notice-col-hd {
-      font-family: var(--fd);
-      font-size: .85rem;
-      font-weight: 700;
-      padding-bottom: 14px;
-      border-bottom: 1.5px solid var(--nm-border-b);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--tx-primary);
-    }
-
-    .nc-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--acc);
-      box-shadow: 0 0 8px var(--acc-glow);
-    }
-
-    .nc-dot.teal {
-      background: var(--acc3)
-    }
-
-    [data-theme="dark"] .nc-dot {
-      background: #FF6A00;
-      box-shadow: 0 0 10px rgba(255, 106, 0, .65)
-    }
-
-    [data-theme="dark"] .nc-dot.teal {
-      background: #FF8C42;
-      box-shadow: 0 0 10px rgba(255, 140, 66, .55)
-    }
-
-    .notice-item {
-      padding: 9px 0;
-      border-bottom: 1px solid var(--nm-border-b)
-    }
-
-    .notice-item:last-of-type {
-      border-bottom: none
-    }
-
-    .notice-item a {
-      font-size: .78rem;
-      color: var(--tx-secondary);
-      text-decoration: none;
-      line-height: 1.5;
-      transition: color .15s;
-      display: block;
-    }
-
-    .notice-item a:hover {
-      color: var(--acc)
-    }
-
-    [data-theme="dark"] .notice-item a:hover {
-      color: #FF8C42
-    }
-
-    .n-date {
-      font-size: .63rem;
-      color: var(--tx-muted);
-      margin-top: 3px
-    }
-
-    /* new-tag — concave pressed pill */
-    .new-tag {
-      display: inline-block;
-      background: var(--nm-bg);
-      box-shadow: var(--nm-in-sm);
-      color: var(--acc);
-      font-size: .58rem;
-      padding: 2px 9px;
-      border-radius: 10px;
-      margin-left: 6px;
-      vertical-align: middle;
-      font-weight: 700;
-      border: 1px solid var(--nm-border);
-    }
-
-    [data-theme="dark"] .new-tag {
-      color: #FF6A00;
-      box-shadow: var(--nm-in-sm)
-    }
-
+    
     /* ──────────────────────────────────────
    QUICK LINKS — convex tiles
 ────────────────────────────────────── */
@@ -2810,6 +1892,7 @@
       display: block
     }
 
+    
     /* ──────────────────────────────────────
    RESPONSIVE — LAPTOP ≥961px
 ────────────────────────────────────── */
@@ -3924,11 +3007,296 @@
         max-width: 120px;
       }
     }
-  </style>
+
+
+    /* ════════════════════════════════════════
+   PAGE HERO — neumorphic banner
+════════════════════════════════════════ */
+    #page-hero {
+      background: var(--nm-bg);
+      padding: 80px 6vw 70px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* dot texture */
+    #page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(0, 0, 0, .05) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0
+    }
+
+    [data-theme="dark"] #page-hero::before {
+      background-image: radial-gradient(circle, rgba(255, 106, 0, .05) 1px, transparent 1px)
+    }
+
+    #page-hero>* {
+      position: relative;
+      z-index: 1
+    }
+
+    /* concave framing trough behind hero content */
+    .page-hero-inner {
+      display: inline-block;
+      max-width: 660px;
+      width: 100%;
+      padding: 48px 48px 44px;
+      border-radius: var(--r-lg);
+      background: var(--nm-bg-sec);
+      box-shadow: var(--nm-in-lg);
+      border: 1px solid var(--nm-border);
+    }
+
+    [data-theme="dark"] .page-hero-inner {
+      box-shadow: var(--nm-in-lg);
+      border-color: rgba(255, 106, 0, .07);
+    }
+
+    .page-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--nm-bg);
+      box-shadow: var(--nm-out-sm);
+      border: 1px solid var(--nm-border);
+      border-radius: 40px;
+      padding: 5px 18px 5px 12px;
+      font-size: .72rem;
+      color: var(--tx-secondary);
+      margin-bottom: 20px;
+      font-weight: 600;
+      animation: fadeUp .7s .1s both;
+    }
+
+    [data-theme="dark"] .page-hero-eyebrow {
+      border-color: rgba(255, 106, 0, .08)
+    }
+
+    .page-hero-title {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      color: var(--tx-primary);
+      animation: fadeUp .7s .25s both;
+    }
+
+    .page-hero-title span {
+      background: linear-gradient(90deg, var(--acc), var(--acc2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    [data-theme="dark"] .page-hero-title span {
+      background: linear-gradient(90deg, #FF6A00, #FF8C42);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-hero-sub {
+      margin-top: 14px;
+      font-size: .92rem;
+      line-height: 1.8;
+      color: var(--tx-secondary);
+      font-weight: 400;
+      max-width: 440px;
+      margin-inline: auto;
+      animation: fadeUp .7s .4s both;
+    }
+
+    .page-hero-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 28px;
+      padding: 9px 22px;
+      border-radius: var(--r-xl);
+      background: var(--nm-bg);
+      box-shadow: var(--nm-out-sm);
+      border: 1px solid var(--nm-border);
+      color: var(--tx-secondary);
+      font-size: .80rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: box-shadow .22s, color .22s;
+      animation: fadeUp .7s .5s both;
+    }
+
+    .page-hero-back:hover {
+      box-shadow: var(--nm-in-sm);
+      color: var(--acc)
+    }
+
+    [data-theme="dark"] .page-hero-back:hover {
+      color: #FF8C42
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    /* ════════════════════════════════════════
+   ABOUT SECTION
+════════════════════════════════════════ */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start
+    }
+
+    .about-body {
+      font-size: .88rem;
+      line-height: 1.82;
+      color: var(--tx-secondary);
+      font-weight: 400;
+      margin-top: 14px
+    }
+
+    .vm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px
+    }
+
+    .vm-card {
+      padding: 22px;
+      border-radius: var(--r-md);
+      cursor: default;
+      background: var(--nm-bg-alt);
+      box-shadow: var(--nm-out-sm);
+      border: 1px solid var(--nm-border);
+      transition: box-shadow .25s;
+    }
+
+    .vm-card:hover {
+      box-shadow: var(--nm-in-sm)
+    }
+
+    [data-theme="dark"] .vm-card {
+      box-shadow: var(--nm-out-sm)
+    }
+
+    [data-theme="dark"] .vm-card:hover {
+      box-shadow: var(--nm-out-glow-sm)
+    }
+
+    .vm-card h3 {
+      font-family: var(--fd);
+      font-size: .85rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--acc)
+    }
+
+    [data-theme="dark"] .vm-card h3 {
+      color: #FF8C42;
+      text-shadow: 0 0 10px rgba(255, 106, 0, .40)
+    }
+
+    .vm-card p {
+      font-size: .75rem;
+      line-height: 1.65;
+      font-weight: 400;
+      color: var(--tx-secondary)
+    }
+
+    /* About image — deeply framed neumorphic slot */
+    .about-img-slot {
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      position: relative;
+      background: var(--nm-bg-alt);
+      box-shadow: var(--nm-out-xl);
+      border: 1px solid var(--nm-border);
+    }
+
+    [data-theme="dark"] .about-img-slot {
+      box-shadow: 20px 20px 55px #090b11, -20px -20px 55px #373a56, 0 0 24px rgba(255, 106, 0, .07);
+    }
+
+    .about-img-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    @media(max-width:960px) {
+      #about .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px
+      }
+
+      .about-img-slot {
+        aspect-ratio: 16/9;
+        max-height: 280px
+      }
+
+      .vm-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .page-hero-inner {
+        padding: 36px 28px
+      }
+      
+      .vm-card {
+        box-shadow: 5px 5px 12px rgba(0, 0, 0, .12), -5px -5px 12px rgba(255, 255, 255, .70) !important;
+      }
+      [data-theme="dark"] .vm-card {
+        box-shadow: 5px 5px 12px #0e1016, -5px -5px 12px #2e3140 !important;
+      }
+
+      #page-hero::before {
+        background-image: none !important
+      }
+
+      .about-img-slot {
+        box-shadow: 8px 8px 22px rgba(0, 0, 0, .14), -8px -8px 22px rgba(255, 255, 255, .70) !important
+      }
+
+      [data-theme="dark"] .about-img-slot {
+        box-shadow: 8px 8px 22px #0e1016, -8px -8px 22px #2e3140 !important
+      }
+    }
+
+    @media(max-width:640px) {
+      #about .about-grid {
+        gap: 28px
+      }
+      .vm-grid {
+        grid-template-columns: 1fr
+      }
+      .page-hero-inner {
+        padding: 28px 16px
+      }
+      .page-hero-title {
+        font-size: clamp(1.8rem, 8vw, 2.8rem)
+      }
+    }
+</style>
 </head>
-
 <body>
-
+    
   <!-- ══════ FIXED TICKER ══════ -->
   <div id="ticker" role="marquee" aria-label="Important announcements">
     <div class="ticker-label">📢 Updates</div>
@@ -4085,45 +3453,15 @@
     </form>
   </div>
 
-  <!-- ══════ HERO ══════ -->
-  <header id="hero">
-    <div>
-      <div class="hero-eyebrow"><span class="live-dot"></span>Admissions Open — 2026–27</div>
-      <h1 class="hero-title">Central University<br>of <span class="acc">South Bihar</span></h1>
-      <p class="hero-sub">A Central University under the Ministry of Education, Government of India. 300 acres of
-        learning at Panchanpur, Gaya. Motto: <em>Collective Reasoning.</em></p>
-      <div class="hero-btns">
-        <a href="#cta-sec" class="btn btn-ocean">Apply Now →</a>
-        <a href="#about" class="btn btn-ghost">Explore CUSB</a>
-        <a href="#departments" class="btn btn-ghost">Choose Your Career Path ↓</a>
-        <a href="#quicklinks" class="btn btn-ghost btn-sm">Prospectus</a>
-      </div>
-      <div class="hero-stats">
-        <div class="h-stat">
-          <div class="num" data-to="180" data-s="+">0</div>
-          <div class="lbl">Teachers</div>
-        </div>
-        <div class="h-stat">
-          <div class="num" data-to="51" data-s="+">0</div>
-          <div class="lbl">Programmes</div>
-        </div>
-        <div class="h-stat">
-          <div class="num" data-to="4100" data-s="+">0</div>
-          <div class="lbl">Students</div>
-        </div>
-        <div class="h-stat">
-          <div class="num" data-to="300">0</div>
-          <div class="lbl">Acre Campus</div>
-        </div>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-img-wrap">
-        <div class="hero-img-box">
-          <img src="admin_good.jpeg" alt="CUSB Campus" onerror="this.style.display='none'">
-          <div class="hero-overlay"></div>
-        </div>
-      </div>
+  
+  <!-- ══════ PAGE HERO ══════ -->
+  <header id="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-eyebrow">🏛️ About University</div>
+      <h1 class="page-hero-title">University <span>Information</span></h1>
+      <p class="page-hero-sub">Get close to Central University of South Bihar — a centre of learning, research, and
+        national purpose at Gaya, Bihar.</p>
+      <a href="index.html" class="page-hero-back">← Back to Home</a>
     </div>
   </header>
 
@@ -4141,247 +3479,36 @@
           Panchanpur, approximately 15 km from Gaya — in the historic heartland of Bihar, the land of enlightenment.</p>
         <div class="vm-grid">
           <div class="vm-card card-light rev">
-            <h4>Vision</h4>
+            <h3>Vision</h3>
             <p>To be a centre of excellence in teaching, research, and innovation — contributing to national development
               and global knowledge creation.</p>
           </div>
           <div class="vm-card card-light rev">
-            <h4>Mission</h4>
+            <h3>Mission</h3>
             <p>To foster an inclusive academic environment promoting critical thinking, ethical values, and
               interdisciplinary research.</p>
           </div>
           <div class="vm-card card-light rev">
-            <h4>Motto</h4>
+            <h3>Motto</h3>
             <p>Collective Reasoning — fostering collaborative inquiry and shared wisdom across all disciplines and
               communities.</p>
           </div>
           <div class="vm-card card-light rev">
-            <h4>NEP 2020</h4>
+            <h3>NEP 2020</h3>
             <p>Aligned with National Education Policy 2020 — promoting holistic development, skill enhancement, and
               multidisciplinary learning.</p>
           </div>
         </div>
-        <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap" class="rev">
-          <a href="history.html" class="btn btn-light btn-sm">Our History →</a>
-          <a href="about.html" class="btn btn-light btn-sm">More →</a>
+        <div style="margin-top:24px" class="rev"><a href="history.html" class="btn btn-light btn-sm">Our History →</a>
         </div>
       </div>
       <div class="about-img-slot rev">
-        <img src="demo.jpg" alt="CUSB Building" onerror="this.style.display='none'">
+        <img src="admin_good.jpeg" alt="CUSB Building" onerror="this.style.display='none'">
       </div>
     </div>
   </section>
 
-  <!-- ══════ LEADERSHIP ══════ -->
-  <section id="leadership" class="sec dark-sec">
-    <div class="sec-hd center rev">
-      <div class="sec-lbl">Administration</div>
-      <h2 class="sec-title">University Leadership</h2>
-      <p class="sec-sub" style="margin:12px auto 0">Guided by visionary leaders committed to academic excellence and
-        national development.</p>
-    </div>
-    <div class="leaders-grid">
-      <div class="leader-card card-dark rev">
-        <div class="leader-photo"><img src="president.jpeg" alt="President" onerror="this.style.display='none'"></div>
-        <div class="leader-name">Smt. Droupadi Murmu</div>
-        <div class="leader-role">Visitor · Hon'ble President of India</div>
-        <p class="leader-note">As Visitor, the President of India provides supreme guidance to the university's growth
-          and governance.</p>
-        <div style="margin-top:16px"><a href="president.html" class="btn btn-ghost btn-sm">Read More</a></div>
-      </div>
-      <div class="leader-card card-dark rev">
-        <div class="leader-photo"><img src="chancellor.png" alt="chancellor"></div>
-        <div class="leader-name">Dr. C.P. Thakur</div>
-        <div class="leader-role">Chancellor</div>
-        <p class="leader-note">Distinguished statesman and medical professional steering the university's strategic and
-          academic direction.</p>
-        <div style="margin-top:16px"><a href="chancellor.html" class="btn btn-ghost btn-sm">Read More</a></div>
-      </div>
-      <div class="leader-card card-dark rev">
-        <div class="leader-photo"><img src="vc.jpg" alt="VC" onerror="this.style.display='none'"></div>
-        <div class="leader-name">Prof. K.N. Singh</div>
-        <div class="leader-role">Vice-Chancellor</div>
-        <p class="leader-note">Leading CUSB's transformation into a centre of research excellence and interdisciplinary
-          innovation.</p>
-        <div style="margin-top:16px"><a href="vc.html" class="btn btn-ghost btn-sm">Read More</a></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════ DEPARTMENTS ══════ -->
-  <section id="departments" class="sec light-sec">
-    <div class="sec-hd rev">
-      <div class="sec-lbl">Academics</div>
-      <h2 class="sec-title">Schools &amp; Departments</h2>
-      <p class="sec-sub">24+ departments across diverse disciplines — from sciences and humanities to law and
-        management.</p>
-    </div>
-    <div class="school-blk rev">
-      <div class="school-title">🌍 Earth, Biological &amp; Environmental Sciences</div>
-      <div class="dept-grid">
-        <a href="#" class="dept-card"><span class="di">🧬</span><span class="dn">Bioinformatics</span></a>
-        <a href="#" class="dept-card"><span class="di">🪨</span><span class="dn">Geology</span></a>
-        <a href="#" class="dept-card"><span class="di">🗺️</span><span class="dn">Geography</span></a>
-        <a href="#" class="dept-card"><span class="di">🌿</span><span class="dn">Life Science</span></a>
-        <a href="#" class="dept-card"><span class="di">🔬</span><span class="dn">Biotechnology</span></a>
-        <a href="#" class="dept-card"><span class="di">🌱</span><span class="dn">Environmental Sciences</span></a>
-      </div>
-    </div>
-    <div class="school-blk rev">
-      <div class="school-title">⚖️ Social Sciences &amp; Policies</div>
-      <div class="dept-grid">
-        <a href="#" class="dept-card"><span class="di">🏛️</span><span class="dn">Historical Studies &amp;
-            Archaeology</span></a>
-        <a href="#" class="dept-card"><span class="di">📊</span><span class="dn">Economic Studies &amp;
-            Policy</span></a>
-        <a href="#" class="dept-card"><span class="di">🌐</span><span class="dn">Development Studies</span></a>
-        <a href="#" class="dept-card"><span class="di">🗳️</span><span class="dn">Political Studies</span></a>
-        <a href="#" class="dept-card"><span class="di">👥</span><span class="dn">Sociological Studies</span></a>
-        <a href="#" class="dept-card"><span class="di">📚</span><span class="dn">Library &amp; Information
-            Science</span></a>
-      </div>
-    </div>
-    <div class="school-blk rev">
-      <div class="school-title">💻 Mathematics, Statistics &amp; Computer Science</div>
-      <div class="dept-grid">
-        <a href="#" class="dept-card"><span class="di">📐</span><span class="dn">Mathematics</span></a>
-        <a href="#" class="dept-card"><span class="di">📉</span><span class="dn">Statistics</span></a>
-        <a href="cs.html" class="dept-card"><span class="di">🖥️</span><span class="dn">Computer Science</span></a>
-      </div>
-    </div>
-    <div class="school-blk rev">
-      <div class="school-title">⚗️ Physical &amp; Chemical Sciences · 📖 Languages · 🎬 Media · ⚕️ Health · 🌾
-        Agriculture</div>
-      <div class="dept-grid">
-        <a href="#" class="dept-card"><span class="di">⚗️</span><span class="dn">Chemistry</span></a>
-        <a href="#" class="dept-card"><span class="di">⚛️</span><span class="dn">Physics</span></a>
-        <a href="#" class="dept-card"><span class="di">📖</span><span class="dn">English</span></a>
-        <a href="#" class="dept-card"><span class="di">🔤</span><span class="dn">Indian Languages</span></a>
-        <a href="#" class="dept-card"><span class="di">📡</span><span class="dn">Mass Communication &amp;
-            Media</span></a>
-        <a href="#" class="dept-card"><span class="di">💼</span><span class="dn">Commerce &amp; Business
-            Studies</span></a>
-        <a href="#" class="dept-card"><span class="di">🧠</span><span class="dn">Psychological Sciences</span></a>
-        <a href="#" class="dept-card"><span class="di">⚖️</span><span class="dn">Law &amp; Governance</span></a>
-        <a href="#" class="dept-card"><span class="di">💊</span><span class="dn">Pharmacy</span></a>
-        <a href="#" class="dept-card"><span class="di">🌾</span><span class="dn">Agriculture</span></a>
-        <a href="#" class="dept-card"><span class="di">📏</span><span class="dn">Teacher Education</span></a>
-        <a href="#" class="dept-card"><span class="di">🏃</span><span class="dn">Physical Education</span></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════ CAMPUS ══════ -->
-  <section id="campus" class="sec white-sec">
-    <div class="sec-hd rev">
-      <div class="sec-lbl">Infrastructure</div>
-      <h2 class="sec-title">Campus &amp; Facilities</h2>
-      <p class="sec-sub">World-class infrastructure across 300 acres — built to support every dimension of academic and
-        student life.</p>
-    </div>
-    <div class="infra-grid">
-      <a href="#" class="infra-card card-light rev">
-        <div class="infra-img-slot">📚</div>
-        <div class="infra-name">Library Services</div>
-        <p class="infra-note">Digital and physical collection with access to thousands of journals, e-resources, and
-          research databases.</p>
-      </a>
-      <a href="hostel.html" class="infra-card card-light rev">
-        <div class="infra-img-slot">🏠</div>
-        <div class="infra-name">Hostel Facility</div>
-        <p class="infra-note">Separate blocks for men and women with 24/7 security, mess facility, and recreational
-          spaces.</p>
-      </a>
-      <a href="#" class="infra-card card-light rev">
-        <div class="infra-img-slot">⚽</div>
-        <div class="infra-name">Sports Complex</div>
-        <p class="infra-note">Cricket, football, athletics grounds, and a modern indoor sports hall for students and
-          staff.</p>
-      </a>
-      <a href="#" class="infra-card card-light rev">
-        <div class="infra-img-slot">🎙️</div>
-        <div class="infra-name">Auditorium &amp; Conference Hall</div>
-        <p class="infra-note">State-of-the-art venues for seminars, conclaves, cultural programs, and annual
-          convocations.</p>
-      </a>
-      <a href="#" class="infra-card card-light rev">
-        <div class="infra-img-slot">💻</div>
-        <div class="infra-name">Smart Classrooms &amp; Wi-Fi</div>
-        <p class="infra-note">Fully Wi-Fi enabled campus, smart classrooms, computer labs, and a dedicated media
-          production studio.</p>
-      </a>
-      <a href="#" class="infra-card card-light rev">
-        <div class="infra-img-slot">🌿</div>
-        <div class="infra-name">Biodiversity Park</div>
-        <p class="infra-note">Green park featuring medicinal plants, Dhanvantari Arogya Vatika, and ecological trails
-          across the campus.</p>
-      </a>
-      <a href="#" class="infra-card card-light rev">
-        <div class="infra-img-slot">🏥</div>
-        <div class="infra-name">Health Care Centre</div>
-        <p class="infra-note">On-campus centre providing medical assistance, emergency care, and wellness support for
-          students and staff.</p>
-      </a>
-      <a href="#" class="infra-card card-light rev">
-        <div class="infra-img-slot">🔬</div>
-        <div class="infra-name">Central Instrumental Facility</div>
-        <p class="infra-note">Advanced research instruments available for interdisciplinary scientific research by
-          faculty and students.</p>
-      </a>
-    </div>
-  </section>
-
-  <!-- ══════ NOTICES ══════ -->
-  <section id="notices-sec" class="sec dark-sec">
-    <div class="sec-hd rev">
-      <div class="sec-lbl">Information</div>
-      <h2 class="sec-title">Notices &amp; Updates</h2>
-    </div>
-    <div class="notices-grid">
-      <div class="notice-col card-dark rev">
-        <div class="notice-col-hd"><span class="nc-dot"></span> Admissions &amp; Academic Notices</div>
-        <div class="notice-item"><a href="#">CUSB Admission Bulletin 2026 (CUET-PG: 2026) <span
-              class="new-tag">NEW</span></a>
-          <div class="n-date">March 2026</div>
-        </div>
-        <div class="notice-item"><a href="#">NCET-2026 — 4-Year Integrated Teacher Education Programme <span
-              class="new-tag">NEW</span></a>
-          <div class="n-date">March 2026</div>
-        </div>
-        <div class="notice-item"><a href="#">Admission Notification UG 2026–27</a>
-          <div class="n-date">February 2026</div>
-        </div>
-        <div class="notice-item"><a href="#">Semester Exam Schedule — Even Semester 2025–26</a>
-          <div class="n-date">January 2026</div>
-        </div>
-        <div class="notice-item"><a href="#">Ph.D. Admission Notice — All Departments</a>
-          <div class="n-date">December 2025</div>
-        </div>
-        <div style="margin-top:16px"><a href="#" class="btn btn-ghost btn-sm">View All Notices →</a></div>
-      </div>
-      <div class="notice-col card-dark rev">
-        <div class="notice-col-hd"><span class="nc-dot teal"></span> Events &amp; Circulars</div>
-        <div class="notice-item"><a href="#">Competition on Smart Design for Website Development <span
-              class="new-tag">NEW</span></a>
-          <div class="n-date">Registration from 14th Feb 2026</div>
-        </div>
-        <div class="notice-item"><a href="#">45th INCA International Congress — CUSB</a>
-          <div class="n-date">March 2026</div>
-        </div>
-        <div class="notice-item"><a href="#">Foundation Day Celebration — CUSB</a>
-          <div class="n-date">February 2026</div>
-        </div>
-        <div class="notice-item"><a href="#">Recruitment Notification — Non-Teaching Posts</a>
-          <div class="n-date">January 2026</div>
-        </div>
-        <div class="notice-item"><a href="#">Circular: NAAC Peer Team Visit Preparation</a>
-          <div class="n-date">December 2025</div>
-        </div>
-        <div style="margin-top:16px"><a href="#" class="btn btn-ghost btn-sm">View All Events →</a></div>
-      </div>
-    </div>
-  </section>
-
+  
   <!-- ══════ QUICK LINKS ══════ -->
   <section id="quicklinks" class="sec white-sec">
     <div class="sec-hd rev">
@@ -4406,87 +3533,7 @@
           class="ql-ico">👨‍🏫</span><span class="ql-nm">Samarth Login <br>Employee</span></a>
     </div>
   </section>
-
-
-  <!-- ════════════════════════════════
-     GALLERY SECTION
-════════════════════════════════ -->
-  <section class="gallery-section" id="gallery">
-    <div class="gallery-header">
-      <div class="gallery-eyebrow">HIGHLIGHTS</div>
-      <h2 class="gallery-title">Life at <span>CUSB</span></h2>
-      <p class="gallery-subtitle">Moments that define us — from academic excellence to vibrant campus culture.</p>
-    </div>
-
-    <div class="gallery-stage">
-      <button class="gallery-arrow gallery-arrow-left" id="arrowLeft" aria-label="Scroll left">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="15 18 9 12 15 6" />
-        </svg>
-      </button>
-      <div class="gallery-viewport" id="galleryViewport">
-        <div class="gallery-track" id="galleryTrack">
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde1ea,#eceef5)">
-            <div class="gallery-card-inner"><img src="expansion.jpg" alt="Main Campus" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e8e0f5,#f0ecfc)">
-            <div class="gallery-card-inner"><img src="2026.jpg" alt="Library" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ddf0eb,#e8f7f3)">
-            <div class="gallery-card-inner"><img src="2013.jpg" alt="Convocation" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ffe0ec,#fff0f5)">
-            <div class="gallery-card-inner"><img src="" alt="Sports Meet" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde8f5,#e8f0fc)">
-            <div class="gallery-card-inner"><img src="" alt="Research Lab" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f5e8dd,#fdf0e8)">
-            <div class="gallery-card-inner"><img src="" alt="Cultural Fest" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e0e8f8,#edf3fd)">
-            <div class="gallery-card-inner"><img src="" alt="Seminar Hall" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ddf5f0,#e8fcf8)">
-            <div class="gallery-card-inner"><img src="" alt="Hostel Life" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f8e0dd,#fdecea)">
-            <div class="gallery-card-inner"><img src="" alt="Botanical Garden" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e8ddf5,#f3e8fd)">
-            <div class="gallery-card-inner"><img src="" alt="Auditorium" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde8f0,#e8f0f8)">
-            <div class="gallery-card-inner"><img src="" alt="Tech Expo" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f0f0dd,#f8f8e8)">
-            <div class="gallery-card-inner"><img src="" alt="Graduation Day" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-        </div><!-- /gallery-track -->
-      </div><!-- /gallery-viewport -->
-      <button class="gallery-arrow gallery-arrow-right" id="arrowRight" aria-label="Scroll right">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </button>
-    </div><!-- /gallery-stage -->
-    <div class="gallery-dots" id="galleryDots"></div>
-    <p class="gallery-count" id="galleryCount"><span>01</span> / 12</p>
-  </section>
-
-
+  
   <!-- GOV_SITES -->
   <section id="gov_sites">
      <div class="gallery-eyebrow">Govt. Portals</div>
@@ -4638,8 +3685,8 @@
     </svg>
   </button>
 
-  <script>
-    /* ─────────────────────────────────────
+<script>
+   /* ─────────────────────────────────────
        SCROLL TO TOP/BOTTOM BUTTON
     ───────────────────────────────────── */
     const scrollBtn = document.getElementById('scroll-btn');
@@ -5220,8 +4267,8 @@
 
     // Update display on window resize
     window.addEventListener('resize', updateFontSizeDisplay);
-  </script>
+
+</script>
 
 </body>
-
 </html>
