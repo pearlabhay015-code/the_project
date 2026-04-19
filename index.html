@@ -2865,7 +2865,14 @@
       }
 
       .hero-right {
-        display: block
+        display: block;
+        order: -1;
+        width: 100%
+      }
+
+      .hero-img-wrap {
+        width: 100%;
+        margin-left: 0
       }
 
       .hero-img-box {
@@ -2986,6 +2993,14 @@
     /* ──────────────────────────────────────
    RESPONSIVE — MOBILE ≤640px
 ────────────────────────────────────── */
+    @media(min-width:460px) and (max-width:960px) {
+      .hero-right,
+      .hero-img-wrap {
+        width: 400px;
+        max-width: 100%;
+      }
+    }
+
     @media(max-width:640px) {
       #topbar {
         grid-template-columns: 1fr 1fr;
@@ -3920,7 +3935,7 @@
       .floating-message-bubble {
         font-size: .78rem;
         padding: 10px 14px;
-        max-width: 140px;
+        max-width: 180px;
       }
     }
 
@@ -3933,7 +3948,7 @@
       .floating-message-bubble {
         font-size: .75rem;
         padding: 8px 12px;
-        max-width: 120px;
+        max-width: 150px;
       }
     }
   </style>
@@ -4662,7 +4677,7 @@
   <!-- ══════ FLOATING GREETING MESSAGE ══════ -->
   <div class="floating-message">
     <div class="floating-message-bubble">
-      Hi 🙋‍♂️, may I help you?
+      Hey Buddy !! <br> Got a problem ?
     </div>
   </div>
 
