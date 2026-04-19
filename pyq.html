@@ -3200,20 +3200,23 @@
   <section id="pyq-sec">
   <div class="pyq-search-wrap rev">
     <input class="pyq-search" type="search" id="pyqSearch" placeholder="Search department…" aria-label="Search departments">
-    <span class="pyq-search-ico" aria-hidden="true">🔍</span>
+    <span class="pyq-search-ico" aria-hidden="true"></span>
   </div>
-  <div class="pyq-notice rev">
-    <span class="ni">ℹ️</span>
-    <span>Papers are for academic reference. Links will be active when officially published. For unlisted papers, contact the respective department office. New papers are typically uploaded within 30 days of the examination.</span>
-  </div>
-  <div class="school-tabs rev" id="schoolTabs" role="tablist" aria-label="Filter by school">
-    <button class="school-tab active" data-school="all"      role="tab" aria-selected="true">🗂 All Departments</button>
-    <button class="school-tab"        data-school="earth"    role="tab" aria-selected="false">🌍 Earth &amp; Bio</button>
-    <button class="school-tab"        data-school="social"   role="tab" aria-selected="false">⚖️ Social Sciences</button>
-    <button class="school-tab"        data-school="math"     role="tab" aria-selected="false">💻 Maths &amp; CS</button>
-    <button class="school-tab"        data-school="physical" role="tab" aria-selected="false">⚗️ Physical Sciences</button>
-    <button class="school-tab"        data-school="lang"     role="tab" aria-selected="false">📖 Languages</button>
-    <button class="school-tab"        data-school="prof"     role="tab" aria-selected="false">💼 Professional</button>
+ 
+    <div class="school-tabs rev" id="schoolTabs" role="tablist" aria-label="Filter by school">
+    <button class="school-tab active" data-school="all"      role="tab" aria-selected="true">🗂 All Dept.</button>
+    <button class="school-tab"        data-school="math"     role="tab" aria-selected="false">💻 Maths, Stat &amp; cs</button>
+    <button class="school-tab"        data-school="earth"    role="tab" aria-selected="false">🌍 Earth, Bio &amp; Evs</button>
+    <button class="school-tab"        data-school="human"    role="tab" aria-selected="false">🧠 Human Science</button>
+    <button class="school-tab"        data-school="social"   role="tab" aria-selected="false">⚖️ Social Sciences &amp; Policies</button>
+    <button class="school-tab"        data-school="education"role="tab" aria-selected="false">🏫 School of Education</button>
+    <button class="school-tab"        data-school="health"   role="tab" aria-selected="false">⚕️ Health Science</button>
+    <button class="school-tab"        data-school="lang"     role="tab" aria-selected="false">📖 Language &amp; Literature</button>
+    <button class="school-tab"        data-school="media"    role="tab" aria-selected="false">📡 Media, Arts &amp; Aesthetics</button>
+    <button class="school-tab"        data-school="agri"     role="tab" aria-selected="false">🌾 Agriculture</button>
+    <button class="school-tab"        data-school="management"role="tab" aria-selected="false">💼 School of Management</button>
+    <button class="school-tab"        data-school="law"      role="tab" aria-selected="false">⚖️ Law &amp; Governance</button>
+    <button class="school-tab"        data-school="physical" role="tab" aria-selected="false">⚗️ Physical &amp; Chemical</button>
   </div>
  
   <div class="pyq-layout">
@@ -3224,35 +3227,58 @@
         data-dept  → must match .dept-info-card and .dept-section
         data-school → must match school filter data-school
     ══════════════════════════════════════════-->
-    <nav class="dept-sidebar" id="deptSidebar" aria-label="Department list">
-      <button class="dept-btn active" data-dept="bioinformatics"    data-school="earth"><span class="dico">🧬</span>Bioinformatics</button>
-      <button class="dept-btn"        data-dept="biotechnology"     data-school="earth"><span class="dico">🔬</span>Biotechnology</button>
-      <button class="dept-btn"        data-dept="life-science"      data-school="earth"><span class="dico">🌿</span>Life Science</button>
-      <button class="dept-btn"        data-dept="env-science"       data-school="earth"><span class="dico">🌱</span>Environmental Sci.</button>
+        <nav class="dept-sidebar" id="deptSidebar" aria-label="Department list">
+      <!-- 1. Maths, Stat & cs -->
+      <button class="dept-btn active" data-dept="mathematics"       data-school="math"><span class="dico">📐</span>Mathematics</button>
+      <button class="dept-btn"        data-dept="statistics"        data-school="math"><span class="dico">📉</span>Statistics</button>
+      <button class="dept-btn"        data-dept="computer-science"  data-school="math"><span class="dico">🖥️</span>CS</button>
+      
+      <!-- 2. Earth, Bio & Evs -->
+      <button class="dept-btn"        data-dept="bioinformatics"    data-school="earth"><span class="dico">🧬</span>Bioinformatics</button>
       <button class="dept-btn"        data-dept="geology"           data-school="earth"><span class="dico">🪨</span>Geology</button>
       <button class="dept-btn"        data-dept="geography"         data-school="earth"><span class="dico">🗺️</span>Geography</button>
+      <button class="dept-btn"        data-dept="life-science"      data-school="earth"><span class="dico">🌿</span>Life Science</button>
+      <button class="dept-btn"        data-dept="biotechnology"     data-school="earth"><span class="dico">🔬</span>Biotech</button>
+      <button class="dept-btn"        data-dept="env-science"       data-school="earth"><span class="dico">🌱</span>Evs</button>
+
+      <!-- 3. Human Science -->
+      <button class="dept-btn"        data-dept="psychology"        data-school="human"><span class="dico">🧠</span>Psychology</button>
+
+      <!-- 4. Social Sciences & Policies -->
       <button class="dept-btn"        data-dept="historical"        data-school="social"><span class="dico">🏛️</span>Historical Studies</button>
       <button class="dept-btn"        data-dept="economics"         data-school="social"><span class="dico">📊</span>Economics</button>
       <button class="dept-btn"        data-dept="dev-studies"       data-school="social"><span class="dico">🌐</span>Development Studies</button>
       <button class="dept-btn"        data-dept="political"         data-school="social"><span class="dico">🗳️</span>Political Studies</button>
-      <button class="dept-btn"        data-dept="sociology"         data-school="social"><span class="dico">👥</span>Sociology</button>
-      <button class="dept-btn"        data-dept="library-science"   data-school="social"><span class="dico">📚</span>Library &amp; Info Sci.</button>
-      <button class="dept-btn"        data-dept="mathematics"       data-school="math"><span class="dico">📐</span>Mathematics</button>
-      <button class="dept-btn"        data-dept="statistics"        data-school="math"><span class="dico">📉</span>Statistics</button>
-      <button class="dept-btn"        data-dept="computer-science"  data-school="math"><span class="dico">🖥️</span>Computer Science</button>
+      <button class="dept-btn"        data-dept="sociology"         data-school="social"><span class="dico">👥</span>Sociological Studies</button>
+      <button class="dept-btn"        data-dept="library-science"   data-school="social"><span class="dico">📚</span>Library &amp; Info Science</button>
+      <button class="dept-btn"        data-dept="social-work"       data-school="social"><span class="dico">🤝</span>Social Work</button>
+
+      <!-- 5. School of Education -->
+      <button class="dept-btn"        data-dept="teacher-edu"       data-school="education"><span class="dico">📏</span>Teacher Education</button>
+      <button class="dept-btn"        data-dept="physical-edu"      data-school="education"><span class="dico">🏃</span>Physical Ed</button>
+
+      <!-- 6. Health Science -->
+      <button class="dept-btn"        data-dept="pharmacy"          data-school="health"><span class="dico">💊</span>Pharmacy</button>
+
+      <!-- 7. Language & Literature -->
+      <button class="dept-btn"        data-dept="english"           data-school="lang"><span class="dico">📖</span>English</button>
+      <button class="dept-btn"        data-dept="hindi"             data-school="lang"><span class="dico">🔤</span>Indian Languages</button>
+
+      <!-- 8. Media, Arts & Aesthetics -->
+      <button class="dept-btn"        data-dept="mass-comm"         data-school="media"><span class="dico">📡</span>Mass Communication</button>
+
+      <!-- 9. Agriculture -->
+      <button class="dept-btn"        data-dept="agriculture"       data-school="agri"><span class="dico">🌾</span>Agriculture</button>
+
+      <!-- 10. School of Management -->
+      <button class="dept-btn"        data-dept="commerce"          data-school="management"><span class="dico">💼</span>Commerce &amp; Buisness Studies</button>
+
+      <!-- 11. Law & Governance -->
+      <button class="dept-btn"        data-dept="law"               data-school="law"><span class="dico">⚖️</span>Law &amp; Governance</button>
+
+      <!-- 12. Physical & Chemical -->
       <button class="dept-btn"        data-dept="chemistry"         data-school="physical"><span class="dico">⚗️</span>Chemistry</button>
       <button class="dept-btn"        data-dept="physics"           data-school="physical"><span class="dico">⚛️</span>Physics</button>
-      <button class="dept-btn"        data-dept="english"           data-school="lang"><span class="dico">📖</span>English</button>
-      <button class="dept-btn"        data-dept="hindi"             data-school="lang"><span class="dico">🔤</span>Hindi</button>
-      <button class="dept-btn"        data-dept="mass-comm"         data-school="lang"><span class="dico">📡</span>Mass Communication</button>
-      <button class="dept-btn"        data-dept="commerce"          data-school="prof"><span class="dico">💼</span>Commerce</button>
-      <button class="dept-btn"        data-dept="psychology"        data-school="prof"><span class="dico">🧠</span>Psychology</button>
-      <button class="dept-btn"        data-dept="law"               data-school="prof"><span class="dico">⚖️</span>Law &amp; Governance</button>
-      <button class="dept-btn"        data-dept="pharmacy"          data-school="prof"><span class="dico">💊</span>Pharmacy</button>
-      <button class="dept-btn"        data-dept="agriculture"       data-school="prof"><span class="dico">🌾</span>Agriculture</button>
-      <button class="dept-btn"        data-dept="teacher-edu"       data-school="prof"><span class="dico">📏</span>Teacher Education</button>
-      <button class="dept-btn"        data-dept="physical-edu"      data-school="prof"><span class="dico">🏃</span>Physical Education</button>
-      <button class="dept-btn"        data-dept="social-work"       data-school="prof"><span class="dico">🤝</span>Social Work</button>
     </nav>
  
     <!--════════════════════════════════════════════════════
@@ -3269,7 +3295,7 @@
     <div class="dept-content-wrap" id="deptContentWrap">
  
       <!-- ── BIOINFORMATICS ── -->
-<div class="dept-info-card active" data-dept="bioinformatics">
+<div class="dept-info-card" data-dept="bioinformatics">
   <div class="dic-ico" aria-hidden="true">🧬</div>
   <div class="dic-body">
     <div class="dic-name">Bioinformatics</div>
@@ -3401,7 +3427,7 @@
 </div>
  
       <!-- ── MATHEMATICS ── -->
-<div class="dept-info-card" data-dept="mathematics">
+<div class="dept-info-card active" data-dept="mathematics">
   <div class="dic-ico" aria-hidden="true">📐</div>
   <div class="dic-body">
     <div class="dic-name">Mathematics</div>
@@ -3580,7 +3606,7 @@
       <!--── DEPT SECTIONS (year tabs + paper cards) ──-->
  
       <!-- ── BIOINFORMATICS ── -->
-<div class="dept-section active" data-dept="bioinformatics"><div class="year-tabs" role="tablist" aria-label="Select year"><button class="yr-btn active" data-year="2024" role="tab" aria-selected="true">2024</button><button class="yr-btn" data-year="2023" role="tab" aria-selected="false">2023</button><button class="yr-btn" data-year="2022" role="tab" aria-selected="false">2022</button><button class="yr-btn" data-year="2021" role="tab" aria-selected="false">2021</button><button class="yr-btn" data-year="2020" role="tab" aria-selected="false">2020</button></div><div class="yr-panel active" data-year="2024"><div class="paper-grid"><div class="paper-card">
+<div class="dept-section" data-dept="bioinformatics"><div class="year-tabs" role="tablist" aria-label="Select year"><button class="yr-btn active" data-year="2024" role="tab" aria-selected="true">2024</button><button class="yr-btn" data-year="2023" role="tab" aria-selected="false">2023</button><button class="yr-btn" data-year="2022" role="tab" aria-selected="false">2022</button><button class="yr-btn" data-year="2021" role="tab" aria-selected="false">2021</button><button class="yr-btn" data-year="2020" role="tab" aria-selected="false">2020</button></div><div class="yr-panel active" data-year="2024"><div class="paper-grid"><div class="paper-card">
   <span class="pc-lvl pg">PG</span>
   <div class="pc-title">End Semester — 2024</div>
   <div class="pc-prog">M.Sc. Bioinformatics · Sem IV</div>
@@ -4078,7 +4104,7 @@
 </div></div></div></div>
  
       <!-- ── MATHEMATICS ── -->
-<div class="dept-section" data-dept="mathematics"><div class="year-tabs" role="tablist" aria-label="Select year"><button class="yr-btn active" data-year="2024" role="tab" aria-selected="true">2024</button><button class="yr-btn" data-year="2023" role="tab" aria-selected="false">2023</button><button class="yr-btn" data-year="2022" role="tab" aria-selected="false">2022</button><button class="yr-btn" data-year="2021" role="tab" aria-selected="false">2021</button><button class="yr-btn" data-year="2020" role="tab" aria-selected="false">2020</button></div><div class="yr-panel active" data-year="2024"><div class="paper-grid"><div class="paper-card">
+<div class="dept-section active" data-dept="mathematics"><div class="year-tabs" role="tablist" aria-label="Select year"><button class="yr-btn active" data-year="2024" role="tab" aria-selected="true">2024</button><button class="yr-btn" data-year="2023" role="tab" aria-selected="false">2023</button><button class="yr-btn" data-year="2022" role="tab" aria-selected="false">2022</button><button class="yr-btn" data-year="2021" role="tab" aria-selected="false">2021</button><button class="yr-btn" data-year="2020" role="tab" aria-selected="false">2020</button></div><div class="yr-panel active" data-year="2024"><div class="paper-grid"><div class="paper-card">
   <span class="pc-lvl pg">PG</span>
   <div class="pc-title">End Semester — Real Analysis 2024</div>
   <div class="pc-prog">M.Sc. Mathematics · Sem IV</div>
