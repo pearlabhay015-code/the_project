@@ -65,7 +65,7 @@
 
       /* text */
       --tx-primary: #1e2236;
-      --tx-secondary: #5a6080;
+      --tx-secondary: #000000de;
       --tx-muted: #8e93b0;
       --tx-light: #b8bdd4;
 
@@ -3853,6 +3853,75 @@
         box-shadow: var(--nm-out-sm) !important;
       }
     }
+
+    /* ──────────────────────────────────────
+   FLOATING GREETING MESSAGE
+────────────────────────────────────── */
+    .floating-message {
+      position: fixed;
+      bottom: 160px;
+      right: 40px;
+      z-index: 950;
+      animation: floatIn .5s ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes floatIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .floating-message-bubble {
+      background:#FCF6D9;
+      border: 2px solid var(--acc);
+      padding: 12px 18px;
+      border-radius: 20px;
+      font-size: .85rem;
+      font-weight: 500;
+      box-shadow: 4px 4px 12px rgba(0, 0, 0, .08), -2px -2px 6px rgba(255, 255, 255, .8);
+      max-width: 180px;
+      text-align: center;
+      border: 1px solid rgba(200, 220, 240, .6);
+    }
+
+    [data-theme="dark"] .floating-message-bubble {
+      background: #2a3a4a;
+      color: #d0dce8;
+      border-color: rgba(255, 255, 255, .1);
+      box-shadow: 4px 4px 12px #0b0d14, -2px -2px 6px #3a4a5a;
+    }
+
+    @media(max-width:768px) {
+      .floating-message {
+        bottom: 160px;
+        right: 20px;
+      }
+
+      .floating-message-bubble {
+        font-size: .78rem;
+        padding: 10px 14px;
+        max-width: 140px;
+      }
+    }
+
+    @media(max-width:480px) {
+      .floating-message {
+        bottom: 150px;
+        right: 16px;
+      }
+
+      .floating-message-bubble {
+        font-size: .75rem;
+        padding: 8px 12px;
+        max-width: 120px;
+      }
+    }
   </style>
 </head>
 
@@ -4328,7 +4397,6 @@
       <a href="#" class="ql-card rev"><span class="ql-ico">🏆</span><span class="ql-nm">Semester Results</span></a>
       <a href="#" class="ql-card rev"><span class="ql-ico">📥</span><span class="ql-nm">Downloads</span></a>
       <a href="#" class="ql-card rev"><span class="ql-ico">🎓</span><span class="ql-nm">Convocation</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🙋‍♂️</span><span class="ql-nm">Complain Box</span></a>
       <a href="https://scholarships.gov.in/" class="ql-card rev"><span class="ql-ico">💰</span><span class="ql-nm">Scholarship</span></a>
       <a href="hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
       <a href="https://rtionline.gov.in/" class="ql-card rev"><span class="ql-ico">📡</span><span class="ql-nm">RTI</span></a>
@@ -4557,6 +4625,12 @@
       </div>
     </div>
     <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open chat">🤖</button>
+  </div>
+    <!-- ══════ FLOATING GREETING MESSAGE ══════ -->
+  <div class="floating-message">
+    <div class="floating-message-bubble">
+      Hi 🙋‍♂️, may I help you?
+    </div>
   </div>
 
   <!-- ══════ SCROLL TO TOP/BOTTOM BUTTON ══════ -->
@@ -4879,9 +4953,10 @@
       const GAP = 24;
       let CARD_W = 280;
       let STEP = CARD_W + GAP;
-      let SPEED = window.innerWidth <= 640 ? 0.45 : 0.75;
-      let nudgeFactor = window.innerWidth <= 640 ? 0.15 : 0.08;
-      let nudgeFactorPaused = window.innerWidth <= 640 ? 0.20 : 0.10;
+      const isMobile = window.innerWidth <= 640;
+      let SPEED = isMobile ? 0 : 0.75;
+      let nudgeFactor = isMobile ? 0.15 : 0.08;
+      let nudgeFactorPaused = isMobile ? 0.20 : 0.10;
 
       const track = document.getElementById('galleryTrack');
       const viewport = document.getElementById('galleryViewport');
@@ -4896,13 +4971,12 @@
       const originalCount = sourceCards.length;
       if (!originalCount) return;
 
+      let autoAdvanceTimer = null;
+
       function updateMetrics() {
         const firstCard = sourceCards[0];
         CARD_W = firstCard ? firstCard.offsetWidth : 280;
         STEP = CARD_W + GAP;
-        SPEED = window.innerWidth <= 640 ? 0.45 : 0.75;
-        nudgeFactor = window.innerWidth <= 640 ? 0.15 : 0.08;
-        nudgeFactorPaused = window.innerWidth <= 640 ? 0.20 : 0.10;
       }
 
       function buildTrack() {
@@ -4921,7 +4995,7 @@
           const dot = document.createElement('button');
           dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
           dot.setAttribute('aria-label', `Go to image ${i + 1}`);
-          dot.addEventListener('click', () => nudgeTo(i));
+          dot.addEventListener('click', () => { nudgeTo(i); resetAutoAdvance(); });
           dotsEl.appendChild(dot);
         }
         countEl.innerHTML = `<span>01</span> / ${originalCount}`;
@@ -4945,12 +5019,17 @@
           const rect = card.getBoundingClientRect();
           const cardCx = rect.left - vpRect.left + rect.width / 2;
           const dist = Math.abs(cardCx - vpCx);
-          const t = Math.min(dist / (vpW * 0.55), 1);
-          const sc = 1 - t * 0.22;
-          const br = 1 - t * 0.22;
-          const sat = 1 - t * 0.25;
-          card.style.transform = `scale(${sc.toFixed(3)})`;
-          card.style.filter = `brightness(${br.toFixed(3)}) saturate(${sat.toFixed(3)})`;
+          if (isMobile) {
+            card.style.transform = '';
+            card.style.filter = '';
+          } else {
+            const t = Math.min(dist / (vpW * 0.55), 1);
+            const sc = 1 - t * 0.22;
+            const br = 1 - t * 0.22;
+            const sat = 1 - t * 0.25;
+            card.style.transform = `scale(${sc.toFixed(3)})`;
+            card.style.filter = `brightness(${br.toFixed(3)}) saturate(${sat.toFixed(3)})`;
+          }
           if (dist < nearestDist) { nearestDist = dist; nearestCard = card; }
         });
 
@@ -4966,12 +5045,12 @@
 
       function checkLoop() {
         const sw = oneSetWidth();
-        if (-position >= sw) { position += sw; applyTranslate(); }
-        if (position > 0) { position -= sw; applyTranslate(); }
+        if (-position >= sw) { position += sw; }
+        if (position > 0) { position -= sw; }
       }
 
-      function applyTranslate() {
-        track.style.transition = 'none';
+      function applyTranslate(useTransition = false) {
+        track.style.transition = useTransition ? 'transform 0.4s ease-out' : 'none';
         track.style.transform = `translateX(${position}px)`;
       }
 
@@ -4992,6 +5071,15 @@
         nudge += cx - vpCx;
       }
 
+      function resetAutoAdvance() {
+        if (!isMobile) return;
+        clearTimeout(autoAdvanceTimer);
+        autoAdvanceTimer = setTimeout(() => {
+          nudge += STEP;
+          resetAutoAdvance();
+        }, 2000);
+      }
+
       function loop() {
         if (pageHidden) { requestAnimationFrame(loop); return; }
 
@@ -5002,7 +5090,7 @@
         } else {
           if (Math.abs(nudge) > 0.5) { const ch = nudge * nudgeFactorPaused; position -= ch; nudge -= ch; }
         }
-        applyTranslate();
+        applyTranslate(Math.abs(nudge) > STEP * 0.5 && isMobile);
         checkLoop();
         updateCardStyles();
         requestAnimationFrame(loop);
@@ -5012,8 +5100,8 @@
         pageHidden = document.hidden;
       });
 
-      arrowL.addEventListener('click', () => { nudge -= STEP; });
-      arrowR.addEventListener('click', () => { nudge += STEP; });
+      arrowL.addEventListener('click', () => { nudge -= STEP; if (isMobile) resetAutoAdvance(); });
+      arrowR.addEventListener('click', () => { nudge += STEP; if (isMobile) resetAutoAdvance(); });
 
       track.addEventListener('click', e => {
         const card = e.target.closest('.gallery-card');
@@ -5021,6 +5109,7 @@
         const vpRect = viewport.getBoundingClientRect();
         const rect = card.getBoundingClientRect();
         nudge += (rect.left - vpRect.left + rect.width / 2) - vpRect.width / 2;
+        if (isMobile) resetAutoAdvance();
       });
 
       viewport.addEventListener('mouseenter', () => { paused = true; });
@@ -5032,6 +5121,7 @@
         touchStartX = touchLastX = e.touches[0].clientX;
         isTouching = true;
         paused = true;
+        if (isMobile) { clearTimeout(autoAdvanceTimer); }
       }, { passive: true });
 
       viewport.addEventListener('touchmove', e => {
@@ -5039,12 +5129,15 @@
         const x = e.touches[0].clientX;
         position -= touchLastX - x;
         touchLastX = x;
-        applyTranslate(); checkLoop(); updateCardStyles();
+        applyTranslate();
+        checkLoop();
+        updateCardStyles();
       }, { passive: true });
 
       viewport.addEventListener('touchend', e => {
         isTouching = false;
         paused = false;
+        if (isMobile) { resetAutoAdvance(); }
         if (Math.abs(e.changedTouches[0].clientX - touchStartX) < 8) {
           const card = e.target.closest('.gallery-card');
           if (card) {
@@ -5060,6 +5153,10 @@
       updateMetrics();
       position = -oneSetWidth();
       applyTranslate();
+
+      if (isMobile) {
+        resetAutoAdvance();
+      }
 
       window.addEventListener('resize', () => {
         const prevStep = STEP;
@@ -5126,6 +5223,7 @@
     // Update display on window resize
     window.addEventListener('resize', updateFontSizeDisplay);
   </script>
+
 </body>
 
 </html>
