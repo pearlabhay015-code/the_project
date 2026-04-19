@@ -461,7 +461,7 @@
       border-radius: 6px;
       border: 1px solid var(--nm-border);
       white-space: nowrap;
-      min-width:fit-content;
+      min-width: fit-content;
       text-align: center;
       transition: all .2s;
     }
@@ -609,6 +609,7 @@
       padding: 8px 16px;
       width: 100%;
       max-width: var(--nav-max-width);
+      min-width: 250px;
       flex: 1;
       min-height: var(--nav-h);
       transition: box-shadow .3s, background .4s, max-width .2s ease-out;
@@ -734,12 +735,13 @@
       padding: 8px 40px 8px 14px;
       border: 1px solid rgb(242, 213, 174);
       border-radius: 999px;
-      background:rgb(252, 246, 238);
+      background: rgb(252, 246, 238);
       color: var(--tx-primary);
       font-family: var(--fb);
       font-size: .9rem;
       box-shadow: inset 1px 1px 4px rgba(0, 0, 0, .05);
     }
+
     .nav-search-input:focus {
       outline: none;
       border-color: var(--acc);
@@ -1590,7 +1592,6 @@
 
     .hero-img-box {
       width: 100%;
-      max-width: 660px;
       border-radius: var(--r-lg);
       overflow: hidden;
       aspect-ratio: 4/3;
@@ -3634,6 +3635,7 @@
         opacity: 0;
         transform: translateY(10px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -3873,6 +3875,7 @@
         opacity: 0;
         transform: translateY(20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -3880,7 +3883,7 @@
     }
 
     .floating-message-bubble {
-      background:#FCF6D9;
+      background: #FCF6D9;
       border: 2px solid var(--acc);
       padding: 12px 18px;
       border-radius: 20px;
@@ -3986,7 +3989,7 @@
     </div>
     <div class="mob-section-lbl">Navigation</div>
     <a class="mob-a" href="index.html">Home</a>
-    <a class="mob-a" href="#about">About the University</a>
+    <a class="mob-a" href="About_cusb.html">About the University</a>
     <div class="mob-divider"></div>
     <div class="mob-section-lbl">Administration</div>
     <a class="mob-a" href="president.html">Visitor</a>
@@ -4028,9 +4031,11 @@
     </div>
     <div class="tb-r">
       <div class="font-size-controls">
-        <button class="font-size-btn" id="font-decrease-btn" title="Decrease font size" aria-label="Decrease font size">−</button>
+        <button class="font-size-btn" id="font-decrease-btn" title="Decrease font size"
+          aria-label="Decrease font size">−</button>
         <span style="font-size: .75rem; color: var(--tx-secondary);">A</span>
-        <button class="font-size-btn" id="font-increase-btn" title="Increase font size" aria-label="Increase font size">+</button>
+        <button class="font-size-btn" id="font-increase-btn" title="Increase font size"
+          aria-label="Increase font size">+</button>
         <span class="font-size-display" id="font-size-display"></span>
       </div>
       <div class="credits"><img src="NAAC.png" loading="lazy" onerror="this.style.display='none'"></div>
@@ -4062,7 +4067,7 @@
           <span class="ico-sun">☀️</span>
           <span class="ico-moon">🌙</span>
         </button>
-        <a href="#cta-sec" class="btn-apply">Apply 2026–27</a>
+        <a href="#cta-sec" class="btn-apply">Apply</a>
         <button class="ham" id="ham-btn" type="button" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
@@ -4076,7 +4081,8 @@
         <input id="nav-search-input" class="nav-search-input" type="search" placeholder="Search ..."
           aria-label="Search site">
         <button type="submit" class="nav-search-submit" aria-label="Search">
-          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="8"></circle>
             <path d="m21 21-4.35-4.35"></path>
           </svg>
@@ -4395,10 +4401,13 @@
       <a href="#" class="ql-card rev"><span class="ql-ico">🏆</span><span class="ql-nm">Semester Results</span></a>
       <a href="#" class="ql-card rev"><span class="ql-ico">📥</span><span class="ql-nm">Downloads</span></a>
       <a href="#" class="ql-card rev"><span class="ql-ico">🎓</span><span class="ql-nm">Convocation</span></a>
-      <a href="https://scholarships.gov.in/" class="ql-card rev"><span class="ql-ico">💰</span><span class="ql-nm">Scholarship</span></a>
+      <a href="https://scholarships.gov.in/" class="ql-card rev"><span class="ql-ico">💰</span><span
+          class="ql-nm">Scholarship</span></a>
       <a href="hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
-      <a href="https://rtionline.gov.in/" class="ql-card rev"><span class="ql-ico">📡</span><span class="ql-nm">RTI</span></a>
-      <a href="https://www.antiragging.in/" class="ql-card rev"><span class="ql-ico">🔒</span><span class="ql-nm">Anti-Ragging</span></a>
+      <a href="https://rtionline.gov.in/" class="ql-card rev"><span class="ql-ico">📡</span><span
+          class="ql-nm">RTI</span></a>
+      <a href="https://www.antiragging.in/" class="ql-card rev"><span class="ql-ico">🔒</span><span
+          class="ql-nm">Anti-Ragging</span></a>
       <a href="#" class="ql-card rev"><span class="ql-ico">🌐</span><span class="ql-nm">Webmail</span></a>
       <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" class="ql-card rev"><span
           class="ql-ico">🧑‍🎓</span><span class="ql-nm">Samarth Login <br>Students</span></a>
@@ -4474,6 +4483,22 @@
             <div class="gallery-card-inner"><img src="" alt="Graduation Day" loading="lazy"
                 onerror="this.style.display='none'"></div>
           </div>
+          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f8e0dd,#fdecea)">
+            <div class="gallery-card-inner"><img src="" alt="Botanical Garden" loading="lazy"
+                onerror="this.style.display='none'"></div>
+          </div>
+          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e8ddf5,#f3e8fd)">
+            <div class="gallery-card-inner"><img src="" alt="Auditorium" loading="lazy"
+                onerror="this.style.display='none'"></div>
+          </div>
+          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde8f0,#e8f0f8)">
+            <div class="gallery-card-inner"><img src="" alt="Tech Expo" loading="lazy"
+                onerror="this.style.display='none'"></div>
+          </div>
+          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f0f0dd,#f8f8e8)">
+            <div class="gallery-card-inner"><img src="" alt="Graduation Day" loading="lazy"
+                onerror="this.style.display='none'"></div>
+          </div>
         </div><!-- /gallery-track -->
       </div><!-- /gallery-viewport -->
       <button class="gallery-arrow gallery-arrow-right" id="arrowRight" aria-label="Scroll right">
@@ -4489,7 +4514,7 @@
 
   <!-- GOV_SITES -->
   <section id="gov_sites">
-     <div class="gallery-eyebrow">Govt. Portals</div>
+    <div class="gallery-eyebrow">Govt. Portals</div>
     <div class="students_site">
       <ul class="students_site_link">
         <li><a href="https://swayam.gov.in/" target="_blank"><img src="swayam_logo.png" alt="Swayam Courses"></a></li>
@@ -4624,7 +4649,7 @@
     </div>
     <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open chat">🤖</button>
   </div>
-    <!-- ══════ FLOATING GREETING MESSAGE ══════ -->
+  <!-- ══════ FLOATING GREETING MESSAGE ══════ -->
   <div class="floating-message">
     <div class="floating-message-bubble">
       Hi 🙋‍♂️, may I help you?
@@ -4717,7 +4742,7 @@
 
     function findAnswer(userMessage) {
       const lowerMessage = userMessage.toLowerCase();
-      
+
       for (const [key, value] of Object.entries(chatbotQA)) {
         if (key !== 'default') {
           if (value.keywords.some(keyword => lowerMessage.includes(keyword))) {
@@ -4725,7 +4750,7 @@
           }
         }
       }
-      
+
       return chatbotQA.default;
     }
 
@@ -5195,10 +5220,10 @@
       root.style.setProperty('--nav-max-width', navMaxWidth + 'px');
       currentFontSize = percent;
       localStorage.setItem('fontSizePercent', percent.toString());
-      
+
       // Update display
       updateFontSizeDisplay();
-      
+
       // Update button states
       decreaseBtn.disabled = percent <= 80;
       increaseBtn.disabled = percent >= 150;
