@@ -2265,6 +2265,24 @@
         justify-items: center
       }
 
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .hero-img-wrap {
+        order: -1;
+      }
+
+      .hero-left {
+        order: 1;
+      }
+
+      .dept-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
       :root {
         --ticker-h: 30px
       }
@@ -2371,6 +2389,19 @@
 
       .ql-grid {
         grid-template-columns: repeat(3, 1fr)
+      }
+
+      #gallery-sec {
+        padding: 64px 0;
+      }
+
+      .gallery-hd {
+        padding: 0 4vw 32px;
+      }
+
+      .collage-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: clamp(110px, 28vw, 150px);
       }
 
       .gallery-section {
@@ -2492,6 +2523,10 @@
 
       .ql-grid {
         grid-template-columns: repeat(2, 1fr)
+      }
+
+      .collage-grid {
+        grid-auto-rows: clamp(96px, 30vw, 130px);
       }
 
       .leaders-grid {
