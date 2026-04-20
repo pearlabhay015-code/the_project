@@ -1863,71 +1863,186 @@
       color: var(--tx-secondary)
     }
 
-    /* ──────────────────────────────────────
-   DEPARTMENTS
-────────────────────────────────────── */
-    .school-blk {
-      margin-bottom: 38px
+    /* ── PAGE HERO ── */
+    #page-hero{background:var(--nm-bg);padding:60px 6vw 52px;text-align:center;position:relative;overflow:hidden}
+    #page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.05) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+    [data-theme="dark"] #page-hero::before{background-image:radial-gradient(circle,rgba(255,106,0,.05) 1px,transparent 1px)}
+    #page-hero>*{position:relative;z-index:1}
+    .ph-pill{display:inline-flex;align-items:center;gap:8px;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);border-radius:40px;padding:6px 18px 6px 12px;font-size:.72rem;color:var(--tx-secondary);margin-bottom:22px;font-weight:600;animation:fadeUp .7s .1s both}
+    [data-theme="dark"] .ph-pill{border-color:rgba(255,106,0,.08)}
+    .ph-title{font-family:'Trebuchet MS','Lucida Sans Unicode','Lucida Grande','Lucida Sans',Arial,sans-serif;font-size:clamp(2rem,5vw,3.6rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;color:var(--tx-primary);animation:fadeUp .7s .2s both}
+    .ph-title .acc{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    [data-theme="dark"] .ph-title .acc{background:linear-gradient(90deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .ph-sub{margin-top:14px;font-size:.92rem;line-height:1.75;color:var(--tx-secondary);max-width:520px;margin-inline:auto;animation:fadeUp .7s .35s both}
+    .ph-stats{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:28px;animation:fadeUp .7s .5s both}
+    .ph-stat{padding:14px 24px;border-radius:var(--r-md);background:var(--nm-bg-sec);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);text-align:center}
+    [data-theme="dark"] .ph-stat{border-color:rgba(255,106,0,.07)}
+    .ph-sn{font-family:'Times New Roman',Times,serif;font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    [data-theme="dark"] .ph-sn{background:linear-gradient(135deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .ph-sl{font-size:.62rem;color:var(--tx-muted);margin-top:2px;letter-spacing:.05em;text-transform:uppercase;font-weight:500}
+    .ph-bc{margin-top:20px;display:flex;align-items:center;gap:8px;font-size:.71rem;color:var(--tx-muted);justify-content:center;flex-wrap:wrap;width:fit-content;max-width:100%;margin-inline:auto;animation:fadeUp .7s .6s both}
+    .ph-bc a{color:var(--acc);text-decoration:none;font-weight:600;align-items: center;}
+    .ph-bc a:hover{color:var(--acc2)}
+    [data-theme="dark"] .ph-bc a{color:#FF8C42}
+    .ph-bc .sep{opacity:.4}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+    /* ═══════════════════════════════════════
+       COURSES SECTION — REDESIGNED
+    ═══════════════════════════════════════ */
+    #courses-sec{
+      padding: 60px 4vw 100px;
+      background: var(--nm-bg);
+      text-align: center;
     }
 
-    .school-title {
+    /* Search */
+    .pyq-search-wrap{
+      max-width: 480px;
+      margin: 0 auto 52px;
+      position: relative;
+    }
+    .pyq-search{
+      width: 100%;
+      padding: 13px 48px 13px 20px;
+      border-radius: var(--r-xl);
+      background: var(--nm-bg-sec);
+      box-shadow: var(--nm-in);
+      border: 1px solid var(--nm-border);
+      color: var(--tx-primary);
       font-family: var(--fb);
-      font-size: .72rem;
+      font-size: .88rem;
+      transition: box-shadow .2s;
+      text-align: left;
+    }
+    .pyq-search:focus{outline:none;box-shadow:var(--nm-in-lg)}
+    [data-theme="dark"] .pyq-search{border-color:rgba(255,106,0,.07)}
+    .pyq-search-ico{position:absolute;right:17px;top:50%;transform:translateY(-50%);font-size:1.1rem;pointer-events:none;opacity:.4}
+
+    /* School filter tabs */
+    .school-tabs-wrap{
+      max-width: 900px;
+      margin: 0 auto 60px;
+    }
+    .school-tabs-label{
+      font-family: var(--fd);
+      font-size: .62rem;
       font-weight: 700;
-      letter-spacing: .13em;
+      letter-spacing: .22em;
       text-transform: uppercase;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--nm-border-b);
-      margin-bottom: 14px;
       color: var(--acc);
+      margin-bottom: 16px;
+      display: block;
     }
-
-    [data-theme="dark"] .school-title {
-      color: #FF6A00;
-      text-shadow: 0 0 10px rgba(255, 106, 0, .40)
-    }
-
-    .dept-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 10px
-    }
-
-    .dept-card {
-      border-radius: var(--r-sm);
-      padding: 12px 16px;
-      cursor: pointer;
+    [data-theme="dark"] .school-tabs-label{color:#FF6A00;text-shadow:0 0 12px rgba(255,106,0,.50)}
+    .school-tabs{
       display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+    .school-tab{
+      padding: 9px 20px;
+      border-radius: var(--r-xl);
+      font-family: var(--fb);
+      font-size: .76rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--nm-border);
+      background:var(--nm-bg-alt);
+      box-shadow: var(--nm-out-sm);
+      color: var(--tx-secondary);
+      transition: box-shadow .22s, color .22s, background .22s;
+      white-space: nowrap;
+    }
+    .school-tab:hover{box-shadow:var(--nm-in-sm);color:var(--acc)}
+    .school-tab.active{box-shadow:var(--nm-in);color:var(--acc);background:var(--nm-bg-sec)}
+    [data-theme="dark"] .school-tab{border-color:rgba(255,106,0,.06)}
+    [data-theme="dark"] .school-tab:hover,[data-theme="dark"] .school-tab.active{color:#FF8C42;box-shadow:var(--nm-in-sm)}
+    [data-theme="dark"] .school-tab.active{box-shadow:var(--nm-in)}
+
+    /* School group block */
+    .school-group{
+      max-width: 860px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+    .school-group:last-child{margin-bottom: 0}
+    .school-group[data-school].hidden{display: none}
+
+    .school-name{
+      display: inline-flex;
       align-items: center;
       gap: 10px;
-      text-decoration: none;
-      background: var(--nm-bg);
-      box-shadow: var(--nm-out-sm);
+      font-family: var(--fd);
+      font-size: .70rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: red;
+      margin-bottom: 24px;
+      padding: 6px 20px;
+      border-radius: var(--r-xl);
+      background: var(--nm-bg-sec);
+      box-shadow: var(--nm-in-sm);
       border: 1px solid var(--nm-border);
-      transition: box-shadow .22s, color .22s;
     }
+    [data-theme="dark"] .school-name{color:#FF8C42;border-color:rgba(255,106,0,.10)}
 
-    .dept-card:hover {
-      box-shadow: var(--nm-in-sm);
-      color: var(--acc)
+    /* Dept link buttons grid */
+    .dept-links{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
     }
-
-    [data-theme="dark"] .dept-card:hover {
-      box-shadow: var(--nm-in-sm);
-      color: #FF8C42
-    }
-
-    .dept-card .di {
-      font-size: .95rem;
-      flex-shrink: 0
-    }
-
-    .dept-card .dn {
-      font-size: .76rem;
-      line-height: 1.4;
+    .dept-link{
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 12px 22px;
+      border-radius: var(--r-xl);
+      font-family: var(--fb);
+      font-size: .80rem;
       font-weight: 500;
-      color: var(--tx-primary)
+      color: var(--tx-secondary);
+      text-decoration: none;
+      background:var(--nm-bg-alt) ;
+      border: 1px solid var(--nm-border);
+      box-shadow: var(--nm-out-sm);
+      transition: box-shadow .22s, color .22s, transform .2s;
+      white-space: nowrap;
     }
+    .dept-link:hover{
+      box-shadow: var(--nm-in-sm);
+      color: red;
+      transform: translateY(-2px);
+    }
+    .dept-link:active{transform: scale(.97);box-shadow:var(--nm-in-sm)}
+    [data-theme="dark"] .dept-link{border-color:rgba(255,255,255,.05)}
+    [data-theme="dark"] .dept-link:hover{color:#ffffff;box-shadow:var(--nm-in-sm)}
+    .dept-link .dico{font-size:.95rem;flex-shrink:0}
+
+    /* Divider between schools */
+    .school-divider{
+      width: 100%;
+      max-width: 300px;
+      height: 1px;
+      background: var(--nm-border-b);
+      margin: 0 auto 10px;
+      border: none;
+    }
+
+    /* No results */
+    .no-results{
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--tx-muted);
+      font-size: .88rem;
+      display: none;
+    }
+    .no-results.show{display:block}
 
     /* ──────────────────────────────────────
    CAMPUS
@@ -4033,6 +4148,7 @@
     <div class="mob-divider"></div>
     <div class="mob-section-lbl">Students</div>
     <a class="mob-a" href="#quicklinks">Quick Links</a>
+    <a class="mob-a" href="pyq.html">PYQ</a>
     <a class="mob-a" href="#gov_sites">Gov Links</a>
     <a class="mob-cta" href="#cta-sec">Apply 2026–27 →</a>
   </div>
@@ -4080,7 +4196,7 @@
       <ul class="nav-links">
         <li><a href="#hero">Home</a></li>
         <li><a href="About_cusb.html">About</a></li>
-        <li><a href="administration.html">Administration</a></li>
+        <li><a href="#leadership">Administration</a></li>
         <li><a href="courses.html">Courses</a></li>
         <li><a href="#campus">Campus</a></li>
         <li><a href="#notices-sec">IQAC</a></li>
@@ -4126,8 +4242,8 @@
         learning at Panchanpur, Gaya. Motto: <em>Collective Reasoning.</em></p>
       <div class="hero-btns">
         <a href="#cta-sec" class="btn btn-ocean">Apply Now →</a>
-        <a href="#about" class="btn btn-ghost">Explore CUSB</a>
-        <a href="#departments" class="btn btn-ghost">Choose Your Career Path ↓</a>
+        <a href="About_cusb.html" class="btn btn-ghost">Explore CUSB</a>
+        <a href="courses.html" class="btn btn-ghost">Choose Your Career Path ↓</a>
         <a href="#quicklinks" class="btn btn-ghost btn-sm">Prospectus</a>
       </div>
       <div class="hero-stats">
@@ -4195,11 +4311,11 @@
         </div>
         <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap" class="rev">
           <a href="history.html" class="btn btn-light btn-sm">Our History →</a>
-          <a href="about.html" class="btn btn-light btn-sm">More →</a>
+          <a href="About_cusb.html" class="btn btn-light btn-sm">More →</a>
         </div>
       </div>
       <div class="about-img-slot rev">
-        <img src="demo.jpg" alt="CUSB Building" onerror="this.style.display='none'">
+        <img src="admin.jpeg" alt="CUSB Building" onerror="this.style.display='none'">
       </div>
     </div>
   </section>
@@ -4239,69 +4355,180 @@
       </div>
     </div>
   </section>
+<!-- ══════ PAGE HERO ══════ -->
+<header id="page-hero">
+  <div class="ph-pill">🎓 Academic Programmes</div>
+  <h1 class="ph-title">Courses &amp; <span class="acc">Programmes</span></h1>
+  <p class="ph-sub">Explore 51+ programmes across 27 departments — from undergraduate to doctoral — at Central University of South Bihar.</p>
+  <div class="ph-stats">
+    <div class="ph-stat"><div class="ph-sn">27</div><div class="ph-sl">Departments</div></div>
+    <div class="ph-stat"><div class="ph-sn">51+</div><div class="ph-sl">Programmes</div></div>
+    <div class="ph-stat"><div class="ph-sn">12</div><div class="ph-sl">Schools</div></div>
+    <div class="ph-stat"><div class="ph-sn">UG·PG·PhD</div><div class="ph-sl">All Levels</div></div>
+  </div>
+  <nav class="ph-bc" aria-label="Breadcrumb">
+    <a href="index.html">Home</a><span class="sep">›</span>
+    <span>Courses &amp; Programmes</span>
+  </nav>
+</header>
 
-  <!-- ══════ DEPARTMENTS ══════ -->
-  <section id="departments" class="sec light-sec">
-    <div class="sec-hd rev">
-      <div class="sec-lbl">Academics</div>
-      <h2 class="sec-title">Schools &amp; Departments</h2>
-      <p class="sec-sub">24+ departments across diverse disciplines — from sciences and humanities to law and
-        management.</p>
+<!-- ══════ COURSES SECTION ══════ -->
+<section id="courses-sec">
+
+  <!-- Search -->
+  <div class="pyq-search-wrap rev">
+    <input class="pyq-search" type="search" id="deptSearch" placeholder="Search department or school…" aria-label="Search departments">
+    <span class="pyq-search-ico" aria-hidden="true">🔍</span>
+  </div>
+
+  <!-- School filter tabs -->
+  <div class="school-tabs-wrap rev">
+    <span class="school-tabs-label"> Schools</span>
+    <div class="school-tabs" id="schoolTabs" role="tablist" aria-label="Filter by school">
+      <button class="school-tab active" data-school="all" role="tab" aria-selected="true">🗂 All Schools</button>
+      <button class="school-tab" data-school="math" role="tab" aria-selected="false">💻 Maths, Stat &amp; CS</button>
+      <button class="school-tab" data-school="earth" role="tab" aria-selected="false">🌍 Earth, Bio &amp; Evs</button>
+      <button class="school-tab" data-school="human" role="tab" aria-selected="false">🧠 Human Science</button>
+      <button class="school-tab" data-school="social" role="tab" aria-selected="false">⚖️ Social Sciences</button>
+      <button class="school-tab" data-school="education" role="tab" aria-selected="false">🏫 Education</button>
+      <button class="school-tab" data-school="health" role="tab" aria-selected="false">⚕️ Health Science</button>
+      <button class="school-tab" data-school="lang" role="tab" aria-selected="false">📖 Language &amp; Lit.</button>
+      <button class="school-tab" data-school="media" role="tab" aria-selected="false">📡 Media &amp; Arts</button>
+      <button class="school-tab" data-school="agri" role="tab" aria-selected="false">🌾 Agriculture</button>
+      <button class="school-tab" data-school="management" role="tab" aria-selected="false">💼 Management</button>
+      <button class="school-tab" data-school="law" role="tab" aria-selected="false">⚖️ Law</button>
+      <button class="school-tab" data-school="physical" role="tab" aria-selected="false">⚗️ Physical &amp; Chem.</button>
     </div>
-    <div class="school-blk rev">
-      <div class="school-title">🌍 Earth, Biological &amp; Environmental Sciences</div>
-      <div class="dept-grid">
-        <a href="#" class="dept-card"><span class="di">🧬</span><span class="dn">Bioinformatics</span></a>
-        <a href="#" class="dept-card"><span class="di">🪨</span><span class="dn">Geology</span></a>
-        <a href="#" class="dept-card"><span class="di">🗺️</span><span class="dn">Geography</span></a>
-        <a href="#" class="dept-card"><span class="di">🌿</span><span class="dn">Life Science</span></a>
-        <a href="#" class="dept-card"><span class="di">🔬</span><span class="dn">Biotechnology</span></a>
-        <a href="#" class="dept-card"><span class="di">🌱</span><span class="dn">Environmental Sciences</span></a>
-      </div>
+  </div>
+
+  <!-- No results message -->
+  <div class="no-results" id="noResults">No departments found matching your search.</div>
+
+  <!-- ── SCHOOL GROUPS ── -->
+
+  <div class="school-group rev" data-school="math" id="sg-math">
+    <div class="school-name">💻 School of Mathematics, Statistics &amp; Computer Science</div>
+    <div class="dept-links">
+      <a class="dept-link" href="#" data-dept="mathematics"><span class="dico">📐</span>Mathematics</a>
+      <a class="dept-link" href="#" data-dept="statistics"><span class="dico">📉</span>Statistics</a>
+      <a class="dept-link" href="computer_sc.html" data-dept="computer-science"><span class="dico">🖥️</span>Computer Science</a>
     </div>
-    <div class="school-blk rev">
-      <div class="school-title">⚖️ Social Sciences &amp; Policies</div>
-      <div class="dept-grid">
-        <a href="#" class="dept-card"><span class="di">🏛️</span><span class="dn">Historical Studies &amp;
-            Archaeology</span></a>
-        <a href="#" class="dept-card"><span class="di">📊</span><span class="dn">Economic Studies &amp;
-            Policy</span></a>
-        <a href="#" class="dept-card"><span class="di">🌐</span><span class="dn">Development Studies</span></a>
-        <a href="#" class="dept-card"><span class="di">🗳️</span><span class="dn">Political Studies</span></a>
-        <a href="#" class="dept-card"><span class="di">👥</span><span class="dn">Sociological Studies</span></a>
-        <a href="#" class="dept-card"><span class="di">📚</span><span class="dn">Library &amp; Information
-            Science</span></a>
-      </div>
+  </div>
+
+  <hr class="school-divider" data-school="math">
+
+  <div class="school-group rev" data-school="earth" id="sg-earth">
+    <div class="school-name">🌍 School of Earth, Biological &amp; Environmental Sciences</div>
+    <div class="dept-links">
+      <a class="dept-link" href="#" data-dept="bioinformatics"><span class="dico">🧬</span>Bioinformatics</a>
+      <a class="dept-link" href="#" data-dept="geology"><span class="dico">🪨</span>Geology</a>
+      <a class="dept-link" href="#" data-dept="geography"><span class="dico">🗺️</span>Geography</a>
+      <a class="dept-link" href="#" data-dept="life-science"><span class="dico">🌿</span>Life Science</a>
+      <a class="dept-link" href="#" data-dept="biotechnology"><span class="dico">🔬</span>Biotechnology</a>
+      <a class="dept-link" href="#" data-dept="env-science"><span class="dico">🌱</span>Environmental Sciences</a>
     </div>
-    <div class="school-blk rev">
-      <div class="school-title">💻 Mathematics, Statistics &amp; Computer Science</div>
-      <div class="dept-grid">
-        <a href="#" class="dept-card"><span class="di">📐</span><span class="dn">Mathematics</span></a>
-        <a href="#" class="dept-card"><span class="di">📉</span><span class="dn">Statistics</span></a>
-        <a href="cs.html" class="dept-card"><span class="di">🖥️</span><span class="dn">Computer Science</span></a>
-      </div>
+  </div>
+
+  <hr class="school-divider" data-school="earth">
+
+  <div class="school-group rev" data-school="human" id="sg-human">
+    <div class="school-name">🧠 School of Human Sciences</div>
+    <div class="dept-links">
+      <a class="dept-link" href="#" data-dept="psychology"><span class="dico">🧠</span>Psychological Sciences</a>
     </div>
-    <div class="school-blk rev">
-      <div class="school-title">⚗️ Physical &amp; Chemical Sciences · 📖 Languages · 🎬 Media · ⚕️ Health · 🌾
-        Agriculture</div>
-      <div class="dept-grid">
-        <a href="#" class="dept-card"><span class="di">⚗️</span><span class="dn">Chemistry</span></a>
-        <a href="#" class="dept-card"><span class="di">⚛️</span><span class="dn">Physics</span></a>
-        <a href="#" class="dept-card"><span class="di">📖</span><span class="dn">English</span></a>
-        <a href="#" class="dept-card"><span class="di">🔤</span><span class="dn">Indian Languages</span></a>
-        <a href="#" class="dept-card"><span class="di">📡</span><span class="dn">Mass Communication &amp;
-            Media</span></a>
-        <a href="#" class="dept-card"><span class="di">💼</span><span class="dn">Commerce &amp; Business
-            Studies</span></a>
-        <a href="#" class="dept-card"><span class="di">🧠</span><span class="dn">Psychological Sciences</span></a>
-        <a href="#" class="dept-card"><span class="di">⚖️</span><span class="dn">Law &amp; Governance</span></a>
-        <a href="#" class="dept-card"><span class="di">💊</span><span class="dn">Pharmacy</span></a>
-        <a href="#" class="dept-card"><span class="di">🌾</span><span class="dn">Agriculture</span></a>
-        <a href="#" class="dept-card"><span class="di">📏</span><span class="dn">Teacher Education</span></a>
-        <a href="#" class="dept-card"><span class="di">🏃</span><span class="dn">Physical Education</span></a>
-      </div>
+  </div>
+
+  <hr class="school-divider" data-school="human">
+
+  <div class="school-group rev" data-school="social" id="sg-social">
+    <div class="school-name">⚖️ School of Social Sciences &amp; Policies</div>
+    <div class="dept-links">
+      <a class="dept-link" href="#" data-dept="historical"><span class="dico">🏛️</span>Historical Studies &amp; Archaeology</a>
+      <a class="dept-link" href="#" data-dept="economics"><span class="dico">📊</span>Economic Studies &amp; Policy</a>
+      <a class="dept-link" href="#" data-dept="dev-studies"><span class="dico">🌐</span>Development Studies</a>
+      <a class="dept-link" href="#" data-dept="political"><span class="dico">🗳️</span>Political Studies</a>
+      <a class="dept-link" href="#" data-dept="sociology"><span class="dico">👥</span>Sociological Studies</a>
+      <a class="dept-link" href="#" data-dept="library-science"><span class="dico">📚</span>Library &amp; Information Science</a>
+      <a class="dept-link" href="#" data-dept="social-work"><span class="dico">🤝</span>Social Work</a>
     </div>
-  </section>
+  </div>
+
+  <hr class="school-divider" data-school="social">
+
+  <div class="school-group rev" data-school="education" id="sg-education">
+    <div class="school-name">🏫 School of Education</div>
+    <div class="dept-links">
+      <a class="dept-link" href="#" data-dept="teacher-edu"><span class="dico">📏</span>Teacher Education</a>
+      <a class="dept-link" href="#" data-dept="physical-edu"><span class="dico">🏃</span>Physical Education</a>
+    </div>
+  </div>
+
+  <hr class="school-divider" data-school="education">
+
+  <div class="school-group rev" data-school="health" id="sg-health">
+    <div class="school-name">⚕️ School of Pharmaceutical Sciences</div>
+    <div class="dept-links">
+      <a class="dept-link" href="#" data-dept="pharmacy"><span class="dico">💊</span>Pharmacy</a>
+    </div>
+  </div>
+
+  <hr class="school-divider" data-school="health">
+
+  <div class="school-group rev" data-school="lang" id="sg-lang">
+    <div class="school-name">📖 School of Languages &amp; Literature</div>
+    <div class="dept-links">
+      <a class="dept-link" href="#" data-dept="english"><span class="dico">📖</span>English</a>
+      <a class="dept-link" href="#" data-dept="hindi"><span class="dico">🔤</span>Hindi</a>
+    </div>
+  </div>
+
+  <hr class="school-divider" data-school="lang">
+
+  <div class="school-group rev" data-school="media" id="sg-media">
+    <div class="school-name">📡 School of Media &amp; Arts</div>
+    <div class="dept-links">
+      <a class="dept-link" href="#" data-dept="mass-comm"><span class="dico">📡</span>Mass Communication &amp; Media</a>
+    </div>
+  </div>
+
+  <hr class="school-divider" data-school="media">
+
+  <div class="school-group rev" data-school="agri" id="sg-agri">
+    <div class="school-name">🌾 School of Agriculture</div>
+    <div class="dept-links">
+      <a class="dept-link" href="#" data-dept="agriculture"><span class="dico">🌾</span>Agriculture</a>
+    </div>
+  </div>
+
+  <hr class="school-divider" data-school="agri">
+
+  <div class="school-group rev" data-school="management" id="sg-management">
+    <div class="school-name">💼 School of Commerce &amp; Management</div>
+    <div class="dept-links">
+      <a class="dept-link" href="#" data-dept="commerce"><span class="dico">💼</span>Commerce &amp; Business Studies</a>
+    </div>
+  </div>
+
+  <hr class="school-divider" data-school="management">
+
+  <div class="school-group rev" data-school="law" id="sg-law">
+    <div class="school-name">⚖️ School of Law &amp; Governance</div>
+    <div class="dept-links">
+      <a class="dept-link" href="#" data-dept="law"><span class="dico">⚖️</span>Law &amp; Governance</a>
+    </div>
+  </div>
+
+  <hr class="school-divider" data-school="law">
+
+  <div class="school-group rev" data-school="physical" id="sg-physical">
+    <div class="school-name">⚗️ School of Physical &amp; Chemical Sciences</div>
+    <div class="dept-links">
+      <a class="dept-link" href="#" data-dept="chemistry"><span class="dico">⚗️</span>Chemistry</a>
+      <a class="dept-link" href="#" data-dept="physics"><span class="dico">⚛️</span>Physics</a>
+    </div>
+  </div>
+
+</section>
 
   <!-- ══════ CAMPUS ══════ -->
   <section id="campus" class="sec white-sec">
@@ -4312,7 +4539,7 @@
         student life.</p>
     </div>
     <div class="infra-grid">
-      <a href="#" class="infra-card card-light rev">
+      <a href="library.html" class="infra-card card-light rev">
         <div class="infra-img-slot">📚</div>
         <div class="infra-name">Library Services</div>
         <p class="infra-note">Digital and physical collection with access to thousands of journals, e-resources, and
@@ -4324,7 +4551,7 @@
         <p class="infra-note">Separate blocks for men and women with 24/7 security, mess facility, and recreational
           spaces.</p>
       </a>
-      <a href="#" class="infra-card card-light rev">
+      <a href="sports.html" class="infra-card card-light rev">
         <div class="infra-img-slot">⚽</div>
         <div class="infra-name">Sports Complex</div>
         <p class="infra-note">Cricket, football, athletics grounds, and a modern indoor sports hall for students and
@@ -4414,33 +4641,6 @@
     </div>
   </section>
 
-  <!-- ══════ QUICK LINKS ══════ -->
-  <section id="quicklinks" class="sec white-sec">
-    <div class="sec-hd rev">
-      <div class="sec-lbl">Quick Access</div>
-      <h2 class="sec-title">Student Resources</h2>
-      <p class="sec-sub">Everything you need, one click away.</p>
-    </div>
-    <div class="ql-grid">
-      <a href="#" class="ql-card rev"><span class="ql-ico">📄</span><span class="ql-nm">Prospectus</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">📋</span><span class="ql-nm">Exam Schedule</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🏆</span><span class="ql-nm">Semester Results</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">📥</span><span class="ql-nm">Downloads</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🎓</span><span class="ql-nm">Convocation</span></a>
-      <a href="https://scholarships.gov.in/" class="ql-card rev"><span class="ql-ico">💰</span><span
-          class="ql-nm">Scholarship</span></a>
-      <a href="hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
-      <a href="https://rtionline.gov.in/" class="ql-card rev"><span class="ql-ico">📡</span><span
-          class="ql-nm">RTI</span></a>
-      <a href="https://www.antiragging.in/" class="ql-card rev"><span class="ql-ico">🔒</span><span
-          class="ql-nm">Anti-Ragging</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🌐</span><span class="ql-nm">Webmail</span></a>
-      <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" class="ql-card rev"><span
-          class="ql-ico">🧑‍🎓</span><span class="ql-nm">Samarth Login <br>Students</span></a>
-      <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" class="ql-card rev"><span
-          class="ql-ico">👨‍🏫</span><span class="ql-nm">Samarth Login <br>Employee</span></a>
-    </div>
-  </section>
 
 
   <!-- ════════════════════════════════
@@ -4466,65 +4666,46 @@
                 onerror="this.style.display='none'"></div>
           </div>
           <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e8e0f5,#f0ecfc)">
-            <div class="gallery-card-inner"><img src="2026.jpg" alt="Library" loading="lazy"
+            <div class="gallery-card-inner"><img src="malviya.jpeg" alt="Library" loading="lazy"
                 onerror="this.style.display='none'"></div>
           </div>
           <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ddf0eb,#e8f7f3)">
-            <div class="gallery-card-inner"><img src="2013.jpg" alt="Convocation" loading="lazy"
+            <div class="gallery-card-inner"><img src="admin.jpeg" alt="Convocation" loading="lazy"
                 onerror="this.style.display='none'"></div>
           </div>
           <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ffe0ec,#fff0f5)">
-            <div class="gallery-card-inner"><img src="" alt="Sports Meet" loading="lazy"
+            <div class="gallery-card-inner"><img src="admin.jpeg" alt="Sports Meet" loading="lazy"
                 onerror="this.style.display='none'"></div>
           </div>
           <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde8f5,#e8f0fc)">
-            <div class="gallery-card-inner"><img src="" alt="Research Lab" loading="lazy"
+            <div class="gallery-card-inner"><img src="admin_good.jpeg" alt="Research Lab" loading="lazy"
                 onerror="this.style.display='none'"></div>
           </div>
           <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f5e8dd,#fdf0e8)">
-            <div class="gallery-card-inner"><img src="" alt="Cultural Fest" loading="lazy"
+            <div class="gallery-card-inner"><img src="malviya.jpeg" alt="Cultural Fest" loading="lazy"
                 onerror="this.style.display='none'"></div>
           </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e0e8f8,#edf3fd)">
-            <div class="gallery-card-inner"><img src="" alt="Seminar Hall" loading="lazy"
+          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e8e0f5,#f0ecfc)">
+            <div class="gallery-card-inner"><img src="malviya.jpeg" alt="Library" loading="lazy"
                 onerror="this.style.display='none'"></div>
           </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ddf5f0,#e8fcf8)">
-            <div class="gallery-card-inner"><img src="" alt="Hostel Life" loading="lazy"
+          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ddf0eb,#e8f7f3)">
+            <div class="gallery-card-inner"><img src="admin.jpeg" alt="Convocation" loading="lazy"
                 onerror="this.style.display='none'"></div>
           </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f8e0dd,#fdecea)">
-            <div class="gallery-card-inner"><img src="" alt="Botanical Garden" loading="lazy"
+          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#ffe0ec,#fff0f5)">
+            <div class="gallery-card-inner"><img src="admin.jpeg" alt="Sports Meet" loading="lazy"
                 onerror="this.style.display='none'"></div>
           </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e8ddf5,#f3e8fd)">
-            <div class="gallery-card-inner"><img src="" alt="Auditorium" loading="lazy"
+          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde8f5,#e8f0fc)">
+            <div class="gallery-card-inner"><img src="admin_good.jpeg" alt="Research Lab" loading="lazy"
                 onerror="this.style.display='none'"></div>
           </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde8f0,#e8f0f8)">
-            <div class="gallery-card-inner"><img src="" alt="Tech Expo" loading="lazy"
+          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f5e8dd,#fdf0e8)">
+            <div class="gallery-card-inner"><img src="malviya.jpeg" alt="Cultural Fest" loading="lazy"
                 onerror="this.style.display='none'"></div>
           </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f0f0dd,#f8f8e8)">
-            <div class="gallery-card-inner"><img src="" alt="Graduation Day" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f8e0dd,#fdecea)">
-            <div class="gallery-card-inner"><img src="" alt="Botanical Garden" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#e8ddf5,#f3e8fd)">
-            <div class="gallery-card-inner"><img src="" alt="Auditorium" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#dde8f0,#e8f0f8)">
-            <div class="gallery-card-inner"><img src="" alt="Tech Expo" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
-          <div class="gallery-card" style="--ph-bg:linear-gradient(145deg,#f0f0dd,#f8f8e8)">
-            <div class="gallery-card-inner"><img src="" alt="Graduation Day" loading="lazy"
-                onerror="this.style.display='none'"></div>
-          </div>
+
         </div><!-- /gallery-track -->
       </div><!-- /gallery-viewport -->
       <button class="gallery-arrow gallery-arrow-right" id="arrowRight" aria-label="Scroll right">
@@ -4535,6 +4716,34 @@
     </div><!-- /gallery-stage -->
     <div class="gallery-dots" id="galleryDots"></div>
     <p class="gallery-count" id="galleryCount"><span>01</span> / 12</p>
+  </section>
+
+    <!-- ══════ QUICK LINKS ══════ -->
+  <section id="quicklinks" class="sec white-sec">
+    <div class="sec-hd rev">
+      <div class="sec-lbl">Quick Access</div>
+      <h2 class="sec-title">Student Resources</h2>
+      <p class="sec-sub">Everything you need, one click away.</p>
+    </div>
+    <div class="ql-grid">
+      <a href="https://scholarships.gov.in/" class="ql-card rev"><span class="ql-ico">💰</span><span
+          class="ql-nm">Scholarship</span></a>
+      <a href="hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
+      <a href="https://rtionline.gov.in/" class="ql-card rev"><span class="ql-ico">📡</span><span
+          class="ql-nm">RTI</span></a>
+      <a href="https://www.antiragging.in/" class="ql-card rev"><span class="ql-ico">🔒</span><span
+          class="ql-nm">Anti-Ragging</span></a>
+      <a href="#" class="ql-card rev"><span class="ql-ico">🌐</span><span class="ql-nm">Webmail</span></a>
+      <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" class="ql-card rev"><span
+          class="ql-ico">🧑‍🎓</span><span class="ql-nm">Samarth Login <br>Students</span></a>
+      <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" class="ql-card rev"><span
+          class="ql-ico">👨‍🏫</span><span class="ql-nm">Samarth Login <br>Employee</span></a>
+      <a href="#" class="ql-card rev"><span class="ql-ico">📄</span><span class="ql-nm">Prospectus</span></a>
+      <a href="#" class="ql-card rev"><span class="ql-ico">📋</span><span class="ql-nm">Exam Schedule</span></a>
+      <a href="#" class="ql-card rev"><span class="ql-ico">🏆</span><span class="ql-nm">Semester Results</span></a>
+      <a href="#" class="ql-card rev"><span class="ql-ico">📥</span><span class="ql-nm">Downloads</span></a>
+      <a href="#" class="ql-card rev"><span class="ql-ico">🎓</span><span class="ql-nm">Convocation</span></a>
+    </div>
   </section>
 
 
@@ -4857,6 +5066,73 @@
       el.style.transitionDelay = (i % 5) * 0.07 + 's';
       ro.observe(el);
     });
+
+    /* ── SCHOOL FILTER ── */
+function applySchoolFilter(school) {
+  const groups = document.querySelectorAll('.school-group');
+  const dividers = document.querySelectorAll('.school-divider');
+  groups.forEach(g => {
+    const match = school === 'all' || g.dataset.school === school;
+    g.classList.toggle('hidden', !match);
+  });
+  dividers.forEach(d => {
+    const match = school === 'all' || d.dataset.school === school;
+    d.style.display = match ? '' : 'none';
+  });
+}
+document.getElementById('schoolTabs').addEventListener('click', function(e) {
+  const tab = e.target.closest('.school-tab');
+  if (!tab) return;
+  document.querySelectorAll('.school-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+  tab.classList.add('active');
+  tab.setAttribute('aria-selected','true');
+  applySchoolFilter(tab.dataset.school);
+  document.getElementById('deptSearch').value = '';
+  document.getElementById('noResults').classList.remove('show');
+});
+
+/* ── SEARCH ── */
+document.getElementById('deptSearch').addEventListener('input', function() {
+  const q = this.value.toLowerCase().trim();
+  // Reset school filter to all
+  document.querySelectorAll('.school-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+  const allTab = document.querySelector('.school-tab[data-school="all"]');
+  allTab.classList.add('active');
+  allTab.setAttribute('aria-selected','true');
+
+  const groups = document.querySelectorAll('.school-group');
+  const dividers = document.querySelectorAll('.school-divider');
+  let anyVisible = false;
+
+  groups.forEach(g => {
+    if (!q) {
+      g.classList.remove('hidden');
+      // Check each dept-link in this group
+      g.querySelectorAll('.dept-link').forEach(lk => lk.style.display = '');
+      anyVisible = true;
+      return;
+    }
+    // Check if school name or any dept link matches
+    const schoolNameTxt = g.querySelector('.school-name').textContent.toLowerCase();
+    const deptLinks = g.querySelectorAll('.dept-link');
+    let groupMatch = schoolNameTxt.includes(q);
+    deptLinks.forEach(lk => {
+      const deptMatch = lk.textContent.toLowerCase().includes(q);
+      lk.style.display = (groupMatch || deptMatch) ? '' : 'none';
+      if (deptMatch) groupMatch = true;
+    });
+    g.classList.toggle('hidden', !groupMatch);
+    if (groupMatch) anyVisible = true;
+  });
+
+  dividers.forEach(d => {
+    const group = document.getElementById('sg-' + d.dataset.school);
+    d.style.display = (group && !group.classList.contains('hidden')) ? '' : 'none';
+  });
+
+  document.getElementById('noResults').classList.toggle('show', !anyVisible);
+});
+
 
     /* ─────────────────────────────────────
        COUNTER ANIMATION
