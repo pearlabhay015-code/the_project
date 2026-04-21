@@ -1863,46 +1863,34 @@
       color: var(--tx-secondary)
     }
 
-    /* ── PAGE HERO ── */
+    /* ── COURSES── */
     #page-hero{background:var(--nm-bg);padding:60px 6vw 52px;text-align:center;position:relative;overflow:hidden}
     #page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.05) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
     [data-theme="dark"] #page-hero::before{background-image:radial-gradient(circle,rgba(255,106,0,.05) 1px,transparent 1px)}
     #page-hero>*{position:relative;z-index:1}
-    .ph-pill{display:inline-flex;align-items:center;gap:8px;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);border-radius:40px;padding:6px 18px 6px 12px;font-size:.72rem;color:var(--tx-secondary);margin-bottom:22px;font-weight:600;animation:fadeUp .7s .1s both}
-    [data-theme="dark"] .ph-pill{border-color:rgba(255,106,0,.08)}
+    /* .ph-pill{display:inline-flex;align-items:center;gap:8px;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);border-radius:40px;padding:6px 18px 6px 12px;font-size:.72rem;color:var(--tx-secondary);margin-bottom:22px;font-weight:600;animation:fadeUp .7s .1s both}
+    [data-theme="dark"] .ph-pill{border-color:rgba(255,106,0,.08)} */
     .ph-title{font-family:'Trebuchet MS','Lucida Sans Unicode','Lucida Grande','Lucida Sans',Arial,sans-serif;font-size:clamp(2rem,5vw,3.6rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;color:var(--tx-primary);animation:fadeUp .7s .2s both}
     .ph-title .acc{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     [data-theme="dark"] .ph-title .acc{background:linear-gradient(90deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .ph-sub{margin-top:14px;font-size:.92rem;line-height:1.75;color:var(--tx-secondary);max-width:520px;margin-inline:auto;animation:fadeUp .7s .35s both}
-    .ph-stats{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:28px;animation:fadeUp .7s .5s both}
-    .ph-stat{padding:14px 24px;border-radius:var(--r-md);background:var(--nm-bg-sec);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);text-align:center}
-    [data-theme="dark"] .ph-stat{border-color:rgba(255,106,0,.07)}
-    .ph-sn{font-family:'Times New Roman',Times,serif;font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    [data-theme="dark"] .ph-sn{background:linear-gradient(135deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .ph-sl{font-size:.62rem;color:var(--tx-muted);margin-top:2px;letter-spacing:.05em;text-transform:uppercase;font-weight:500}
-    .ph-bc{margin-top:20px;display:flex;align-items:center;gap:8px;font-size:.71rem;color:var(--tx-muted);justify-content:center;flex-wrap:wrap;width:fit-content;max-width:100%;margin-inline:auto;animation:fadeUp .7s .6s both}
-    .ph-bc a{color:var(--acc);text-decoration:none;font-weight:600;align-items: center;}
-    .ph-bc a:hover{color:var(--acc2)}
-    [data-theme="dark"] .ph-bc a{color:#FF8C42}
-    .ph-bc .sep{opacity:.4}
+
     @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 
     /* ═══════════════════════════════════════
        COURSES SECTION — REDESIGNED
     ═══════════════════════════════════════ */
     #courses-sec{
-      padding: 60px 4vw 100px;
       background: var(--nm-bg);
       text-align: center;
     }
 
     /* Search */
-    .pyq-search-wrap{
+    .dept-search-wrap{
       max-width: 480px;
       margin: 0 auto 52px;
       position: relative;
     }
-    .pyq-search{
+    .dept-search{
       width: 100%;
       padding: 13px 48px 13px 20px;
       border-radius: var(--r-xl);
@@ -1915,9 +1903,9 @@
       transition: box-shadow .2s;
       text-align: left;
     }
-    .pyq-search:focus{outline:none;box-shadow:var(--nm-in-lg)}
+    .dept-search:focus{outline:none;box-shadow:var(--nm-in-lg)}
     [data-theme="dark"] .pyq-search{border-color:rgba(255,106,0,.07)}
-    .pyq-search-ico{position:absolute;right:17px;top:50%;transform:translateY(-50%);font-size:1.1rem;pointer-events:none;opacity:.4}
+    .dept-search-ico{position:absolute;right:17px;top:50%;transform:translateY(-50%);font-size:1.1rem;pointer-events:none;opacity:.4}
 
     /* School filter tabs */
     .school-tabs-wrap{
@@ -1926,7 +1914,7 @@
     }
     .school-tabs-label{
       font-family: var(--fd);
-      font-size: .62rem;
+      font-size: .82rem;
       font-weight: 700;
       letter-spacing: .22em;
       text-transform: uppercase;
@@ -1970,6 +1958,7 @@
     }
     .school-group:last-child{margin-bottom: 0}
     .school-group[data-school].hidden{display: none}
+    .school-group.preview-hidden{display:none}
 
     .school-name{
       display: inline-flex;
@@ -1980,7 +1969,7 @@
       font-weight: 700;
       letter-spacing: .18em;
       text-transform: uppercase;
-      color: red;
+      color: rgb(246, 59, 59);
       margin-bottom: 24px;
       padding: 6px 20px;
       border-radius: var(--r-xl);
@@ -2016,7 +2005,7 @@
     }
     .dept-link:hover{
       box-shadow: var(--nm-in-sm);
-      color: red;
+      color: rgb(246, 59, 59);
       transform: translateY(-2px);
     }
     .dept-link:active{transform: scale(.97);box-shadow:var(--nm-in-sm)}
@@ -2033,6 +2022,18 @@
       margin: 0 auto 10px;
       border: none;
     }
+    .courses-toggle-wrap{
+      display:flex;
+      justify-content:center;
+      margin-top: 40px;
+      margin-bottom: 56px;
+    }
+    .courses-toggle-btn{
+      min-width: 170px;
+      justify-content: center;
+      color: rgb(246, 59, 59);
+    }
+    .courses-toggle-btn[hidden]{display:none !important}
 
     /* No results */
     .no-results{
@@ -4357,33 +4358,21 @@
   </section>
 <!-- ══════ PAGE HERO ══════ -->
 <header id="page-hero">
-  <div class="ph-pill">🎓 Academic Programmes</div>
   <h1 class="ph-title">Courses &amp; <span class="acc">Programmes</span></h1>
-  <p class="ph-sub">Explore 51+ programmes across 27 departments — from undergraduate to doctoral — at Central University of South Bihar.</p>
-  <div class="ph-stats">
-    <div class="ph-stat"><div class="ph-sn">27</div><div class="ph-sl">Departments</div></div>
-    <div class="ph-stat"><div class="ph-sn">51+</div><div class="ph-sl">Programmes</div></div>
-    <div class="ph-stat"><div class="ph-sn">12</div><div class="ph-sl">Schools</div></div>
-    <div class="ph-stat"><div class="ph-sn">UG·PG·PhD</div><div class="ph-sl">All Levels</div></div>
-  </div>
-  <nav class="ph-bc" aria-label="Breadcrumb">
-    <a href="index.html">Home</a><span class="sep">›</span>
-    <span>Courses &amp; Programmes</span>
-  </nav>
 </header>
 
 <!-- ══════ COURSES SECTION ══════ -->
 <section id="courses-sec">
 
   <!-- Search -->
-  <div class="pyq-search-wrap rev">
-    <input class="pyq-search" type="search" id="deptSearch" placeholder="Search department or school…" aria-label="Search departments">
-    <span class="pyq-search-ico" aria-hidden="true">🔍</span>
+  <div class="dept-search-wrap rev">
+    <input class="dept-search" type="search" id="deptSearch" placeholder="Search department or school…" aria-label="Search departments">
+    <span class="dept-search-ico" aria-hidden="true">🔍</span>
   </div>
 
   <!-- School filter tabs -->
   <div class="school-tabs-wrap rev">
-    <span class="school-tabs-label"> Schools</span>
+    <span class="school-tabs-label">Select Your School</span>
     <div class="school-tabs" id="schoolTabs" role="tablist" aria-label="Filter by school">
       <button class="school-tab active" data-school="all" role="tab" aria-selected="true">🗂 All Schools</button>
       <button class="school-tab" data-school="math" role="tab" aria-selected="false">💻 Maths, Stat &amp; CS</button>
@@ -4526,6 +4515,10 @@
       <a class="dept-link" href="#" data-dept="chemistry"><span class="dico">⚗️</span>Chemistry</a>
       <a class="dept-link" href="#" data-dept="physics"><span class="dico">⚛️</span>Physics</a>
     </div>
+  </div>
+
+  <div class="courses-toggle-wrap rev">
+    <button class="btn btn-ghost courses-toggle-btn" id="coursesViewMoreBtn" type="button" hidden aria-expanded="false">View More</button>
   </div>
 
 </section>
@@ -5068,31 +5061,66 @@
     });
 
     /* ── SCHOOL FILTER ── */
+const deptSearchInput = document.getElementById('deptSearch');
+const schoolGroups = [...document.querySelectorAll('#courses-sec .school-group')];
+const schoolDividers = [...document.querySelectorAll('#courses-sec .school-divider')];
+const coursesViewMoreBtn = document.getElementById('coursesViewMoreBtn');
+const defaultVisibleDepartments = 5;
+let coursesExpanded = false;
+
+function refreshCoursesSection() {
+  const activeSchool = document.querySelector('.school-tab.active')?.dataset.school || 'all';
+  const searchQuery = deptSearchInput.value.toLowerCase().trim();
+  const shouldLimitGroups = activeSchool === 'all' && !searchQuery;
+  const visibleGroups = schoolGroups.filter(group => !group.classList.contains('hidden'));
+
+  schoolGroups.forEach(group => group.classList.remove('preview-hidden'));
+  if (shouldLimitGroups && !coursesExpanded) {
+    visibleGroups.slice(defaultVisibleDepartments).forEach(group => group.classList.add('preview-hidden'));
+  }
+
+  schoolDividers.forEach(divider => {
+    const previousGroup = divider.previousElementSibling?.classList.contains('school-group')
+      ? divider.previousElementSibling
+      : null;
+    let nextGroup = divider.nextElementSibling;
+    while (nextGroup && !nextGroup.classList.contains('school-group')) {
+      nextGroup = nextGroup.nextElementSibling;
+    }
+    const previousVisible = previousGroup && !previousGroup.classList.contains('hidden') && !previousGroup.classList.contains('preview-hidden');
+    const nextVisible = nextGroup && !nextGroup.classList.contains('hidden') && !nextGroup.classList.contains('preview-hidden');
+    divider.style.display = previousVisible && nextVisible ? '' : 'none';
+  });
+
+  const hiddenCount = shouldLimitGroups ? Math.max(visibleGroups.length - defaultVisibleDepartments, 0) : 0;
+  const showToggle = shouldLimitGroups && visibleGroups.length > defaultVisibleDepartments;
+  coursesViewMoreBtn.hidden = !showToggle;
+  coursesViewMoreBtn.textContent = coursesExpanded ? 'View Less' : `View More (${hiddenCount})`;
+  coursesViewMoreBtn.setAttribute('aria-expanded', String(coursesExpanded));
+}
+
 function applySchoolFilter(school) {
-  const groups = document.querySelectorAll('.school-group');
-  const dividers = document.querySelectorAll('.school-divider');
-  groups.forEach(g => {
-    const match = school === 'all' || g.dataset.school === school;
-    g.classList.toggle('hidden', !match);
+  schoolGroups.forEach(group => {
+    const match = school === 'all' || group.dataset.school === school;
+    group.classList.toggle('hidden', !match);
   });
-  dividers.forEach(d => {
-    const match = school === 'all' || d.dataset.school === school;
-    d.style.display = match ? '' : 'none';
-  });
+  refreshCoursesSection();
 }
 document.getElementById('schoolTabs').addEventListener('click', function(e) {
   const tab = e.target.closest('.school-tab');
   if (!tab) return;
+  coursesExpanded = false;
   document.querySelectorAll('.school-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
   tab.classList.add('active');
   tab.setAttribute('aria-selected','true');
+  deptSearchInput.value = '';
   applySchoolFilter(tab.dataset.school);
-  document.getElementById('deptSearch').value = '';
   document.getElementById('noResults').classList.remove('show');
 });
 
 /* ── SEARCH ── */
-document.getElementById('deptSearch').addEventListener('input', function() {
+deptSearchInput.addEventListener('input', function() {
+  coursesExpanded = false;
   const q = this.value.toLowerCase().trim();
   // Reset school filter to all
   document.querySelectorAll('.school-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
@@ -5100,11 +5128,9 @@ document.getElementById('deptSearch').addEventListener('input', function() {
   allTab.classList.add('active');
   allTab.setAttribute('aria-selected','true');
 
-  const groups = document.querySelectorAll('.school-group');
-  const dividers = document.querySelectorAll('.school-divider');
   let anyVisible = false;
 
-  groups.forEach(g => {
+  schoolGroups.forEach(g => {
     if (!q) {
       g.classList.remove('hidden');
       // Check each dept-link in this group
@@ -5125,13 +5151,16 @@ document.getElementById('deptSearch').addEventListener('input', function() {
     if (groupMatch) anyVisible = true;
   });
 
-  dividers.forEach(d => {
-    const group = document.getElementById('sg-' + d.dataset.school);
-    d.style.display = (group && !group.classList.contains('hidden')) ? '' : 'none';
-  });
-
+  refreshCoursesSection();
   document.getElementById('noResults').classList.toggle('show', !anyVisible);
 });
+
+coursesViewMoreBtn.addEventListener('click', () => {
+  coursesExpanded = !coursesExpanded;
+  refreshCoursesSection();
+});
+
+refreshCoursesSection();
 
 
     /* ─────────────────────────────────────
