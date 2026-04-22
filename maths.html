@@ -52,7 +52,7 @@
       --acc2-glow: rgba(91, 82, 212, .25);
 
       /* text */
-      --tx-primary: #1e2236;
+      --tx-primary: #6e7180;
       --tx-secondary: #000000de;
       --tx-muted: #6b7280;
       --tx-light: #b8bdd4;
@@ -1218,24 +1218,6 @@
       color: #FF8C42;
       box-shadow: var(--nm-in-sm)
     }
-     /* FIX #7: Back-to-top link at end of each section */
-    .sec-top-link {
-      display: block;
-      text-align: right;
-      margin-top: 36px;
-      padding-top: 12px;
-      border-top: 1px solid var(--nm-border-b);
-      font-size: .68rem;
-      font-weight: 600;
-      letter-spacing: .08em;
-      color: var(--tx-muted);
-      text-decoration: none;
-      transition: color .2s;
-    }
-    .sec-top-link:hover { color: var(--acc); }
-    .sec-top-link:focus { outline: 2px solid var(--acc); outline-offset: 2px; color: var(--acc); }
-    [data-theme="dark"] .sec-top-link:hover, [data-theme="dark"] .sec-top-link:focus { color: #FF8C42; }
-
 
     /* Solid accent */
     .btn-solid {
@@ -1271,6 +1253,60 @@
     .btn-sm {
       padding: 8px 18px;
       font-size: .78rem
+    }
+
+    .btn-cs {
+      background: linear-gradient(145deg, var(--acc), #c22050);
+      color: #fff;
+      box-shadow:
+        6px 6px 16px rgba(200, 30, 70, .40),
+        -4px -4px 10px rgba(255, 255, 255, .22),
+        0 2px 0 rgba(255, 255, 255, .18) inset;
+      transition: box-shadow .22s;
+    }
+
+    .btn-cs:hover {
+      box-shadow:
+        inset 4px 4px 10px rgba(150, 10, 40, .45),
+        inset -2px -2px 6px rgba(255, 255, 255, .12);
+    }
+
+    [data-theme="dark"] .btn-cs {
+      background: linear-gradient(145deg, #FF6A00, #c94a00);
+      box-shadow:
+        6px 6px 18px rgba(0, 0, 0, .65),
+        -4px -4px 10px rgba(255, 255, 255, .04),
+        0 0 20px rgba(255, 106, 0, .35),
+        0 2px 0 rgba(255, 140, 66, .18) inset;
+    }
+
+    [data-theme="dark"] .btn-cs:hover {
+      box-shadow:
+        inset 4px 4px 12px rgba(0, 0, 0, .60),
+        inset -3px -3px 8px rgba(255, 255, 255, .04),
+        0 0 14px rgba(255, 106, 0, .22);
+    }
+
+    .btn-ghost-cs {
+      background: var(--nm-bg);
+      color: var(--tx-secondary);
+      box-shadow: var(--nm-out-sm);
+      border: 1px solid var(--nm-border);
+      transition: box-shadow .22s, color .22s;
+    }
+
+    .btn-ghost-cs:hover {
+      box-shadow: var(--nm-in-sm);
+      color: var(--acc);
+    }
+
+    [data-theme="dark"] .btn-ghost-cs {
+      box-shadow: var(--nm-out-sm);
+    }
+
+    [data-theme="dark"] .btn-ghost-cs:hover {
+      color: #FF8C42;
+      box-shadow: var(--nm-in-sm);
     }
 
     /* Ripple */
@@ -1414,6 +1450,217 @@
       box-shadow: var(--nm-out-glow-sm)
     }
 
+
+
+/* ════════════════════════════════════════
+   HERO — CS Department
+════════════════════════════════════════ */
+#cs-hero{
+  background:var(--nm-bg);
+  min-height:min(60vh,500px);
+  display:flex;align-items:center;
+  padding:50px 6vw 60px;
+  position:relative;overflow:hidden;
+  transition:background .4s;
+}
+/* circuit dot texture */
+#cs-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(246,150,72,.07) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;z-index:0}
+[data-theme="dark"] #cs-hero::before{background-image:radial-gradient(circle,rgba(255,106,0,.05) 1px,transparent 1px)}
+#cs-hero>*{position:relative;z-index:1}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;width:100%}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* eyebrow pill */
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);border-radius:40px;padding:6px 18px 6px 12px;font-size:.72rem;color:var(--tx-secondary);margin-bottom:26px;font-weight:600;animation:fadeUp .7s .1s both}
+[data-theme="dark"] .hero-eyebrow{border-color:rgba(255,106,0,.08)}
+.hero-title{font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size:clamp(2.4rem,4.5vw,3.2rem);font-weight:600;line-height:1.0;letter-spacing:-.03em;color:var(--tx-primary);animation:fadeUp .7s .25s both}
+.hero-title .grad{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+[data-theme="dark"] .hero-title .grad{background:linear-gradient(90deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{margin-top:18px;font-size:.92rem;line-height:1.82;color:var(--tx-secondary);font-weight:400;max-width:760px;animation:fadeUp .7s .4s both}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;animation:fadeUp .7s .55s both}
+.hero-back{display:inline-flex;align-items:center;gap:7px;margin-top:20px;padding:9px 22px;border-radius:var(--r-xl);background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);color:var(--tx-secondary);font-size:.78rem;font-weight:600;text-decoration:none;transition:box-shadow .22s,color .22s;animation:fadeUp .7s .62s both}
+.hero-back:hover{box-shadow:var(--nm-in-sm);color:var(--acc)}
+[data-theme="dark"] .hero-back:hover{color:#FF8C42}
+/* hero stats row */
+.hero-stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;animation:fadeUp .7s .70s both}
+.h-stat{background:var(--nm-bg-alt);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);border-radius:var(--r-md);padding:12px 18px;text-align:center}
+[data-theme="dark"] .h-stat{box-shadow:var(--nm-out-sm)}
+.h-stat .num{font-family:Verdana, Geneva, Tahoma, sans-serif;font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+[data-theme="dark"] .h-stat .num{background:linear-gradient(135deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.h-stat .lbl{font-size:.65rem;color:var(--tx-muted);font-weight:400;letter-spacing:.04em;margin-top:2px}
+/* hero image frame */
+.hero-img-wrap{animation:fadeUp .7s .3s both}
+.hero-img-box{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/9;background:var(--nm-bg-alt);box-shadow:var(--nm-out-xl);border:1px solid var(--nm-border);position:relative;display:flex;align-items:center;justify-content:center}
+[data-theme="dark"] .hero-img-box{box-shadow:20px 20px 55px #090b11,-20px -20px 55px #373a56,0 0 28px rgba(255,106,0,.07)}
+.hero-img-box img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ════════════════════════════════════════
+   DEPT INFO SECTION
+════════════════════════════════════════ */
+.dept-layout{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+/* dept image slot */
+.dept-img-slot{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/9;background:var(--nm-bg-alt);box-shadow:var(--nm-out-lg);border:1px solid var(--nm-border);display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative}
+[data-theme="dark"] .dept-img-slot{box-shadow:var(--nm-out-lg)}
+.dept-img-slot img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+/* detail table */
+.dept-detail-title{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--tx-primary);margin-bottom:16px}
+.detail-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.detail-table tr{border-bottom:1px solid var(--nm-border-b)}
+.detail-table tr:last-child{border-bottom:none}
+.detail-table td{padding:10px 12px;vertical-align:top;color:var(--tx-secondary)}
+.detail-table td:first-child{font-weight:700;color:var(--tx-primary);white-space:nowrap;width:40%;font-size:.75rem;letter-spacing:.03em;text-transform:uppercase}
+.dept-about{margin-top:22px;font-size:.84rem;line-height:1.82;color:var(--tx-secondary)}
+.dept-about strong{color:var(--acc);font-weight:700}
+[data-theme="dark"] .dept-about strong{color:#FF8C42}
+
+/* ════════════════════════════════════════
+   FACULTY TABLE
+════════════════════════════════════════ */
+.faculty-table-wrap{
+  overflow-x:auto;border-radius:var(--r-md);
+  box-shadow:var(--nm-out);
+  border:1px solid var(--nm-border);
+}
+[data-theme="dark"] .faculty-table-wrap{box-shadow:var(--nm-out)}
+.faculty-table-wrap::-webkit-scrollbar{height:3px}
+.faculty-table-wrap::-webkit-scrollbar-thumb{background:var(--acc);border-radius:2px}
+.faculty-table{width:100%;min-width:560px;border-collapse:collapse;font-size:.82rem}
+.faculty-table thead tr{font-family:var(--fd);font-size:.68rem;font-weight:700;letter-spacing:.10em;text-transform:uppercase;background:var(--nm-bg-alt);color:var(--acc)}
+[data-theme="dark"] .faculty-table thead tr{background:var(--nm-bg-alt);color:#FF8C42}
+.faculty-table th{padding:12px 16px;text-align:left;border-bottom:2px solid var(--nm-border-b)}
+.faculty-table tbody tr{background:var(--nm-bg);transition:box-shadow .18s;border-bottom:1px solid var(--nm-border-b)}
+.faculty-table tbody tr:last-child{border-bottom:none}
+.faculty-table tbody tr:hover{box-shadow:var(--nm-in-sm)}
+.faculty-table td{padding:12px 16px;color:var(--tx-secondary);vertical-align:middle}
+.faculty-table td:first-child{font-weight:700;color:var(--tx-muted);text-align:center;width:42px;font-size:.72rem}
+.td-name-fac{font-weight:600;color:var(--tx-primary)}
+/* Faculty photo cell */
+.fac-photo-cell{width:100px;text-align:center;padding:10px}
+.fac-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:7px}
+.fac-photo{
+  width:80px;height:100px;border-radius:var(--r-sm);overflow:hidden;
+  background:var(--nm-bg-alt);
+  box-shadow:var(--nm-out-sm);
+  border:1px solid var(--nm-border);
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;position:relative;
+}
+[data-theme="dark"] .fac-photo{box-shadow:var(--nm-out-sm)}
+.fac-photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.fac-view-btn{
+  display:inline-flex;align-items:center;gap:3px;padding:4px 12px;border-radius:var(--r-xl);
+  font-size:.60rem;font-weight:700;color:var(--acc);
+  background:var(--nm-bg);
+  box-shadow:var(--nm-out-sm);
+  border:1px solid var(--nm-border);
+  text-decoration:none;transition:box-shadow .2s,color .2s;white-space:nowrap;
+}
+.fac-view-btn:hover{box-shadow:var(--nm-in-sm);color:var(--acc)}
+[data-theme="dark"] .fac-view-btn{box-shadow:var(--nm-out-sm)}
+[data-theme="dark"] .fac-view-btn:hover{color:#FF8C42;box-shadow:var(--nm-in-sm)}
+.fac-view-btn svg{width:10px;height:10px}
+/* specialisation tags */
+.spec-tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.64rem;font-weight:600;background:var(--nm-bg);box-shadow:var(--nm-in-sm);color:var(--acc);margin:2px 3px 2px 0;white-space:nowrap;border:1px solid var(--nm-border)}
+[data-theme="dark"] .spec-tag{color:#FF8C42;box-shadow:var(--nm-in-sm)}
+.scroll-hint-fac{display:none;text-align:center;font-size:.62rem;color:var(--tx-muted);padding:6px 0;letter-spacing:.04em}
+
+/* ════════════════════════════════════════
+   PROGRAM SECTIONS — 75% desktop, full mobile
+════════════════════════════════════════ */
+.prog-container{max-width:75%;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+/* section eyebrow */
+.prog-sec-hd{display:flex;align-items:center;gap:14px;margin-bottom:36px;flex-wrap:wrap}
+.prog-sec-icon{font-size:2rem}
+.prog-sec-title{font-family:var(--fd);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;letter-spacing:-.02em;color:var(--tx-primary)}
+/* program card — convex resting */
+.prog-card{
+  border-radius:var(--r-lg);padding:28px 30px;
+  background:var(--nm-bg);
+  box-shadow:var(--nm-out);
+  border:1px solid var(--nm-border);
+  display:flex;flex-direction:column;gap:14px;
+  transition:box-shadow .28s;
+}
+.prog-card:hover{box-shadow:var(--nm-out-lg)}
+[data-theme="dark"] .prog-card{box-shadow:var(--nm-out)}
+[data-theme="dark"] .prog-card:hover{box-shadow:var(--nm-in-sm)}
+.prog-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.prog-card-title{font-family:var(--fd);font-size:1rem;font-weight:700;color:var(--tx-primary);margin-bottom:4px}
+.prog-card-sub{font-size:.78rem;color:var(--tx-secondary);font-weight:400;line-height:1.6}
+/* program badge — concave pill */
+.prog-badge{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:30px;
+  font-size:.68rem;font-weight:700;letter-spacing:.04em;white-space:nowrap;flex-shrink:0;
+  background:var(--nm-bg);
+  box-shadow:var(--nm-in-sm);
+  border:1px solid var(--nm-border);
+  color:var(--acc);
+}
+[data-theme="dark"] .prog-badge{color:#FF8C42}
+.prog-badge.pg{color:var(--acc2)}
+[data-theme="dark"] .prog-badge.pg{color:#FFB347}
+.prog-badge.ai{color:var(--acc)}
+.prog-badge.phd{color:var(--tx-secondary)}
+/* meta items — concave chips */
+.prog-meta{display:flex;flex-wrap:wrap;gap:8px}
+.prog-meta-item{
+  display:flex;align-items:center;gap:5px;font-size:.74rem;color:var(--tx-secondary);
+  background:var(--nm-bg-alt);
+  box-shadow:var(--nm-in-sm);
+  border-radius:var(--r-sm);padding:4px 12px;border:1px solid var(--nm-border);
+}
+[data-theme="dark"] .prog-meta-item{box-shadow:var(--nm-in-sm)}
+.prog-desc{font-size:.80rem;line-height:1.78;color:var(--tx-secondary)}
+.prog-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--nm-border-b)}
+/* syllabus button */
+.prog-syllabus-btn{
+  display:inline-flex;align-items:center;gap:6px;padding:8px 20px;border-radius:var(--r-xl);
+  font-size:.78rem;font-weight:600;color:var(--acc);
+  background:var(--nm-bg);
+  box-shadow:var(--nm-out-sm);
+  border:1px solid var(--nm-border);
+  text-decoration:none;transition:box-shadow .22s,color .22s;
+}
+.prog-syllabus-btn:hover{box-shadow:var(--nm-in-sm)}
+[data-theme="dark"] .prog-syllabus-btn{box-shadow:var(--nm-out-sm);color:#FF8C42}
+[data-theme="dark"] .prog-syllabus-btn:hover{box-shadow:var(--nm-in-sm);color:#FF8C42}
+.prog-syllabus-btn svg{width:15px;height:15px;flex-shrink:0}
+
+/* ════════════════════════════════════════
+   GALLERY — mosaic collage, touching borders
+════════════════════════════════════════ */
+#gallery-sec{background:var(--nm-bg-sec);padding:80px 0;overflow:hidden}
+.gallery-hd{padding:0 6vw 48px;text-align:center}
+.collage-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);
+  grid-auto-rows:160px;gap:0;width:100%;
+}
+.collage-cell{
+  overflow:hidden;position:relative;
+  background:var(--nm-bg-alt);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2rem;color:var(--tx-muted);
+}
+.collage-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.16,1,.3,1),filter .4s}
+.collage-cell:hover{z-index:2}
+.collage-cell:hover img{transform:scale(1.07);filter:brightness(1.06) saturate(1.10)}
+.collage-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(246,150,72,.08),transparent 60%);pointer-events:none;opacity:0;transition:opacity .3s}
+.collage-cell:hover::after{opacity:1}
+[data-theme="dark"] .collage-cell::after{background:linear-gradient(135deg,rgba(255,106,0,.08),transparent 60%)}
+/* col/row spans — mosaic layout */
+.collage-cell:nth-child(1){grid-column:span 2;grid-row:span 2}
+.collage-cell:nth-child(2){grid-column:span 1;grid-row:span 1}
+.collage-cell:nth-child(3){grid-column:span 1;grid-row:span 2}
+.collage-cell:nth-child(4){grid-column:span 2;grid-row:span 1}
+.collage-cell:nth-child(5){grid-column:span 1;grid-row:span 1}
+.collage-cell:nth-child(6){grid-column:span 2;grid-row:span 1}
+.collage-cell:nth-child(7){grid-column:span 1;grid-row:span 2}
+.collage-cell:nth-child(8){grid-column:span 2;grid-row:span 1}
+.collage-cell:nth-child(9){grid-column:span 1;grid-row:span 1}
+.collage-cell:nth-child(10){grid-column:span 2;grid-row:span 2}
+.collage-cell:nth-child(11){grid-column:span 1;grid-row:span 1}
+.collage-cell:nth-child(12){grid-column:span 1;grid-row:span 1}
+
+
     
     /* ──────────────────────────────────────
    QUICK LINKS — convex tiles
@@ -1474,16 +1721,6 @@
     .ql-nm {
       font-size: .76rem;
       font-weight: 600
-    }
-        .ql-img{    
-      width: 100%;
-      height: auto;
-      aspect-ratio: 4/3;
-      border-radius: 10%;
-      overflow: hidden;
-      background: var(--nm-bg-alt);
-      border: 1px solid var(--nm-border);
-
     }
 
     /* ──────────────────────────────────────
@@ -2028,6 +2265,24 @@
         justify-items: center
       }
 
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .hero-img-wrap {
+        order: -1;
+      }
+
+      .hero-left {
+        order: 1;
+      }
+
+      .dept-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
       :root {
         --ticker-h: 30px
       }
@@ -2134,6 +2389,19 @@
 
       .ql-grid {
         grid-template-columns: repeat(3, 1fr)
+      }
+
+      #gallery-sec {
+        padding: 64px 0;
+      }
+
+      .gallery-hd {
+        padding: 0 4vw 32px;
+      }
+
+      .collage-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: clamp(110px, 28vw, 150px);
       }
 
       .gallery-section {
@@ -2255,6 +2523,10 @@
 
       .ql-grid {
         grid-template-columns: repeat(2, 1fr)
+      }
+
+      .collage-grid {
+        grid-auto-rows: clamp(96px, 30vw, 130px);
       }
 
       .leaders-grid {
@@ -3020,17 +3292,18 @@
     <a class="mob-a" href="administration.html">Administration</a>
     <div class="mob-divider"></div>
     <div class="mob-section-lbl">Academics</div>
-    <a class="mob-a" href="departments.html">Programs &amp; Courses</a>
+    <a class="mob-a" href="courses.html">Programs &amp; Courses</a>
     <div class="mob-divider"></div>
     <div class="mob-section-lbl">Campus Life</div>
     <a class="mob-a" href="campus.html">Campus</a>
     <a class="mob-a" href="#gallery">Gallery</a>
     <div class="mob-divider"></div>
     <div class="mob-section-lbl">Notices &amp; Events</div>
-    <a class="mob-a" href="#notices-sec">IQAC</a>
+    <a class="mob-a" href="IQAC.html">IQAC</a>
     <div class="mob-divider"></div>
     <div class="mob-section-lbl">Students</div>
     <a class="mob-a" href="#quicklinks">Quick Links</a>
+    <a class="mob-a" href="pyq.html">PYQ</a>
     <a class="mob-a" href="#gov_sites">Gov Links</a>
     <a class="mob-cta" href="#cta-sec">Apply 2026–27 →</a>
   </div>
@@ -3067,7 +3340,7 @@
   <!-- ══════ NAVBAR ══════ -->
   <div id="nav-wrap">
     <nav>
-      <a href="#hero" class="nav-brand">
+      <a href="index.html" class="nav-brand">
         <div class="nav-logo"><img src="culog.png" alt="CUSB Logo" onerror="this.style.display='none'"></div>
         <div class="brand-txt">
           <div class="abbr">CUSB</div>
@@ -3079,6 +3352,7 @@
         <li><a href="administration.html">Administration</a></li>
         <li><a href="courses.html">Courses</a></li>
         <li><a href="campus.html">Campus</a></li>
+        <li><a href="#gallery-sec">Gallery</a></li>
         <li><a href="IQAC.html">IQAC</a></li>
         <li><a href="#quicklinks">Students</a></li>
         <li><a href="#gov_sites">Gov</a></li>
@@ -3112,31 +3386,337 @@
   </div>
 
   
+<!-- ══════ HERO ══════ -->
+<header id="cs-hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">🎓 School of Mathematics, Statistics &amp; Computer Science</div>
+      <h1 class="hero-title">Department of<br><span class="grad">Mathematics</span></h1>
+      <p class="hero-sub"> The Department of Mathematics is supported by DST-FIST for the year 2024-2029. The department is a partner under INDO-NORWEGIAN CO-OPERATION PROGRAMME 2024 (INCP-2) with partner University of Bergen, Norway. The Department offers two-year M.A./M.Sc. programme (NEP 2020), 5-year integrated UG-PG programme in Mathematics (NEP 2020), and Ph.D. programme in Mathematics in diversified areas of Mathematics and Mathematical Sciences. The department also offers a number of courses as elective to the students of the other departments. The Department also offers B.Sc. (Mathematics) courses to the 4-year integrated B.Sc.-B.Ed. programme. The Department provides a common computer laboratory equipped with all computational facilities.</p>
+      <div class="hero-btns">
+        <a href="#bsc-sec" class="btn btn-cs">Explore Programs →</a>
+        <a href="#faculty-sec" class="btn btn-ghost-cs">Meet the Faculty</a>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat"><div class="num">7+</div><div class="lbl">Faculty Members</div></div>
+        <div class="h-stat"><div class="num">3</div><div class="lbl">Programs</div></div>
+        <div class="h-stat"><div class="num">350+</div><div class="lbl">Alumni</div></div>
+        <div class="h-stat"><div class="num">125+</div><div class="lbl">Articles</div></div>
+        <div class="h-stat"><div class="num">2010</div><div class="lbl">Established</div></div>
+      </div>
+      <a href="index.html" class="hero-back">← Back to CUSB Home</a>
+    </div>
+    <div class="hero-img-wrap">
+      <div class="hero-img-box">
+        <img src="aryabhatta.jpeg" alt="Mathematics Department" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════ DEPT INFO ══════ -->
+<section id="dept-info" class="sec bg-white">
+  <div class="sec-hd rev">
+    <div class="sec-lbl">About the Department</div>
+    <h2 class="sec-title">Our Identity &amp; Vision</h2>
+  </div>
+  <div class="dept-layout">
+    <div class="rev">
+      <div class="dept-img-slot">
+        <img src="maths.jpg" alt="Mathematics Department" onerror="this.style.display='none'">
+        💡
+      </div>
+    </div>
+    <div class="rev">
+      <div class="dept-detail-title">Department at a Glance</div>
+      <table class="detail-table">
+        <tr><td>Established</td><td>2010</td></tr>
+        <tr><td>School</td><td>School of Mathematics, Statistics &amp; Computer Science</td></tr>
+        <tr><td>Location</td><td>CUSB Campus, Panchanpur, Gaya, Bihar</td></tr>
+        <tr><td>HoD</td><td>Prof. Jay Prakash Singh </td></tr>
+        <tr><td>Programs Offered</td><td>B.Sc. Mathematics, M.Sc. Mathematics, Ph.D.</td></tr>
+        <tr><td>Research Areas</td><td>125 Journals, 06 Books/Book Chapters, 10 Conference Proceeding</td></tr>
+        <tr><td>Annual Intake</td><td>B.Sc.: 25 seats · M.Sc.: 40 seats · Ph.D.: As per vacancies</td></tr>
+        <tr><td>Admission Basis</td><td>CUET (UG/PG) — conducted by NTA</td></tr>
+        <tr><td>Contact</td><td>maths@cusb.ac.in · 0631-2229 5XX</td></tr>
+      </table>
+      <p class="dept-about">The Department of Mathematics at CUSB is committed to <strong>research-led teaching</strong> in foundational and applied computing. With a curriculum aligned to <strong>NEP 2020</strong> and industry requirements, students gain expertise in algorithms, artificial intelligence, data science, and software engineering — preparing them for careers in technology and research across India and globally.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FACULTY TABLE ══════ -->
+<section id="faculty-sec" class="sec bg-soft">
+  <div class="sec-hd center rev">
+    <div class="sec-lbl">Our Team</div>
+    <h2 class="sec-title">Faculty Members</h2>
+    <p class="sec-sub">Meet the educators shaping the future of computing at CUSB.</p>
+  </div>
+  <div class="faculty-table-wrap rev">
+    <table class="faculty-table" aria-label="CS Faculty">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th class="fac-photo-cell">Photo</th>
+          <th>Name</th>
+          <th>Specialization</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="fac-photo-cell">
+            <div class="fac-photo-wrap">
+              <div class="fac-photo"><img src="prabhat.jpeg" alt="Prof. Prabhat Ranjan" onerror="this.style.display='none'">👤</div>
+              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/a4" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+            </div>
+          </td>
+          <td><div class="td-name-fac">Prof. Prabhat Ranjan</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Professor &amp; Head of Department</span></td>
+          <td><span class="spec-tag">Big Data</span><span class="spec-tag">Distributed Systems</span><span class="spec-tag">Software Engineering</span><span class="spec-tag">MNNIT Allahabad</span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td class="fac-photo-cell">
+            <div class="fac-photo-wrap">
+              <div class="fac-photo"><img src="jainath.jpeg" alt="Dr. Jainath Yadav" onerror="this.style.display='none'">👤</div>
+              <a href="https://people.samarth.edu.in/index.php/profile/user/custom-profile/CUSB/nl" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+            </div>
+          </td>
+          <td><div class="td-name-fac">Dr. Jainath Yadav</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Associate Professor</span></td>
+          <td><span class="spec-tag">Speech Signal Processing</span><span class="spec-tag">Machine Learning</span><span class="spec-tag">Image &amp; Audio Watermarking</span><span class="spec-tag">M.Tech &amp; PhD — IIT Kharagpur</span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td class="fac-photo-cell">
+            <div class="fac-photo-wrap">
+              <div class="fac-photo"><img src="nemisir.jpeg" alt="Dr. Nemi Chandra Rathore" onerror="this.style.display='none'">👤</div>
+              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/ah" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+            </div>
+          </td>
+          <td><div class="td-name-fac">Dr. Nemi Chandra Rathore</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Associate Professor</span></td>
+          <td><span class="spec-tag">Security &amp; Privacy in OSN</span><span class="spec-tag">M.Tech (IT) &amp; PhD — IIT Patna</span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td class="fac-photo-cell">
+            <div class="fac-photo-wrap">
+              <div class="fac-photo"><img src="piyush.jpeg" alt="Dr. Piyush Kumar Singh" onerror="this.style.display='none'">👤</div>
+              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/a9" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+            </div>
+          </td>
+          <td><div class="td-name-fac">Dr. Piyush Kumar Singh</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Assistant Professor</span></td>
+          <td><span class="spec-tag">Image Processing</span><span class="spec-tag">Parallel Computing</span><span class="spec-tag">Wavelet Transform</span><span class="spec-tag">PhD — BHU</span></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td class="fac-photo-cell">
+            <div class="fac-photo-wrap">
+              <div class="fac-photo"><img src="mrityunjay.jpeg" alt="Dr. Mrityunjay Singh" onerror="this.style.display='none'">👤</div>
+              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/ea" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+            </div>
+          </td>
+          <td><div class="td-name-fac">Dr. Mrityunjay Singh</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Assistant Professor</span></td>
+          <td><span class="spec-tag">Theoretical CS</span><span class="spec-tag">Discrete Mathematics</span><span class="spec-tag">Algorithms</span><span class="spec-tag">Cryptography &amp; Security</span><span class="spec-tag">PhD — IIT Guwahati</span></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td class="fac-photo-cell">
+            <div class="fac-photo-wrap">
+              <div class="fac-photo"><img src="prakash.jpeg" alt="Dr. Prakash Kumar" onerror="this.style.display='none'">👤</div>
+              <a href="#" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+            </div>
+          </td>
+          <td><div class="td-name-fac">Dr. Prakash Kumar</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Assistant Professor</span></td>
+          <td><span class="spec-tag">Network Security</span><span class="spec-tag">Data Communication</span><span class="spec-tag">PhD — B.R.A.B.U</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="scroll-hint-fac rev">← Scroll table to see all columns →</p>
+</section>
+
+<!-- ══════ B.Sc. PROGRAMS ══════ -->
+<section id="bsc-sec" class="prog-sec sec bg-white">
+      <div class="sec-lbl">5 yrs Integrated UG &amp; PG</div>
+      <div class="prog-sec-title">UG - PG in Computer Science</div>
+    </div>
+  </div>
+  <div class="prog-container">
+    <div class="prog-card rev">
+      <div class="prog-card-top">
+        <div>
+          <div class="prog-card-title">UG-PG integrated Computer Science <hr> </div>
+          <div class="prog-card-sub">Five-year integrated honours programme covering fundamentals of computing, programming, and applied technology.</div>
+        </div>
+        <span class="prog-badge ug">UG-PG Integrated</span>
+      </div>
+      <div class="prog-meta">
+        <span class="prog-meta-item">5 Years (10 Semesters)</span>
+        <span class="prog-meta-item">25 Seats</span>
+        <span class="prog-meta-item">CUET (UG)</span>
+        <span class="prog-meta-item">10+2 with Mathematics</span>
+      </div>
+      <p class="prog-desc">The B.Sc. (Hons.) Computer Science programme provides a rigorous foundation in programming languages, data structures, algorithms, operating systems, database management, and computer networks. Students are introduced to modern fields like web development, mobile computing, and introductory artificial intelligence. The programme follows NEP 2020 with multiple exit options and credit-based flexibility.</p>
+      <div class="prog-footer">
+        <div style="font-size:.76rem;color:var(--tx-muted)">Core subjects: C/C++, Java, Data Structures, DBMS, OS, Networks, Discrete Mathematics</div>
+        <a href="#" class="prog-syllabus-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Download Syllabus
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ M.Sc. CS ══════ -->
+<section id="msc-sec" class="prog-sec sec bg-soft">
+      <div class="sec-lbl">Postgraduate</div>
+      <div class="prog-sec-title">M.Sc. Computer Science</div>
+    </div>
+  </div>
+  <div class="prog-container">
+    <div class="prog-card rev">
+      <div class="prog-card-top">
+        <div>
+          <div class="prog-card-title">M.Sc. Computer Science <hr> </div>
+          <div class="prog-card-sub">Advanced postgraduate programme for deep specialisation in core and applied computer science.</div>
+        </div>
+        <span class="prog-badge pg">Postgraduate</span>
+      </div>
+      <div class="prog-meta">
+        <span class="prog-meta-item">2 Years (4 Semesters)</span>
+        <span class="prog-meta-item">40 Seats</span>
+        <span class="prog-meta-item">CUET (PG)</span>
+        <span class="prog-meta-item">B.Sc. CS / BCA / B.Tech.</span>
+      </div>
+      <p class="prog-desc">The M.Sc. Computer Science programme at CUSB is designed for graduates who wish to deepen their understanding of advanced algorithms, computer architecture, distributed systems, machine learning, and research methodologies. The programme emphasizes independent research culminating in a dissertation project in the final semester, equipping students for careers in research, academia, and industry.</p>
+      <div class="prog-footer">
+        <div style="font-size:.76rem;color:var(--tx-muted)">Advanced Algorithms · Distributed Systems · ML · Cloud Computing · Research Dissertation</div>
+        <a href="https://www.cusb.ac.in/images/dept/computer_science/Syllabus/Msc_cs_syllabus.pdf" target="_blank" class="prog-syllabus-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Download Syllabus
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ M.Sc. AI ══════ -->
+<section id="msc-ai-sec" class="prog-sec sec bg-white">
+      <div class="sec-lbl">Postgraduate · New Programme</div>
+      <div class="prog-sec-title">M.Sc. Artificial Intelligence</div>
+    </div>
+  </div>
+  <div class="prog-container">
+    <div class="prog-card rev">
+      <div class="prog-card-top">
+        <div>
+          <div class="prog-card-title">M.Sc. Artificial Intelligence <hr> </div>
+          <div class="prog-card-sub">India's growing AI ecosystem needs specialised talent. CUSB's M.Sc. AI programme delivers exactly that.</div>
+        </div>
+        <span class="prog-badge ai">M.Sc. AI</span>
+      </div>
+      <div class="prog-meta">
+        <span class="prog-meta-item">2 Years (4 Semesters)</span>
+        <span class="prog-meta-item">20 Seats</span>
+        <span class="prog-meta-item">CUET (PG)</span>
+        <span class="prog-meta-item">B.Sc. CS / BCA / B.Tech. (CS/IT)</span>
+      </div>
+      <p class="prog-desc">The M.Sc. Artificial Intelligence programme at CUSB is a cutting-edge postgraduate degree designed to equip students with the theoretical foundations and practical skills needed to build, deploy, and evaluate intelligent systems. Covering deep learning, natural language processing, computer vision, reinforcement learning, and AI ethics — this programme prepares students for careers in AI research, product companies, and national AI missions.</p>
+      <div class="prog-footer">
+        <div style="font-size:.76rem;color:var(--tx-muted)">Deep Learning · NLP · Computer Vision · RL · PyTorch · TensorFlow · AI Ethics · Capstone Project</div>
+        <a href="https://www.cusb.ac.in/images/dept/computer_science/Syllabus/MScAI_Syllabus_whole.pdf" target="_blank" class="prog-syllabus-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Download Syllabus
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ Ph.D. ══════ -->
+<section id="phd-sec" class="prog-sec sec bg-soft">
+      <div class="sec-lbl">Doctoral Research</div>
+      <div class="prog-sec-title">Ph.D. Programme</div>
+    </div>
+  </div>
+  <div class="prog-container">
+    <div class="prog-card rev">
+      <div class="prog-card-top">
+        <div>
+          <div class="prog-card-title">PhD — Computer Science <hr> </div>
+          <div class="prog-card-sub">Full-time and part-time doctoral research across all areas of computer science and AI.</div>
+        </div>
+        <span class="prog-badge phd">Ph.D.</span>
+      </div>
+      <div class="prog-meta">
+        <span class="prog-meta-item">3 – 5 Years</span>
+        <span class="prog-meta-item">As per Vacancies</span>
+        <span class="prog-meta-item">Interview + Research Proposal</span>
+        <span class="prog-meta-item">M.Sc. / M.Tech. (55%+)</span>
+      </div>
+      <p class="prog-desc">The Ph.D. programme in Computer Science at CUSB offers full-time and part-time doctoral research under the guidance of experienced faculty. Research areas include artificial intelligence, machine learning, computer vision, natural language processing, network security, distributed computing, bioinformatics, and computational theory. Scholars receive CUET-NET/JRF fellowships as applicable.</p>
+      <div class="prog-footer">
+        <div style="font-size:.76rem;color:var(--tx-muted)">Research Areas: AI · ML · Security · Distributed Systems · Bioinformatics · Theory of Computation</div>
+        <a href="https://www.cusb.ac.in/images/dept/computer_science/Syllabus/Phd_Syllabus_Computer_Science.pdf" target="_blank" class="prog-syllabus-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Download Syllabus
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ GALLERY ══════ -->
+<section id="gallery-sec">
+  <div class="gallery-hd rev">
+    <div class="sec-lbl">Department Memories</div>
+    <h2 class="sec-title">Life in the CS Department</h2>
+    <p class="sec-sub" style="margin:0 auto;text-align:center">Workshops, hackathons, convocations, and everyday moments — captured in frames.</p>
+  </div>
+  <div class="collage-grid">
+    <div class="collage-cell"><img src="aryabhatta.jpeg" alt="Aryabhatta Building" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"><img src="admin.jpeg" alt="Admin Block" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"><img src="malviya.jpeg" alt="Malviya Block" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"><img src="cs_lab.jpg" alt="CS Lab" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"><img src="sports.jpeg" alt="Sports Ground" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"><img src="opengym.jpeg" alt="Open Gym" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"><img src="gargi sadan.jpg" alt="Gargi Sadan" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"></div>
+    <div class="collage-cell"></div>
+    <div class="collage-cell"><img src="admin_good.jpeg" alt="Campus Life" onerror="this.style.display='none'"></div>
+    <div class="collage-cell"></div>
+    <div class="collage-cell"><img src="malviya.jpeg" alt="Annual Fest" onerror="this.style.display='none'"></div>
+  </div>
+</section>
+
+
+  
   <!-- ══════ QUICK LINKS ══════ -->
-  <section id="quicklinks" class="sec white-sec" aria-labelledby="quicklinks-heading">
+  <section id="quicklinks" class="sec white-sec">
     <div class="sec-hd rev">
       <div class="sec-lbl">Quick Access</div>
-      <h2 class="sec-title" id="quicklinks-heading">Student Resources</h2>
+      <h2 class="sec-title">Student Resources</h2>
       <p class="sec-sub">Everything you need, one click away.</p>
     </div>
     <div class="ql-grid">
-      <a href="https://scholarships.gov.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="scholarship.jpg" alt="scholarships in cusb" class="ql-img"></span><span class="ql-nm">Scholarship</span></a>
-      <a href="hostel.html" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="hosimg.jpg" alt="hostel in cusb" class="ql-img"></span><span class="ql-nm">Hostel</span></a>
-      <a href="https://rtionline.gov.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="rtiimg.webp" alt="RTI portal" class="ql-img"></span><span class="ql-nm">RTI</span></a>
-      <a href="https://www.antiragging.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="anti-ragging.jpg" alt="ragging free campus" class="ql-img"></span><span class="ql-nm">Anti-Ragging</span></a>
-      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="mail.webp" alt="contact through webmail" class="ql-img"></span><span class="ql-nm">Webmail</span></a>
-      <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="studentslogin.webp" alt="samarth student" class="ql-img"></span><span class="ql-nm">Samarth Login Students</span></a>
-      <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="employeelogin.jpg" alt="samarth employee" class="ql-img"></span><span class="ql-nm">Samarth Login Employee</span></a>
-      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="brochure.webp" alt="prospectus" class="ql-img"></span><span class="ql-nm">Prospectus</span></a>
-      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="schedule.png" alt="exam schedules" class="ql-img"></span><span class="ql-nm">Exam Schedule</span></a>
-      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="results.jpg" alt="semester results" class="ql-img"></span><span class="ql-nm">Semester Results</span></a>
-      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="downloads.webp" alt="download in one click" class="ql-img"></span><span class="ql-nm">Downloads</span></a>
-      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="convo.png" alt="convocation" class="ql-img"></span><span class="ql-nm">Convocation</span></a>
-          <a href="pyq.html" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="pyqimg.webp" alt="previous year questions" class="ql-img"></span><span class="ql-nm">PYQs</span></a>
+      <a href="#" class="ql-card rev"><span class="ql-ico">📄</span><span class="ql-nm">Prospectus</span></a>
+      <a href="#" class="ql-card rev"><span class="ql-ico">📋</span><span class="ql-nm">Exam Schedule</span></a>
+      <a href="#" class="ql-card rev"><span class="ql-ico">🏆</span><span class="ql-nm">Semester Results</span></a>
+      <a href="#" class="ql-card rev"><span class="ql-ico">📥</span><span class="ql-nm">Downloads</span></a>
+      <a href="#" class="ql-card rev"><span class="ql-ico">🎓</span><span class="ql-nm">Convocation</span></a>
+      <a href="https://scholarships.gov.in/" class="ql-card rev"><span class="ql-ico">💰</span><span class="ql-nm">Scholarship</span></a>
+      <a href="hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
+      <a href="https://rtionline.gov.in/" class="ql-card rev"><span class="ql-ico">📡</span><span class="ql-nm">RTI</span></a>
+      <a href="https://www.antiragging.in/" class="ql-card rev"><span class="ql-ico">🔒</span><span class="ql-nm">Anti-Ragging</span></a>
+      <a href="#" class="ql-card rev"><span class="ql-ico">🌐</span><span class="ql-nm">Webmail</span></a>
+      <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" class="ql-card rev"><span
+          class="ql-ico">🧑‍🎓</span><span class="ql-nm">Samarth Login <br>Students</span></a>
+      <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" class="ql-card rev"><span
+          class="ql-ico">👨‍🏫</span><span class="ql-nm">Samarth Login <br>Employee</span></a>
     </div>
-    <a href="#hero" class="sec-top-link" aria-label="Back to top of page" style="padding:0 6vw;display:block">↑ Back to top</a>
   </section>
-
+  
   <!-- GOV_SITES -->
   <section id="gov_sites">
      <div class="gallery-eyebrow">Govt. Portals</div>

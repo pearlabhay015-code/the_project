@@ -54,7 +54,7 @@
       /* text */
       --tx-primary: #6e7180;
       --tx-secondary: #000000de;
-      --tx-muted: #8e93b0;
+      --tx-muted: #6b7280;
       --tx-light: #b8bdd4;
 
       /* borders */
@@ -1476,7 +1476,7 @@
 .hero-title{font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size:clamp(2.4rem,4.5vw,3.2rem);font-weight:600;line-height:1.0;letter-spacing:-.03em;color:var(--tx-primary);animation:fadeUp .7s .25s both}
 .hero-title .grad{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 [data-theme="dark"] .hero-title .grad{background:linear-gradient(90deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{margin-top:18px;font-size:.92rem;line-height:1.82;color:var(--tx-secondary);font-weight:400;max-width:460px;animation:fadeUp .7s .4s both}
+.hero-sub{margin-top:18px;font-size:.92rem;line-height:1.82;color:var(--tx-secondary);font-weight:400;max-width:760px;animation:fadeUp .7s .4s both}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px;animation:fadeUp .7s .55s both}
 .hero-back{display:inline-flex;align-items:center;gap:7px;margin-top:20px;padding:9px 22px;border-radius:var(--r-xl);background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);color:var(--tx-secondary);font-size:.78rem;font-weight:600;text-decoration:none;transition:box-shadow .22s,color .22s;animation:fadeUp .7s .62s both}
 .hero-back:hover{box-shadow:var(--nm-in-sm);color:var(--acc)}
@@ -1722,6 +1722,16 @@
       font-size: .76rem;
       font-weight: 600
     }
+        .ql-img{    
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/3;
+      border-radius: 10%;
+      overflow: hidden;
+      background: var(--nm-bg-alt);
+      border: 1px solid var(--nm-border);
+
+    }
 
     /* ──────────────────────────────────────
    GOV SITES
@@ -1818,7 +1828,7 @@
     }
 
     .cta-title {
-      font-family: var(--fd);
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       font-size: clamp(1.7rem, 3.2vw, 2.8rem);
       font-weight: 800;
       letter-spacing: -.02em;
@@ -3392,15 +3402,17 @@
     <div class="hero-left">
       <div class="hero-eyebrow">🎓 School of Mathematics, Statistics &amp; Computer Science</div>
       <h1 class="hero-title">Department of<br><span class="grad">Computer Science</span></h1>
-      <p class="hero-sub">Advancing knowledge at the intersection of theory and practice — from algorithms and systems to artificial intelligence. Shaping the next generation of India's tech leaders at CUSB, Gaya.</p>
+      <p class="hero-sub">The Department of Computer Science (DCSC) offers four programmes: UG-PG integrated in Computer Science, M.Sc. in Computer Science, M.Sc. in Artificial Intelligence, and Ph.D. in Computer Science. Its goal is to provide possibilities for global excellence as well as local relevance in research, teaching, and technology development. The department also provides a variety of appealing training and workshop programmes, as well as industrial partnerships based on market need.</p>
       <div class="hero-btns">
         <a href="#bsc-sec" class="btn btn-cs">Explore Programs →</a>
         <a href="#faculty-sec" class="btn btn-ghost-cs">Meet the Faculty</a>
+        <a href="#faculty-sec" class="btn btn-ghost-cs">Meet the Staff</a>
       </div>
       <div class="hero-stats">
         <div class="h-stat"><div class="num">6+</div><div class="lbl">Faculty Members</div></div>
         <div class="h-stat"><div class="num">4</div><div class="lbl">Programs</div></div>
         <div class="h-stat"><div class="num">350+</div><div class="lbl">Alumni</div></div>
+        <div class="h-stat"><div class="num">68+</div><div class="lbl">Articles</div></div>
         <div class="h-stat"><div class="num">2010</div><div class="lbl">Established</div></div>
       </div>
       <a href="index.html" class="hero-back">← Back to CUSB Home</a>
@@ -3533,6 +3545,7 @@
   </div>
   <p class="scroll-hint-fac rev">← Scroll table to see all columns →</p>
 </section>
+
 
 <!-- ══════ B.Sc. PROGRAMS ══════ -->
 <section id="bsc-sec" class="prog-sec sec bg-white">
@@ -3692,30 +3705,30 @@
 
   
   <!-- ══════ QUICK LINKS ══════ -->
-  <section id="quicklinks" class="sec white-sec">
+  <section id="quicklinks" class="sec white-sec" aria-labelledby="quicklinks-heading">
     <div class="sec-hd rev">
       <div class="sec-lbl">Quick Access</div>
-      <h2 class="sec-title">Student Resources</h2>
+      <h2 class="sec-title" id="quicklinks-heading">Student Resources</h2>
       <p class="sec-sub">Everything you need, one click away.</p>
     </div>
     <div class="ql-grid">
-      <a href="#" class="ql-card rev"><span class="ql-ico">📄</span><span class="ql-nm">Prospectus</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">📋</span><span class="ql-nm">Exam Schedule</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🏆</span><span class="ql-nm">Semester Results</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">📥</span><span class="ql-nm">Downloads</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🎓</span><span class="ql-nm">Convocation</span></a>
-      <a href="https://scholarships.gov.in/" class="ql-card rev"><span class="ql-ico">💰</span><span class="ql-nm">Scholarship</span></a>
-      <a href="hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
-      <a href="https://rtionline.gov.in/" class="ql-card rev"><span class="ql-ico">📡</span><span class="ql-nm">RTI</span></a>
-      <a href="https://www.antiragging.in/" class="ql-card rev"><span class="ql-ico">🔒</span><span class="ql-nm">Anti-Ragging</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🌐</span><span class="ql-nm">Webmail</span></a>
-      <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" class="ql-card rev"><span
-          class="ql-ico">🧑‍🎓</span><span class="ql-nm">Samarth Login <br>Students</span></a>
-      <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" class="ql-card rev"><span
-          class="ql-ico">👨‍🏫</span><span class="ql-nm">Samarth Login <br>Employee</span></a>
+      <a href="https://scholarships.gov.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="scholarship.jpg" alt="scholarships in cusb" class="ql-img"></span><span class="ql-nm">Scholarship</span></a>
+      <a href="hostel.html" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="hosimg.jpg" alt="hostel in cusb" class="ql-img"></span><span class="ql-nm">Hostel</span></a>
+      <a href="https://rtionline.gov.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="rtiimg.webp" alt="RTI portal" class="ql-img"></span><span class="ql-nm">RTI</span></a>
+      <a href="https://www.antiragging.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="anti-ragging.jpg" alt="ragging free campus" class="ql-img"></span><span class="ql-nm">Anti-Ragging</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="mail.webp" alt="contact through webmail" class="ql-img"></span><span class="ql-nm">Webmail</span></a>
+      <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="studentslogin.webp" alt="samarth student" class="ql-img"></span><span class="ql-nm">Samarth Login Students</span></a>
+      <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="employeelogin.jpg" alt="samarth employee" class="ql-img"></span><span class="ql-nm">Samarth Login Employee</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="brochure.webp" alt="prospectus" class="ql-img"></span><span class="ql-nm">Prospectus</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="schedule.png" alt="exam schedules" class="ql-img"></span><span class="ql-nm">Exam Schedule</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="results.jpg" alt="semester results" class="ql-img"></span><span class="ql-nm">Semester Results</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="downloads.webp" alt="download in one click" class="ql-img"></span><span class="ql-nm">Downloads</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="convo.png" alt="convocation" class="ql-img"></span><span class="ql-nm">Convocation</span></a>
+          <a href="pyq.html" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="pyqimg.webp" alt="previous year questions" class="ql-img"></span><span class="ql-nm">PYQs</span></a>
     </div>
+    <a href="#hero" class="sec-top-link" aria-label="Back to top of page" style="padding:0 6vw;display:block">↑ Back to top</a>
   </section>
-  
+
   <!-- GOV_SITES -->
   <section id="gov_sites">
      <div class="gallery-eyebrow">Govt. Portals</div>
@@ -3856,7 +3869,7 @@
     <!-- ══════ FLOATING GREETING MESSAGE ══════ -->
   <div class="floating-message">
     <div class="floating-message-bubble">
-     Hey Buddy !! <br> Got a problem ?
+     Need Any Help 🤔 ?
     </div>
   </div>
 

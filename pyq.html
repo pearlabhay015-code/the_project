@@ -54,7 +54,7 @@
       /* text */
       --tx-primary: #1e2236;
       --tx-secondary: #000000de;
-      --tx-muted: #8e93b0;
+      --tx-muted: #6b7280;
       --tx-light: #b8bdd4;
 
       /* borders */
@@ -1569,7 +1569,7 @@
     /* TWO-COLUMN LAYOUT -> NOW VERTICAL STACK */
     .pyq-layout {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr ;
       gap: 24px;
       align-items: start;
       max-width: 900px;
@@ -1610,7 +1610,7 @@
       transition: box-shadow .2s, color .2s, background .2s;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 27px;
       margin: 0;
       box-shadow: var(--nm-out-sm);
       white-space: normal;
@@ -1637,7 +1637,7 @@
     .dept-btn .dico {
       font-size: .88rem;
       flex-shrink: 0;
-      width: 18px;
+      width: 50px;
       text-align: center
     }
 
@@ -1672,8 +1672,8 @@
 
     .dic-ico {
       font-size: 1.9rem;
-      width: 52px;
-      height: 52px;
+      width: 100px;
+      height: 100px;
       flex-shrink: 0;
       border-radius: 50%;
       background: var(--nm-bg);
@@ -1836,6 +1836,15 @@
     .dept-section.active {
       display: block;
       animation: panelIn .35s cubic-bezier(.16, 1, .3, 1)
+    }
+    .dept-img{
+            width: 100%;
+      height: auto;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--nm-bg-alt);
+      border: 1px solid var(--nm-border);
     }
 
     /* PAPER GRID */
@@ -2173,6 +2182,16 @@
       font-size: .76rem;
       font-weight: 600
     }
+        .ql-img{    
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/3;
+      border-radius: 10%;
+      overflow: hidden;
+      background: var(--nm-bg-alt);
+      border: 1px solid var(--nm-border);
+
+    }
 
     /* ──────────────────────────────────────
    GOV SITES
@@ -2269,7 +2288,7 @@
     }
 
     .cta-title {
-      font-family: var(--fd);
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
       font-size: clamp(1.7rem, 3.2vw, 2.8rem);
       font-weight: 800;
       letter-spacing: -.02em;
@@ -2708,6 +2727,7 @@
       }
 
     }
+    
 
     /* ──────────────────────────────────────
    RESPONSIVE — TABLET 769px–960px
@@ -2868,8 +2888,8 @@
       }
 
       .dic-ico {
-        width: 40px;
-        height: 40px;
+        width: 100px;
+        height: 100px;
         font-size: 1.4rem
       }
 
@@ -3911,7 +3931,7 @@
       <nav class="dept-sidebar" id="deptSidebar" aria-label="Department list">
         <!-- 1. Maths, Stat & cs -->
         <button class="dept-btn" data-dept="mathematics" data-school="math"><span
-            class="dico">📐</span>Mathematics</button>
+            class="dico">➕</span>Mathematics</button>
         <button class="dept-btn" data-dept="computer-science" data-school="math"><span
                 class="dico">🖥️</span>CS</button>
         <button class="dept-btn" data-dept="statistics" data-school="math"><span
@@ -4153,13 +4173,14 @@
 
         <!-- ── MATHEMATICS ── -->
         <div class="dept-info-card active" data-dept="mathematics">
-          <div class="dic-ico" aria-hidden="true">📐</div>
+          <div class="dic-ico" aria-hidden="true"><img src="mathematics-png.jpg" alt="" class="dept-img">
+          </div>
           <div class="dic-body">
             <div class="dic-name">Mathematics</div>
             <div class="dic-school">School of Mathematics, Statistics &amp; Computer Science</div>
             <div class="dic-desc">Pure and applied mathematics — algebra, analysis, topology, differential equations,
               and numerical methods.</div>
-            <div class="dic-progs"><span class="dic-prog pg">M.Sc. Mathematics</span><span class="dic-prog phd">Ph.D.
+            <div class="dic-progs"><span class="dic-prog ug">UG-PG Mathematics</span><span class="dic-prog pg">M.Sc. Mathematics</span><span class="dic-prog phd">Ph.D.
                 Mathematics</span></div>
           </div>
         </div>
@@ -6714,32 +6735,27 @@
   </section>
 
 
-
   <!-- ══════ QUICK LINKS ══════ -->
-  <section id="quicklinks" class="sec white-sec">
+  <section id="quicklinks" class="sec white-sec" aria-labelledby="quicklinks-heading">
     <div class="sec-hd rev">
       <div class="sec-lbl">Quick Access</div>
-      <h2 class="sec-title">Student Resources</h2>
+      <h2 class="sec-title" id="quicklinks-heading">Student Resources</h2>
       <p class="sec-sub">Everything you need, one click away.</p>
     </div>
     <div class="ql-grid">
-      <a href="#" class="ql-card rev"><span class="ql-ico">📄</span><span class="ql-nm">Prospectus</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">📋</span><span class="ql-nm">Exam Schedule</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🏆</span><span class="ql-nm">Semester Results</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">📥</span><span class="ql-nm">Downloads</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🎓</span><span class="ql-nm">Convocation</span></a>
-      <a href="https://scholarships.gov.in/" class="ql-card rev"><span class="ql-ico">💰</span><span
-          class="ql-nm">Scholarship</span></a>
-      <a href="hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
-      <a href="https://rtionline.gov.in/" class="ql-card rev"><span class="ql-ico">📡</span><span
-          class="ql-nm">RTI</span></a>
-      <a href="https://www.antiragging.in/" class="ql-card rev"><span class="ql-ico">🔒</span><span
-          class="ql-nm">Anti-Ragging</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🌐</span><span class="ql-nm">Webmail</span></a>
-      <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" class="ql-card rev"><span
-          class="ql-ico">🧑‍🎓</span><span class="ql-nm">Samarth Login <br>Students</span></a>
-      <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" class="ql-card rev"><span
-          class="ql-ico">👨‍🏫</span><span class="ql-nm">Samarth Login <br>Employee</span></a>
+      <a href="https://scholarships.gov.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="scholarship.jpg" alt="scholarships in cusb" class="ql-img"></span><span class="ql-nm">Scholarship</span></a>
+      <a href="hostel.html" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="hosimg.jpg" alt="hostel in cusb" class="ql-img"></span><span class="ql-nm">Hostel</span></a>
+      <a href="https://rtionline.gov.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="rtiimg.webp" alt="RTI portal" class="ql-img"></span><span class="ql-nm">RTI</span></a>
+      <a href="https://www.antiragging.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="anti-ragging.jpg" alt="ragging free campus" class="ql-img"></span><span class="ql-nm">Anti-Ragging</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="mail.webp" alt="contact through webmail" class="ql-img"></span><span class="ql-nm">Webmail</span></a>
+      <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="studentslogin.webp" alt="samarth student" class="ql-img"></span><span class="ql-nm">Samarth Login Students</span></a>
+      <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="employeelogin.jpg" alt="samarth employee" class="ql-img"></span><span class="ql-nm">Samarth Login Employee</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="brochure.webp" alt="prospectus" class="ql-img"></span><span class="ql-nm">Prospectus</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="schedule.png" alt="exam schedules" class="ql-img"></span><span class="ql-nm">Exam Schedule</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="results.jpg" alt="semester results" class="ql-img"></span><span class="ql-nm">Semester Results</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="downloads.webp" alt="download in one click" class="ql-img"></span><span class="ql-nm">Downloads</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="convo.png" alt="convocation" class="ql-img"></span><span class="ql-nm">Convocation</span></a>
+          <a href="pyq.html" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="pyqimg.webp" alt="previous year questions" class="ql-img"></span><span class="ql-nm">PYQs</span></a>
     </div>
   </section>
 
@@ -6883,7 +6899,7 @@
   <!-- ══════ FLOATING GREETING MESSAGE ══════ -->
   <div class="floating-message">
     <div class="floating-message-bubble">
-       Hey Buddy !! <br> Got a problem ?
+     Need Any Help 🤔 ?
     </div>
   </div>
 

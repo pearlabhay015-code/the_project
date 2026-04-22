@@ -23,7 +23,7 @@
       --nm-in-lg:inset 9px 9px 24px #adb1be,inset -9px -9px 24px #ffffff;
       --acc:#f69648; --acc2:#f14e64; --acc3:#3db897;
       --acc-glow:rgba(232,73,106,.30);
-      --tx-primary:#1e2236; --tx-secondary:#000000de; --tx-muted:#8e93b0; --tx-light:#b8bdd4;
+      --tx-primary:#1e2236; --tx-secondary:#000000de; --tx-muted:#6b7280; --tx-light:#b8bdd4;
       --nm-border:rgba(255,255,255,.90); --nm-border-b:rgba(170,175,195,.35);
       --fd:'Syne','Segoe UI',sans-serif; --fb:'DM Sans','Segoe UI',sans-serif;
       --r-sm:12px; --r-md:20px; --r-lg:28px; --r-xl:50px;
@@ -212,7 +212,7 @@
     .ph-title .acc{background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     [data-theme="dark"] .ph-title .acc{background:linear-gradient(90deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .ph-sub{margin-top:14px;font-size:.92rem;line-height:1.75;color:var(--tx-secondary);max-width:520px;margin-inline:auto;animation:fadeUp .7s .35s both}
-    .ph-bc{margin-top:20px;display:flex;align-items:center;gap:8px;font-size:.71rem;color:var(--tx-muted);justify-content:center;animation:fadeUp .7s .5s both}
+    .ph-bc{margin-top:20px;display:flex;align-items:center;gap:8px;font-size:.71rem;color:var(--tx-muted);justify-content:center;animation:fadeUp .7s .5s both;width:100%;margin-inline:auto}
     .ph-bc a{color:var(--acc);text-decoration:none;font-weight:600}
     .ph-bc a:hover{color:var(--acc2)}
     [data-theme="dark"] .ph-bc a{color:#FF8C42}
@@ -369,6 +369,16 @@
     [data-theme="dark"] .ql-card:hover{box-shadow:var(--nm-in-sm)}
     .ql-ico{font-size:1.65rem;display:block;margin-bottom:10px}
     .ql-nm{font-size:.76rem;font-weight:600}
+           .ql-img{    
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/3;
+      border-radius: 10%;
+      overflow: hidden;
+      background: var(--nm-bg-alt);
+      border: 1px solid var(--nm-border);
+
+    }
 
     /* ── GOV SITES ── */
     #gov_sites{background:var(--nm-bg-sec);padding:52px 20px;overflow:hidden;text-align:center}
@@ -387,7 +397,7 @@
     #cta-sec{background:var(--nm-bg);padding:86px 6vw;text-align:center;transition:background .4s;position:relative}
     .cta-inner{display:inline-block;padding:50px 60px;border-radius:var(--r-lg);background:var(--nm-bg-sec);box-shadow:var(--nm-in-lg);border:1px solid var(--nm-border);max-width:700px;width:100%}
     [data-theme="dark"] .cta-inner{box-shadow:var(--nm-in-lg);border-color:rgba(255,106,0,.07)}
-    .cta-title{font-family:var(--fd);font-size:clamp(1.7rem,3.2vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px;color:var(--tx-primary)}
+    .cta-title{font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;font-size:clamp(1.7rem,3.2vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px;color:var(--tx-primary)}
     .cta-sub{font-size:.9rem;color:var(--tx-secondary);font-weight:400;margin-bottom:30px}
     .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
@@ -435,6 +445,8 @@
     [data-theme="dark"] #scroll-btn:hover{box-shadow:0 0 20px rgba(255,106,0,.35),var(--nm-out)}
     #scroll-btn svg{width:24px;height:24px;stroke:var(--tx-primary);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;fill:none}
     [data-theme="dark"] #scroll-btn svg{stroke:#FF6A00}
+
+    
 
     /* ── CHATBOT ── */
     .chatbot-container{position:fixed;bottom:100px;right:40px;z-index:1000;font-family:var(--fb);pointer-events:none}
@@ -743,26 +755,29 @@
   </div>
 </section>
 
-<!-- ══════ QUICK LINKS ══════ -->
-<section id="quicklinks" class="sec white-sec">
-  <div class="sec-hd center rev">
-    <div class="sec-lbl">Quick Access</div>
-    <h2 class="sec-title">Student Resources</h2>
-    <p class="sec-sub">Everything you need, one click away.</p>
-  </div>
-  <div class="ql-grid">
-    <a href="#" class="ql-card rev"><span class="ql-ico">📄</span><span class="ql-nm">Prospectus</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">📋</span><span class="ql-nm">Exam Schedule</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">🏆</span><span class="ql-nm">Semester Results</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">📥</span><span class="ql-nm">Downloads</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">🎓</span><span class="ql-nm">Convocation</span></a>
-    <a href="https://scholarships.gov.in/" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico">💰</span><span class="ql-nm">Scholarship</span></a>
-    <a href="hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
-    <a href="https://rtionline.gov.in/" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico">📡</span><span class="ql-nm">RTI</span></a>
-    <a href="https://www.antiragging.in/" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico">🔒</span><span class="ql-nm">Anti-Ragging</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">🌐</span><span class="ql-nm">Webmail</span></a>
-  </div>
-</section>
+  <!-- ══════ QUICK LINKS ══════ -->
+  <section id="quicklinks" class="sec white-sec" aria-labelledby="quicklinks-heading">
+    <div class="sec-hd rev">
+      <div class="sec-lbl">Quick Access</div>
+      <h2 class="sec-title" id="quicklinks-heading">Student Resources</h2>
+      <p class="sec-sub">Everything you need, one click away.</p>
+    </div>
+    <div class="ql-grid">
+      <a href="https://scholarships.gov.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="scholarship.jpg" alt="scholarships in cusb" class="ql-img"></span><span class="ql-nm">Scholarship</span></a>
+      <a href="hostel.html" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="hosimg.jpg" alt="hostel in cusb" class="ql-img"></span><span class="ql-nm">Hostel</span></a>
+      <a href="https://rtionline.gov.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="rtiimg.webp" alt="RTI portal" class="ql-img"></span><span class="ql-nm">RTI</span></a>
+      <a href="https://www.antiragging.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="anti-ragging.jpg" alt="ragging free campus" class="ql-img"></span><span class="ql-nm">Anti-Ragging</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="mail.webp" alt="contact through webmail" class="ql-img"></span><span class="ql-nm">Webmail</span></a>
+      <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="studentslogin.webp" alt="samarth student" class="ql-img"></span><span class="ql-nm">Samarth Login Students</span></a>
+      <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="employeelogin.jpg" alt="samarth employee" class="ql-img"></span><span class="ql-nm">Samarth Login Employee</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="brochure.webp" alt="prospectus" class="ql-img"></span><span class="ql-nm">Prospectus</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="schedule.png" alt="exam schedules" class="ql-img"></span><span class="ql-nm">Exam Schedule</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="results.jpg" alt="semester results" class="ql-img"></span><span class="ql-nm">Semester Results</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="downloads.webp" alt="download in one click" class="ql-img"></span><span class="ql-nm">Downloads</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="convo.png" alt="convocation" class="ql-img"></span><span class="ql-nm">Convocation</span></a>
+          <a href="pyq.html" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="pyqimg.webp" alt="previous year questions" class="ql-img"></span><span class="ql-nm">PYQs</span></a>
+    </div>
+  </section>
 
 <!-- ══════ GOV SITES ══════ -->
 <section id="gov_sites">
@@ -892,7 +907,7 @@
 
 <!-- ══════ FLOATING MESSAGE ══════ -->
 <div class="floating-message">
-  <div class="floating-message-bubble">Hey Buddy !! <br> Got a problem ?</div>
+  <div class="floating-message-bubble">Need Any Help 🤔 ?</div>
 </div>
 
 <!-- ══════ SCROLL TO TOP ══════ -->
