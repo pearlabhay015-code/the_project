@@ -61,7 +61,7 @@
       --nm-in-sm: inset 3px 3px 9px #10121a, inset -3px -3px 9px #2a2d3c;
       --nm-in-lg: inset 10px 10px 26px #0b0d14, inset -10px -10px 26px #333650;
       --acc: #FF6A00; --acc2: #FF8C42; --acc3: #FFB347;
-      --acc-glow: rgba(255,106,0,.50); --acc2-glow: rgba(255,140,66,.30);
+      --acc-glow: rgba(0, 204, 255, 0.5); --acc2-glow: rgba(255,140,66,.30);
       --tx-primary: #f0f1f5; --tx-secondary: #b8b8d8;
       /* FIX #4 dark: slightly brighter muted for better contrast */
       --tx-muted: #6a6e88;
@@ -430,7 +430,7 @@
 
     /* ── CAMPUS ── */
     .infra-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(210px,1fr)); gap: 20px }
-    .infra-card { padding: 26px 20px; background: var(--nm-bg-alt); border-radius: var(--r-lg); box-shadow: var(--nm-out-sm); border: 1px solid var(--nm-border); text-decoration: none; color: inherit; display: block; transition: box-shadow .25s,color .25s; }
+    .infra-card { padding: 26px 20px; background: var(--nm-bg-alt); border-radius: var(--r-lg); box-shadow: var(--nm-out-sm); border: 1px solid rgba(0, 208, 255, 0.566); text-decoration: none; color: inherit; display: block; transition: box-shadow .25s,color .25s; }
     .infra-card:hover { box-shadow: var(--nm-in-sm); color: var(--acc) }
     .infra-card:focus { outline: 2px solid var(--acc); outline-offset: 3px; }
     .infra-card:hover .infra-name { color: var(--acc) }
@@ -535,7 +535,7 @@
     #quicklinks .sec-hd { text-align: center; padding: 0 6vw }
     #quicklinks .sec-hd .sec-sub { margin: 12px auto 0 }
     .ql-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(150px,1fr)); gap: 16px; padding: 0 6vw; }
-    .ql-card { border-radius: var(--r-md); padding: 26px 16px; text-align: center; text-decoration: none; background: var(--nm-bg-alt); box-shadow: var(--nm-out-sm); border: 1.5px solid var(--acc3); transition: box-shadow .22s,color .22s; color: var(--tx-primary); }
+    .ql-card { border-radius: var(--r-md); padding: 26px 16px; text-align: center; text-decoration: none; background: var(--nm-bg-alt); box-shadow: var(--nm-out-sm); border: 1px solid rgba(0, 208, 255, 0.508); transition: box-shadow .22s,color .22s; color: var(--tx-primary); }
     .ql-card:hover { box-shadow: var(--nm-in-sm); color: var(--acc) }
     .ql-card:focus { outline: 2px solid var(--acc); outline-offset: 3px; }
     [data-theme="dark"] .ql-card { box-shadow: var(--nm-out-sm) }
@@ -634,7 +634,7 @@
       width: 10px; height: 10px;
       pointer-events: all;
       border-radius: 50%;
-      background: var(--acc);
+      background: rgb(0, 208, 255);
       box-shadow: var(--nm-out-sm);
       border: 1.5px solid var(--nm-border-b);
       cursor: pointer;
