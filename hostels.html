@@ -29,7 +29,7 @@
   --girls:#e8496a; --girls-lt:rgba(232,73,106,.10); --girls-md:rgba(232,73,106,.18);
   --boys:#2A6DD9;  --boys-lt:rgba(42,109,217,.10);  --boys-md:rgba(42,109,217,.18);
   /* text */
-  --tx-primary:#1e2236; --tx-secondary:#5a6080; --tx-muted:#8e93b0; --tx-light:#b8bdd4;
+  --tx-primary:#0c1023; --tx-secondary:#5a6080; --tx-muted:#8e93b0; --tx-light:#b8bdd4;
   /* borders */
   --nm-border:rgba(255,255,255,.90); --nm-border-b:rgba(170,175,195,.35);
   /* type */
@@ -1879,6 +1879,46 @@
       display: block
     }
 
+    /* Hostel Grid Styles */
+.hostel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.hostel-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.hostel-divider {
+  display: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hostel-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hostel-divider {
+    display: block;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--nm-border-b) 30%, var(--nm-border-b) 70%, transparent);
+    margin: 24px 0;
+  }
+  
+  .hostel-col {
+    gap: 24px;
+  }
+  
+  .hostel-col:first-child {
+    margin-bottom: 24px;
+  }
+}
+  
     
     /* ──────────────────────────────────────
    RESPONSIVE — LAPTOP ≥961px

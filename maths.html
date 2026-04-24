@@ -52,7 +52,7 @@
       --acc2-glow: rgba(91, 82, 212, .25);
 
       /* text */
-      --tx-primary: #6e7180;
+      --tx-primary: #090e26;
       --tx-secondary: #000000de;
       --tx-muted: #6b7280;
       --tx-light: #b8bdd4;
@@ -1570,7 +1570,7 @@
 /* section eyebrow */
 .prog-sec-hd{display:flex;align-items:center;gap:14px;margin-bottom:36px;flex-wrap:wrap}
 .prog-sec-icon{font-size:2rem}
-.prog-sec-title{font-family:var(--fd);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;letter-spacing:-.02em;color:var(--tx-primary)}
+.prog-sec-title{margin-bottom: 30px; font-family:var(--fd);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;letter-spacing:-.02em;color:var(--tx-primary)}
 /* program card — convex resting */
 .prog-card{
   border-radius:var(--r-lg);padding:28px 30px;
@@ -1694,9 +1694,19 @@
       text-decoration: none;
       background: var(--nm-bg-alt);
       box-shadow: var(--nm-out-sm);
-      border: 1px solid var(--nm-border);
+       border: 1.5px solid rgba(0, 208, 255, 0.508);
       transition: box-shadow .22s, color .22s;
       color: var(--tx-primary);
+    }
+    .ql-img{    
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/3;
+      border-radius: 10%;
+      overflow: hidden;
+      background: var(--nm-bg-alt);
+      border: 1px solid var(--nm-border);
+
     }
 
     .ql-card:hover {
@@ -2269,7 +2279,6 @@
         grid-template-columns: 1fr;
         gap: 28px;
       }
-
       .hero-img-wrap {
         order: -1;
       }
@@ -2441,7 +2450,7 @@
       }
 
       .hero-img-box {
-        aspect-ratio: 4/3;
+        aspect-ratio: 16/9;
         max-height: 250px
       }
 
@@ -3296,7 +3305,7 @@
     <div class="mob-divider"></div>
     <div class="mob-section-lbl">Campus Life</div>
     <a class="mob-a" href="campus.html">Campus</a>
-    <a class="mob-a" href="#gallery">Gallery</a>
+    <a class="mob-a" href="#gallery-sec">Gallery</a>
     <div class="mob-divider"></div>
     <div class="mob-section-lbl">Notices &amp; Events</div>
     <a class="mob-a" href="IQAC.html">IQAC</a>
@@ -3408,7 +3417,7 @@
     </div>
     <div class="hero-img-wrap">
       <div class="hero-img-box">
-        <img src="aryabhatta.jpeg" alt="Mathematics Department" onerror="this.style.display='none'">
+        <img src="maths.jpg" alt="Mathematics Department" onerror="this.style.display='none'">
       </div>
     </div>
   </div>
@@ -3424,7 +3433,7 @@
     <div class="rev">
       <div class="dept-img-slot">
         <img src="maths.jpg" alt="Mathematics Department" onerror="this.style.display='none'">
-        💡
+        👤
       </div>
     </div>
     <div class="rev">
@@ -3440,7 +3449,7 @@
         <tr><td>Admission Basis</td><td>CUET (UG/PG) — conducted by NTA</td></tr>
         <tr><td>Contact</td><td>maths@cusb.ac.in · 0631-2229 5XX</td></tr>
       </table>
-      <p class="dept-about">The Department of Mathematics at CUSB is committed to <strong>research-led teaching</strong> in foundational and applied computing. With a curriculum aligned to <strong>NEP 2020</strong> and industry requirements, students gain expertise in algorithms, artificial intelligence, data science, and software engineering — preparing them for careers in technology and research across India and globally.</p>
+      <p class="dept-about">The Department of Mathematics at CUSB is committed to <strong>research-led teaching</strong> in foundational and applied mathematics. With a curriculum aligned to <strong>NEP 2020</strong> </p>
     </div>
   </div>
 </section>
@@ -3450,7 +3459,7 @@
   <div class="sec-hd center rev">
     <div class="sec-lbl">Our Team</div>
     <h2 class="sec-title">Faculty Members</h2>
-    <p class="sec-sub">Meet the educators shaping the future of computing at CUSB.</p>
+    <p class="sec-sub">Meet the educators shaping the future of mathematics at CUSB.</p>
   </div>
   <div class="faculty-table-wrap rev">
     <table class="faculty-table" aria-label="CS Faculty">
@@ -3467,66 +3476,66 @@
           <td>1</td>
           <td class="fac-photo-cell">
             <div class="fac-photo-wrap">
-              <div class="fac-photo"><img src="prabhat.jpeg" alt="Prof. Prabhat Ranjan" onerror="this.style.display='none'">👤</div>
-              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/a4" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+              <div class="fac-photo"><img src="" alt="" onerror="this.style.display='none'">👤</div>
+              <a href="#" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
             </div>
           </td>
-          <td><div class="td-name-fac">Prof. Prabhat Ranjan</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Professor &amp; Head of Department</span></td>
+          <td><div class="td-name-fac">name</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Professor &amp; Head of Department</span></td>
           <td><span class="spec-tag">Big Data</span><span class="spec-tag">Distributed Systems</span><span class="spec-tag">Software Engineering</span><span class="spec-tag">MNNIT Allahabad</span></td>
         </tr>
         <tr>
           <td>2</td>
           <td class="fac-photo-cell">
             <div class="fac-photo-wrap">
-              <div class="fac-photo"><img src="jainath.jpeg" alt="Dr. Jainath Yadav" onerror="this.style.display='none'">👤</div>
-              <a href="https://people.samarth.edu.in/index.php/profile/user/custom-profile/CUSB/nl" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+              <div class="fac-photo"><img src="" alt="" onerror="this.style.display='none'">👤</div>
+              <a href="#" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
             </div>
           </td>
-          <td><div class="td-name-fac">Dr. Jainath Yadav</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Associate Professor</span></td>
+          <td><div class="td-name-fac">name</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Associate Professor</span></td>
           <td><span class="spec-tag">Speech Signal Processing</span><span class="spec-tag">Machine Learning</span><span class="spec-tag">Image &amp; Audio Watermarking</span><span class="spec-tag">M.Tech &amp; PhD — IIT Kharagpur</span></td>
         </tr>
         <tr>
           <td>3</td>
           <td class="fac-photo-cell">
             <div class="fac-photo-wrap">
-              <div class="fac-photo"><img src="nemisir.jpeg" alt="Dr. Nemi Chandra Rathore" onerror="this.style.display='none'">👤</div>
-              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/ah" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+              <div class="fac-photo"><img src="" alt="" onerror="this.style.display='none'">👤</div>
+              <a href="#" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
             </div>
           </td>
-          <td><div class="td-name-fac">Dr. Nemi Chandra Rathore</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Associate Professor</span></td>
+          <td><div class="td-name-fac">name</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Associate Professor</span></td>
           <td><span class="spec-tag">Security &amp; Privacy in OSN</span><span class="spec-tag">M.Tech (IT) &amp; PhD — IIT Patna</span></td>
         </tr>
         <tr>
           <td>4</td>
           <td class="fac-photo-cell">
             <div class="fac-photo-wrap">
-              <div class="fac-photo"><img src="piyush.jpeg" alt="Dr. Piyush Kumar Singh" onerror="this.style.display='none'">👤</div>
-              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/a9" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+              <div class="fac-photo"><img src="" alt="" onerror="this.style.display='none'">👤</div>
+              <a href="#" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
             </div>
           </td>
-          <td><div class="td-name-fac">Dr. Piyush Kumar Singh</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Assistant Professor</span></td>
+          <td><div class="td-name-fac">name</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Assistant Professor</span></td>
           <td><span class="spec-tag">Image Processing</span><span class="spec-tag">Parallel Computing</span><span class="spec-tag">Wavelet Transform</span><span class="spec-tag">PhD — BHU</span></td>
         </tr>
         <tr>
           <td>5</td>
           <td class="fac-photo-cell">
             <div class="fac-photo-wrap">
-              <div class="fac-photo"><img src="mrityunjay.jpeg" alt="Dr. Mrityunjay Singh" onerror="this.style.display='none'">👤</div>
-              <a href="https://people.samarth.edu.in/index.php/profile/user/index/CUSB/ea" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+              <div class="fac-photo"><img src="" alt="" onerror="this.style.display='none'">👤</div>
+              <a href="#" target="_blank" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
             </div>
           </td>
-          <td><div class="td-name-fac">Dr. Mrityunjay Singh</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Assistant Professor</span></td>
+          <td><div class="td-name-fac">name</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Assistant Professor</span></td>
           <td><span class="spec-tag">Theoretical CS</span><span class="spec-tag">Discrete Mathematics</span><span class="spec-tag">Algorithms</span><span class="spec-tag">Cryptography &amp; Security</span><span class="spec-tag">PhD — IIT Guwahati</span></td>
         </tr>
         <tr>
           <td>6</td>
           <td class="fac-photo-cell">
             <div class="fac-photo-wrap">
-              <div class="fac-photo"><img src="prakash.jpeg" alt="Dr. Prakash Kumar" onerror="this.style.display='none'">👤</div>
+              <div class="fac-photo"><img src="" alt="" onerror="this.style.display='none'">👤</div>
               <a href="#" class="fac-view-btn">View More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
             </div>
           </td>
-          <td><div class="td-name-fac">Dr. Prakash Kumar</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Assistant Professor</span></td>
+          <td><div class="td-name-fac">name</div><span style="font-weight:400;font-size:.72rem;color:var(--tx-muted)">Assistant Professor</span></td>
           <td><span class="spec-tag">Network Security</span><span class="spec-tag">Data Communication</span><span class="spec-tag">PhD — B.R.A.B.U</span></td>
         </tr>
       </tbody>
@@ -3538,15 +3547,15 @@
 <!-- ══════ B.Sc. PROGRAMS ══════ -->
 <section id="bsc-sec" class="prog-sec sec bg-white">
       <div class="sec-lbl">5 yrs Integrated UG &amp; PG</div>
-      <div class="prog-sec-title">UG - PG in Computer Science</div>
+      <div class="prog-sec-title">UG - PG in Mathematics</div>
     </div>
   </div>
   <div class="prog-container">
     <div class="prog-card rev">
       <div class="prog-card-top">
         <div>
-          <div class="prog-card-title">UG-PG integrated Computer Science <hr> </div>
-          <div class="prog-card-sub">Five-year integrated honours programme covering fundamentals of computing, programming, and applied technology.</div>
+          <div class="prog-card-title">UG-PG integrated Mathematics<hr> </div>
+          <div class="prog-card-sub">Five-year integrated honours programme covering fundamentals mathematics, statistics, and applied mathematics.</div>
         </div>
         <span class="prog-badge ug">UG-PG Integrated</span>
       </div>
@@ -3556,9 +3565,9 @@
         <span class="prog-meta-item">CUET (UG)</span>
         <span class="prog-meta-item">10+2 with Mathematics</span>
       </div>
-      <p class="prog-desc">The B.Sc. (Hons.) Computer Science programme provides a rigorous foundation in programming languages, data structures, algorithms, operating systems, database management, and computer networks. Students are introduced to modern fields like web development, mobile computing, and introductory artificial intelligence. The programme follows NEP 2020 with multiple exit options and credit-based flexibility.</p>
+      <p class="prog-desc">The B.Sc. (Hons.) Mathematics programme provides a rigorous foundation in mathematical concepts, theories, and applications. Students are introduced to modern fields like algebra, analysis, geometry, and applied mathematics. The programme follows NEP 2020 with multiple exit options and credit-based flexibility.</p>
       <div class="prog-footer">
-        <div style="font-size:.76rem;color:var(--tx-muted)">Core subjects: C/C++, Java, Data Structures, DBMS, OS, Networks, Discrete Mathematics</div>
+        <div style="font-size:.76rem;color:var(--tx-muted)">Real Analysis · Abstract Algebra · Differential Equations · Numerical Methods</div>
         <a href="#" class="prog-syllabus-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Download Syllabus
@@ -3571,15 +3580,15 @@
 <!-- ══════ M.Sc. CS ══════ -->
 <section id="msc-sec" class="prog-sec sec bg-soft">
       <div class="sec-lbl">Postgraduate</div>
-      <div class="prog-sec-title">M.Sc. Computer Science</div>
+      <div class="prog-sec-title">M.Sc. Mathematics</div>
     </div>
   </div>
   <div class="prog-container">
     <div class="prog-card rev">
       <div class="prog-card-top">
         <div>
-          <div class="prog-card-title">M.Sc. Computer Science <hr> </div>
-          <div class="prog-card-sub">Advanced postgraduate programme for deep specialisation in core and applied computer science.</div>
+          <div class="prog-card-title">M.Sc. Mathematics <hr> </div>
+          <div class="prog-card-sub">Advanced postgraduate programme for deep specialisation in core and applied mathematics.</div>
         </div>
         <span class="prog-badge pg">Postgraduate</span>
       </div>
@@ -3587,45 +3596,12 @@
         <span class="prog-meta-item">2 Years (4 Semesters)</span>
         <span class="prog-meta-item">40 Seats</span>
         <span class="prog-meta-item">CUET (PG)</span>
-        <span class="prog-meta-item">B.Sc. CS / BCA / B.Tech.</span>
+        <span class="prog-meta-item">B.Sc. Mathematics / Statistics</span>
       </div>
-      <p class="prog-desc">The M.Sc. Computer Science programme at CUSB is designed for graduates who wish to deepen their understanding of advanced algorithms, computer architecture, distributed systems, machine learning, and research methodologies. The programme emphasizes independent research culminating in a dissertation project in the final semester, equipping students for careers in research, academia, and industry.</p>
+      <p class="prog-desc">The M.Sc. Mathematics programme at CUSB is designed for graduates who wish to deepen their understanding of advanced mathematical concepts, theories, and applications. The programme emphasizes independent research culminating in a dissertation project in the final semester, equipping students for careers in research, academia, and industry.</p>
       <div class="prog-footer">
-        <div style="font-size:.76rem;color:var(--tx-muted)">Advanced Algorithms · Distributed Systems · ML · Cloud Computing · Research Dissertation</div>
-        <a href="https://www.cusb.ac.in/images/dept/computer_science/Syllabus/Msc_cs_syllabus.pdf" target="_blank" class="prog-syllabus-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          Download Syllabus
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ M.Sc. AI ══════ -->
-<section id="msc-ai-sec" class="prog-sec sec bg-white">
-      <div class="sec-lbl">Postgraduate · New Programme</div>
-      <div class="prog-sec-title">M.Sc. Artificial Intelligence</div>
-    </div>
-  </div>
-  <div class="prog-container">
-    <div class="prog-card rev">
-      <div class="prog-card-top">
-        <div>
-          <div class="prog-card-title">M.Sc. Artificial Intelligence <hr> </div>
-          <div class="prog-card-sub">India's growing AI ecosystem needs specialised talent. CUSB's M.Sc. AI programme delivers exactly that.</div>
-        </div>
-        <span class="prog-badge ai">M.Sc. AI</span>
-      </div>
-      <div class="prog-meta">
-        <span class="prog-meta-item">2 Years (4 Semesters)</span>
-        <span class="prog-meta-item">20 Seats</span>
-        <span class="prog-meta-item">CUET (PG)</span>
-        <span class="prog-meta-item">B.Sc. CS / BCA / B.Tech. (CS/IT)</span>
-      </div>
-      <p class="prog-desc">The M.Sc. Artificial Intelligence programme at CUSB is a cutting-edge postgraduate degree designed to equip students with the theoretical foundations and practical skills needed to build, deploy, and evaluate intelligent systems. Covering deep learning, natural language processing, computer vision, reinforcement learning, and AI ethics — this programme prepares students for careers in AI research, product companies, and national AI missions.</p>
-      <div class="prog-footer">
-        <div style="font-size:.76rem;color:var(--tx-muted)">Deep Learning · NLP · Computer Vision · RL · PyTorch · TensorFlow · AI Ethics · Capstone Project</div>
-        <a href="https://www.cusb.ac.in/images/dept/computer_science/Syllabus/MScAI_Syllabus_whole.pdf" target="_blank" class="prog-syllabus-btn">
+        <div style="font-size:.76rem;color:var(--tx-muted)">Advanced Analysis · Abstract Algebra · Differential Equations · Numerical Methods</div>
+        <a href="https://www.cusb.ac.in/images/dept/mathematics/Syllabus/Sc_Mathematics_Syllabus.pdf" target="_blank" class="prog-syllabus-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Download Syllabus
         </a>
@@ -3644,8 +3620,8 @@
     <div class="prog-card rev">
       <div class="prog-card-top">
         <div>
-          <div class="prog-card-title">PhD — Computer Science <hr> </div>
-          <div class="prog-card-sub">Full-time and part-time doctoral research across all areas of computer science and AI.</div>
+          <div class="prog-card-title">PhD — Mathematics <hr> </div>
+          <div class="prog-card-sub">Full-time and part-time doctoral research across all areas of mathematics.</div>
         </div>
         <span class="prog-badge phd">Ph.D.</span>
       </div>
@@ -3655,10 +3631,10 @@
         <span class="prog-meta-item">Interview + Research Proposal</span>
         <span class="prog-meta-item">M.Sc. / M.Tech. (55%+)</span>
       </div>
-      <p class="prog-desc">The Ph.D. programme in Computer Science at CUSB offers full-time and part-time doctoral research under the guidance of experienced faculty. Research areas include artificial intelligence, machine learning, computer vision, natural language processing, network security, distributed computing, bioinformatics, and computational theory. Scholars receive CUET-NET/JRF fellowships as applicable.</p>
+      <p class="prog-desc">The Ph.D. programme in Mathematics at CUSB offers full-time and part-time doctoral research under the guidance of experienced faculty. Research areas include algebra, analysis, geometry, topology, and applied mathematics. Scholars receive CUET-NET/JRF fellowships as applicable.</p>
       <div class="prog-footer">
-        <div style="font-size:.76rem;color:var(--tx-muted)">Research Areas: AI · ML · Security · Distributed Systems · Bioinformatics · Theory of Computation</div>
-        <a href="https://www.cusb.ac.in/images/dept/computer_science/Syllabus/Phd_Syllabus_Computer_Science.pdf" target="_blank" class="prog-syllabus-btn">
+        <div style="font-size:.76rem;color:var(--tx-muted)">Research Areas: Algebra · Analysis · Geometry · Topology · Applied Mathematics</div>
+        <a href="https://www.cusb.ac.in/images/dept/mathematics/Syllabus/Phd_Syllabus_Mathematics.pdf" target="_blank" class="prog-syllabus-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
           Download Syllabus
         </a>
@@ -3671,7 +3647,7 @@
 <section id="gallery-sec">
   <div class="gallery-hd rev">
     <div class="sec-lbl">Department Memories</div>
-    <h2 class="sec-title">Life in the CS Department</h2>
+    <h2 class="sec-title">Life in the <br> Mathematics Department</h2>
     <p class="sec-sub" style="margin:0 auto;text-align:center">Workshops, hackathons, convocations, and everyday moments — captured in frames.</p>
   </div>
   <div class="collage-grid">
@@ -3682,8 +3658,8 @@
     <div class="collage-cell"><img src="sports.jpeg" alt="Sports Ground" onerror="this.style.display='none'"></div>
     <div class="collage-cell"><img src="opengym.jpeg" alt="Open Gym" onerror="this.style.display='none'"></div>
     <div class="collage-cell"><img src="gargi sadan.jpg" alt="Gargi Sadan" onerror="this.style.display='none'"></div>
-    <div class="collage-cell"></div>
-    <div class="collage-cell"></div>
+    <div class="collage-cell"><img src="maths.jpg" alt=""></div>
+    <div class="collage-cell"><img src="mathematics-png.jpg" alt=""></div>
     <div class="collage-cell"><img src="admin_good.jpeg" alt="Campus Life" onerror="this.style.display='none'"></div>
     <div class="collage-cell"></div>
     <div class="collage-cell"><img src="malviya.jpeg" alt="Annual Fest" onerror="this.style.display='none'"></div>
@@ -3693,30 +3669,29 @@
 
   
   <!-- ══════ QUICK LINKS ══════ -->
-  <section id="quicklinks" class="sec white-sec">
+  <section id="quicklinks" class="sec white-sec" aria-labelledby="quicklinks-heading">
     <div class="sec-hd rev">
       <div class="sec-lbl">Quick Access</div>
-      <h2 class="sec-title">Student Resources</h2>
+      <h2 class="sec-title" id="quicklinks-heading">Student Resources</h2>
       <p class="sec-sub">Everything you need, one click away.</p>
     </div>
     <div class="ql-grid">
-      <a href="#" class="ql-card rev"><span class="ql-ico">📄</span><span class="ql-nm">Prospectus</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">📋</span><span class="ql-nm">Exam Schedule</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🏆</span><span class="ql-nm">Semester Results</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">📥</span><span class="ql-nm">Downloads</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🎓</span><span class="ql-nm">Convocation</span></a>
-      <a href="https://scholarships.gov.in/" class="ql-card rev"><span class="ql-ico">💰</span><span class="ql-nm">Scholarship</span></a>
-      <a href="hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
-      <a href="https://rtionline.gov.in/" class="ql-card rev"><span class="ql-ico">📡</span><span class="ql-nm">RTI</span></a>
-      <a href="https://www.antiragging.in/" class="ql-card rev"><span class="ql-ico">🔒</span><span class="ql-nm">Anti-Ragging</span></a>
-      <a href="#" class="ql-card rev"><span class="ql-ico">🌐</span><span class="ql-nm">Webmail</span></a>
-      <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" class="ql-card rev"><span
-          class="ql-ico">🧑‍🎓</span><span class="ql-nm">Samarth Login <br>Students</span></a>
-      <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" class="ql-card rev"><span
-          class="ql-ico">👨‍🏫</span><span class="ql-nm">Samarth Login <br>Employee</span></a>
+      <a href="https://scholarships.gov.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="scholarship.jpg" alt="scholarships in cusb" class="ql-img"></span><span class="ql-nm">Scholarship</span></a>
+      <a href="hostel.html" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="hosimg.jpg" alt="hostel in cusb" class="ql-img"></span><span class="ql-nm">Hostel</span></a>
+      <a href="https://rtionline.gov.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="rtiimg.webp" alt="RTI portal" class="ql-img"></span><span class="ql-nm">RTI</span></a>
+      <a href="https://www.antiragging.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="anti-ragging.jpg" alt="ragging free campus" class="ql-img"></span><span class="ql-nm">Anti-Ragging</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="mail.webp" alt="contact through webmail" class="ql-img"></span><span class="ql-nm">Webmail</span></a>
+      <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="studentslogin.webp" alt="samarth student" class="ql-img"></span><span class="ql-nm">Samarth Login Students</span></a>
+      <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="employeelogin.jpg" alt="samarth employee" class="ql-img"></span><span class="ql-nm">Samarth Login Employee</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="brochure.webp" alt="prospectus" class="ql-img"></span><span class="ql-nm">Prospectus</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="schedule.png" alt="exam schedules" class="ql-img"></span><span class="ql-nm">Exam Schedule</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="results.jpg" alt="semester results" class="ql-img"></span><span class="ql-nm">Semester Results</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="downloads.webp" alt="download in one click" class="ql-img"></span><span class="ql-nm">Downloads</span></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="convo.png" alt="convocation" class="ql-img"></span><span class="ql-nm">Convocation</span></a>
+          <a href="pyq.html" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="pyqimg.webp" alt="previous year questions" class="ql-img"></span><span class="ql-nm">PYQs</span></a>
     </div>
   </section>
-  
+
   <!-- GOV_SITES -->
   <section id="gov_sites">
      <div class="gallery-eyebrow">Govt. Portals</div>
