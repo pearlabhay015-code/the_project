@@ -799,7 +799,7 @@
       :root { --ticker-h: 30px }
       .sec { padding: 56px 4vw }
       .sec-hd { margin-bottom: 32px }
-      .leaders-grid { grid-template-columns: 1fr }
+      .leaders-grid { grid-template-columns: repeat(1,1fr) }
       .vm-grid { grid-template-columns: 1fr }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 16px }
       .footer-grid > div:first-child { grid-column: 1 / -1 }
@@ -848,7 +848,7 @@
       #hero { padding: 32px 4vw; gap: 20px; align-items: center; justify-items: center }
       .infra-grid { grid-template-columns: 1fr 1fr }
       .ql-grid { grid-template-columns: repeat(2,1fr) }
-      .leaders-grid { grid-template-columns: 1fr }
+      .leaders-grid { grid-template-columns: repeat(1,1fr) }
       .vm-grid { grid-template-columns: 1fr }
       .footer-grid { grid-template-columns: 1fr }
       .footer-grid > .social_media { grid-column: 1 }
@@ -1018,8 +1018,8 @@
         <li><a href="administration.html">Administration</a></li>
         <li><a href="courses.html">Courses</a></li>
         <li><a href="campus.html">Campus</a></li>
-        <li><a href="#notices-sec">IQAC</a></li>
-        <li><a href="#quicklinks">Students</a></li>
+        <li><a href="IQAC.html">IQAC</a></li>
+        <li><a href="students.html">Students</a></li>
         <li><a href="#gov_sites">Gov</a></li>
       </ul>
       <div class="nav-right">
@@ -1389,7 +1389,7 @@
   <section id="quicklinks" class="sec white-sec" aria-labelledby="quicklinks-heading">
     <div class="sec-hd rev">
       <div class="sec-lbl">Quick Access</div>
-      <h2 class="sec-title" id="quicklinks-heading">Student Resources</h2>
+      <h2 class="sec-title" id="quicklinks-heading">Student Resources <br> &amp; <br> Quick Links</h2>
       <p class="sec-sub">Everything you need, one click away.</p>
     </div>
     <div class="ql-grid">
@@ -1552,7 +1552,7 @@
 
   <!-- FIX #12: Floating message (auto-hides via JS) -->
   <div class="floating-message" id="floating-message" aria-hidden="true">
-    <div class="floating-message-bubble">Hey Buddy!! Got a problem?</div>
+    <div class="floating-message-bubble">Need any Help?</div>
   </div>
 
   <!-- ══════ SECTION PROGRESS NAV (FIX #6) ══════ -->

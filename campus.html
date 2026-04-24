@@ -1414,6 +1414,28 @@
       box-shadow: var(--nm-out-glow-sm)
     }
 
+        /* ── CAMPUS ── */
+    .infra-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(210px,1fr)); gap: 20px }
+    .infra-card { padding: 26px 20px; background: var(--nm-bg-alt); border-radius: var(--r-lg); box-shadow: var(--nm-out-sm); border: 1px solid rgba(0, 208, 255, 0.566); text-decoration: none; color: inherit; display: block; transition: box-shadow .25s,color .25s; }
+    .infra-card:hover { box-shadow: var(--nm-in-sm); color: var(--acc) }
+    .infra-card:focus { outline: 2px solid var(--acc); outline-offset: 3px; }
+    .infra-card:hover .infra-name { color: var(--acc) }
+    [data-theme="dark"] .infra-card:hover { box-shadow: var(--nm-in-sm) }
+    [data-theme="dark"] .infra-card:hover .infra-name { color: #FF8C42 }
+    .infra-img-slot { width: 100%; aspect-ratio: 16/9; border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; font-size: 1.9rem; margin-bottom: 14px; background: var(--nm-bg); box-shadow: var(--nm-in-sm); border: 1px solid var(--nm-border); overflow: hidden; }
+    .infra-name { font-family: var(--fd); font-size: .84rem; font-weight: 700; margin-bottom: 5px; color: var(--tx-primary) }
+    .infra-note { font-size: .72rem; line-height: 1.55; font-weight: 400; color: var(--tx-secondary) }
+    .camp-img{
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/3;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      background: var(--nm-bg-alt);
+      box-shadow: var(--nm-out-xl);
+      border: 1px solid var(--nm-border);
+    }
+
     
     /* ──────────────────────────────────────
    QUICK LINKS — convex tiles
@@ -3110,12 +3132,33 @@
     </form>
   </div>
 
+    <!-- ══════ CAMPUS ══════ -->
+  <section id="campus" class="sec white-sec" aria-labelledby="campus-heading">
+    <div class="sec-hd rev">
+      <div class="sec-lbl">Infrastructure</div>
+      <h2 class="sec-title" id="campus-heading">Campus &amp; Facilities</h2>
+      <p class="sec-sub">World-class infrastructure across 300 acres — built to support every dimension of academic and student life.</p>
+    </div>
+    <div class="infra-grid">
+      <a href="library.html" class="infra-card card-light rev"><div class="infra-img-slot" aria-hidden="true"><img src="libimg.avif" alt="Library Services" class="camp-img"></div><div class="infra-name">Library Services</div><p class="infra-note">Digital and physical collection with access to thousands of journals, e-resources, and research databases.</p></a>
+      <a href="hostels.html" class="infra-card card-light rev"><div class="infra-img-slot" aria-hidden="true"><img src="hosimg.jpg" alt="hostel facilities" class="camp-img"></div><div class="infra-name">Hostel Facility</div><p class="infra-note">Separate blocks for men and women with 24/7 security, mess facility, and recreational spaces.</p></a>
+      <a href="sports.html" class="infra-card card-light rev"><div class="infra-img-slot" aria-hidden="true"><img src="spoim.jpg" alt="sports facilities" class="camp-img"></div><div class="infra-name">Sports Complex</div><p class="infra-note">Cricket, football, athletics grounds, and a modern indoor sports hall for students and staff.</p></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="infra-card card-light rev"><div class="infra-img-slot" aria-hidden="true"><img src="audimg.jpg" alt="auditorium facilities" class="camp-img"></div><div class="infra-name">Auditorium &amp; Conference Hall</div><p class="infra-note">State-of-the-art venues for seminars, conclaves, cultural programs, and annual convocations.</p></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="infra-card card-light rev"><div class="infra-img-slot" aria-hidden="true"><img src="smartroon.avif" alt="smart classroom" class="camp-img"></div><div class="infra-name">Smart Classrooms &amp; Wi-Fi</div><p class="infra-note">Fully Wi-Fi enabled campus, smart classrooms, computer labs, and a dedicated media production studio.</p></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="infra-card card-light rev"><div class="infra-img-slot" aria-hidden="true"><img src="diversity.webp" alt="biodiversity park" class="camp-img"></div><div class="infra-name">Biodiversity Park</div><p class="infra-note">Green park featuring medicinal plants, Dhanvantari Arogya Vatika, and ecological trails across the campus.</p></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="infra-card card-light rev"><div class="infra-img-slot" aria-hidden="true"><img src="health.webp" alt="healthcare" class="camp-img"></div><div class="infra-name">Health Care Centre</div><p class="infra-note">On-campus centre providing medical assistance, emergency care, and wellness support for students and staff.</p></a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="infra-card card-light rev"><div class="infra-img-slot" aria-hidden="true"><img src="sclab.jpg" alt="science lab" class="camp-img"></div><div class="infra-name">Central Instrumental Facility</div><p class="infra-note">Advanced research instruments available for interdisciplinary scientific research by faculty and students.</p></a>
+    </div>
+    <a href="#hero" class="sec-top-link" aria-label="Back to top of page">↑ Back to top</a>
+  </section>
+
+
   
   <!-- ══════ QUICK LINKS ══════ -->
   <section id="quicklinks" class="sec white-sec" aria-labelledby="quicklinks-heading">
     <div class="sec-hd rev">
       <div class="sec-lbl">Quick Access</div>
-      <h2 class="sec-title" id="quicklinks-heading">Student Resources</h2>
+      <h2 class="sec-title" id="quicklinks-heading">Student Resources <br> &amp; <br> Quick Links</h2>
       <p class="sec-sub">Everything you need, one click away.</p>
     </div>
     <div class="ql-grid">
@@ -3276,7 +3319,7 @@
     <!-- ══════ FLOATING GREETING MESSAGE ══════ -->
   <div class="floating-message">
     <div class="floating-message-bubble">
-     Need Any Help 🤔 ?
+     Need Any Help  ?
     </div>
   </div>
 
