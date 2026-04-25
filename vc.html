@@ -1,783 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="stylesheet" href="v1.css">
-<title>Central University of South Bihar — CUSB</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-<style>
-  :root {
-  --org-50:  #EBF7FF; --org-100: #C8E9FB; --org-200: #96D3F7; --org-300: #5BB8EC;
-  --org-400: #2AA3E4; --org-500: #0D92D8; --org-600: #0B7EBD; --org-700: #096BA3;
-  --org-800: #075589; --org-900: #053D6E;
-  --org-A100: #E4F9F4; --org-A200: #4EC9A8; --org-A400: #FF6B95; --org-A700: #FFAB6E;
-  --lav: #B39DDB; --lav-lt: #EDE7F6;
-  --dark-bg: #f7a1a1; --dark-bg2: #eae4f8; --dark-bg3: #e8dcfb; --dark-bg4: #E4E0F5;
-  --light-1: #F0FBFF; --light-2: #FFFFFF; --light-3: #E8F9F4;
-  --tw: #2C1A3E; --tw80: rgba(44,26,62,.82); --tw50: rgba(44,26,62,.50);
-  --tw20: rgba(44,26,62,.20); --tw10: rgba(44,26,62,.10); --tw06: rgba(44,26,62,.06);
-  --td: #1A1A3E; --td60: #4A4A7A; --td30: #9090B8;
-  --lb06: rgba(13,146,216,.06); --lb14: rgba(13,146,216,.14); --lb25: rgba(13,146,216,.25);
-  --fd: 'Syne', sans-serif; --fb: 'DM Sans', sans-serif;
-  --r-sm:10px; --r-md:18px; --r-lg:26px; --r-xl:50px;
-  --ticker-h: 36px; --topbar-h: 40px; --nav-h: 68px;
-  --offset: calc(var(--ticker-h) + var(--nav-h) + 12px);
-}
-
-/* ═══════════════════════════════════════════
-   DARK THEME
-═══════════════════════════════════════════ */
-[data-theme="dark"] {
-  --dark-bg:#070B18; --dark-bg2:#0C1022; --dark-bg3:#10152E; --dark-bg4:#131828;
-  --light-1:#0A0F1E; --light-2:#080D1A; --light-3:#0E1428;
-  --tw:#E4DCFF; --tw80:rgba(228,220,255,.85); --tw50:rgba(228,220,255,.50);
-  --tw20:rgba(228,220,255,.20); --tw10:rgba(228,220,255,.10); --tw06:rgba(228,220,255,.06);
-  --td:#EEE8FF; --td60:#A89FC8; --td30:#6B638A;
-  --org-50:#0D1836; --org-100:#0F1F44; --org-200:#1A3A6E; --org-300:#2255A4;
-  --org-400:#3A80D4; --org-500:#5AA0E8; --org-600:#7DB8F0; --org-700:#9FCCF7;
-  --org-800:#BFE0FA; --org-900:#DDEFFE;
-  --lav:#9B84D8; --lav-lt:#150E35;
-  --lb06:rgba(90,160,232,.08); --lb14:rgba(90,160,232,.18); --lb25:rgba(90,160,232,.30);
-  --glow-blue: 0 0 18px rgba(90,160,232,.45),0 0 40px rgba(90,160,232,.20);
-  --glow-purple:0 0 18px rgba(155,132,216,.45),0 0 40px rgba(155,132,216,.18);
-  --glow-rose:  0 0 18px rgba(255,107,149,.45),0 0 40px rgba(255,107,149,.18);
-  --glow-mint:  0 0 16px rgba(78,201,168,.38), 0 0 34px rgba(78,201,168,.16);
-}
-
-    /* Theme Switch Performance - disables transitions during toggle */
-    html.theme-switching,
-    html.theme-switching *,
-    html.theme-switching *::before,
-    html.theme-switching *::after {
-      transition: none !important;
-      animation-duration: 0s !important;
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Prof. Kameshwar Nath Singh — Vice-Chancellor of Central University of South Bihar (CUSB). Geographer, researcher, and academic leader."/>
+  <title>Vice-Chancellor — Prof. K.N. Singh | CUSB</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       CUSB · NEUMORPHIC DESIGN SYSTEM · DEEP DEPTH v3
+    ═══════════════════════════════════════════════════════════ */
+    :root {
+      --nm-bg: #dde1ea;
+      --nm-bg-sec: #e2e6ef;
+      --nm-bg-alt: #e8ecf3;
+      --nm-out: 9px 9px 22px #b5b9c6, -9px -9px 22px #ffffff;
+      --nm-out-sm: 5px 5px 12px #b9bdc8, -5px -5px 12px #ffffff;
+      --nm-out-lg: 14px 14px 36px #adb1be, -14px -14px 36px #ffffff;
+      --nm-out-xl: 20px 20px 50px #a5a9b8, -20px -20px 50px #ffffff;
+      --nm-in: inset 6px 6px 16px #b5b9c6, inset -6px -6px 16px #ffffff;
+      --nm-in-sm: inset 3px 3px 8px #b9bdc8, inset -3px -3px 8px #ffffff;
+      --nm-in-lg: inset 9px 9px 24px #adb1be, inset -9px -9px 24px #ffffff;
+      --acc: #f69648;
+      --acc2: #f14e64;
+      --acc3: #3db897;
+      --tx-primary: #15171e;
+      --tx-secondary: #000000de;
+      --tx-muted: #19191a;
+      --nm-border: rgba(255,255,255,.90);
+      --nm-border-b: rgba(170,175,195,.35);
+      --fd: 'Syne','Segoe UI',sans-serif;
+      --fb: 'DM Sans','Segoe UI',sans-serif;
+      --r-sm: 12px; --r-md: 20px; --r-lg: 28px; --r-xl: 50px;
+      --ticker-h: 36px; --nav-h: 40px;
+      --nav-max-width: 1100px;
+      --offset: calc(var(--ticker-h) + var(--nav-h) + 12px);
     }
 
-/* ═══════════════════════════════════════════
-   BASE
-═══════════════════════════════════════════ */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--fb);overflow-x:hidden;background:var(--light-2);
-     transition:background .4s,color .4s;padding-top:var(--ticker-h)}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:var(--org-50)}
-::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--org-A400),var(--lav));border-radius:4px}
-
-/* ── Scroll offset for every anchored section ── */
-header[id],section[id]{scroll-margin-top:var(--offset)}
-
-/* ═══════════════════════════════════════════
-   TICKER MARQUEE — fixed at very top
-═══════════════════════════════════════════ */
-#ticker{
-  position:fixed;top:0;left:0;right:0;z-index:1100;
-  height:var(--ticker-h);overflow:hidden;
-  display:flex;align-items:center;
-  background:linear-gradient(90deg,
-    rgba(255,107,149,.90) 0%,rgba(179,157,219,.92) 28%,
-    rgba(13,146,216,.92) 58%,rgba(78,201,168,.90) 100%);
-  backdrop-filter:blur(12px) saturate(180%);
-  border-bottom:1px solid rgba(255,255,255,.22);
-  box-shadow:0 2px 16px rgba(13,146,216,.18);
-  transition:background .4s;
-}
-[data-theme="dark"] #ticker{
-  background:linear-gradient(90deg,#07091A 0%,#0A0C24 40%,#080C20 100%);
-  border-bottom:1px solid rgba(90,160,232,.20);
-  box-shadow:0 2px 20px rgba(0,0,0,.60),0 0 24px rgba(90,160,232,.12);
-}
-
-.ticker-label{
-  flex-shrink:0;padding:0 14px;height:100%;
-  display:flex;align-items:center;gap:6px;
-  font-family:var(--fd);font-size:.60rem;font-weight:700;letter-spacing:.16em;
-  text-transform:uppercase;color:#fff;white-space:nowrap;
-  background:rgba(255,255,255,.18);border-right:1px solid rgba(255,255,255,.25);
-  z-index:2;
-}
-[data-theme="dark"] .ticker-label{
-  background:rgba(90,160,232,.14);border-right-color:rgba(90,160,232,.22);
-  color:var(--org-700);
-}
-
-.ticker-fade{position:absolute;top:0;bottom:0;width:56px;z-index:1;pointer-events:none}
-.ticker-fade.lft{left:0;background:linear-gradient(90deg,rgba(255,107,149,.55),transparent)}
-.ticker-fade.rgt{right:0;background:linear-gradient(-90deg,rgba(78,201,168,.55),transparent)}
-[data-theme="dark"] .ticker-fade.lft{background:linear-gradient(90deg,rgba(7,9,26,.95),transparent)}
-[data-theme="dark"] .ticker-fade.rgt{background:linear-gradient(-90deg,rgba(8,12,32,.95),transparent)}
-
-.ticker-viewport{flex:1;overflow:hidden;position:relative}
-
-.ticker-track{
-  display:flex;align-items:center;width:max-content;
-  animation:tickerRoll 42s linear infinite;
-  will-change:transform;
-}
-.ticker-track:hover,
-.ticker-track.paused{animation-play-state:paused}
-
-@keyframes tickerRoll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-.t-item{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:0 26px;height:var(--ticker-h);
-  font-size:.70rem;font-weight:500;color:#fff;
-  white-space:nowrap;text-decoration:none;
-  transition:color .2s,text-shadow .2s;
-  cursor:pointer;
-}
-.t-item:hover{text-shadow:0 0 14px rgba(255,255,255,.75)}
-[data-theme="dark"] .t-item{color:var(--td60)}
-[data-theme="dark"] .t-item:hover{color:var(--org-700);text-shadow:0 0 14px rgba(90,160,232,.55)}
-
-.t-sep{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.38);flex-shrink:0}
-[data-theme="dark"] .t-sep{background:rgba(90,160,232,.28)}
-
-.t-badge{
-  display:inline-block;padding:1px 7px;border-radius:8px;
-  font-size:.56rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
-  background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.45);color:#ef0c18;
-}
-[data-theme="dark"] .t-badge{
-  background:rgba(155,132,216,.22);border-color:rgba(155,132,216,.48);color:var(--lav);
-}
-
-/* ═══════════════════════════════════════════
-   TOP BAR
-═══════════════════════════════════════════ */
-#topbar{
-  background:linear-gradient(90deg,var(--dark-bg),var(--light-1));
-  border-bottom:1px solid rgba(255,255,255,.60);
-  padding:0 5vw;height:var(--topbar-h);
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:.72rem;color:var(--tw50);z-index:600;transition:background .4s;
-}
-[data-theme="dark"] #topbar{border-bottom-color:rgba(90,160,232,.12)}
-#topbar a{color:var(--tw50);text-decoration:none;transition:color .2s}
-#topbar a:hover{color:var(--org-A400)}
-.tb-l{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
-.tb-sep{opacity:.2}
-
-/* ═══════════════════════════════════════════
-   NAVBAR — sticky below fixed ticker
-═══════════════════════════════════════════ */
-#nav-wrap{
-  position:sticky;top:var(--ticker-h);z-index:800;
-  display:flex;justify-content:center;
-  padding:8px 3vw;pointer-events:none;
-}
-nav{
-  pointer-events:all;
-  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-  background:rgba(235,247,255,.84);
-  backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);
-  border:1.5px solid rgba(13,146,216,.22);border-radius:60px;
-  padding:8px 16px;width:min(980px,94vw);
-  box-shadow:0 4px 24px rgba(13,146,216,.12),0 1px 0 rgba(255,255,255,.9) inset;
-  transition:background .3s,box-shadow .3s,border-color .4s;
-  animation:navIn .6s cubic-bezier(.16,1,.3,1) both;
-}
-@keyframes navIn{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
-nav.sc{background:rgba(235,247,255,.96);box-shadow:0 6px 32px rgba(13,146,216,.18),0 1px 0 #fff inset}
-[data-theme="dark"] nav{
-  background:rgba(8,13,30,.82);border-color:rgba(90,160,232,.22);
-  box-shadow:0 4px 24px rgba(0,0,0,.50),0 0 0 1px rgba(155,132,216,.08) inset;
-}
-[data-theme="dark"] nav.sc{background:rgba(8,13,30,.96);box-shadow:0 6px 32px rgba(0,0,0,.60),0 0 28px rgba(90,160,232,.10)}
-
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;justify-content:center}
-.nav-logo img{width:43px}
-.brand-txt .abbr{
-  font-family:var(--fd);font-size:1.2rem;font-weight:600;
-  background:linear-gradient(90deg,var(--org-A400),var(--lav));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-
-.nav-links{display:flex;list-style:none;gap:2px;justify-content:flex-start}
-.nav-links a{
-  display:block;padding:8px 13px;
-  font-family:var(--fb);font-size:.78rem;font-weight:500;
-  color:var(--td60);text-decoration:none;border-radius:30px;
-  transition:color .2s,background .2s;white-space:nowrap;
-}
-.nav-links a:hover,.nav-links a.act{color:var(--org-600);background:rgba(13,146,216,.09)}
-[data-theme="dark"] .nav-links a:hover,
-[data-theme="dark"] .nav-links a.act{color:var(--org-600);background:rgba(90,160,232,.12)}
-
-.nav-right{display:flex;justify-content:flex-end;align-items:center;gap:8px}
-
-.btn-apply{
-  display:inline-flex;align-items:center;padding:7px 20px;border-radius:30px;
-  font-family:var(--fb);font-size:.78rem;font-weight:700;
-  text-decoration:none;color:#fff;
-  background:linear-gradient(135deg,var(--org-A400),#D44B74);
-  border:1.5px solid rgba(255,107,149,.35);
-  box-shadow:0 4px 18px rgba(255,107,149,.30);
-  transition:transform .2s,box-shadow .2s;white-space:nowrap;flex-shrink:0;
-}
-.btn-apply:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,107,149,.45);color:#fff}
-[data-theme="dark"] .btn-apply{box-shadow:0 4px 18px rgba(255,107,149,.25),var(--glow-rose)}
-[data-theme="dark"] .btn-apply:hover{box-shadow:0 8px 28px rgba(255,107,149,.40),0 0 28px rgba(255,107,149,.30)}
-
-/* Theme toggle */
-.theme-toggle{
-  display:flex;align-items:center;justify-content:center;
-  width:34px;height:34px;border-radius:50%;
-  border:1.5px solid rgba(13,146,216,.28);
-  background:rgba(235,247,255,.60);
-  cursor:pointer;flex-shrink:0;
-  transition:all .3s cubic-bezier(.16,1,.3,1);
-  position:relative;overflow:hidden;backdrop-filter:blur(12px);
-}
-.theme-toggle:hover{transform:rotate(20deg) scale(1.08);border-color:rgba(90,160,232,.55)}
-.theme-toggle .ico-sun,.theme-toggle .ico-moon{
-  position:absolute;font-size:1rem;
-  transition:opacity .35s,transform .4s cubic-bezier(.16,1,.3,1);
-}
-.theme-toggle .ico-sun {opacity:1;transform:scale(1) rotate(0deg)}
-.theme-toggle .ico-moon{opacity:0;transform:scale(.4) rotate(-90deg)}
-[data-theme="dark"] .theme-toggle{border-color:rgba(155,132,216,.45);background:rgba(21,14,53,.70);box-shadow:0 0 12px rgba(155,132,216,.30)}
-[data-theme="dark"] .theme-toggle:hover{box-shadow:0 0 20px rgba(155,132,216,.55)}
-[data-theme="dark"] .theme-toggle .ico-sun {opacity:0;transform:scale(.4) rotate(90deg)}
-[data-theme="dark"] .theme-toggle .ico-moon{opacity:1;transform:scale(1) rotate(0deg)}
-
-/* Hamburger */
-.ham{
-  display:none;width:31px;height:31px;border-radius:10px;
-  background:rgba(13,146,216,.10);border:1.5px solid rgba(13,146,216,.22);
-  cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;
-  flex-shrink:0;transition:background .2s;padding:0;
-}
-.ham:hover{background:rgba(13,146,216,.18)}
-.ham span{display:block;width:15px;height:1px;background:var(--org-600);border-radius:2px;
-  transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .25s,width .3s}
-.ham.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
-.ham.open span:nth-child(2){opacity:0;width:0}
-.ham.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
-[data-theme="dark"] .ham{background:rgba(90,160,232,.10);border-color:rgba(90,160,232,.22)}
-[data-theme="dark"] .ham:hover{background:rgba(90,160,232,.20)}
-[data-theme="dark"] .ham span{background:var(--org-700)}
-
-/* ═══════════════════════════════════════════
-   MOBILE DRAWER
-═══════════════════════════════════════════ */
-#mob-overlay{
-  position:fixed;inset:0;z-index:1998;
-  background:rgba(44,26,62,.30);backdrop-filter:blur(4px);
-  opacity:0;pointer-events:none;transition:opacity .3s;
-}
-#mob-overlay.show{opacity:1;pointer-events:all}
-#mob-menu{
-  position:fixed;top:0;right:0;bottom:0;
-  width:min(300px,86vw);z-index:1999;
-  background:rgba(240,251,255,.97);
-  backdrop-filter:blur(32px) saturate(220%);-webkit-backdrop-filter:blur(32px) saturate(220%);
-  border-left:1.5px solid rgba(13,146,216,.18);
-  box-shadow:-4px 0 32px rgba(13,146,216,.10);
-  transform:translateX(100%);visibility:hidden;
-  transition:transform .35s cubic-bezier(.16,1,.3,1),visibility .35s;
-  overflow-y:auto;padding:72px 20px 40px;display:flex;flex-direction:column;gap:0;
-}
-#mob-menu.open{transform:translateX(0);visibility:visible}
-[data-theme="dark"] #mob-menu{background:rgba(8,10,22,.97);border-left-color:rgba(90,160,232,.20);box-shadow:-4px 0 40px rgba(0,0,0,.70)}
-
-.mob-header{
-  position:absolute;top:0;left:0;right:0;
-  padding:14px 20px;display:flex;align-items:center;justify-content:space-between;
-  border-bottom:1px solid rgba(13,146,216,.10);background:rgba(235,247,255,.92);
-}
-.mob-title{font-family:var(--fd);font-size:.9rem;color:var(--tw80)}
-[data-theme="dark"] .mob-header{background:rgba(8,10,22,.95);border-bottom-color:rgba(90,160,232,.14)}
-.mob-close{
-  width:34px;height:34px;border-radius:50%;
-  background:rgba(255,107,149,.10);border:1.5px solid rgba(255,107,149,.22);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;color:var(--org-A400);font-size:1rem;transition:background .2s;
-}
-.mob-close:hover{background:rgba(255,107,149,.20);color:#D44B74}
-.mob-a{
-  display:block;padding:11px 16px;border-radius:12px;
-  font-size:.85rem;font-weight:500;color:var(--td60);
-  text-decoration:none;transition:background .2s,color .2s;border:1px solid transparent;
-}
-.mob-a:hover{background:rgba(13,146,216,.07);border-color:rgba(13,146,216,.14);color:var(--org-600)}
-[data-theme="dark"] .mob-a:hover{background:rgba(90,160,232,.10);border-color:rgba(90,160,232,.22)}
-.mob-divider{height:1px;background:rgba(13,146,216,.08);margin:8px 0}
-[data-theme="dark"] .mob-divider{background:rgba(90,160,232,.10)}
-.mob-section-lbl{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--org-400);padding:6px 16px 2px}
-.mob-cta{
-  display:block;margin-top:16px;text-align:center;text-decoration:none;
-  padding:12px 20px;border-radius:var(--r-xl);
-  background:linear-gradient(135deg,var(--org-A400),#D44B74);
-  color:#fff;font-size:.85rem;font-weight:700;
-  border:1.5px solid rgba(255,107,149,.30);box-shadow:0 4px 20px rgba(255,107,149,.25);
-  transition:transform .2s,box-shadow .2s;
-}
-.mob-cta:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,107,149,.38)}
-
-/* ═══════════════════════════════════════════
-   BUTTONS
-═══════════════════════════════════════════ */
-.btn{
-  position:relative;display:inline-flex;align-items:center;gap:7px;
-  padding:12px 26px;border-radius:var(--r-xl);
-  font-family:var(--fb);font-size:.85rem;font-weight:600;
-  cursor:pointer;border:none;outline:none;text-decoration:none;
-  overflow:hidden;transition:transform .2s cubic-bezier(.34,1.56,.64,1),box-shadow .2s;
-}
-.btn::before{content:'';position:absolute;left:0;top:0;right:0;height:50%;
-  border-radius:var(--r-xl) var(--r-xl) 0 0;
-  background:linear-gradient(180deg,rgba(255,255,255,.30),transparent);pointer-events:none}
-.btn:hover{transform:translateY(-2px) scale(1.02)}.btn:active{transform:scale(.97)}
-
-.btn-ocean{background:linear-gradient(135deg,var(--org-A400),#D44B74);border:1.5px solid rgba(255,107,149,.38);color:#fff;box-shadow:0 4px 20px rgba(255,107,149,.28),inset 0 1px 0 rgba(255,255,255,.20)}
-.btn-ocean:hover{box-shadow:0 8px 30px rgba(255,107,149,.42)}
-[data-theme="dark"] .btn-ocean{box-shadow:0 4px 20px rgba(255,107,149,.25),var(--glow-rose)}
-[data-theme="dark"] .btn-ocean:hover{box-shadow:0 8px 30px rgba(255,107,149,.40),0 0 32px rgba(255,107,149,.28)}
-
-.btn-ghost{background:rgba(255,255,255,.65);backdrop-filter:blur(16px);border:1.5px solid rgba(13,146,216,.28);color:var(--org-600)}
-.btn-ghost:hover{background:rgba(235,247,255,.85);box-shadow:0 6px 20px rgba(13,146,216,.14)}
-[data-theme="dark"] .btn-ghost{background:rgba(12,20,44,.70);border-color:rgba(90,160,232,.35);color:var(--org-700)}
-[data-theme="dark"] .btn-ghost:hover{background:rgba(18,28,58,.88);box-shadow:0 6px 20px rgba(0,0,0,.40),var(--glow-blue);border-color:rgba(90,160,232,.65)}
-
-.btn-light{background:rgba(13,146,216,.07);backdrop-filter:blur(16px);border:1.5px solid rgba(13,146,216,.28);color:var(--org-700)}
-.btn-light:hover{background:rgba(13,146,216,.13);box-shadow:0 6px 20px rgba(13,146,216,.15)}
-[data-theme="dark"] .btn-light{background:rgba(12,20,44,.60);border-color:rgba(90,160,232,.32)}
-[data-theme="dark"] .btn-light:hover{background:rgba(18,28,58,.80);box-shadow:var(--glow-blue);border-color:rgba(90,160,232,.60)}
-
-.btn-solid{background:linear-gradient(135deg,var(--org-500),var(--org-700));border:1.5px solid rgba(13,146,216,.30);color:#fff;box-shadow:0 4px 16px rgba(13,146,216,.28)}
-.btn-solid:hover{box-shadow:0 8px 28px rgba(13,146,216,.40)}
-[data-theme="dark"] .btn-solid{background:linear-gradient(135deg,var(--org-400),var(--lav));box-shadow:0 4px 16px rgba(90,160,232,.25),var(--glow-blue)}
-[data-theme="dark"] .btn-solid:hover{box-shadow:0 8px 28px rgba(90,160,232,.35),0 0 36px rgba(90,160,232,.22)}
-
-.btn-sm{padding:8px 18px;font-size:.78rem}
-.rpl{position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:ripAnim .5s ease-out forwards;pointer-events:none}
-@keyframes ripAnim{to{transform:scale(16);opacity:0}}
-
-/* ═══════════════════════════════════════════
-   SCROLL REVEAL
-═══════════════════════════════════════════ */
-.rev{opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
-.rev.vis{opacity:1;transform:none}
-
-/* ═══════════════════════════════════════════
-   SECTION SYSTEM
-═══════════════════════════════════════════ */
-.dark-sec{background:var(--dark-bg2);color:var(--tw)}
-.darker-sec{background:var(--dark-bg);color:var(--tw)}
-.light-sec{background:var(--light-1);color:var(--td)}
-.white-sec{background:var(--light-2);color:var(--td)}
-.sec{padding:96px 6vw;transition:background .4s}
-
-.sec-lbl{font-family:var(--fb);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px}
-.dark-sec .sec-lbl,.darker-sec .sec-lbl{color:var(--org-A400)}
-.light-sec .sec-lbl,.white-sec .sec-lbl{color:var(--org-500)}
-[data-theme="dark"] .light-sec .sec-lbl,
-[data-theme="dark"] .white-sec .sec-lbl{color:var(--lav)}
-
-.sec-title{font-family:var(--fd);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:600;letter-spacing:-.02em;line-height:1.12}
-.sec-sub{font-size:.9rem;line-height:1.8;font-weight:300;margin-top:12px;max-width:560px}
-.dark-sec .sec-sub,.darker-sec .sec-sub{color:var(--tw50)}
-.light-sec .sec-sub,.white-sec .sec-sub{color:var(--td60)}
-.sec-hd{margin-bottom:52px}
-.sec-hd.center{text-align:center}
-.sec-hd.center .sec-sub{margin:12px auto 0}
-
-/* ═══════════════════════════════════════════
-   CARDS
-═══════════════════════════════════════════ */
-.card-dark{
-  background:rgba(255,255,255,.60);border:1.5px solid rgba(13,146,216,.16);
-  backdrop-filter:blur(16px) saturate(200%);-webkit-backdrop-filter:blur(16px) saturate(200%);
-  border-radius:var(--r-lg);box-shadow:0 2px 14px rgba(13,146,216,.08);
-  transition:background .3s,border-color .3s,box-shadow .3s;
-}
-.card-dark:hover{background:rgba(255,255,255,.85);border-color:rgba(13,146,216,.28);box-shadow:0 6px 24px rgba(13,146,216,.13)}
-[data-theme="dark"] .card-dark{background:rgba(10,15,40,.75);border-color:rgba(90,160,232,.22);box-shadow:0 2px 14px rgba(0,0,0,.50)}
-[data-theme="dark"] .card-dark:hover{background:rgba(14,20,50,.90);border-color:rgba(90,160,232,.50);box-shadow:0 6px 24px rgba(0,0,0,.55),var(--glow-blue)}
-
-.card-light{
-  background:rgba(255,255,255,.80);border:1.5px solid rgba(78,201,168,.20);
-  backdrop-filter:blur(16px) saturate(200%);-webkit-backdrop-filter:blur(16px) saturate(200%);
-  border-radius:var(--r-lg);box-shadow:0 2px 16px rgba(78,201,168,.09);
-  transition:background .3s,border-color .3s,box-shadow .3s;
-}
-.card-light:hover{background:rgba(255,255,255,.97);border-color:rgba(78,201,168,.38);box-shadow:0 8px 28px rgba(78,201,168,.15)}
-[data-theme="dark"] .card-light{background:rgba(8,18,28,.80);border-color:rgba(78,201,168,.20);box-shadow:0 2px 16px rgba(0,0,0,.50)}
-[data-theme="dark"] .card-light:hover{background:rgba(10,24,36,.92);border-color:rgba(78,201,168,.50);box-shadow:0 8px 28px rgba(0,0,0,.55),var(--glow-mint)}
-
-/* ═══════════════════════════════════════════
-   QUICK LINKS
-═══════════════════════════════════════════ */
-#quicklinks{background:var(--light-2)}
-.ql-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
-.ql-card{border-radius:var(--r-md);padding:22px 14px;text-align:center;text-decoration:none;transition:transform .22s,box-shadow .22s,border-color .22s,background .22s}
-.ql-card:hover{transform:translateY(-4px)}
-.white-sec .ql-card,.light-sec .ql-card{background:rgba(255,255,255,.88);border:1.5px solid rgba(78,201,168,.18);backdrop-filter:blur(12px);color:var(--td);box-shadow:0 2px 10px rgba(78,201,168,.07)}
-.white-sec .ql-card:hover,.light-sec .ql-card:hover{background:rgba(228,249,244,.92);border-color:rgba(78,201,168,.38);box-shadow:0 8px 24px rgba(78,201,168,.15)}
-[data-theme="dark"] .white-sec .ql-card,
-[data-theme="dark"] .light-sec .ql-card{background:rgba(8,14,28,.80);border-color:rgba(78,201,168,.18);color:var(--td)}
-[data-theme="dark"] .white-sec .ql-card:hover,
-[data-theme="dark"] .light-sec .ql-card:hover{background:rgba(8,20,30,.90);border-color:rgba(78,201,168,.50);box-shadow:0 8px 24px rgba(0,0,0,.50),var(--glow-mint)}
-.ql-ico{font-size:1.5rem;display:block;margin-bottom:8px}
-.ql-nm{font-size:.76rem;font-weight:600;color:var(--td)}
-
-/* ═══════════════════════════════════════════
-   INFORMATION SECTION
-═══════════════════════════════════════════ */
-#info-sec{background:var(--light-1)}
-
-.info-inner{
-  max-width:740px;
-  margin:0 auto;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:28px;
-}
-
-/* Image holder */
-.info-img-wrap{
-  width:100%;
-  max-width:560px;
-  border-radius:var(--r-lg);
-  overflow:hidden;
-  background:rgba(255,255,255,.55);
-  border:1.5px solid rgba(13,146,216,.18);
-  backdrop-filter:blur(16px) saturate(200%);
-  -webkit-backdrop-filter:blur(16px) saturate(200%);
-  box-shadow:0 4px 28px rgba(13,146,216,.13),0 1px 0 rgba(255,255,255,.80) inset;
-  transition:box-shadow .3s,border-color .3s;
-  position:relative;
-}
-.info-img-wrap:hover{
-  border-color:rgba(13,146,216,.35);
-  box-shadow:0 8px 40px rgba(13,146,216,.18),0 1px 0 rgba(255,255,255,.80) inset;
-}
-[data-theme="dark"] .info-img-wrap{
-  background:rgba(10,15,40,.70);
-  border-color:rgba(90,160,232,.22);
-  box-shadow:0 4px 28px rgba(0,0,0,.55);
-}
-[data-theme="dark"] .info-img-wrap:hover{
-  border-color:rgba(90,160,232,.50);
-  box-shadow:0 8px 40px rgba(0,0,0,.60),var(--glow-blue);
-}
-
-.info-img-wrap img{
-  width:100%;height:100%;
-  object-fit:cover;
-  display:block;
-  transition:transform .5s cubic-bezier(.16,1,.3,1);
-}
-.info-img-wrap:hover img{transform:scale(1.03)}
-
-/* Placeholder shown when no img src */
-.info-img-placeholder{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
-  pointer-events:none;
-}
-.info-img-placeholder .ph-icon{
-  font-size:2.4rem;opacity:.4;
-}
-.info-img-placeholder .ph-txt{
-  font-family:var(--fb);font-size:.74rem;font-weight:500;
-  color:var(--td60);opacity:.55;letter-spacing:.06em;
-}
-
-/* Image caption tag */
-.info-img-tag{
-  position:absolute;bottom:12px;left:12px;
-  padding:4px 12px;border-radius:20px;
-  font-family:var(--fb);font-size:.92rem;font-weight:700;letter-spacing:.10em;text-transform:uppercase;
-  background:rgba(13,146,216,.82);color:#fff;
-  backdrop-filter:blur(8px);
-  border:1px solid rgba(255,255,255,.28);
-  box-shadow:0 2px 10px rgba(13,146,216,.25);
-}
-[data-theme="dark"] .info-img-tag{
-  background:rgba(90,160,232,.75);
-  box-shadow:0 2px 10px rgba(0,0,0,.50);
-}
-
-/* Detail card */
-.info-card{
-  width:100%;
-  max-width:760px;
-  background:rgba(255,255,255,.65);
-  border:1.5px solid rgba(13,146,216,.16);
-  backdrop-filter:blur(20px) saturate(200%);
-  -webkit-backdrop-filter:blur(20px) saturate(200%);
-  border-radius:var(--r-lg);
-  box-shadow:0 2px 16px rgba(13,146,216,.09),0 1px 0 rgba(255,255,255,.90) inset;
-  padding:28px 30px;
-  transition:background .3s,border-color .3s,box-shadow .3s;
-}
-[data-theme="dark"] .info-card{
-  background:rgba(10,15,40,.78);
-  border-color:rgba(90,160,232,.22);
-  box-shadow:0 2px 16px rgba(0,0,0,.55);
-}
-
-.info-card-header{
-  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
-  margin-bottom:18px;padding-bottom:16px;
-  border-bottom:1px solid rgba(13,146,216,.10);
-}
-[data-theme="dark"] .info-card-header{border-bottom-color:rgba(90,160,232,.12)}
-
-.info-card-title-group{}
-.info-card-eyebrow{
-  font-family:var(--fb);font-size:.64rem;font-weight:700;
-  letter-spacing:.20em;text-transform:uppercase;
-  color:var(--org-500);margin-bottom:5px;
-}
-[data-theme="dark"] .info-card-eyebrow{color:var(--lav)}
-
-.info-card-title{
-  font-family:var(--fd);font-size:1.4rem;font-weight:600;
-  color:var(--td);line-height:1.25;letter-spacing:-.01em;
-}
-
-.info-card-badge{
-  flex-shrink:0;
-  padding:5px 13px;border-radius:20px;
-  font-family:var(--fb);font-size:.92rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  background:rgba(13,146,216,.09);
-  border:1.5px solid rgba(13,146,216,.22);
-  color:var(--org-600);white-space:nowrap;
-}
-[data-theme="dark"] .info-card-badge{
-  background:rgba(90,160,232,.12);
-  border-color:rgba(90,160,232,.30);
-  color:var(--org-700);
-}
-
-.info-card-body{
-  font-size:0.9rem;line-height:1.80;font-weight:300;
-  color:var(--td60);margin-bottom:20px;
-}
-
-.info-card-meta{
-  display:flex;flex-wrap:wrap;gap:8px 20px;
-  margin-bottom:22px;
-}
-.info-meta-item{
-  display:flex;align-items:center;gap:6px;
-  font-size:.75rem;font-weight:400;color:var(--td60);
-}
-.info-meta-item .mi-icon{font-size:.85rem;opacity:.70}
-.info-meta-item .mi-val{font-weight:500;color:var(--td)}
-
-.info-card-divider{
-  height:1px;
-  background:rgba(13,146,216,.08);
-  margin:0 0 20px;
-}
-[data-theme="dark"] .info-card-divider{background:rgba(90,160,232,.10)}
-
-.info-card-footer{
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
-}
-.info-card-link{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:.78rem;font-weight:600;
-  color:var(--org-500);text-decoration:none;
-  transition:color .2s,gap .2s;
-}
-.info-card-link:hover{color:var(--org-A400);gap:9px}
-[data-theme="dark"] .info-card-link{color:var(--org-700)}
-[data-theme="dark"] .info-card-link:hover{color:var(--lav)}
-
-.info-card-tags{display:flex;flex-wrap:wrap;gap:6px}
-.info-tag{
-  padding:3px 10px;border-radius:20px;
-  font-size:.62rem;font-weight:600;letter-spacing:.06em;
-  background:rgba(179,157,219,.12);
-  border:1px solid rgba(179,157,219,.28);
-  color:var(--lav);
-}
-[data-theme="dark"] .info-tag{
-  background:rgba(155,132,216,.14);
-  border-color:rgba(155,132,216,.28);
-  color:var(--lav);
-}
-
-/* Responsive */
-@media(max-width:640px){
-  .info-card{padding:20px 18px}
-  .info-card-header{flex-direction:column;gap:10px}
-  .info-card-badge{align-self:flex-start}
-}
-
-/* ═══════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════ */
-footer{
-  background:linear-gradient(180deg,var(--dark-bg),var(--lav-lt));
-  border-top:1.5px solid rgba(179,157,219,.20);
-  padding:60px 6vw 28px;color:var(--tw);transition:background .4s,border-color .4s;
-}
-[data-theme="dark"] footer{background:linear-gradient(180deg,#060912,#080D1E);border-top-color:rgba(155,132,216,.16)}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
-.fb-name{font-family:var(--fd);font-size:1rem;font-weight:600;margin-bottom:8px;background:linear-gradient(90deg,var(--org-A400),var(--lav));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.fb-desc{font-size:.75rem;color:var(--td60);line-height:1.75;font-weight:300;max-width:230px;margin-top:7px}
-.fb-contact{margin-top:16px;display:flex;flex-direction:column;gap:5px}
-.fb-contact a,.fb-contact span{font-size:.72rem;color:var(--td60);text-decoration:none;transition:color .2s}
-.fb-contact a:hover{color:var(--org-A400)}
-.fc-h5{font-family:var(--fd);font-size:.8rem;font-weight:600;margin-bottom:14px;color:var(--td)}
-.fc-ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.fc-ul li a{font-size:.72rem;color:var(--td60);text-decoration:none;font-weight:300;transition:color .2s}
-.fc-ul li a:hover{color:var(--org-500)}
-[data-theme="dark"] .fc-ul li a:hover{color:var(--org-700)}
-.footer-bottom{padding-top:22px;border-top:1px solid rgba(13,146,216,.10);display:flex;justify-content:space-between;align-items:center;font-size:.69rem;color:var(--td60);gap:16px;flex-wrap:wrap}
-[data-theme="dark"] .footer-bottom{border-top-color:rgba(90,160,232,.10)}
-.footer-bottom a{color:var(--td60);text-decoration:none;transition:color .2s}
-.footer-bottom a:hover{color:var(--org-A400)}
-.acc-row{display:flex;gap:8px}
-.acc-badge{background:rgba(13,146,216,.08);border:1.5px solid rgba(13,146,216,.22);border-radius:7px;padding:3px 10px;font-size:.64rem;font-weight:700;color:var(--org-600);letter-spacing:.04em;transition:box-shadow .3s}
-[data-theme="dark"] .acc-badge{background:rgba(90,160,232,.10);border-color:rgba(90,160,232,.28);color:var(--org-700);box-shadow:0 0 10px rgba(90,160,232,.20)}
-
-/* =====================================
-   SOCIAL MEDIA
-===================================== */
-
-.social_media-links {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    padding: 0;
-    margin: 0;
-}
-
-.social_media-links a {
-    outline: none;
-    -webkit-tap-highlight-color: transparent; /* for mobile */
-}
-
-.social_media-links a:focus,
-.social_media-links a:active {
-    outline: none;
-    box-shadow: none;
-}
-
-.social_media img {
-    width: 38px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.social_media img:hover {
-    transform: scale(1.2);
-}
-/* map */
-
-.map{
-  display: flex;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.map img{
-  width: 280px;
-  display: block;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  border-radius: 15%;
-  opacity: 70%;
-  box-shadow: 0 9px 20px #9776c4;
-}
-
-.map img:hover{
-  transform: scale(1.1) translateY(-5px);
-  box-shadow: 0 10px 26px rgb(146, 85, 167);
-}
-
-/* ═══════════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════════ */
-@media(max-width:960px){
-  :root{--ticker-h:32px}
-  #hero{grid-template-columns:1fr;padding-top:50px}
-  .hero-right{display:none}
-  #about .about-grid{grid-template-columns:1fr}
-  .leaders-grid{grid-template-columns:1fr 1fr}
-  .notices-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .nav-links{display:none}
-  .ham{display:flex}
-  nav{grid-template-columns:1fr auto;padding:8px 12px}
-  .nav-brand{justify-content:flex-start;padding-left:4px}
-  .nav-right{justify-content:flex-end}
-  .btn-apply{display:none}
-  .ticker-label{padding:0 10px;font-size:.57rem}
-  .t-item{padding:0 18px;font-size:.66rem}
-  /* Timeline mobile */
-  .tl-wrap::before{left:20px;transform:none}
-  .tl-row{display:grid;grid-template-columns:42px 1fr;grid-template-rows:auto;gap:0 14px;align-items:start;margin-bottom:32px}
-  .tl-mid{grid-column:1;grid-row:1;display:flex;justify-content:center;padding-top:4px}
-  .tl-row.tl-l .tl-c,.tl-row.tl-r .tl-c{grid-column:2;grid-row:1;text-align:left}
-  .tl-row.tl-l .tl-e,.tl-row.tl-r .tl-e{display:none}
-  .vm-grid{grid-template-columns:1fr}
-}
-
-@media(max-width:640px){
-  :root{--ticker-h:30px}
-  .leaders-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
-  .hero-stats{gap:16px}
-  #cta-sec{padding:60px 6vw}
-  .ticker-label{display:none}
-  .ticker-fade.lft{width:20px}
-  .t-item{padding:0 14px;font-size:.64rem}
-  .tl-wrap::before{left:17px}
-  .tl-row{grid-template-columns:36px 1fr;gap:0 10px}
-  .tl-c{padding:16px 14px}
-  .tl-node{width:36px;height:36px;font-size:.62rem}
-}
-
-@media(max-width:400px){
-  .tb-l .tb-sep,.tb-l a[href="#"],
-  .tb-l{gap:5px}
-}
-
-</style>
+    [data-theme="dark"] {
+      --nm-bg: #1c1e24; --nm-bg-sec: #21232a; --nm-bg-alt: #262830;
+      --nm-out: 10px 10px 26px #0e1016, -10px -10px 26px #2e3140;
+      --nm-out-sm: 5px 5px 13px #10121a, -5px -5px 13px #2a2d3c;
+      --nm-out-lg: 16px 16px 40px #0b0d14, -16px -16px 40px #333650;
+      --nm-out-xl: 22px 22px 55px #090b11, -22px -22px 55px #373a56;
+      --nm-out-glow: 10px 10px 26px #0e1016,-10px -10px 26px #2e3140,0 0 24px rgba(255,110,0,.28),0 0 8px rgba(255,110,0,.16) inset;
+      --nm-in: inset 7px 7px 18px #0e1016, inset -7px -7px 18px #2e3140;
+      --nm-in-sm: inset 3px 3px 9px #10121a, inset -3px -3px 9px #2a2d3c;
+      --nm-in-lg: inset 10px 10px 26px #0b0d14, inset -10px -10px 26px #333650;
+      --acc: #FF6A00; --acc2: #FF8C42; --acc3: #FFB347;
+      --tx-primary: #f0f1f5; --tx-secondary: #b8b8d8; --tx-muted: #6a6e88;
+      --nm-border: rgba(255,255,255,.07); --nm-border-b: rgba(0,0,0,.40);
+    }
+
+    html.theme-switching, html.theme-switching *, html.theme-switching *::before, html.theme-switching *::after {
+      transition: none !important; animation-duration: 0s !important;
+    }
+
+    .skip-link { position:absolute;top:-56px;left:12px;background:var(--acc);color:#fff;padding:10px 18px;border-radius:0 0 var(--r-sm) var(--r-sm);font-family:var(--fb);font-size:.82rem;font-weight:700;text-decoration:none;z-index:9999;transition:top .22s;box-shadow:0 4px 16px rgba(0,0,0,.25); }
+    .skip-link:focus { top:0; }
+    .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+
+    *, *::before, *::after { box-sizing:border-box;margin:0;padding:0; }
+    html { scroll-behavior:smooth; }
+    body { font-family:var(--fb);overflow-x:hidden;background:var(--nm-bg);color:var(--tx-primary);transition:background .4s,color .4s;padding-top:var(--ticker-h); }
+    ::-webkit-scrollbar { width:4px; }
+    ::-webkit-scrollbar-track { background:var(--nm-bg); }
+    ::-webkit-scrollbar-thumb { background:linear-gradient(180deg,var(--acc),var(--acc2));border-radius:4px; }
+    header[id], section[id] { scroll-margin-top:var(--offset); }
+
+    /* ── TICKER ── */
+    #ticker { position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);overflow:hidden;display:flex;align-items:center;background:linear-gradient(90deg,var(--acc) 0%,var(--acc2) 55%,var(--acc3) 100%);box-shadow:0 4px 18px rgba(232,73,106,.35),0 2px 0 rgba(255,255,255,.25) inset; }
+    [data-theme="dark"] #ticker { background:linear-gradient(90deg,#0c0a07,#180f04,#0a0c09);box-shadow:0 5px 24px rgba(0,0,0,.85),0 0 32px rgba(255,106,0,.12);border-bottom:1px solid rgba(255,106,0,.10); }
+    .ticker-label { flex-shrink:0;padding:0 14px;height:100%;display:flex;align-items:center;gap:6px;font-family:var(--fd);font-size:.60rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#fff;white-space:nowrap;background:rgba(255,255,255,.18);border-right:1px solid rgba(255,255,255,.30);z-index:2; }
+    [data-theme="dark"] .ticker-label { background:rgba(255,106,0,.18);border-right-color:rgba(255,106,0,.28);color:#FF8C42; }
+    .ticker-pause-btn { flex-shrink:0;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.40);color:#fff;font-size:.65rem;cursor:pointer;display:flex;align-items:center;justify-content:center;margin:0 8px 0 4px;z-index:2;transition:background .2s; }
+    .ticker-pause-btn:hover { background:rgba(255,255,255,.35); }
+    [data-theme="dark"] .ticker-pause-btn { background:rgba(255,106,0,.18);border-color:rgba(255,106,0,.40);color:#FF8C42; }
+    .ticker-fade { position:absolute;top:0;bottom:0;width:48px;z-index:1;pointer-events:none; }
+    .ticker-fade.lft { left:0;background:linear-gradient(90deg,var(--acc),transparent); }
+    .ticker-fade.rgt { right:0;background:linear-gradient(-90deg,var(--acc3),transparent); }
+    [data-theme="dark"] .ticker-fade.lft { background:linear-gradient(90deg,#0c0a07,transparent); }
+    [data-theme="dark"] .ticker-fade.rgt { background:linear-gradient(-90deg,#0a0c09,transparent); }
+    .ticker-viewport { flex:1;overflow:hidden; }
+    .ticker-track { display:flex;align-items:center;width:max-content;animation:tickerRoll 42s linear infinite;will-change:transform; }
+    .ticker-track:hover, .ticker-track.paused { animation-play-state:paused; }
+    @keyframes tickerRoll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .t-item { display:inline-flex;align-items:center;gap:8px;padding:0 24px;height:var(--ticker-h);font-size:.90rem;font-weight:500;color:rgba(255,255,255,.92);white-space:nowrap;text-decoration:none;transition:color .2s; }
+    .t-item:hover { color:#fff;text-shadow:0 0 14px rgba(255,255,255,.70); }
+    [data-theme="dark"] .t-item { color:rgba(255,180,120,.50); }
+    [data-theme="dark"] .t-item:hover { color:#FF8C42; }
+    .t-sep { width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.45);flex-shrink:0; }
+    .t-badge { display:inline-block;padding:1px 7px;border-radius:8px;font-size:.56rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.28);border:1px solid rgba(255,255,255,.50);color:#fff; }
+    [data-theme="dark"] .t-badge { background:rgba(255,106,0,.18);border-color:rgba(255,106,0,.45);color:#FF8C42; }
+
+    /* ── TOP BAR ── */
+    #topbar {
+      background:var(--nm-bg-alt);
+      border-bottom:1px solid var(--nm-border-b);
+      padding:10px 5vw;
+      /* large screens: side by side */
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:12px;
+      align-items:center;
+      font-size:.82rem;
+      color:var(--tx-secondary);
+      box-shadow:0 3px 10px rgba(0,0,0,.10),0 1px 0 var(--nm-border) inset;
+      transition:background .4s;
+    }
+    [data-theme="dark"] #topbar { background:var(--nm-bg-sec);border-bottom:1px solid rgba(255,106,0,.08);box-shadow:0 4px 16px rgba(0,0,0,.70); }
+    #topbar a { color:var(--tx-secondary);text-decoration:none;transition:color .2s; }
+    #topbar a:hover { color:var(--acc); }
+    .tb-l { display:flex;gap:5px;align-items:center;flex-wrap:wrap; }
+    .tb-sep { opacity:.25; }
+    .tb-r { display:flex;gap:10px;align-items:center;justify-content:flex-end;flex-wrap:wrap; }
+    .credits img { width:120px; }
+    .font-size-controls { display:flex;align-items:center;gap:6px; }
+    .font-size-display { font-size:.62rem;color:var(--tx-secondary);padding:2px 4px;background:var(--nm-bg-alt);border-radius:6px;border:1px solid var(--nm-border);white-space:nowrap;min-width:36px;text-align:center; }
+    .font-size-btn { width:26px;height:26px;border-radius:10px;background:var(--nm-bg);border:1px solid var(--nm-border);box-shadow:var(--nm-out-sm);color:var(--tx-secondary);cursor:pointer;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s; }
+    .font-size-btn:hover { transform:translateY(-1px);color:var(--acc);box-shadow:var(--nm-in-sm); }
+    .font-size-btn:disabled { opacity:.5;cursor:not-allowed; }
+
+    /* ── NAVBAR ── */
+    #nav-wrap { position:sticky;top:var(--ticker-h);z-index:800;display:flex;justify-content:center;align-items:center;gap:16px;padding:10px 3vw;pointer-events:none; }
+    nav { pointer-events:all;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:var(--nm-bg);box-shadow:var(--nm-out);border-radius:60px;border:1px solid var(--nm-border);padding:8px 16px;width:100%;max-width:var(--nav-max-width);min-height:var(--nav-h);transition:box-shadow .3s,background .4s;animation:navIn .6s cubic-bezier(.16,1,.3,1) both; }
+    @keyframes navIn { from{opacity:0;transform:translateY(-24px)} to{opacity:1;transform:none} }
+    nav.sc { box-shadow:var(--nm-out-lg); }
+    [data-theme="dark"] nav { box-shadow:var(--nm-out);border-color:rgba(255,106,0,.06); }
+    .nav-brand { display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;justify-content:center; }
+    .nav-logo img { width:43px;margin-top:5.5px; }
+    .brand-txt .abbr { font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+    [data-theme="dark"] .brand-txt .abbr { background:linear-gradient(90deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+    .nav-links { display:flex;list-style:none;gap:2px;justify-content:flex-start; }
+    .nav-links a { display:block;padding:8px 13px;font-family:var(--fb);font-size:.78rem;font-weight:500;color:var(--tx-secondary);text-decoration:none;border-radius:30px;transition:color .25s,box-shadow .25s;white-space:nowrap; }
+    .nav-links a:hover, .nav-links a.act { color:var(--acc);box-shadow:var(--nm-in-sm); }
+    [data-theme="dark"] .nav-links a:hover, [data-theme="dark"] .nav-links a.act { color:#FF8C42;box-shadow:var(--nm-in-sm); }
+    .nav-right { display:flex;justify-content:flex-end;align-items:center;gap:10px; }
+
+    /* Search bar */
+    .nav-search-bar { position:relative;width:100%;max-width:400px;margin:5px auto 0;padding:8px 14px;border-radius:28px;pointer-events:all; }
+    .nav-search-input { width:100%;padding:8px 40px 8px 14px;border:1px solid rgb(242,213,174);border-radius:999px;background:rgb(252,246,238);color:var(--tx-primary);font-family:var(--fb);font-size:.9rem;box-shadow:inset 1px 1px 4px rgba(0,0,0,.05); }
+    .nav-search-input:focus { outline:none;border-color:var(--acc);box-shadow:0 0 0 4px rgba(246,150,72,.12); }
+    [data-theme="dark"] .nav-search-input { color:#1e2236;background:bisque;border:1px solid var(--acc); }
+    .nav-search-submit { position:absolute;right:22px;top:50%;transform:translateY(-50%);width:30px;height:30px;padding:0;border:none;background:transparent;color:var(--tx-secondary);cursor:pointer;display:flex;align-items:center;justify-content:center; }
+    .nav-search-submit:hover { color:var(--acc); }
+    .nav-search-submit svg { width:18px;height:18px;stroke:currentColor; }
+
+    .btn-apply { display:inline-flex;align-items:center;padding:9px 24px;border-radius:var(--r-xl);font-family:var(--fb);font-size:.78rem;font-weight:700;text-decoration:none;color:#fff;background:linear-gradient(145deg,var(--acc),#c22050);box-shadow:6px 6px 14px rgba(160,20,50,.45),-3px -3px 8px rgba(255,255,255,.25),0 2px 0 rgba(255,255,255,.18) inset;transition:box-shadow .22s;white-space:nowrap;flex-shrink:0; }
+    .btn-apply:hover { box-shadow:inset 4px 4px 10px rgba(140,10,40,.50),inset -2px -2px 6px rgba(255,255,255,.10);color:#fff; }
+    [data-theme="dark"] .btn-apply { background:linear-gradient(145deg,#FF6A00,#c94a00);box-shadow:6px 6px 16px rgba(0,0,0,.55),-4px -4px 10px rgba(255,255,255,.05),0 0 18px rgba(255,106,0,.32); }
+
+    .theme-toggle { display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);cursor:pointer;flex-shrink:0;transition:box-shadow .25s;position:relative;overflow:hidden; }
+    .theme-toggle:hover { box-shadow:var(--nm-in-sm); }
+    .theme-toggle .ico-sun, .theme-toggle .ico-moon { position:absolute;font-size:1rem;transition:opacity .35s,transform .4s cubic-bezier(.16,1,.3,1); }
+    .theme-toggle .ico-sun { opacity:1;transform:scale(1) rotate(0deg); }
+    .theme-toggle .ico-moon { opacity:0;transform:scale(.4) rotate(-90deg); }
+    [data-theme="dark"] .theme-toggle .ico-sun { opacity:0;transform:scale(.4) rotate(90deg); }
+    [data-theme="dark"] .theme-toggle .ico-moon { opacity:1;transform:scale(1) rotate(0deg); }
+
+    .ham { display:none;width:36px;height:36px;border-radius:var(--r-sm);background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:4px;flex-shrink:0;transition:box-shadow .2s;padding:0; }
+    .ham:hover { box-shadow:var(--nm-in-sm); }
+    .ham span { display:block;width:15px;height:1.5px;background:var(--tx-secondary);border-radius:2px;transition:transform .3s cubic-bezier(.16,1,.3,1),opacity .25s,width .3s; }
+    .ham.open span:nth-child(1) { transform:translateY(5.5px) rotate(45deg); }
+    .ham.open span:nth-child(2) { opacity:0;width:0; }
+    .ham.open span:nth-child(3) { transform:translateY(-5.5px) rotate(-45deg); }
+
+    /* ── MOBILE DRAWER ── */
+    #mob-overlay { position:fixed;inset:0;z-index:1998;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .3s; }
+    #mob-overlay.show { opacity:1;pointer-events:all; }
+    #mob-menu { position:fixed;top:0;right:0;bottom:0;width:min(300px,86vw);z-index:1999;background:var(--nm-bg);box-shadow:-10px 0 40px rgba(0,0,0,.25);border-left:1px solid var(--nm-border-b);transform:translateX(100%);visibility:hidden;transition:transform .35s cubic-bezier(.16,1,.3,1),visibility .35s;overflow-y:auto;padding:72px 20px 40px;display:flex;flex-direction:column;gap:0; }
+    #mob-menu.open { transform:translateX(0);visibility:visible; }
+    [data-theme="dark"] #mob-menu { box-shadow:-10px 0 50px rgba(0,0,0,.80);border-left:1px solid rgba(255,106,0,.08); }
+    .mob-header { position:absolute;top:0;left:0;right:0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--nm-border-b);background:var(--nm-bg); }
+    .mob-title { font-family:var(--fd);font-size:.9rem;color:var(--tx-primary);font-weight:700; }
+    .mob-close { width:34px;height:34px;border-radius:50%;background:var(--nm-bg);box-shadow:var(--nm-out-sm);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--acc);font-size:1rem;border:1px solid var(--nm-border);transition:box-shadow .2s; }
+    .mob-close:hover { box-shadow:var(--nm-in-sm); }
+    .mob-a { display:block;padding:11px 16px;border-radius:var(--r-sm);font-size:.85rem;font-weight:500;color:var(--tx-secondary);text-decoration:none;transition:box-shadow .2s,color .2s;margin:3px 0; }
+    .mob-a:hover { color:var(--acc);box-shadow:var(--nm-in-sm);background:var(--nm-bg); }
+    [data-theme="dark"] .mob-a:hover { color:#FF8C42; }
+    .mob-divider { height:1px;background:var(--nm-border-b);margin:8px 0; }
+    .mob-section-lbl { font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);padding:6px 16px 2px;font-weight:700; }
+    .mob-cta { display:block;margin-top:16px;text-align:center;text-decoration:none;padding:12px 20px;border-radius:var(--r-xl);background:linear-gradient(145deg,var(--acc),#c22050);color:#fff;font-size:.85rem;font-weight:700;box-shadow:4px 4px 14px rgba(200,30,70,.40),-2px -2px 6px rgba(255,255,255,.20); }
+
+    /* ── BUTTONS ── */
+    .btn { position:relative;display:inline-flex;align-items:center;gap:7px;padding:12px 26px;border-radius:var(--r-xl);font-family:var(--fb);font-size:.85rem;font-weight:600;cursor:pointer;border:none;outline:none;text-decoration:none;overflow:hidden;transition:transform .2s,box-shadow .2s; }
+    .btn:active { transform:scale(.97); }
+    .btn:focus-visible { outline:2px solid var(--acc);outline-offset:3px; }
+    .btn-ocean { background:linear-gradient(145deg,var(--acc),#c22050);color:#fff;box-shadow:6px 6px 16px rgba(200,30,70,.40),-4px -4px 10px rgba(255,255,255,.22),0 2px 0 rgba(255,255,255,.18) inset; }
+    .btn-ocean:hover { box-shadow:inset 4px 4px 10px rgba(150,10,40,.45),inset -2px -2px 6px rgba(255,255,255,.12); }
+    [data-theme="dark"] .btn-ocean { background:linear-gradient(145deg,#FF6A00,#c94a00);box-shadow:6px 6px 18px rgba(0,0,0,.65),-4px -4px 10px rgba(255,255,255,.04),0 0 20px rgba(255,106,0,.35); }
+    .btn-ghost { background:var(--nm-bg);color:var(--tx-secondary);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);transition:box-shadow .22s,color .22s; }
+    .btn-ghost:hover { box-shadow:var(--nm-in-sm);color:var(--acc); }
+    [data-theme="dark"] .btn-ghost:hover { color:#FF8C42;box-shadow:var(--nm-in-sm); }
+    .rpl { position:absolute;border-radius:50%;background:rgba(255,255,255,.35);transform:scale(0);animation:ripAnim .5s ease-out forwards;pointer-events:none; }
+    @keyframes ripAnim { to{transform:scale(16);opacity:0} }
+
+    /* ── SCROLL REVEAL ── */
+    .rev { opacity:0;transform:translateY(28px);transition:opacity .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1); }
+    .rev.vis { opacity:1;transform:none; }
+
+    /* ── SECTION SYSTEM ── */
+    .sec { padding:96px 6vw;transition:background .4s; }
+    .light-sec { background:var(--nm-bg); }
+    .dark-sec { background:var(--nm-bg-sec); }
+    .white-sec { background:var(--nm-bg-alt); }
+    .sec-lbl { font-family:var(--fb);font-size:.68rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;margin-bottom:10px;color:var(--acc); }
+    [data-theme="dark"] .sec-lbl { color:#FF6A00;text-shadow:0 0 12px rgba(255,106,0,.50); }
+    .sec-title { font-family:var(--fd);font-size:clamp(1.9rem,3vw,2.8rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;color:var(--tx-primary); }
+    .sec-sub { font-size:.9rem;line-height:1.8;font-weight:400;margin-top:12px;max-width:560px;color:var(--tx-secondary); }
+    .sec-hd { margin-bottom:52px; }
+    .sec-hd.center { text-align:center; }
+    .sec-hd.center .sec-sub { margin:12px auto 0; }
+    .sec-top-link { display:block;text-align:right;margin-top:36px;padding-top:12px;border-top:1px solid var(--nm-border-b);font-size:.68rem;font-weight:600;letter-spacing:.08em;color:var(--tx-muted);text-decoration:none;transition:color .2s; }
+    .sec-top-link:hover { color:var(--acc); }
+
+    /* ── HERO / BANNER ── */
+    #page-banner { background:var(--nm-bg);padding:60px 6vw 50px;display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center;position:relative;transition:background .4s; }
+    #page-banner::before { content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.05) 1px,transparent 1px);background-size:28px 28px;pointer-events:none; }
+    [data-theme="dark"] #page-banner::before { background-image:radial-gradient(circle,rgba(255,106,0,.05) 1px,transparent 1px); }
+    #page-banner > * { position:relative;z-index:1; }
+
+    .banner-breadcrumb { display:inline-flex;align-items:center;gap:6px;font-size:.70rem;font-weight:600;color:var(--tx-muted);background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);border-radius:40px;padding:5px 16px;margin-bottom:24px;animation:fadeUp .7s .1s both;text-decoration:none; }
+    .banner-breadcrumb:hover { color:var(--acc);box-shadow:var(--nm-in-sm); }
+    .banner-breadcrumb span { color:var(--acc); }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+
+    .banner-eyebrow { display:inline-flex;align-items:center;gap:8px;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);border-radius:40px;padding:6px 18px 6px 12px;font-size:.72rem;color:var(--tx-secondary);margin-bottom:20px;animation:fadeUp .7s .25s both;font-weight:600; }
+    .live-dot { width:8px;height:8px;border-radius:50%;background:var(--acc3);box-shadow:0 0 10px rgba(61,184,151,.80);animation:pulse-light 2s ease-in-out infinite; }
+    @keyframes pulse-light { 0%,100%{box-shadow:0 0 10px rgba(61,184,151,.70)} 50%{box-shadow:0 0 18px rgba(61,184,151,1)} }
+
+    .banner-title { font-family:var(--fd);font-size:clamp(2rem,4vw,3.4rem);font-weight:800;line-height:.96;letter-spacing:-.03em;animation:fadeUp .7s .35s both;color:var(--tx-primary); }
+    .banner-title .acc { background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+    [data-theme="dark"] .banner-title .acc { background:linear-gradient(90deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+    .banner-sub { margin-top:16px;font-size:.92rem;line-height:1.75;color:var(--tx-secondary);font-weight:400;max-width:460px;animation:fadeUp .7s .5s both; }
+
+    .banner-meta { display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;animation:fadeUp .7s .62s both; }
+    .b-meta-pill { display:inline-flex;align-items:center;gap:7px;padding:8px 18px;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);border-radius:40px;font-size:.74rem;font-weight:600;color:var(--tx-secondary); }
+    .b-meta-pill .bm-icon { font-size:.85rem; }
+    .b-meta-pill .bm-val { color:var(--acc);font-weight:700; }
+    [data-theme="dark"] .b-meta-pill .bm-val { color:#FF8C42; }
+
+    .banner-btns { display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;animation:fadeUp .7s .75s both; }
+
+    /* Photo card */
+    .vc-photo-wrap { animation:fadeUp .7s .4s both; }
+    .vc-photo-card { background:var(--nm-bg);border-radius:var(--r-lg);box-shadow:var(--nm-out-xl);border:1px solid var(--nm-border);overflow:hidden;position:relative; }
+    [data-theme="dark"] .vc-photo-card { box-shadow:20px 20px 55px #020203,-20px -20px 55px #292d36,0 0 30px rgba(255,106,0,.08);border-color:rgba(255,106,0,.07); }
+    .vc-photo-card img { width:100%;display:block;object-fit:cover;object-position:top center; }
+    .photo-badge { position:absolute;bottom:16px;left:16px;right:16px;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);border-radius:var(--r-md);padding:12px 18px;display:flex;align-items:center;gap:12px; }
+    .photo-badge-ico { width:38px;height:38px;border-radius:50%;background:linear-gradient(145deg,var(--acc),var(--acc2));box-shadow:var(--nm-out-sm);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0; }
+    [data-theme="dark"] .photo-badge-ico { background:linear-gradient(145deg,#FF6A00,#FF8C42); }
+    .photo-badge-txt .pb-name { font-family:var(--fd);font-size:.82rem;font-weight:700;color:var(--tx-primary); }
+    .photo-badge-txt .pb-role { font-size:.70rem;color:var(--acc);font-weight:600;margin-top:2px; }
+    [data-theme="dark"] .photo-badge-txt .pb-role { color:#FF8C42; }
+
+    /* ── PROFILE SECTION ── */
+    #profile { background:var(--nm-bg-sec); }
+    .profile-grid { display:grid;grid-template-columns:1fr 1fr;gap:28px; }
+    .profile-card { padding:30px;background:var(--nm-bg-sec);border-radius:var(--r-lg);box-shadow:var(--nm-out);border:1px solid var(--nm-border);transition:box-shadow .3s; }
+    .profile-card:hover { box-shadow:var(--nm-out-lg); }
+    [data-theme="dark"] .profile-card { box-shadow:var(--nm-out);border-color:rgba(255,106,0,.07); }
+    [data-theme="dark"] .profile-card:hover { box-shadow:var(--nm-out-glow, var(--nm-out-lg)); }
+    .profile-card.wide { grid-column:1 / -1; }
+    .pc-header { display:flex;align-items:center;gap:14px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--nm-border-b); }
+    .pc-icon { width:46px;height:46px;border-radius:var(--r-md);background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0; }
+    .pc-title { font-family:var(--fd);font-size:.95rem;font-weight:700;color:var(--tx-primary); }
+    .pc-sub { font-size:.72rem;color:var(--acc);font-weight:600;margin-top:2px; }
+    [data-theme="dark"] .pc-sub { color:#FF8C42; }
+    .pc-body { font-size:.84rem;line-height:1.80;color:var(--tx-secondary);font-weight:400; }
+    .pc-list { list-style:none;display:flex;flex-direction:column;gap:10px; }
+    .pc-list li { display:flex;align-items:flex-start;gap:10px;font-size:.83rem;color:var(--tx-secondary);line-height:1.6; }
+    .pc-list li::before { content:'';width:6px;height:6px;border-radius:50%;background:var(--acc);flex-shrink:0;margin-top:7px; }
+    [data-theme="dark"] .pc-list li::before { background:#FF8C42; }
+
+    /* stat pills */
+    .stat-row { display:flex;flex-wrap:wrap;gap:12px;margin-top:18px; }
+    .stat-pill { display:flex;align-items:center;gap:8px;padding:10px 18px;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);border-radius:40px; }
+    .stat-pill .sp-num { font-family:var(--fd);font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+    [data-theme="dark"] .stat-pill .sp-num { background:linear-gradient(135deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+    .stat-pill .sp-lbl { font-size:.70rem;color:var(--tx-muted);font-weight:400; }
+
+    /* awards grid */
+    .awards-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px; }
+    .award-item { padding:18px 16px;background:var(--nm-bg);border-radius:var(--r-md);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);text-align:center;transition:box-shadow .25s; }
+    .award-item:hover { box-shadow:var(--nm-in-sm); }
+    .award-icon { font-size:1.6rem;margin-bottom:8px;display:block; }
+    .award-name { font-family:var(--fd);font-size:.78rem;font-weight:700;color:var(--tx-primary);margin-bottom:4px; }
+    .award-desc { font-size:.70rem;color:var(--tx-muted);line-height:1.5; }
+
+    /* timeline */
+    .timeline { display:flex;flex-direction:column;gap:0; }
+    .tl-item { display:flex;gap:16px;position:relative; }
+    .tl-item:not(:last-child)::before { content:'';position:absolute;left:17px;top:36px;bottom:-4px;width:2px;background:var(--nm-border-b); }
+    .tl-dot { width:36px;height:36px;border-radius:50%;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:2px solid var(--nm-border);display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0;margin-top:4px;position:relative;z-index:1; }
+    .tl-dot.active { background:linear-gradient(145deg,var(--acc),var(--acc2));border-color:var(--acc);box-shadow:var(--nm-out-sm); }
+    [data-theme="dark"] .tl-dot.active { background:linear-gradient(145deg,#FF6A00,#FF8C42);border-color:#FF6A00; }
+    .tl-content { padding:4px 0 24px; }
+    .tl-year { font-size:.68rem;font-weight:700;color:var(--acc);letter-spacing:.08em;margin-bottom:3px; }
+    [data-theme="dark"] .tl-year { color:#FF8C42; }
+    .tl-title { font-family:var(--fd);font-size:.88rem;font-weight:700;color:var(--tx-primary);margin-bottom:4px; }
+    .tl-note { font-size:.78rem;color:var(--tx-secondary);line-height:1.6; }
+
+    /* ── QUICK LINKS ── */
+    #quicklinks { background:var(--nm-bg-alt);padding-left:0;padding-right:0; }
+    #quicklinks .sec-hd { text-align:center;padding:0 6vw; }
+    .ql-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;padding:0 6vw; }
+    .ql-card { border-radius:var(--r-md);padding:26px 16px;text-align:center;text-decoration:none;background:var(--nm-bg-alt);box-shadow:var(--nm-out-sm);border:1px solid rgba(0,208,255,.508);transition:box-shadow .22s,color .22s;color:var(--tx-primary); }
+    .ql-card:hover { box-shadow:var(--nm-in-sm);color:var(--acc); }
+    [data-theme="dark"] .ql-card { box-shadow:var(--nm-out-sm); }
+    [data-theme="dark"] .ql-card:hover { box-shadow:var(--nm-in-sm); }
+    .ql-ico { font-size:1.65rem;display:block;margin-bottom:10px; }
+    .ql-nm { font-size:.76rem;font-weight:600; }
+    .ql-img { width:100%;height:auto;aspect-ratio:4/3;border-radius:10%;overflow:hidden;background:var(--nm-bg-alt);border:1px solid var(--nm-border); }
+
+    /* ── GOV SITES ── */
+    #gov_sites { background:var(--nm-bg-sec);padding:52px 20px;overflow:hidden;text-align:center; }
+    .gallery-eyebrow { display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-bottom:14px; }
+    [data-theme="dark"] .gallery-eyebrow { color:#FF6A00; }
+    .students_site { display:flex;justify-content:center;width:100%; }
+    .students_site_link { display:flex;flex-wrap:wrap;justify-content:center;gap:32px;list-style:none;padding:20px 10px;margin:0;max-width:900px;width:100%; }
+    .students_site_link li a { display:block;padding:14px;border-radius:var(--r-md);background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);transition:box-shadow .25s; }
+    .students_site_link li a:hover { box-shadow:var(--nm-in-sm); }
+    [data-theme="dark"] .students_site_link li a { border-color:rgba(255,106,0,.06); }
+    .students_site_link li a img { width:80px;height:auto;display:block; }
+
+    /* ── CTA ── */
+    #cta-sec { background:var(--nm-bg);padding:86px 6vw;text-align:center;transition:background .4s; }
+    .cta-inner { display:inline-block;padding:50px 60px;border-radius:var(--r-lg);background:var(--nm-bg-sec);box-shadow:var(--nm-in-lg);border:1px solid var(--nm-border);max-width:700px;width:100%; }
+    [data-theme="dark"] .cta-inner { border-color:rgba(255,106,0,.07); }
+    .cta-title { font-family:'Trebuchet MS',Arial,sans-serif;font-size:clamp(1.7rem,3.2vw,2.8rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px;color:var(--tx-primary); }
+    .cta-sub { font-size:.9rem;color:var(--tx-secondary);font-weight:400;margin-bottom:30px; }
+    .cta-btns { display:flex;gap:14px;justify-content:center;flex-wrap:wrap; }
+
+    /* ── FOOTER ── */
+    footer { background:var(--nm-bg-sec);border-top:1px solid var(--nm-border-b);padding:60px 6vw 28px;color:var(--tx-primary);transition:background .4s;box-shadow:0 -4px 16px rgba(0,0,0,.06); }
+    [data-theme="dark"] footer { border-top-color:rgba(255,106,0,.07);box-shadow:0 -4px 24px rgba(0,0,0,.60); }
+    .footer-grid { display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px; }
+    .fb-name { font-family:var(--fd);font-size:1rem;font-weight:700;margin-bottom:8px;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+    [data-theme="dark"] .fb-name { background:linear-gradient(90deg,#FF6A00,#FF8C42);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
+    .fb-desc { font-size:.75rem;color:var(--tx-secondary);line-height:1.75;font-weight:400;max-width:230px;margin-top:7px; }
+    .fb-contact { margin-top:16px;display:flex;flex-direction:column;gap:5px; }
+    .fb-contact a, .fb-contact span { font-size:.72rem;color:var(--tx-secondary);text-decoration:none;transition:color .2s; }
+    .fb-contact a:hover { color:var(--acc); }
+    .fc-h5 { font-family:var(--fd);font-size:.8rem;font-weight:700;margin-bottom:14px;color:var(--tx-primary); }
+    .fc-ul { list-style:none;display:flex;flex-direction:column;gap:8px; }
+    .fc-ul li a { font-size:.72rem;color:var(--tx-secondary);text-decoration:none;font-weight:400;transition:color .2s; }
+    .fc-ul li a:hover { color:var(--acc); }
+    .footer-bottom { padding-top:22px;border-top:1px solid var(--nm-border-b);display:flex;justify-content:space-between;align-items:center;font-size:.69rem;color:var(--tx-muted);gap:16px;flex-wrap:wrap; }
+    .footer-bottom a { color:var(--tx-muted);text-decoration:none;transition:color .2s; }
+    .footer-bottom a:hover { color:var(--acc); }
+    .acc-row { display:flex;gap:9px;flex-wrap:wrap; }
+    .acc-badge { background:var(--nm-bg);box-shadow:var(--nm-in-sm);border-radius:9px;padding:4px 12px;font-size:.64rem;font-weight:700;color:var(--acc);letter-spacing:.04em;border:1px solid var(--nm-border); }
+    .map { display:flex;padding:20px;justify-content:center;align-items:center; }
+    .map img { width:280px;display:block;border-radius:22px;box-shadow:var(--nm-out-lg);border:1px solid var(--nm-border);opacity:.88;transition:box-shadow .3s; }
+    .map img:hover { box-shadow:var(--nm-out-xl); }
+    .social_media-links { list-style:none;display:flex;gap:10px;padding:0;margin:0;flex-wrap:wrap; }
+    .social_media-links li a { display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--nm-bg);box-shadow:var(--nm-out-sm);border:1px solid var(--nm-border);transition:box-shadow .25s; }
+    .social_media-links li a:hover { box-shadow:var(--nm-in-sm); }
+    .social_media img { width:26px;height:26px;object-fit:contain;display:block; }
+
+    /* ── SCROLL TO TOP ── */
+    #scroll-btn { position:fixed;bottom:40px;right:40px;width:50px;height:50px;border-radius:50%;background:var(--acc);border:2px solid var(--nm-border);box-shadow:var(--nm-out-sm);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:999;transition:all .3s;opacity:0;pointer-events:none; }
+    #scroll-btn.show { opacity:1;pointer-events:all; }
+    #scroll-btn:hover { box-shadow:var(--nm-out); }
+    #scroll-btn svg { width:22px;height:22px;stroke:#fff;stroke-width:2.5;fill:none; }
+    [data-theme="dark"] #scroll-btn { background:var(--nm-bg-sec);border-color:rgba(255,106,0,.75); }
+    [data-theme="dark"] #scroll-btn svg { stroke:#FF6A00; }
+
+    /* ══ RESPONSIVE ══ */
+    @media(max-width:960px) {
+      #page-banner { grid-template-columns:1fr;gap:32px; }
+      .banner-photo-col { order:-1; }
+      .vc-photo-card img { max-height:360px; }
+      .profile-grid { grid-template-columns:1fr; }
+      .profile-card.wide { grid-column:1; }
+      .footer-grid { grid-template-columns:1fr 1fr;gap:24px; }
+      .footer-grid > div:first-child { grid-column:1 / -1; }
+      .nav-links { display:none; }
+      .ham { display:flex; }
+      nav { grid-template-columns:1fr auto;padding:8px 12px; }
+      .btn-apply { display:none; }
+      :root { --ticker-h:32px; }
+    }
+
+    /* ── TOPBAR RESPONSIVE: stack on small screens ── */
+    @media(max-width:768px) {
+      #topbar {
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
+        padding:8px 4vw;
+      }
+      .tb-r {
+        width:100%;
+        justify-content:flex-start;
+        flex-wrap:wrap;
+        gap:8px;
+      }
+      .credits img { width:90px; }
+    }
+
+    @media(max-width:640px) {
+      #page-banner { padding:40px 4vw; }
+      .awards-grid { grid-template-columns:1fr 1fr; }
+      .footer-grid { grid-template-columns:1fr; }
+      .cta-inner { padding:28px 16px; }
+      .ql-grid { grid-template-columns:repeat(3,1fr); }
+      #scroll-btn { bottom:28px;right:20px; }
+      :root { --ticker-h:30px; }
+      .tb-l { font-size:.70rem;gap:3px 5px; }
+      .tb-sep { display:none; }
+      .tb-l a, .tb-l span:not(.tb-sep) {
+        background:var(--nm-bg);
+        padding:2px 8px;
+        border-radius:20px;
+        box-shadow:var(--nm-out-sm);
+        border:1px solid var(--nm-border);
+        font-size:.68rem;
+      }
+    }
+
+    @media(max-width:480px) {
+      .ql-grid { grid-template-columns:repeat(2,1fr); }
+      .awards-grid { grid-template-columns:1fr; }
+      .credits img { width:75px; }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      *,*::before,*::after { animation-duration:.01ms !important;transition-duration:.01ms !important; }
+      .ticker-track { animation:none !important; }
+      .rev { opacity:1 !important;transform:none !important; }
+    }
+  </style>
 </head>
 <body>
-  <!-- ══════ FIXED TICKER ══════ -->
-<div id="ticker" role="marquee" aria-label="Important announcements">
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ══════ FIXED TICKER ══════ -->
+<div id="ticker" role="marquee" aria-label="Important university announcements">
   <div class="ticker-label">📢 Updates</div>
+  <button class="ticker-pause-btn" id="ticker-pause-btn" aria-label="Pause announcements" aria-pressed="false">⏸</button>
   <div class="ticker-fade lft"></div>
   <div class="ticker-viewport">
     <div class="ticker-track" id="ticker-track">
-      <!-- SET A -->
-      <a href="#notices-sec" class="t-item">CUSB Admission Bulletin 2026 (CUET-PG) <span class="t-badge">NEW</span></a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">NCET-2026 — 4-Year Integrated Teacher Education Programme <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#" class="t-item">CUSB Admission Bulletin 2026 (CUET-PG) <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#" class="t-item">NCET-2026 — 4-Year Integrated Teacher Education Programme <span class="t-badge">NEW</span></a><span class="t-sep"></span>
       <a href="#cta-sec" class="t-item">Admissions Open 2026–27 — Apply Now →</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">45th INCA International Congress — CUSB, March 2026</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Competition on Smart Design for Website Development — Register from 14 Feb 2026</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Ph.D. Admission Notice — All Departments</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Recruitment Notification — Non-Teaching Posts</a><span class="t-sep"></span>
-      <a href="#about" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Semester Exam Schedule — Even Semester 2025–26</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">NAAC Peer Team Visit Preparation — Circular Available</a><span class="t-sep"></span>
-      <!-- SET B — exact mirror for seamless loop -->
-      <a href="#notices-sec" class="t-item">CUSB Admission Bulletin 2026 (CUET-PG) <span class="t-badge">NEW</span></a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">NCET-2026 — 4-Year Integrated Teacher Education Programme <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#" class="t-item">45th INCA International Congress — CUSB, March 2026</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Competition on Smart Design for Website Development — Register from 14 Feb 2026</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Ph.D. Admission Notice — All Departments</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Recruitment Notification — Non-Teaching Posts</a><span class="t-sep"></span>
+      <a href="#" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Semester Exam Schedule — Even Semester 2025–26</a><span class="t-sep"></span>
+      <a href="#" class="t-item">NAAC Peer Team Visit Preparation — Circular Available</a><span class="t-sep"></span>
+      <!-- mirror -->
+      <a href="#" class="t-item">CUSB Admission Bulletin 2026 (CUET-PG) <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#" class="t-item">NCET-2026 — 4-Year Integrated Teacher Education Programme <span class="t-badge">NEW</span></a><span class="t-sep"></span>
       <a href="#cta-sec" class="t-item">Admissions Open 2026–27 — Apply Now →</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">45th INCA International Congress — CUSB, March 2026</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Competition on Smart Design for Website Development — Register from 14 Feb 2026</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Ph.D. Admission Notice — All Departments</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Recruitment Notification — Non-Teaching Posts</a><span class="t-sep"></span>
-      <a href="#about" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">Semester Exam Schedule — Even Semester 2025–26</a><span class="t-sep"></span>
-      <a href="#notices-sec" class="t-item">NAAC Peer Team Visit Preparation — Circular Available</a><span class="t-sep"></span>
+      <a href="#" class="t-item">45th INCA International Congress — CUSB, March 2026</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Competition on Smart Design for Website Development — Register from 14 Feb 2026</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Ph.D. Admission Notice — All Departments</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Recruitment Notification — Non-Teaching Posts</a><span class="t-sep"></span>
+      <a href="#" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
+      <a href="#" class="t-item">Semester Exam Schedule — Even Semester 2025–26</a><span class="t-sep"></span>
+      <a href="#" class="t-item">NAAC Peer Team Visit Preparation — Circular Available</a><span class="t-sep"></span>
     </div>
   </div>
   <div class="ticker-fade rgt"></div>
@@ -786,170 +476,379 @@ footer{
 <div id="mob-overlay"></div>
 
 <!-- ══════ MOBILE DRAWER ══════ -->
-<div id="mob-menu">
+<div id="mob-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
   <div class="mob-header">
     <span class="mob-title">CUSB</span>
     <button class="mob-close" id="mob-close-btn" type="button" aria-label="Close menu">✕</button>
   </div>
   <div class="mob-section-lbl">Navigation</div>
   <a class="mob-a" href="index.html">Home</a>
-  <a class="mob-a" href="#about">About the University</a>
+  <a class="mob-a" href="About_cusb.html">About the University</a>
   <div class="mob-divider"></div>
   <div class="mob-section-lbl">Administration</div>
+  <a class="mob-a" href="administration.html">Administration</a>
   <a class="mob-a" href="president.html">Visitor</a>
   <a class="mob-a" href="chancellor.html">Chancellor</a>
-  <a class="mob-a" href="vc.html">Vice-Chancellor</a>
+  <a class="mob-a" href="vc.html" style="color:var(--acc)">Vice-Chancellor ←</a>
   <div class="mob-divider"></div>
   <div class="mob-section-lbl">Academics</div>
-  <a class="mob-a" href="academics.html">Programs &amp; Courses</a>
+  <a class="mob-a" href="courses.html">Programs &amp; Courses</a>
   <div class="mob-divider"></div>
   <div class="mob-section-lbl">Campus Life</div>
   <a class="mob-a" href="campus.html">Campus</a>
-  <div class="mob-divider"></div>
-  <div class="mob-section-lbl">Notices &amp; Events</div>
-  <a class="mob-a" href="IQAC.html">IQAC</a>
   <div class="mob-divider"></div>
   <div class="mob-section-lbl">Students</div>
   <a class="mob-a" href="#quicklinks">Quick Links</a>
   <a class="mob-a" href="#gov_sites">Gov Links</a>
   <a class="mob-cta" href="#cta-sec">Apply 2026–27 →</a>
 </div>
+
 <!-- ══════ TOP BAR ══════ -->
-<div id="topbar">
+<div id="topbar" role="banner">
   <div class="tb-l">
     <span>☎ 0631-2229 530</span>
     <span class="tb-sep">|</span>
     <a href="mailto:admission@cusb.ac.in">✉ admission@cusb.ac.in</a>
     <span class="tb-sep">|</span>
-    <a href="#">RTI</a>
+    <a href="https://rtionline.gov.in/" target="_blank" rel="noopener">RTI</a>
     <span class="tb-sep">|</span>
-    <a href="#">Public Self Disclosure</a>
+    <a href="#" aria-disabled="true" tabindex="-1">Public Self Disclosure</a>
     <span class="tb-sep">|</span>
-    <a href="#">Webmail</a>
+    <a href="#" aria-disabled="true" tabindex="-1">Webmail</a>
     <span class="tb-sep">|</span>
-    <a href="#">Feedback</a>
+    <a href="#" aria-disabled="true" tabindex="-1">Feedback</a>
     <span class="tb-sep">|</span>
-    <a href="http://naac.gov.in/" target="_blank">NAAC</a>
+    <a href="http://naac.gov.in/" target="_blank" rel="noopener">NAAC</a>
+  </div>
+  <div class="tb-r">
+    <div class="font-size-controls" role="group" aria-label="Text size controls">
+      <button class="font-size-btn" id="font-decrease-btn" aria-label="Decrease font size">−</button>
+      <span style="font-size:.75rem;color:var(--tx-secondary);" aria-hidden="true">A</span>
+      <button class="font-size-btn" id="font-increase-btn" aria-label="Increase font size">+</button>
+      <span class="font-size-display" id="font-size-display" aria-live="polite"></span>
+    </div>
+    <div class="credits"><img src="NAAC.png" loading="lazy" alt="NAAC Accreditation" onerror="this.style.display='none'"></div>
+    <div class="credits"><img src="viksit.png" loading="lazy" alt="Viksit Bharat" onerror="this.style.display='none'"></div>
   </div>
 </div>
 
 <!-- ══════ NAVBAR ══════ -->
 <div id="nav-wrap">
-  <nav>
-    <a href="v1.html" class="nav-brand">
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="nav-brand" aria-label="CUSB Homepage">
       <div class="nav-logo"><img src="culog.png" alt="CUSB Logo" onerror="this.style.display='none'"></div>
       <div class="brand-txt"><div class="abbr">CUSB</div></div>
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" role="list">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="About_cusb.html">About</a></li>
       <li><a href="administration.html">Administration</a></li>
-      <li><a href="academics.html">Academics</a></li>
+      <li><a href="courses.html">Courses</a></li>
       <li><a href="campus.html">Campus</a></li>
-      <li><a href="IQAC.html">Notices</a></li>
-      <li><a href="index.html#quicklinks">Students</a></li>
+      <li><a href="IQAC.html">IQAC</a></li>
+      <li><a href="students.html">Students</a></li>
       <li><a href="index.html#gov_sites">Gov</a></li>
     </ul>
     <div class="nav-right">
       <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode">
-        <span class="ico-sun">☀️</span>
-        <span class="ico-moon">🌙</span>
+        <span class="ico-sun" aria-hidden="true">☀️</span>
+        <span class="ico-moon" aria-hidden="true">🌙</span>
       </button>
-      <a href="#cta-sec" class="btn-apply">Apply 2026–27</a>
-      <button class="ham" id="ham-btn" type="button" aria-label="Open menu">
+      <a href="#cta-sec" class="btn-apply">Apply</a>
+      <button class="ham" id="ham-btn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 </div>
+<div class="nav-search-bar" id="nav-search-bar">
+  <form id="nav-search-form" role="search">
+    <label for="nav-search-input" class="sr-only">Search site</label>
+    <div style="position:relative;">
+      <input id="nav-search-input" class="nav-search-input" type="search" placeholder="Search ..." aria-label="Search site" autocomplete="off">
+      <button type="submit" class="nav-search-submit" aria-label="Submit search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </div>
+  </form>
+</div>
 
+<main id="main-content">
 
-<!-- ══════════════════════════════════════════
-     INFORMATION SECTION  (new — before quicklinks)
-══════════════════════════════════════════ -->
-<section id="info-sec" class="sec light-sec">
-  <div class="sec-hd center rev">
-    <div class="sec-lbl">Honourable Vice Chancellor</div>
-    <h2 class="sec-title">Prof. Kameshwar Nath Singh</h2>
-  </div>
+<!-- ══════ BANNER ══════ -->
+<header id="page-banner">
+  <div>
+    <a href="administration.html" class="banner-breadcrumb">← Administration <span>/</span> Vice-Chancellor</a>
+    <div class="banner-eyebrow"><span class="live-dot" aria-hidden="true"></span> Current Office Holder</div>
+    <h1 class="banner-title">Prof. K.N.<br><span class="acc">Singh</span></h1>
+    <p class="banner-sub">Geographer, researcher, and academic leader — 3rd Vice-Chancellor of the Central University of South Bihar, Gaya.</p>
 
-  <div class="info-inner">
-
-    <!-- Image holder -->
-    <div class="info-img-wrap rev">
-      <!--
-        Replace the src below with your actual image path, e.g.:
-          src="campus.jpg"
-        The placeholder text/icon will auto-hide once a valid src is set.
-      -->
-      <img src="vc.jpg" alt="Vice Chancellor Of CUSB"
-           onerror="this.style.display='none'"
-           onload="this.nextElementSibling.style.display='none'">
-      <!-- Placeholder (visible when img fails / src is empty) -->
-      <div class="info-img-placeholder">
-      </div>
+    <div class="banner-meta">
+      <div class="b-meta-pill"><span class="bm-icon">🏛️</span><span>3rd <span class="bm-val">VC of CUSB</span></span></div>
+      <div class="b-meta-pill"><span class="bm-icon">📚</span><span><span class="bm-val">32+</span> Yrs Experience</span></div>
+      <div class="b-meta-pill"><span class="bm-icon">📖</span><span><span class="bm-val">17</span> Books</span></div>
+      <div class="b-meta-pill"><span class="bm-icon">🎓</span><span><span class="bm-val">20</span> PhD Scholars</span></div>
     </div>
 
-    <!-- Detail card -->
-    <div class="info-card rev">
-      <div class="info-card-header">
-        <div class="info-card-title-group">
-          <div class="info-card-eyebrow">ABOUT</div>
-          <div class="info-card-title">Prof. Kameshwar Nath Singh</div>
+    <div class="banner-btns">
+      <a href="#profile" class="btn btn-ocean">View Full Profile →</a>
+      <a href="#career" class="btn btn-ghost">Career Timeline</a>
+    </div>
+  </div>
+
+  <div class="banner-photo-col">
+    <div class="vc-photo-wrap">
+      <div class="vc-photo-card">
+        <img src="vc.jpg" alt="Prof. Kameshwar Nath Singh, Vice-Chancellor of CUSB" onerror="this.style.display='none'" style="min-height:320px;background:var(--nm-bg-alt);">
+        <div class="photo-badge">
+          <div class="photo-badge-ico">🎓</div>
+          <div class="photo-badge-txt">
+            <div class="pb-name">Prof. K.N. Singh</div>
+            <div class="pb-role">Vice-Chancellor, CUSB</div>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+</header>
 
-      <p class="info-card-body">
-        Prof. Kameshwar Nath Singh is the 3rd Vice Chancellor of Central University of South Bihar (CUSB), Gaya. Prior to joining CUSB, Prof. Singh was Vice-Chancellor of Uttar Pradesh Rajarshi Tandon Open University, Prayagraj and Prof. Rajendra Singh (Rajju Bhaiya) State University, Prayagraj. He completed his graduation, post-graduation and PhD from Deen Dayal Upadhyaya Gorakhpur University, Gorakhpur. He started his academic career at the same University where he also worked as Head of the department of Geography. He has been the founder Director of Deen Dayal Upadhyaya Research Foundation at Deen Dayal Upadhyaya Gorakhpur University, Gorakhpur. Prof. Singh has about 32 years of rich professional experience in different aspects of teaching, research, administration, training as well as major research projects formulations, both national and international. He has supervised 20 Ph.D. students and one post-doctoral fellow. 
-<br>------------------------------------------<br>
-Prof. Singh has worked as a Research Associate at the Institute of Geography and Institute for Development Research and Development Policy at Ruhr University, Bochum, Germany for one year in a joint research project titled ‘Urban fringe study of Indian and German cities’ sponsored by DAAD. He has conducted extensive field survey in different parts of Germany as well as the Netherlands, Belgium and Luxemburg under the guidance of Late Prof. K. H. Hottes, Director, Institute of Geography and Institute of Development Studies, Germany. Prof. Singh has contributed mainly in the field of environment, regional development and value education. He has more than seventy publications to his credit in the form of research papers and policy papers etc. He is the author of 17 books and is currently working on his upcoming book entitled ‘Geography of India: Yesterday, Today & Tomorrow’. He has served as Vice President of the National Association of Geographers of India (NAGI) and at present he is the President of the Association of North Indian Geographers of which he was previously General Secretary for almost 20 years.
-<br>-------------------------------------------<br>
-Prof. Singh is the founder General Secretary of the Institute for Rural Eco-development which has been established with viewpoint of action-oriented research for eco-development of rural areas. He is the executive editor of the ‘Journal of Eco development’ as well as ‘Uttar Bharat Bhugol Patrika’, published from the Dept. of Geography, Deen Dayal Upadhyaya Gorakhpur University, Gorakhpur. Prof. Singh has been organizing Prithvi Parva National Seminar every year on the eve of Vasant Panchami for the last 25 years which has regularly churned out useful recommendations and insights for policy makers and planners. He has pursued an active and engaging social and public life wherein he has been the organizer of Purvanchal Swadeshi Mela, Gorakhpur with help of Swadeshi Jagarana Manch and Bhartiya Vipdan Vikas Kendra. He has been Convenor of Sarva Samaveshi Sanskriti Kumbh and Bhoogol Kumbh at Prayagraj Kumbh Mela in 2018.
-<br>------------------------------------------<br>
-Prof. K.N. Singh is contributing to a great extent in other higher education assignments. He is Visitor’s /President of India’s nominee Executive Councillor of Central University of Jharkhand, Ranchi and Governor’s nominee Executive Councillor of University of Allahabad (A Central University). He is serving as expert member of Research Degree Committee and Board of Studies in several Universities. He is an esteemed member of the collegium of eminent social scientists, constituted by the ICSSR, New Delhi.  He has also been nominated as Senate Member, IIT Patna. Presently, he is also the President (elected), Deccan Geographical Society of India, Pune. Prof. K.N. Singh has been honoured with several awards such as distinguished citizen award by Yuva Chetna Samiti, Gorakhpur and State award for excellent working as coordinator of National Service Scheme by Dept. of Higher Education, U.P. Government. He has been awarded with the best Geographer award by Deccan Geographical Society of India, Pune in 2014 for lasting contributions in domain of Geography and for able administration in the University system.
-<br>-------------------------------------------<br>
+<!-- ══════ PROFILE SECTION ══════ -->
+<section id="profile" class="sec dark-sec" aria-labelledby="profile-heading">
+  <div class="sec-hd rev">
+    <div class="sec-lbl">Full Profile</div>
+    <h2 class="sec-title" id="profile-heading">About Prof. Kameshwar Nath Singh</h2>
+    <p class="sec-sub">Geographer, academic administrator, and champion of value-based education and rural eco-development.</p>
+  </div>
 
-As Vice-Chancellor of Central University of South Bihar, Prof. K.N. Singh has prioritised developing congenial learning environment, efficient and transparent administration and strengthening student support system in the perspective of New Education Policy 2020. He has laid more emphasis on professional courses in light of era of globalization, liberalization and privatization as per need of 21st Century. Moreover, he is planning to focus on research and development on the principle of Integral Humanism propounded by Pandit Deen Dayal Upadhyaya. Keeping the ideals of ‘Vasudhaiva Kutumbakam’ and ‘Sarve Bhavantu Sukhinah’, Prof. Singh firmly believes in the principle of think globally but act locally in light of Hon’ble Prime Minister Shri Narendra Modi Ji’s principle of ‘Vocal for Local’ to achieve the goal of ‘AatmaNirbhar Bharat’.
-</p>
+  <div class="profile-grid">
 
-      <div class="info-card-divider"></div>
+    <!-- Personal Info -->
+    <div class="profile-card rev">
+      <div class="pc-header">
+        <div class="pc-icon">👤</div>
+        <div>
+          <div class="pc-title">Personal Information</div>
+          <div class="pc-sub">Background &amp; Identity</div>
+        </div>
+      </div>
+      <ul class="pc-list">
+        <li><strong>Full Name:</strong>&nbsp; Prof. Kameshwar Nath Singh</li>
+        <li><strong>Designation:</strong>&nbsp; 3rd Vice-Chancellor, CUSB</li>
+        <li><strong>Specialisation:</strong>&nbsp; Geography — Environment, Regional Development, Value Education</li>
+        <li><strong>Home University:</strong>&nbsp; DDU Gorakhpur University, Gorakhpur</li>
+        <li><strong>PhD Scholars Supervised:</strong>&nbsp; 20 + 1 Post-Doctoral Fellow</li>
+      </ul>
+    </div>
 
-      <div class="info-card-footer">
-        <a href="about.html" class="info-card-link">
-          Learn more about CUSB <span>→</span>
-        </a>
+    <!-- Academic Background -->
+    <div class="profile-card rev">
+      <div class="pc-header">
+        <div class="pc-icon">🎓</div>
+        <div>
+          <div class="pc-title">Academic Qualifications</div>
+          <div class="pc-sub">Degrees &amp; Institutions</div>
+        </div>
+      </div>
+      <ul class="pc-list">
+        <li>Graduation — Deen Dayal Upadhyaya Gorakhpur University</li>
+        <li>Post-Graduation (Geography) — DDU Gorakhpur University</li>
+        <li>PhD (Geography) — DDU Gorakhpur University</li>
+        <li>Research Associate — Ruhr University, Bochum, Germany (DAAD sponsored)</li>
+      </ul>
+      <div class="stat-row">
+        <div class="stat-pill"><span class="sp-num">17</span><span class="sp-lbl">Books Authored</span></div>
+        <div class="stat-pill"><span class="sp-num">70+</span><span class="sp-lbl">Publications</span></div>
+      </div>
+    </div>
+
+    <!-- Role at CUSB -->
+    <div class="profile-card rev">
+      <div class="pc-header">
+        <div class="pc-icon">🏛️</div>
+        <div>
+          <div class="pc-title">Role as Vice-Chancellor</div>
+          <div class="pc-sub">Responsibilities &amp; Vision</div>
+        </div>
+      </div>
+      <p class="pc-body">As the 3rd Vice-Chancellor of CUSB, Prof. Singh has prioritised a congenial learning environment, efficient and transparent administration, and a strengthened student support system in line with NEP 2020. He emphasises professional courses suited to the 21st century and focuses on research rooted in the principle of Integral Humanism.</p>
+      <ul class="pc-list" style="margin-top:14px;">
+        <li>Chief executive and academic head of the university</li>
+        <li>Implementing NEP 2020 across all departments</li>
+        <li>Strengthening research and development culture</li>
+        <li>Promoting 'Vocal for Local' and AatmaNirbhar Bharat ideals</li>
+      </ul>
+    </div>
+
+    <!-- Research & Contributions -->
+    <div class="profile-card rev">
+      <div class="pc-header">
+        <div class="pc-icon">🔬</div>
+        <div>
+          <div class="pc-title">Research &amp; Contributions</div>
+          <div class="pc-sub">Academic &amp; Social Impact</div>
+        </div>
+      </div>
+      <p class="pc-body">Prof. Singh conducted joint research on urban fringe studies of Indian and German cities at Ruhr University, Bochum. He is the founder General Secretary of the Institute for Rural Eco-development and has been organising the Prithvi Parva National Seminar every year for 25+ years — generating policy recommendations for planners and decision-makers.</p>
+      <ul class="pc-list" style="margin-top:14px;">
+        <li>DAAD-sponsored research at Ruhr University, Germany</li>
+        <li>Executive Editor — 'Journal of Eco Development'</li>
+        <li>President, Deccan Geographical Society of India, Pune</li>
+        <li>Senate Member, IIT Patna</li>
+      </ul>
+    </div>
+
+    <!-- Awards -->
+    <div class="profile-card wide rev" id="awards">
+      <div class="pc-header">
+        <div class="pc-icon">🏆</div>
+        <div>
+          <div class="pc-title">Awards &amp; Recognitions</div>
+          <div class="pc-sub">Honours &amp; Memberships</div>
+        </div>
+      </div>
+      <div class="awards-grid">
+        <div class="award-item">
+          <span class="award-icon">🌏</span>
+          <div class="award-name">Best Geographer Award</div>
+          <div class="award-desc">Deccan Geographical Society of India, Pune — 2014</div>
+        </div>
+        <div class="award-item">
+          <span class="award-icon">🏅</span>
+          <div class="award-name">Distinguished Citizen Award</div>
+          <div class="award-desc">Yuva Chetna Samiti, Gorakhpur</div>
+        </div>
+        <div class="award-item">
+          <span class="award-icon">⭐</span>
+          <div class="award-name">State Award — NSS</div>
+          <div class="award-desc">Dept. of Higher Education, U.P. Govt. for excellent NSS coordination</div>
+        </div>
+        <div class="award-item">
+          <span class="award-icon">🧑‍🔬</span>
+          <div class="award-name">ICSSR Collegium Member</div>
+          <div class="award-desc">Eminent Social Scientists Collegium, ICSSR, New Delhi</div>
+        </div>
       </div>
     </div>
 
   </div>
+  <a href="#page-banner" class="sec-top-link" aria-label="Back to top">↑ Back to top</a>
 </section>
-<!-- END INFORMATION SECTION -->
 
+<!-- ══════ CAREER TIMELINE ══════ -->
+<section id="career" class="sec light-sec" aria-labelledby="career-heading">
+  <div class="sec-hd rev">
+    <div class="sec-lbl">Academic Career</div>
+    <h2 class="sec-title" id="career-heading">Professional Journey</h2>
+    <p class="sec-sub">Over 32 years of teaching, research, administration, and national-level academic leadership.</p>
+  </div>
+
+  <div style="max-width:620px;" class="rev">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot active">🏛️</div>
+        <div class="tl-content">
+          <div class="tl-year">Present</div>
+          <div class="tl-title">Vice-Chancellor, Central University of South Bihar</div>
+          <div class="tl-note">3rd VC of CUSB, Gaya — leading institutional growth, NEP 2020 implementation, and research-driven development of the university.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">📋</div>
+        <div class="tl-content">
+          <div class="tl-year">Prior to CUSB</div>
+          <div class="tl-title">Vice-Chancellor — Two Universities</div>
+          <div class="tl-note">Served as VC of Uttar Pradesh Rajarshi Tandon Open University, Prayagraj and Prof. Rajendra Singh (Rajju Bhaiya) State University, Prayagraj.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">🌍</div>
+        <div class="tl-content">
+          <div class="tl-year">International</div>
+          <div class="tl-title">Research Associate — Ruhr University, Bochum, Germany</div>
+          <div class="tl-note">Conducted joint DAAD-sponsored research on 'Urban Fringe Study of Indian and German Cities' at the Institute of Geography and Institute for Development Research, Ruhr University.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">📚</div>
+        <div class="tl-content">
+          <div class="tl-year">Long-term</div>
+          <div class="tl-title">Professor &amp; Head of Department — DDU Gorakhpur University</div>
+          <div class="tl-note">Started and built his academic career at DDU Gorakhpur University as faculty and Head of the Department of Geography. Founded the Deen Dayal Upadhyaya Research Foundation there.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">🌿</div>
+        <div class="tl-content">
+          <div class="tl-year">25+ Years</div>
+          <div class="tl-title">Organiser — Prithvi Parva National Seminar</div>
+          <div class="tl-note">Annual national seminar on Vasant Panchami, consistently generating actionable policy recommendations for planners and administrators across India.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a href="#page-banner" class="sec-top-link" aria-label="Back to top">↑ Back to top</a>
+</section>
 
 <!-- ══════ QUICK LINKS ══════ -->
-<section id="quicklinks" class="sec white-sec">
+<section id="quicklinks" class="sec white-sec" aria-labelledby="quicklinks-heading">
   <div class="sec-hd rev">
     <div class="sec-lbl">Quick Access</div>
-    <h2 class="sec-title">Student Resources</h2>
+    <h2 class="sec-title" id="quicklinks-heading">Student Resources<br>&amp;<br>Quick Links</h2>
     <p class="sec-sub">Everything you need, one click away.</p>
   </div>
   <div class="ql-grid">
-    <a href="#" class="ql-card rev"><span class="ql-ico">📄</span><span class="ql-nm">Prospectus</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">📋</span><span class="ql-nm">Exam Schedule</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">🏆</span><span class="ql-nm">Semester Results</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">📥</span><span class="ql-nm">Downloads</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">🎓</span><span class="ql-nm">Convocation</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">💰</span><span class="ql-nm">Scholarship</span></a>
-    <a href="Hostel.html" class="ql-card rev"><span class="ql-ico">🏠</span><span class="ql-nm">Hostel</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">💼</span><span class="ql-nm">Placement Cell</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">🖼️</span><span class="ql-nm">Photo Gallery</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">📡</span><span class="ql-nm">RTI</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">🔒</span><span class="ql-nm">Anti-Ragging</span></a>
-    <a href="#" class="ql-card rev"><span class="ql-ico">🌐</span><span class="ql-nm">Webmail</span></a>
+    <a href="https://scholarships.gov.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="scholarship.jpg" alt="Scholarships" class="ql-img"></span><span class="ql-nm">Scholarship</span></a>
+    <a href="hostels.html" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="hosimg.jpg" alt="Hostel" class="ql-img"></span><span class="ql-nm">Hostel</span></a>
+    <a href="https://rtionline.gov.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="rtiimg.webp" alt="RTI" class="ql-img"></span><span class="ql-nm">RTI</span></a>
+    <a href="https://www.antiragging.in/" class="ql-card rev" target="_blank" rel="noopener"><span class="ql-ico" aria-hidden="true"><img src="anti-ragging.jpg" alt="Anti-Ragging" class="ql-img"></span><span class="ql-nm">Anti-Ragging</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="mail.webp" alt="Webmail" class="ql-img"></span><span class="ql-nm">Webmail</span></a>
+    <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="studentslogin.webp" alt="Samarth Student" class="ql-img"></span><span class="ql-nm">Samarth Login Students</span></a>
+    <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="employeelogin.jpg" alt="Samarth Employee" class="ql-img"></span><span class="ql-nm">Samarth Login Employee</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="brochure.webp" alt="Prospectus" class="ql-img"></span><span class="ql-nm">Prospectus</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="schedule.png" alt="Exam Schedule" class="ql-img"></span><span class="ql-nm">Exam Schedule</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="results.jpg" alt="Results" class="ql-img"></span><span class="ql-nm">Semester Results</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="downloads.webp" alt="Downloads" class="ql-img"></span><span class="ql-nm">Downloads</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="convo.png" alt="Convocation" class="ql-img"></span><span class="ql-nm">Convocation</span></a>
+    <a href="pyq.html" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="pyqimg.webp" alt="PYQs" class="ql-img"></span><span class="ql-nm">PYQs</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="placement.png" alt="Placements" class="ql-img"></span><span class="ql-nm">Placements</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="nss.webp" alt="NSS/NCC" class="ql-img"></span><span class="ql-nm">NSS/NCC</span></a>
+    <a href="pyq.html" class="ql-card rev"><span class="ql-ico" aria-hidden="true"><img src="alumini.png" alt="Alumni" class="ql-img"></span><span class="ql-nm">Alumni</span></a>
+  </div>
+  <a href="#page-banner" class="sec-top-link" style="padding:0 6vw;display:block" aria-label="Back to top">↑ Back to top</a>
+</section>
+
+<!-- ══════ GOV SITES ══════ -->
+<section id="gov_sites" aria-labelledby="gov-heading">
+  <div class="gallery-eyebrow" id="gov-heading" style="display:block;text-align:center;margin-bottom:12px">Govt. Portals</div>
+  <div class="students_site">
+    <ul class="students_site_link" role="list">
+      <li><a href="https://swayam.gov.in/" target="_blank" rel="noopener" aria-label="Swayam"><img src="swayam_logo.png" alt="Swayam Courses"></a></li>
+      <li><a href="https://www.swayamprabha.gov.in/" target="_blank" rel="noopener" aria-label="Swayam Prabha"><img src="SWAYAM_PRABHA.png" alt="Swayam Prabha"></a></li>
+      <li><a href="https://ndl.iitkgp.ac.in/" target="_blank" rel="noopener" aria-label="National Digital Library"><img src="national (1).png" alt="National Digital Library"></a></li>
+      <li><a href="https://aishe.gov.in/" target="_blank" rel="noopener" aria-label="AISHE Portal"><img src="AISHE.png" alt="AISHE"></a></li>
+      <li><a href="https://www.mygov.in/" target="_blank" rel="noopener" aria-label="MyGov India"><img src="mygov_0.png" alt="MyGov"></a></li>
+      <li><a href="https://www.india.gov.in/" target="_blank" rel="noopener" aria-label="India Government Portal"><img src="Indiagovin.svg" alt="India.gov.in"></a></li>
+    </ul>
   </div>
 </section>
+
+<!-- ══════ CTA ══════ -->
+<section id="cta-sec" aria-labelledby="cta-heading">
+  <div class="cta-inner">
+    <h2 class="cta-title rev" id="cta-heading">Begin Your Journey at CUSB</h2>
+    <p class="cta-sub rev">Admissions open for 2026–27. Join thousands of students shaping India's future from the heartland of Bihar.</p>
+    <div class="cta-btns rev">
+      <a href="https://cuet.samarth.ac.in/" target="_blank" rel="noopener" class="btn btn-ocean">Apply for 2026–27 →</a>
+      <a href="#quicklinks" class="btn btn-ghost">Download Prospectus</a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="btn btn-ghost">Contact Helpdesk</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
 <!-- ══════ FOOTER ══════ -->
-<footer id="footer">
+<footer id="footer" role="contentinfo">
   <div class="footer-grid">
     <div>
       <div class="fb-name">Central University of South Bihar</div>
@@ -964,16 +863,19 @@ As Vice-Chancellor of Central University of South Bihar, Prof. K.N. Singh has pr
     <div>
       <div class="fc-h5">About</div>
       <ul class="fc-ul">
-        <li><a href="about.html">The University</a></li>
+        <li><a href="About_cusb.html">The University</a></li>
+        <li><a href="About_cusb.html#about">Vision &amp; Mission</a></li>
+        <li><a href="administration.html">Administration</a></li>
+        <li><a href="research.html">Research &amp; Innovation</a></li>
       </ul>
     </div>
     <div>
       <div class="fc-h5">Academics</div>
       <ul class="fc-ul">
-        <li><a href="academics.html">All Departments</a></li>
-        <li><a href="academics.html">Programs</a></li>
+        <li><a href="courses.html">All Departments</a></li>
+        <li><a href="courses.html">Programs</a></li>
         <li><a href="index.html#notices-sec">Exam Notices</a></li>
-        <li><a href="IQAC.html">Results</a></li>
+        <li><a href="index.html#notices-sec">Results</a></li>
       </ul>
     </div>
     <div>
@@ -981,180 +883,177 @@ As Vice-Chancellor of Central University of South Bihar, Prof. K.N. Singh has pr
       <ul class="fc-ul">
         <li><a href="#cta-sec">Admissions 2026–27</a></li>
         <li><a href="#quicklinks">Scholarship</a></li>
-        <li><a href="#quicklinks">Hostel</a></li>
+        <li><a href="hostels.html">Hostel</a></li>
+        <li><a href="#" aria-disabled="true" tabindex="-1">Placement Cell</a></li>
+        <li><a href="#" aria-disabled="true" tabindex="-1">NSS / NCC</a></li>
+        <li><a href="#" aria-disabled="true" tabindex="-1">Alumni</a></li>
       </ul>
     </div>
     <div>
       <div class="fc-h5">Quick Links</div>
       <ul class="fc-ul">
-        <li><a href="v1.html#notices-sec">IQAC</a></li>
-        <li><a href="v1.html#gallery">Photo Gallery</a></li>
+        <li><a href="index.html#notices-sec">NAAC / IQAC</a></li>
+        <li><a href="https://rtionline.gov.in/" target="_blank" rel="noopener">RTI</a></li>
+        <li><a href="#" aria-disabled="true" tabindex="-1">Tenders</a></li>
+        <li><a href="index.html#notices-sec">Recruitment</a></li>
+        <li><a href="index.html#gallery">Photo Gallery</a></li>
+        <li><a href="#" aria-disabled="true" tabindex="-1">Webmail</a></li>
       </ul>
     </div>
     <div class="social_media">
-      <ul class="social_media-links" >
-        <li><a href="https://www.facebook.com/cusbofficial/" target="_blank"><img src="fb.png" alt="Facebook"></a></li>
-        <li><a href="https://x.com/CUSBofficial" target="_blank"><img src="X.png" alt="X"></a></li>
-        <li><a href="https://www.instagram.com/cusbofficialpage/?hl=en" target="_blank"><img src="insta.png" alt="Insta"></a></li>
-        <li><a href="https://www.youtube.com/user/CUBofficialchannel" target="_blank"><img src="YouTube.webp" alt="Youtube"></a></li>
-        <li><a href="https://in.linkedin.com/school/cusbofficial/" target="_blank"><img src="linke.png" alt="Linkedin"></a></li>
+      <ul class="social_media-links" role="list" aria-label="CUSB Social Media">
+        <li><a href="https://www.facebook.com/cusbofficial/" target="_blank" rel="noopener" aria-label="CUSB on Facebook"><img src="fb.png" alt="" aria-hidden="true"></a></li>
+        <li><a href="https://x.com/CUSBofficial" target="_blank" rel="noopener" aria-label="CUSB on X"><img src="X.png" alt="" aria-hidden="true"></a></li>
+        <li><a href="https://www.instagram.com/cusbofficialpage/?hl=en" target="_blank" rel="noopener" aria-label="CUSB on Instagram"><img src="insta.png" alt="" aria-hidden="true"></a></li>
+        <li><a href="https://www.youtube.com/user/CUBofficialchannel" target="_blank" rel="noopener" aria-label="CUSB YouTube"><img src="YouTube.webp" alt="" aria-hidden="true"></a></li>
+        <li><a href="https://in.linkedin.com/school/cusbofficial/" target="_blank" rel="noopener" aria-label="CUSB on LinkedIn"><img src="linke.png" alt="" aria-hidden="true"></a></li>
       </ul>
     </div>
-
-    <div class="map">
-    <a href="https://maps.google.com/?q=Central+University+of+South+Bihar+Gaya" target="_blank">
-      <img src="map.jpeg" alt="map">
+  </div>
+  <div class="map">
+    <a href="https://maps.google.com/?q=Central+University+of+South+Bihar+Gaya" target="_blank" rel="noopener" aria-label="View CUSB on Google Maps">
+      <img src="map.jpeg" alt="Map showing CUSB campus at Panchanpur, Gaya">
     </a>
   </div>
-
   <div class="footer-bottom">
     <span>© 2025 Central University of South Bihar, Gaya, India. All rights reserved.</span>
-    <div class="acc-row">
-      <span class="acc-badge">NAAC</span>
-      <span class="acc-badge">NEP 2020</span>
-      <span class="acc-badge">Viksit Bharat</span>
+    <div class="acc-row" role="list">
+      <span class="acc-badge" role="listitem">NAAC</span>
+      <span class="acc-badge" role="listitem">NEP 2020</span>
+      <span class="acc-badge" role="listitem">Viksit Bharat</span>
     </div>
-    <span><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Sitemap</a></span>
+    <span>
+      <a href="#" aria-disabled="true" tabindex="-1">Privacy</a> ·
+      <a href="#" aria-disabled="true" tabindex="-1">Terms</a> ·
+      <a href="#" aria-disabled="true" tabindex="-1">Sitemap</a>
+    </span>
   </div>
 </footer>
 
+<!-- ══════ SCROLL TO TOP ══════ -->
+<button id="scroll-btn" aria-label="Scroll to top" title="Scroll to top">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
-  
-</body>
-
-  
 <script>
-  /* ─────────────────────────────────────
-   NAV GLASS ON SCROLL
-───────────────────────────────────── */
-window.addEventListener('scroll',()=>{
-  document.querySelector('nav').classList.toggle('sc',window.scrollY>60);
-},{passive:true});
+  /* ── SCROLL TO TOP ── */
+  const scrollBtn = document.getElementById('scroll-btn');
+  window.addEventListener('scroll', () => { scrollBtn.classList.toggle('show', window.scrollY > 200); }, { passive: true });
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-/* ─────────────────────────────────────
-   SMOOTH SCROLL — all anchor links
-   scroll-margin-top on sections handles
-   the ticker + nav offset automatically
-───────────────────────────────────── */
-document.querySelectorAll('a[href^="#"]').forEach(link=>{
-  link.addEventListener('click',e=>{
-    const id=link.getAttribute('href').slice(1);
-    if(!id)return;
-    const target=document.getElementById(id);
-    if(!target)return;
-    e.preventDefault();
-    target.scrollIntoView({behavior:'smooth',block:'start'});
-    history.replaceState(null,'',`#${id}`);
+  /* ── TICKER PAUSE ── */
+  const tickerTrack = document.getElementById('ticker-track');
+  const tickerPauseBtn = document.getElementById('ticker-pause-btn');
+  let tickerPaused = false;
+  tickerPauseBtn.addEventListener('click', () => {
+    tickerPaused = !tickerPaused;
+    tickerTrack.style.animationPlayState = tickerPaused ? 'paused' : 'running';
+    tickerPauseBtn.textContent = tickerPaused ? '▶' : '⏸';
+    tickerPauseBtn.setAttribute('aria-pressed', String(tickerPaused));
   });
-});
+  if (tickerTrack) {
+    tickerTrack.addEventListener('mouseenter', () => { if (!tickerPaused) tickerTrack.style.animationPlayState = 'paused'; });
+    tickerTrack.addEventListener('mouseleave', () => { if (!tickerPaused) tickerTrack.style.animationPlayState = 'running'; });
+  }
 
+  /* ── NAV SHADOW ON SCROLL ── */
+  window.addEventListener('scroll', () => { document.querySelector('nav').classList.toggle('sc', window.scrollY > 60); }, { passive: true });
 
-/* ─────────────────────────────────────
-   SCROLL REVEAL
-───────────────────────────────────── */
-const ro=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');});
-},{threshold:0.08});
-document.querySelectorAll('.rev').forEach((el,i)=>{
-  el.style.transitionDelay=(i%5)*0.07+'s';
-  ro.observe(el);
-});
-
-/* ─────────────────────────────────────
-   COUNTER ANIMATION
-───────────────────────────────────── */
-const co=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    e.target.querySelectorAll('[data-to]').forEach(el=>{
-      const target=+el.dataset.to,suffix=el.dataset.s||'';
-      let t0=null;
-      const step=ts=>{
-        if(!t0)t0=ts;
-        const p=Math.min((ts-t0)/1500,1);
-        el.textContent=Math.floor((1-Math.pow(1-p,3))*target).toLocaleString()+suffix;
-        p<1?requestAnimationFrame(step):el.textContent=target.toLocaleString()+suffix;
-      };
-      requestAnimationFrame(step);
+  /* ── SMOOTH SCROLL ── */
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const id = link.getAttribute('href').slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', `#${id}`);
     });
-    co.disconnect();
   });
-},{threshold:0.5});
-const hs=document.querySelector('.hero-stats');
-if(hs)co.observe(hs);
 
-/* ─────────────────────────────────────
-   BUTTON RIPPLE
-───────────────────────────────────── */
-document.querySelectorAll('.btn,.btn-apply').forEach(btn=>{
-  btn.addEventListener('click',e=>{
-    const r=document.createElement('span');
-    r.className='rpl';
-    r.style.cssText=`left:${e.offsetX}px;top:${e.offsetY}px;width:8px;height:8px;margin:-4px`;
-    btn.appendChild(r);
-    setTimeout(()=>r.remove(),520);
+  /* ── SCROLL REVEAL ── */
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.rev').forEach((el, i) => {
+    el.style.transitionDelay = (i % 5) * 0.07 + 's';
+    ro.observe(el);
   });
-});
 
-/* ─────────────────────────────────────
-   HAMBURGER MENU
-───────────────────────────────────── */
-const mobMenu=document.getElementById('mob-menu');
-const mobOvr =document.getElementById('mob-overlay');
-const hamBtn =document.getElementById('ham-btn');
-const closeB =document.getElementById('mob-close-btn');
+  /* ── HAMBURGER MENU ── */
+  const mobMenu = document.getElementById('mob-menu');
+  const mobOvr  = document.getElementById('mob-overlay');
+  const hamBtn  = document.getElementById('ham-btn');
+  const closeB  = document.getElementById('mob-close-btn');
+  const openM  = () => { mobMenu.classList.add('open'); mobOvr.classList.add('show'); hamBtn.classList.add('open'); hamBtn.setAttribute('aria-expanded','true'); document.body.style.overflow = 'hidden'; };
+  const closeM = () => { mobMenu.classList.remove('open'); mobOvr.classList.remove('show'); hamBtn.classList.remove('open'); hamBtn.setAttribute('aria-expanded','false'); document.body.style.overflow = ''; };
+  hamBtn.addEventListener('click', e => { e.stopPropagation(); mobMenu.classList.contains('open') ? closeM() : openM(); });
+  closeB.addEventListener('click', e => { e.stopPropagation(); closeM(); });
+  mobOvr.addEventListener('click', closeM);
+  document.querySelectorAll('#mob-menu .mob-a,#mob-menu .mob-cta').forEach(a => a.addEventListener('click', closeM));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeM(); });
 
-const openM =()=>{mobMenu.classList.add('open');mobOvr.classList.add('show');hamBtn.classList.add('open');document.body.style.overflow='hidden'};
-const closeM=()=>{mobMenu.classList.remove('open');mobOvr.classList.remove('show');hamBtn.classList.remove('open');document.body.style.overflow=''};
-
-hamBtn.addEventListener('click',e=>{e.stopPropagation();mobMenu.classList.contains('open')?closeM():openM()});
-closeB.addEventListener('click',e=>{e.stopPropagation();closeM()});
-mobOvr.addEventListener('click',closeM);
-document.querySelectorAll('#mob-menu .mob-a,#mob-menu .mob-cta').forEach(a=>a.addEventListener('click',closeM));
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeM()});
-
-/* ─────────────────────────────────────
-   DARK / LIGHT THEME TOGGLE
-───────────────────────────────────── */
-const html=document.documentElement;
-const tog =document.getElementById('theme-toggle-btn');
-const KEY ='cusb-theme';
-
-(function(){
-  const s=localStorage.getItem(KEY);
-  if(s){html.setAttribute('data-theme',s);return}
-  if(window.matchMedia('(prefers-color-scheme: dark)').matches)html.setAttribute('data-theme','dark');
-})();
-
-tog.addEventListener('click',()=>{
-  html.classList.add('theme-switching');
-  const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
-  html.setAttribute('data-theme',next);
-  localStorage.setItem(KEY,next);
-  void html.offsetWidth;
-  requestAnimationFrame(()=>{
-    html.classList.remove('theme-switching');
+  /* ── DARK / LIGHT THEME ── */
+  const html = document.documentElement;
+  const tog  = document.getElementById('theme-toggle-btn');
+  const KEY  = 'cusb-theme';
+  (function () {
+    const s = localStorage.getItem(KEY);
+    if (s) { html.setAttribute('data-theme', s); return; }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) html.setAttribute('data-theme', 'dark');
+  })();
+  tog.addEventListener('click', () => {
+    html.classList.add('theme-switching');
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem(KEY, next);
+    void html.offsetWidth;
+    requestAnimationFrame(() => html.classList.remove('theme-switching'));
   });
-});
 
-/* ─────────────────────────────────────
-   TICKER — pause on hover / touch
-───────────────────────────────────── */
-const track=document.getElementById('ticker-track');
-if(track){
-  track.addEventListener('mouseenter',()=>track.style.animationPlayState='paused');
-  track.addEventListener('mouseleave',()=>track.style.animationPlayState='running');
-  // Double-tap on mobile to pause/resume
-  let lastTap=0;
-  track.addEventListener('touchstart',()=>{
-    const now=Date.now();
-    if(now-lastTap<300){
-      const cur=track.style.animationPlayState;
-      track.style.animationPlayState=(cur==='paused')?'running':'paused';
-    }
-    lastTap=now;
-  },{passive:true});
-}
+  /* ── FONT SIZE CONTROLS ── */
+  const decreaseBtn = document.getElementById('font-decrease-btn');
+  const increaseBtn = document.getElementById('font-increase-btn');
+  const displayEl   = document.getElementById('font-size-display');
+  const rootEl      = document.documentElement;
+  let currentFontSize = parseInt(localStorage.getItem('fontSizePercent') || '100');
+  function applyFontSize(pct) {
+    rootEl.style.fontSize = pct + '%';
+    currentFontSize = pct;
+    localStorage.setItem('fontSizePercent', pct.toString());
+    displayEl.textContent = pct + '%';
+    decreaseBtn.disabled = pct <= 80;
+    increaseBtn.disabled = pct >= 150;
+  }
+  applyFontSize(currentFontSize);
+  decreaseBtn.addEventListener('click', () => { if (currentFontSize > 80) applyFontSize(currentFontSize - 10); });
+  increaseBtn.addEventListener('click', () => { if (currentFontSize < 150) applyFontSize(currentFontSize + 10); });
 
+  /* ── SEARCH BAR ── */
+  const searchForm  = document.getElementById('nav-search-form');
+  const searchInput = document.getElementById('nav-search-input');
+  if (searchForm) {
+    searchForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const raw = searchInput.value.trim();
+      if (!raw) return;
+      const query = raw.toLowerCase();
+      const result = [...document.querySelectorAll('h1,h2,h3,h4,p,li')].find(el => el.textContent.toLowerCase().includes(query));
+      if (result) result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
+  /* ── BUTTON RIPPLE ── */
+  document.querySelectorAll('.btn,.btn-apply').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const r = document.createElement('span');
+      r.className = 'rpl';
+      r.style.cssText = `left:${e.offsetX}px;top:${e.offsetY}px;width:8px;height:8px;margin:-4px`;
+      btn.appendChild(r);
+      setTimeout(() => r.remove(), 520);
+    });
+  });
 </script>
+</body>
 </html>
