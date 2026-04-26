@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div id="about"></div>
+
+    <script>
+fetch("index.html")
+  .then(res => {
+    if (!res.ok) {
+      throw new Error("File not found");
+    }
+    return res.text();
+  })
+  .then(data => {
+    document.getElementById("about").innerHTML = data;
+  })
+  .catch(err => console.error(err));
+    </script>
+</body>
+
+</html>
