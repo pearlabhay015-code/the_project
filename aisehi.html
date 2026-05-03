@@ -1,0 +1,2131 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CUSB — Central University of South Bihar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   CSS VARIABLES — THEME SYSTEM
+═══════════════════════════════════════════ */
+:root {
+  --bg: #fafafa;
+  --bg2: #f2f2f2;
+  --fg: #0a0a0a;
+  --fg2: #333;
+  --fg3: #666;
+  --border: #0a0a0a;
+  --border-light: #ccc;
+  --accent: #0a0a0a;
+  --card-bg: #fff;
+  --card-border: #0a0a0a;
+  --btn-bg: #0a0a0a;
+  --btn-fg: #fafafa;
+  --btn-ghost-fg: #0a0a0a;
+  --btn-ghost-border: #0a0a0a;
+  --nav-bg: rgba(250,250,250,0.96);
+  --shadow: rgba(0,0,0,0.12);
+  --ticker-bg: #0a0a0a;
+  --ticker-fg: #fafafa;
+  --topbar-bg: #f2f2f2;
+  --footer-bg: #0a0a0a;
+  --footer-fg: #fafafa;
+  --line-color: rgba(10,10,10,0.12);
+  --input-bg: #fff;
+  --input-border: #0a0a0a;
+  --chatbot-bg: #fff;
+  --chatbot-header: #0a0a0a;
+  --chatbot-header-fg: #fafafa;
+  --bot-bubble: #f0f0f0;
+  --user-bubble: #0a0a0a;
+  --user-bubble-fg: #fafafa;
+  --dot-active: #0a0a0a;
+  --font-scale: 1;
+  --transition: 0.3s ease;
+}
+[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --bg2: #141414;
+  --fg: #fafafa;
+  --fg2: #ddd;
+  --fg3: #999;
+  --border: #fafafa;
+  --border-light: #333;
+  --accent: #fafafa;
+  --card-bg: #161616;
+  --card-border: #fafafa;
+  --btn-bg: #fafafa;
+  --btn-fg: #0a0a0a;
+  --btn-ghost-fg: #fafafa;
+  --btn-ghost-border: #fafafa;
+  --nav-bg: rgba(10,10,10,0.96);
+  --shadow: rgba(255,255,255,0.08);
+  --ticker-bg: #fafafa;
+  --ticker-fg: #0a0a0a;
+  --topbar-bg: #141414;
+  --footer-bg: #fafafa;
+  --footer-fg: #0a0a0a;
+  --line-color: rgba(250,250,250,0.1);
+  --input-bg: #161616;
+  --input-border: #fafafa;
+  --chatbot-bg: #161616;
+  --chatbot-header: #fafafa;
+  --chatbot-header-fg: #0a0a0a;
+  --bot-bubble: #222;
+  --user-bubble: #fafafa;
+  --user-bubble-fg: #0a0a0a;
+  --dot-active: #fafafa;
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:calc(16px * var(--font-scale))}
+body{
+  background:var(--bg);
+  color:var(--fg);
+  font-family:'DM Mono',monospace;
+  font-size:0.9rem;
+  line-height:1.7;
+  transition:background var(--transition),color var(--transition);
+  overflow-x:hidden;
+}
+a{color:var(--fg);text-decoration:none;transition:opacity 0.2s}
+a:hover{opacity:0.6}
+ul{list-style:none}
+img{max-width:100%;display:block}
+button{cursor:pointer;font-family:inherit}
+
+/* ═══════════════════════════════════════════
+   SKIP LINK
+═══════════════════════════════════════════ */
+.skip-link{
+  position:fixed;top:-100%;left:1rem;z-index:9999;
+  background:var(--btn-bg);color:var(--btn-fg);
+  padding:0.5rem 1rem;border:2px solid var(--border);
+  font-size:0.85rem;transition:top 0.2s;
+}
+.skip-link:focus{top:1rem}
+
+/* ═══════════════════════════════════════════
+   ABSTRACT LINE ART DECORATIONS (SVG overlays)
+═══════════════════════════════════════════ */
+.deco-svg{
+  position:absolute;pointer-events:none;opacity:0.06;
+  transition:opacity var(--transition);
+}
+[data-theme="dark"] .deco-svg{opacity:0.08;filter:invert(1)}
+
+/* ═══════════════════════════════════════════
+   FLOWING CURVE DIVIDERS
+═══════════════════════════════════════════ */
+.curve-divider{
+  width:100%;overflow:hidden;line-height:0;
+  position:relative;z-index:1;
+}
+.curve-divider svg{display:block;width:100%}
+
+/* ═══════════════════════════════════════════
+   TICKER
+═══════════════════════════════════════════ */
+#ticker{
+  background:var(--ticker-bg);
+  color:var(--ticker-fg);
+  height:38px;
+  display:flex;align-items:center;gap:0;
+  overflow:hidden;position:relative;
+  border-bottom:1px solid var(--border);
+  transition:background var(--transition),color var(--transition);
+}
+.ticker-label{
+  background:var(--ticker-fg);color:var(--ticker-bg);
+  padding:0 14px;height:100%;
+  display:flex;align-items:center;
+  font-size:0.72rem;letter-spacing:.12em;
+  white-space:nowrap;flex-shrink:0;
+  font-weight:500;
+  transition:background var(--transition),color var(--transition);
+}
+.ticker-pause-btn{
+  background:transparent;border:none;color:var(--ticker-fg);
+  padding:0 10px;height:100%;font-size:0.9rem;
+  flex-shrink:0;opacity:.7;
+  transition:opacity .2s;
+}
+.ticker-pause-btn:hover{opacity:1}
+.ticker-viewport{flex:1;overflow:hidden;position:relative}
+.ticker-track{
+  display:flex;align-items:center;gap:0;
+  white-space:nowrap;
+  animation:ticker-scroll 40s linear infinite;
+}
+.ticker-track.paused{animation-play-state:paused}
+@keyframes ticker-scroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+.t-item{
+  color:var(--ticker-fg);
+  font-size:0.72rem;letter-spacing:.06em;
+  padding:0 20px;white-space:nowrap;
+  opacity:.85;
+  transition:opacity .2s;
+}
+.t-item:hover{opacity:1}
+.t-badge{
+  background:var(--ticker-fg);color:var(--ticker-bg);
+  padding:1px 6px;font-size:0.6rem;
+  margin-left:6px;border-radius:2px;
+}
+.t-sep{
+  width:1px;height:16px;
+  background:var(--ticker-fg);opacity:.3;
+  flex-shrink:0;
+}
+.ticker-fade{
+  position:absolute;top:0;bottom:0;width:40px;z-index:2;pointer-events:none;
+}
+.ticker-fade.lft{
+  left:0;
+  background:linear-gradient(to right,var(--ticker-bg),transparent);
+}
+.ticker-fade.rgt{
+  right:0;
+  background:linear-gradient(to left,var(--ticker-bg),transparent);
+}
+
+/* ═══════════════════════════════════════════
+   TOP BAR
+═══════════════════════════════════════════ */
+#topbar{
+  background:var(--topbar-bg);
+  border-bottom:1px solid var(--border-light);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 4vw;height:40px;
+  font-size:0.72rem;
+  transition:background var(--transition);
+}
+.tb-l{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.tb-l a,.tb-l span{color:var(--fg3);transition:color .2s}
+.tb-l a:hover{color:var(--fg);opacity:1}
+.tb-sep{color:var(--border-light)}
+.tb-r{display:flex;align-items:center;gap:12px}
+.font-size-controls{display:flex;align-items:center;gap:4px}
+.font-size-btn{
+  background:transparent;border:1px solid var(--border-light);
+  color:var(--fg);width:22px;height:22px;
+  font-size:.85rem;display:flex;align-items:center;justify-content:center;
+  border-radius:2px;transition:border-color .2s,color .2s;
+}
+.font-size-btn:hover{border-color:var(--border);color:var(--fg)}
+.font-size-display{font-size:.65rem;color:var(--fg3);min-width:24px}
+.credits img{height:22px;width:auto;opacity:.7}
+@media(max-width:640px){#topbar{display:none}}
+
+/* ═══════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════ */
+#nav-wrap{
+  position:sticky;top:0;z-index:900;
+  background:var(--nav-bg);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
+  transition:background var(--transition);
+}
+#nav-wrap nav{
+  max-width:1280px;margin:0 auto;
+  padding:0 4vw;height:58px;
+  display:flex;align-items:center;gap:24px;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo img{height:36px;width:auto;filter:var(--logo-filter)}
+[data-theme="dark"] .nav-logo img{filter:invert(1)}
+.brand-txt .abbr{
+  font-family:'DM Serif Display',serif;
+  font-size:1.35rem;color:var(--fg);
+  letter-spacing:.03em;
+}
+.nav-links{
+  display:flex;align-items:center;gap:2px;
+  margin-left:auto;
+}
+.nav-links li a{
+  color:var(--fg3);font-size:0.75rem;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:6px 10px;border-bottom:1px solid transparent;
+  transition:color .2s,border-color .2s;
+}
+.nav-links li a:hover{color:var(--fg);border-color:var(--border);opacity:1}
+.nav-right{display:flex;align-items:center;gap:10px;margin-left:16px}
+.theme-toggle{
+  background:transparent;border:1px solid var(--border);
+  color:var(--fg);width:32px;height:32px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;font-size:.85rem;
+  transition:border-color .2s,background .2s;
+}
+.theme-toggle:hover{background:var(--btn-bg);color:var(--btn-fg)}
+[data-theme="light"] .ico-moon{display:none}
+[data-theme="dark"] .ico-sun{display:none}
+.btn-apply{
+  background:var(--btn-bg);color:var(--btn-fg);
+  padding:6px 16px;border:1px solid var(--border);
+  font-size:0.72rem;letter-spacing:.1em;text-transform:uppercase;
+  transition:background .2s,color .2s;
+}
+.btn-apply:hover{background:transparent;color:var(--btn-ghost-fg);opacity:1}
+.ham{
+  display:none;background:transparent;border:1px solid var(--border);
+  width:32px;height:32px;flex-direction:column;
+  align-items:center;justify-content:center;gap:5px;
+  padding:0;
+}
+.ham span{
+  display:block;width:16px;height:1px;
+  background:var(--fg);transition:transform .3s,opacity .3s;
+}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .ham{display:flex}
+}
+
+/* SEARCH BAR */
+.nav-search-bar{
+  border-bottom:1px solid var(--border-light);
+  background:var(--bg2);
+  transition:background var(--transition);
+}
+.nav-search-form{max-width:600px;margin:0 auto;padding:8px 4vw}
+.nav-search-field{position:relative}
+.nav-search-input{
+  width:100%;background:var(--input-bg);color:var(--fg);
+  border:1px solid var(--input-border);padding:7px 40px 7px 12px;
+  font-family:'DM Mono',monospace;font-size:.8rem;
+  outline:none;transition:border-color .2s,background .2s;
+}
+.nav-search-input:focus{border-color:var(--fg)}
+.nav-search-submit{
+  position:absolute;right:0;top:0;height:100%;width:38px;
+  background:transparent;border:none;color:var(--fg3);
+  display:flex;align-items:center;justify-content:center;
+}
+.nav-search-submit:hover{color:var(--fg)}
+
+/* ═══════════════════════════════════════════
+   MOBILE DRAWER
+═══════════════════════════════════════════ */
+#mob-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.5);z-index:1000;
+}
+#mob-overlay.open{display:block}
+#mob-menu{
+  position:fixed;top:0;right:-320px;width:300px;height:100%;
+  background:var(--card-bg);border-left:1px solid var(--border);
+  z-index:1001;padding:0;overflow-y:auto;
+  transition:right .3s ease, background var(--transition);
+  display:flex;flex-direction:column;
+}
+#mob-menu.open{right:0}
+.mob-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;border-bottom:1px solid var(--border);
+}
+.mob-title{font-family:'DM Serif Display',serif;font-size:1.2rem}
+.mob-close{
+  background:transparent;border:1px solid var(--border);
+  width:30px;height:30px;font-size:1rem;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--fg);
+}
+.mob-section-lbl{
+  padding:10px 20px 4px;
+  font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--fg3);
+}
+.mob-a{
+  display:block;padding:10px 20px;
+  font-size:.82rem;color:var(--fg2);
+  border-bottom:1px solid var(--border-light);
+  transition:color .2s,background .2s;
+}
+.mob-a:hover{background:var(--bg2);color:var(--fg);opacity:1}
+.mob-divider{height:1px;background:var(--border-light);margin:4px 0}
+.mob-cta{
+  margin:20px;display:block;text-align:center;
+  background:var(--btn-bg);color:var(--btn-fg);
+  padding:10px;font-size:.82rem;letter-spacing:.08em;
+  border:1px solid var(--border);
+}
+
+/* ═══════════════════════════════════════════
+   BUTTONS (global)
+═══════════════════════════════════════════ */
+.btn{
+  display:inline-flex;align-items:center;
+  padding:10px 22px;font-size:.8rem;
+  letter-spacing:.1em;text-transform:uppercase;
+  font-family:'DM Mono',monospace;
+  border:1px solid var(--border);
+  transition:background .2s,color .2s,opacity .2s;
+  cursor:pointer;
+}
+.btn-ocean{background:var(--btn-bg);color:var(--btn-fg)}
+.btn-ocean:hover{background:transparent;color:var(--btn-ghost-fg);opacity:1}
+.btn-ghost{background:transparent;color:var(--btn-ghost-fg);border-color:var(--btn-ghost-border)}
+.btn-ghost:hover{background:var(--btn-bg);color:var(--btn-fg);opacity:1}
+.btn-sm{padding:6px 14px;font-size:.72rem}
+.btn-light{background:transparent;color:var(--fg);border-color:var(--border)}
+.btn-light:hover{background:var(--btn-bg);color:var(--btn-fg);opacity:1}
+
+/* ═══════════════════════════════════════════
+   SR ONLY
+═══════════════════════════════════════════ */
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+#hero{
+  min-height:92vh;
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.hero-left{
+  padding:80px 6vw 80px;
+  display:flex;flex-direction:column;justify-content:center;
+  border-right:1px solid var(--border);
+  position:relative;z-index:2;
+}
+.hero-eyebrow{
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--fg3);margin-bottom:24px;
+  display:flex;align-items:center;gap:8px;
+}
+.live-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--fg);display:inline-block;
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(0.8)}}
+.hero-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(2.4rem,5vw,4.2rem);
+  line-height:1.08;
+  margin-bottom:20px;
+  letter-spacing:-.02em;
+}
+.hero-title .acc{
+  font-style:italic;
+  text-decoration:underline;
+  text-underline-offset:6px;
+}
+.hero-sub{
+  font-size:.82rem;color:var(--fg3);
+  max-width:460px;margin-bottom:36px;line-height:1.8;
+}
+.hero-btns{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:48px}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  border:1px solid var(--border);
+  max-width:460px;
+}
+.h-stat{
+  padding:16px 14px;
+  border-right:1px solid var(--border);
+  text-align:center;
+}
+.h-stat:last-child{border-right:none}
+.num{
+  font-family:'DM Serif Display',serif;
+  font-size:1.6rem;line-height:1;
+  margin-bottom:4px;
+}
+.lbl{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fg3)}
+
+/* HERO RIGHT — line art illustration */
+.hero-right{
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--bg2);
+  overflow:hidden;
+}
+.hero-line-art{
+  width:85%;max-width:480px;
+  opacity:.9;
+}
+[data-theme="dark"] .hero-line-art{filter:invert(1)}
+.hero-corner-deco{
+  position:absolute;
+  font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--fg3);writing-mode:vertical-rl;
+  right:20px;top:50%;transform:translateY(-50%);
+}
+@media(max-width:860px){
+  #hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{min-height:90vh}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ═══════════════════════════════════════════
+   SECTIONS — SHARED
+═══════════════════════════════════════════ */
+.sec{
+  padding:80px 6vw;
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.light-sec{background:var(--bg)}
+.dark-sec{background:var(--bg2)}
+.white-sec{background:var(--card-bg)}
+.sec-lbl{
+  font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--fg3);margin-bottom:10px;
+}
+.sec-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(1.8rem,3.5vw,3rem);
+  line-height:1.1;letter-spacing:-.02em;margin-bottom:16px;
+}
+.sec-sub{font-size:.83rem;color:var(--fg3);max-width:560px;line-height:1.8}
+.sec-hd{margin-bottom:48px}
+.sec-hd.center{text-align:center}
+.sec-hd.center .sec-sub{margin:0 auto}
+.sec-top-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--fg3);margin-top:40px;
+  border-bottom:1px solid var(--border-light);padding-bottom:2px;
+  transition:color .2s,border-color .2s;
+}
+.sec-top-link:hover{color:var(--fg);border-color:var(--border);opacity:1}
+
+/* ═══════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════ */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;
+  align-items:start;max-width:1200px;margin:0 auto;
+}
+.about-body{font-size:.83rem;color:var(--fg2);line-height:1.9;margin-bottom:12px}
+.vm-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  border:1px solid var(--border);margin:28px 0;
+}
+.vm-card{
+  padding:20px;background:var(--card-bg);
+  border:none;
+  transition:background var(--transition);
+}
+.vm-card h4{
+  font-family:'DM Serif Display',serif;
+  font-size:1rem;margin-bottom:8px;
+}
+.vm-card p{font-size:.75rem;color:var(--fg3);line-height:1.7}
+.about-img-slot{
+  border:1px solid var(--border);
+  background:var(--bg2);
+  aspect-ratio:4/5;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;
+}
+.about-img-slot img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.about-img-slot::after{
+  content:'';position:absolute;inset:0;
+  border:8px solid var(--bg);
+  pointer-events:none;
+}
+@media(max-width:860px){
+  .about-grid{grid-template-columns:1fr}
+  .about-img-slot{display:none}
+}
+
+/* ═══════════════════════════════════════════
+   LEADERSHIP
+═══════════════════════════════════════════ */
+.leaders-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  border:1px solid var(--border);
+  max-width:1000px;margin:0 auto;
+}
+.leader-card{
+  background:var(--card-bg);padding:36px 28px;
+  border:none;position:relative;overflow:hidden;
+  transition:background var(--transition);
+}
+.leader-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;background:var(--border);
+}
+.leader-photo{
+  width:80px;height:80px;
+  border:1px solid var(--border);
+  background:var(--bg2);
+  border-radius:50%;overflow:hidden;
+  margin-bottom:16px;display:flex;align-items:center;justify-content:center;
+}
+.leader-photo img{width:100%;height:100%;object-fit:cover}
+.leader-name{font-family:'DM Serif Display',serif;font-size:1.05rem;margin-bottom:4px}
+.leader-role{font-size:.68rem;color:var(--fg3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+.leader-note{font-size:.75rem;color:var(--fg3);line-height:1.7}
+@media(max-width:700px){
+  .leaders-grid{grid-template-columns:1fr}
+}
+
+/* ═══════════════════════════════════════════
+   COURSES
+═══════════════════════════════════════════ */
+.dept-search-wrap{position:relative;max-width:500px;margin:0 auto 28px}
+.dept-search{
+  width:100%;background:var(--input-bg);color:var(--fg);
+  border:1px solid var(--input-border);padding:10px 40px 10px 14px;
+  font-family:'DM Mono',monospace;font-size:.8rem;
+  outline:none;transition:border-color .2s,background .2s;
+}
+.dept-search:focus{border-color:var(--fg)}
+.dept-search-ico{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  font-size:.85rem;pointer-events:none;
+}
+.school-tabs-wrap{margin-bottom:36px}
+.school-tabs-label{
+  display:block;font-size:.65rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--fg3);margin-bottom:10px;
+}
+.school-tabs{display:flex;flex-wrap:wrap;gap:6px}
+.school-tab{
+  background:transparent;border:1px solid var(--border-light);
+  color:var(--fg3);padding:6px 12px;
+  font-family:'DM Mono',monospace;font-size:.7rem;
+  letter-spacing:.06em;
+  transition:border-color .2s,color .2s,background .2s;
+}
+.school-tab.active,.school-tab:hover{
+  background:var(--btn-bg);color:var(--btn-fg);
+  border-color:var(--border);
+}
+.school-group{max-width:1000px;margin:0 auto}
+.school-name{
+  font-family:'DM Serif Display',serif;
+  font-size:1rem;margin-bottom:16px;
+  padding-left:12px;border-left:2px solid var(--border);
+}
+.dept-links{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.dept-link{
+  display:flex;align-items:center;gap:6px;
+  border:1px solid var(--border-light);
+  padding:8px 14px;font-size:.75rem;
+  background:var(--card-bg);
+  transition:border-color .2s,background .2s;
+}
+.dept-link:hover{border-color:var(--border);background:var(--bg2);opacity:1}
+.dico{font-size:.9rem}
+.school-divider{
+  border:none;border-top:1px solid var(--border-light);
+  margin:8px 0 24px;max-width:1000px;margin-left:auto;margin-right:auto;
+}
+.no-results{
+  text-align:center;padding:28px;
+  font-size:.8rem;color:var(--fg3);
+  display:none;
+}
+
+/* ═══════════════════════════════════════════
+   CAMPUS
+═══════════════════════════════════════════ */
+.infra-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1px;border:1px solid var(--border);
+  max-width:1200px;margin:0 auto;
+}
+.infra-card{
+  background:var(--card-bg);padding:28px 24px;
+  border:none;position:relative;overflow:hidden;
+  display:block;transition:background var(--transition);
+}
+.infra-card:hover .infra-name{text-decoration:underline}
+.infra-img-slot{
+  height:120px;background:var(--bg2);
+  border:1px solid var(--border-light);
+  margin-bottom:16px;overflow:hidden;
+}
+.camp-img{width:100%;height:100%;object-fit:cover;opacity:.8;transition:opacity .3s}
+.infra-card:hover .camp-img{opacity:1}
+.infra-name{
+  font-family:'DM Serif Display',serif;
+  font-size:.95rem;margin-bottom:8px;
+}
+.infra-note{font-size:.72rem;color:var(--fg3);line-height:1.7}
+
+/* ═══════════════════════════════════════════
+   NOTICES
+═══════════════════════════════════════════ */
+.notices-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  border:1px solid var(--border);max-width:1000px;margin:0 auto;
+}
+.notice-col{
+  background:var(--card-bg);padding:28px;
+  transition:background var(--transition);
+}
+.notice-col-hd{
+  display:flex;align-items:center;gap:8px;
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:20px;padding-bottom:14px;
+  border-bottom:1px solid var(--border-light);
+}
+.nc-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--fg);flex-shrink:0;
+}
+.nc-dot.teal{border:1px solid var(--fg);background:transparent}
+.notice-item{
+  padding:12px 0;border-bottom:1px solid var(--border-light);
+}
+.notice-item:last-of-type{border-bottom:none}
+.notice-item a{font-size:.78rem;color:var(--fg2);transition:color .2s}
+.notice-item a:hover{color:var(--fg);opacity:1}
+.new-tag{
+  background:var(--btn-bg);color:var(--btn-fg);
+  padding:1px 5px;font-size:.58rem;margin-left:6px;
+}
+.n-date{font-size:.65rem;color:var(--fg3);margin-top:4px}
+@media(max-width:660px){
+  .notices-grid{grid-template-columns:1fr}
+}
+
+/* ═══════════════════════════════════════════
+   GALLERY
+═══════════════════════════════════════════ */
+.gallery-section{
+  padding:80px 0 60px;
+  border-bottom:1px solid var(--border);
+  background:var(--bg);
+  overflow:hidden;
+  position:relative;
+}
+.gallery-header{text-align:center;padding:0 6vw;margin-bottom:36px}
+.gallery-eyebrow{
+  font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--fg3);margin-bottom:10px;
+}
+.gallery-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(1.8rem,3.5vw,3rem);
+  line-height:1.1;margin-bottom:12px;
+}
+.gallery-title span{font-style:italic}
+.gallery-subtitle{font-size:.82rem;color:var(--fg3);margin-bottom:16px}
+.gallery-pause-btn{
+  background:transparent;border:1px solid var(--border-light);
+  color:var(--fg3);padding:6px 14px;
+  font-family:'DM Mono',monospace;font-size:.7rem;
+  letter-spacing:.08em;transition:border-color .2s,color .2s;
+}
+.gallery-pause-btn:hover{border-color:var(--border);color:var(--fg)}
+.gallery-stage{position:relative;display:flex;align-items:center}
+.gallery-arrow{
+  background:var(--card-bg);border:1px solid var(--border);
+  width:40px;height:40px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--fg);z-index:2;
+  transition:background .2s,color .2s;
+  flex-shrink:0;margin:0 8px;
+}
+.gallery-arrow svg{width:18px;height:18px;stroke-width:1.5}
+.gallery-arrow:hover{background:var(--btn-bg);color:var(--btn-fg)}
+.gallery-viewport{flex:1;overflow:hidden}
+.gallery-track{
+  display:flex;gap:12px;
+  transition:transform .5s ease;
+}
+.gallery-card{
+  flex:0 0 calc(33.33% - 8px);
+  aspect-ratio:4/3;background:var(--bg2);
+  border:1px solid var(--border-light);
+  overflow:hidden;
+  transition:border-color .2s;
+}
+.gallery-card:hover{border-color:var(--border)}
+.gallery-card-inner{width:100%;height:100%;overflow:hidden}
+.gallery-card-inner img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .3s,transform .4s}
+.gallery-card:hover .gallery-card-inner img{opacity:1;transform:scale(1.03)}
+@media(max-width:640px){
+  .gallery-card{flex:0 0 calc(80% - 6px)}
+}
+.gallery-dots{display:flex;gap:6px;justify-content:center;margin-top:20px;padding:0 6vw}
+.gdot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--border-light);border:none;
+  cursor:pointer;transition:background .2s,transform .2s;
+}
+.gdot.active{background:var(--dot-active);transform:scale(1.4)}
+.gallery-count{
+  text-align:center;font-size:.68rem;color:var(--fg3);
+  margin-top:12px;letter-spacing:.12em;
+}
+
+/* ═══════════════════════════════════════════
+   QUICK LINKS
+═══════════════════════════════════════════ */
+.ql-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
+  gap:1px;border:1px solid var(--border);
+  max-width:1100px;margin:0 auto;
+}
+.ql-card{
+  background:var(--card-bg);padding:20px 14px;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  border:none;text-align:center;
+  transition:background var(--transition);
+}
+.ql-card:hover{background:var(--bg2);opacity:1}
+.ql-ico{
+  width:52px;height:52px;
+  border:1px solid var(--border-light);
+  overflow:hidden;background:var(--bg2);
+  display:flex;align-items:center;justify-content:center;
+}
+.ql-img{width:100%;height:100%;object-fit:cover}
+.ql-nm{font-size:.68rem;letter-spacing:.08em;color:var(--fg2);text-transform:uppercase}
+
+/* ═══════════════════════════════════════════
+   GOV SITES
+═══════════════════════════════════════════ */
+#gov_sites{
+  padding:40px 6vw;background:var(--bg2);
+  border-bottom:1px solid var(--border);
+}
+.students_site{
+  display:flex;justify-content:center;
+}
+.students_site_link{
+  display:flex;flex-wrap:wrap;gap:16px;
+  justify-content:center;align-items:center;
+  max-width:900px;
+}
+.students_site_link li a img{
+  height:40px;width:auto;opacity:.7;
+  filter:grayscale(1);
+  transition:opacity .3s,filter .3s;
+}
+[data-theme="dark"] .students_site_link li a img{filter:grayscale(1) invert(1)}
+.students_site_link li a:hover img{opacity:1;filter:grayscale(0)}
+[data-theme="dark"] .students_site_link li a:hover img{filter:grayscale(0) invert(1)}
+
+/* ═══════════════════════════════════════════
+   CTA
+═══════════════════════════════════════════ */
+#cta-sec{
+  padding:100px 6vw;
+  background:var(--btn-bg);
+  color:var(--btn-fg);
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+  text-align:center;
+  transition:background var(--transition),color var(--transition);
+}
+.cta-inner{position:relative;z-index:2}
+.cta-title{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(2rem,4vw,3.4rem);
+  margin-bottom:16px;line-height:1.08;
+  color:var(--btn-fg);
+  transition:color var(--transition);
+}
+.cta-sub{
+  font-size:.83rem;color:var(--btn-fg);opacity:.7;
+  max-width:520px;margin:0 auto 32px;line-height:1.8;
+}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.cta-btns .btn-ocean{
+  background:var(--btn-fg);color:var(--btn-bg);
+  border-color:var(--btn-fg);
+}
+.cta-btns .btn-ghost{
+  color:var(--btn-fg);border-color:var(--btn-fg);
+}
+.cta-btns .btn-ghost:hover{background:var(--btn-fg);color:var(--btn-bg)}
+/* CTA abstract deco lines */
+.cta-deco{
+  position:absolute;inset:0;pointer-events:none;opacity:.06;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+#footer{
+  background:var(--footer-bg);color:var(--footer-fg);
+  padding:60px 6vw 0;
+  border-top:1px solid var(--border);
+  transition:background var(--transition),color var(--transition);
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr 1fr;
+  gap:40px;margin-bottom:40px;
+}
+.fb-name{
+  font-family:'DM Serif Display',serif;
+  font-size:1.1rem;margin-bottom:12px;
+}
+.fb-desc{font-size:.73rem;opacity:.6;line-height:1.8;margin-bottom:16px}
+.fb-contact{display:flex;flex-direction:column;gap:6px}
+.fb-contact a,.fb-contact span{font-size:.72rem;opacity:.65;color:var(--footer-fg)}
+.fb-contact a:hover{opacity:1}
+.fc-h5{
+  font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;
+  margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.15);
+  padding-bottom:8px;
+}
+[data-theme="dark"] .fc-h5{border-color:rgba(0,0,0,.15)}
+.fc-ul li{margin-bottom:8px}
+.fc-ul a{font-size:.73rem;opacity:.6;color:var(--footer-fg);transition:opacity .2s}
+.fc-ul a:hover{opacity:1}
+.social_media-links{
+  display:flex;flex-direction:column;gap:8px;
+}
+.social_media-links a img{
+  height:24px;width:auto;opacity:.5;
+  filter:var(--social-filter);
+  transition:opacity .3s;
+}
+[data-theme="light"] .social_media-links a img{filter:invert(1)}
+[data-theme="dark"] .social_media-links a img{filter:none}
+.social_media-links a:hover img{opacity:1}
+.map{
+  border-top:1px solid rgba(255,255,255,.1);
+  margin:0 -6vw;
+}
+[data-theme="dark"] .map{border-color:rgba(0,0,0,.1)}
+.map a{display:block}
+.map img{width:100%;height:180px;object-fit:cover;opacity:.4;display:block}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);
+  padding:16px 0;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:.65rem;opacity:.5;flex-wrap:wrap;gap:10px;
+}
+[data-theme="dark"] .footer-bottom{border-color:rgba(0,0,0,.1)}
+.footer-bottom a{color:var(--footer-fg)}
+.acc-row{display:flex;gap:8px}
+.acc-badge{
+  border:1px solid var(--footer-fg);
+  padding:2px 7px;font-size:.6rem;
+  letter-spacing:.1em;opacity:.6;
+}
+@media(max-width:860px){
+  .footer-grid{grid-template-columns:1fr 1fr;gap:24px}
+}
+@media(max-width:540px){
+  .footer-grid{grid-template-columns:1fr}
+}
+
+/* ═══════════════════════════════════════════
+   CHATBOT — 2D LINE ART MAN + CLOUD BUBBLE
+═══════════════════════════════════════════ */
+.chatbot-container{
+  position:fixed;bottom:28px;right:28px;z-index:2000;
+}
+.chatbot-window{
+  position:absolute;bottom:70px;right:0;
+  width:320px;
+  background:var(--chatbot-bg);
+  border:1px solid var(--border);
+  display:flex;flex-direction:column;
+  max-height:460px;
+  transform:scale(0.95) translateY(10px);
+  opacity:0;pointer-events:none;
+  transform-origin:bottom right;
+  transition:transform .25s ease,opacity .25s ease;
+}
+.chatbot-window.open{
+  transform:scale(1) translateY(0);
+  opacity:1;pointer-events:all;
+}
+.chatbot-header{
+  background:var(--chatbot-header);color:var(--chatbot-header-fg);
+  padding:10px 14px;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:.78rem;letter-spacing:.06em;
+  transition:background var(--transition),color var(--transition);
+}
+.chatbot-close{
+  background:transparent;border:1px solid var(--chatbot-header-fg);
+  color:var(--chatbot-header-fg);
+  width:22px;height:22px;font-size:.9rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.chatbot-messages{
+  flex:1;overflow-y:auto;
+  padding:14px;display:flex;flex-direction:column;gap:10px;
+}
+.chatbot-message{display:flex;gap:8px;align-items:flex-end}
+.chatbot-message.bot{flex-direction:row}
+.chatbot-message.user{flex-direction:row-reverse}
+.chatbot-avatar{
+  width:28px;height:28px;flex-shrink:0;color: white;
+}
+.chatbot-avatar svg{width:100%;height:100%}
+.chatbot-message-bubble{
+  background:var(--bot-bubble);color:var(--fg);
+  padding:8px 12px;font-size:.75rem;line-height:1.6;
+  max-width:76%;
+  border:1px solid var(--border-light);
+  transition:background var(--transition);
+}
+.chatbot-message.user .chatbot-message-bubble{
+  background:var(--user-bubble);color:var(--user-bubble-fg);
+  border-color:var(--border);
+}
+.chatbot-input-group{
+  display:flex;border-top:1px solid var(--border-light);
+}
+.chatbot-input-group input{
+  flex:1;background:var(--input-bg);color:var(--fg);
+  border:none;padding:10px 12px;
+  font-family:'DM Mono',monospace;font-size:.78rem;
+  outline:none;
+  transition:background var(--transition);
+}
+#chatbot-send{
+  background:var(--btn-bg);color:var(--btn-fg);
+  border:none;padding:0 14px;
+  font-size:1rem;
+  transition:background .2s,color .2s;
+}
+#chatbot-send:hover{opacity:.8}
+/* Toggle button — 2D man SVG */
+.chatbot-toggle{
+  width:52px;height:52px;
+  background:var(--btn-bg);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  transition:background .2s,transform .2s;
+}
+.chatbot-toggle:hover{transform:scale(1.08)}
+.chatbot-toggle svg{width:28px;height:28px}
+
+/* Floating message cloud */
+.floating-message{
+  position:absolute;bottom:64px;right:60px;
+  pointer-events:none;
+  opacity:0;transform:translateY(4px);
+  transition:opacity .3s,transform .3s;
+}
+.floating-message.show{opacity:1;transform:translateY(0)}
+.floating-message svg{display:block}
+
+/* ═══════════════════════════════════════════
+   SECTION PROGRESS NAV
+═══════════════════════════════════════════ */
+#section-nav{
+  position:fixed;right:14px;top:50%;transform:translateY(-50%);
+  z-index:800;display:flex;flex-direction:column;gap:6px;
+}
+.snav-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:transparent;
+  border:1px solid var(--border-light);
+  cursor:pointer;transition:border-color .2s,background .2s,transform .2s;
+}
+.snav-dot.active{
+  background:var(--dot-active);
+  border-color:var(--dot-active);
+  transform:scale(1.4);
+}
+@media(max-width:640px){#section-nav{display:none}}
+
+/* ═══════════════════════════════════════════
+   SCROLL TO TOP
+═══════════════════════════════════════════ */
+#scroll-btn{
+  position:fixed;bottom:28px;left:28px;z-index:800;
+  background:var(--card-bg);border:1px solid var(--border);
+  color:var(--fg);width:40px;height:40px;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s,background .2s;
+}
+#scroll-btn.show{opacity:1;pointer-events:all}
+#scroll-btn:hover{background:var(--btn-bg);color:var(--btn-fg)}
+#scroll-btn svg{width:16px;height:16px}
+
+/* ═══════════════════════════════════════════
+   SCROLL ANIMATIONS (reveal)
+═══════════════════════════════════════════ */
+.rev{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .6s ease,transform .6s ease;
+}
+.rev.visible{opacity:1;transform:translateY(0)}
+
+/* ═══════════════════════════════════════════
+   FLOWING CURVE DIVIDERS between sections
+═══════════════════════════════════════════ */
+.wave-divider{
+  position:relative;z-index:1;
+  margin-top:-1px;
+  line-height:0;
+  background:var(--bg);
+}
+.wave-divider svg{display:block;width:100%}
+
+/* ═══════════════════════════════════════════
+   ABSTRACT DECO LINE ARTS
+═══════════════════════════════════════════ */
+.abs-deco{
+  position:absolute;pointer-events:none;
+  opacity:.05;
+  transition:opacity var(--transition);
+}
+[data-theme="dark"] .abs-deco{opacity:.07;filter:invert(1)}
+
+/* ═══════════════════════════════════════════
+   FONT SIZE
+═══════════════════════════════════════════ */
+:root{--font-scale:1}
+
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ══════ TICKER ══════ -->
+<div id="ticker" role="marquee" aria-label="Important university announcements — press Space to pause">
+  <div class="ticker-label">📢 Updates</div>
+  <button class="ticker-pause-btn" id="ticker-pause-btn" aria-label="Pause announcements" aria-pressed="false">⏸</button>
+  <div class="ticker-fade lft"></div>
+  <div class="ticker-viewport">
+    <div class="ticker-track" id="ticker-track">
+      <a href="#notices-sec" class="t-item">CUSB Admission Bulletin 2026 (CUET-PG) <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">NCET-2026 — 4-Year Integrated Teacher Education Programme <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#cta-sec" class="t-item">Admissions Open 2026–27 — Apply Now →</a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">45th INCA International Congress — CUSB, March 2026</a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">Competition on Smart Design for Website Development — Register from 14 Feb 2026</a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">Ph.D. Admission Notice — All Departments</a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">Recruitment Notification — Non-Teaching Posts</a><span class="t-sep"></span>
+      <a href="#about" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">Semester Exam Schedule — Even Semester 2025–26</a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">NAAC Peer Team Visit Preparation — Circular Available</a><span class="t-sep"></span>
+      <!-- duplicate for seamless loop -->
+      <a href="#notices-sec" class="t-item">CUSB Admission Bulletin 2026 (CUET-PG) <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">NCET-2026 — 4-Year Integrated Teacher Education Programme <span class="t-badge">NEW</span></a><span class="t-sep"></span>
+      <a href="#cta-sec" class="t-item">Admissions Open 2026–27 — Apply Now →</a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">45th INCA International Congress — CUSB, March 2026</a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">Competition on Smart Design for Website Development — Register from 14 Feb 2026</a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">Ph.D. Admission Notice — All Departments</a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">Recruitment Notification — Non-Teaching Posts</a><span class="t-sep"></span>
+      <a href="#about" class="t-item">CUSB · Established 2009 · Panchanpur, Gaya, Bihar</a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">Semester Exam Schedule — Even Semester 2025–26</a><span class="t-sep"></span>
+      <a href="#notices-sec" class="t-item">NAAC Peer Team Visit Preparation — Circular Available</a><span class="t-sep"></span>
+    </div>
+  </div>
+  <div class="ticker-fade rgt"></div>
+</div>
+
+<!-- ══════ TOP BAR ══════ -->
+<div id="topbar" role="banner">
+  <div class="tb-l">
+    <span>0631-2229 530</span>
+    <span class="tb-sep">|</span>
+    <a href="mailto:admission@cusb.ac.in">admission@cusb.ac.in</a>
+    <span class="tb-sep">|</span>
+    <a href="https://rtionline.gov.in/" target="_blank" rel="noopener">RTI</a>
+    <span class="tb-sep">|</span>
+    <a href="#" aria-disabled="true" tabindex="-1">Public Self Disclosure</a>
+    <span class="tb-sep">|</span>
+    <a href="#" aria-disabled="true" tabindex="-1">Webmail</a>
+    <span class="tb-sep">|</span>
+    <a href="#" aria-disabled="true" tabindex="-1">Feedback</a>
+    <span class="tb-sep">|</span>
+    <a href="http://naac.gov.in/" target="_blank" rel="noopener">NAAC</a>
+  </div>
+  <div class="tb-r">
+    <div class="font-size-controls" role="group" aria-label="Text size controls">
+      <button class="font-size-btn" id="font-decrease-btn" title="Decrease font size" aria-label="Decrease font size">−</button>
+      <span style="font-size:.75rem;color:var(--fg3);" aria-hidden="true">A</span>
+      <button class="font-size-btn" id="font-increase-btn" title="Increase font size" aria-label="Increase font size">+</button>
+      <span class="font-size-display" id="font-size-display" aria-live="polite" aria-label="Current font size"></span>
+    </div>
+    <div class="credits"><img src="NAAC.png" loading="lazy" alt="NAAC Accreditation Badge" onerror="this.style.display='none'"></div>
+    <div class="credits"><img src="viksit.png" loading="lazy" alt="Viksit Bharat Initiative Logo" onerror="this.style.display='none'"></div>
+  </div>
+</div>
+
+<!-- ══════ NAVBAR ══════ -->
+<div id="nav-wrap">
+  <nav aria-label="Main navigation">
+    <a href="#hero" class="nav-brand" aria-label="CUSB Homepage">
+      <div class="nav-logo">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="18" cy="18" r="17" stroke="currentColor" stroke-width="1.2" fill="none"/>
+          <text x="18" y="23" text-anchor="middle" font-family="serif" font-size="12" fill="currentColor">C</text>
+          <path d="M8 28 Q18 6 28 28" stroke="currentColor" stroke-width="0.8" fill="none" opacity=".4"/>
+        </svg>
+      </div>
+      <div class="brand-txt"><div class="abbr">CUSB</div></div>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#courses-sec">Courses</a></li>
+      <li><a href="#campus">Campus</a></li>
+      <li><a href="#notices-sec">Notices</a></li>
+      <li><a href="#gov_sites">Gov</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode">
+        <span class="ico-sun" aria-hidden="true">☀️</span>
+        <span class="ico-moon" aria-hidden="true">🌙</span>
+      </button>
+      <a href="#cta-sec" class="btn-apply">Apply</a>
+      <button class="ham" id="ham-btn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mob-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<div class="nav-search-bar" id="nav-search-bar">
+  <form id="nav-search-form" class="nav-search-form" role="search">
+    <label for="nav-search-input" class="sr-only">Search site</label>
+    <div class="nav-search-field">
+      <input id="nav-search-input" class="nav-search-input" type="search" placeholder="Search CUSB…" aria-label="Search site" autocomplete="off">
+      <button type="submit" class="nav-search-submit" aria-label="Submit search">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- Mobile overlay + drawer -->
+<div id="mob-overlay"></div>
+<div id="mob-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mob-header">
+    <span class="mob-title">CUSB</span>
+    <button class="mob-close" id="mob-close-btn" type="button" aria-label="Close menu">✕</button>
+  </div>
+  <div class="mob-section-lbl">Navigation</div>
+  <a class="mob-a" href="#hero">Home</a>
+  <a class="mob-a" href="#about">About the University</a>
+  <div class="mob-divider"></div>
+  <div class="mob-section-lbl">Academics</div>
+  <a class="mob-a" href="#courses-sec">Programs &amp; Courses</a>
+  <div class="mob-divider"></div>
+  <div class="mob-section-lbl">Campus Life</div>
+  <a class="mob-a" href="#campus">Campus</a>
+  <a class="mob-a" href="#gallery">Gallery</a>
+  <div class="mob-divider"></div>
+  <div class="mob-section-lbl">Notices &amp; Events</div>
+  <a class="mob-a" href="#notices-sec">Notices</a>
+  <div class="mob-divider"></div>
+  <div class="mob-section-lbl">Students</div>
+  <a class="mob-a" href="#quicklinks">Quick Links</a>
+  <a class="mob-a" href="#gov_sites">Gov Links</a>
+  <a class="mob-cta" href="#cta-sec">Apply 2026–27 →</a>
+</div>
+
+<!-- ══════════════════════════════════════
+   MAIN CONTENT
+══════════════════════════════════════ -->
+<main id="main-content">
+
+<!-- ══════ HERO ══════ -->
+<section id="hero" style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border);min-height:92vh;position:relative;overflow:hidden">
+
+  <!-- Abstract deco: circles & curves top-left -->
+  <svg class="abs-deco" style="top:-60px;left:-60px;width:320px;height:320px" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="160" cy="160" r="120" stroke="currentColor" stroke-width="0.8"/>
+    <circle cx="160" cy="160" r="80" stroke="currentColor" stroke-width="0.6"/>
+    <circle cx="160" cy="160" r="40" stroke="currentColor" stroke-width="0.5"/>
+    <line x1="0" y1="160" x2="320" y2="160" stroke="currentColor" stroke-width="0.5"/>
+    <line x1="160" y1="0" x2="160" y2="320" stroke="currentColor" stroke-width="0.5"/>
+  </svg>
+
+  <div class="hero-left" style="position:relative;z-index:2;padding:80px 6vw;display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--border)">
+    <div class="hero-eyebrow"><span class="live-dot" aria-hidden="true"></span>Admissions Open — 2026–27</div>
+    <h1 class="hero-title">Central University<br>of <span class="acc">South Bihar</span></h1>
+    <p class="hero-sub">A Central University under the Ministry of Education, Government of India. 300 acres of learning at Panchanpur, Gaya. Motto: <em>Collective Reasoning.</em></p>
+    <div class="hero-btns">
+      <a href="#cta-sec" class="btn btn-ocean">Apply Now →</a>
+      <a href="#about" class="btn btn-ghost">Explore CUSB</a>
+      <a href="#courses-sec" class="btn btn-ghost">Choose Your Path ↓</a>
+      <a href="#quicklinks" class="btn btn-ghost btn-sm">Prospectus</a>
+    </div>
+    <div class="hero-stats" aria-label="University statistics">
+      <div class="h-stat"><div class="num" data-to="180" data-s="+">0</div><div class="lbl">Teachers</div></div>
+      <div class="h-stat"><div class="num" data-to="51" data-s="+">0</div><div class="lbl">Programmes</div></div>
+      <div class="h-stat"><div class="num" data-to="4100" data-s="+">0</div><div class="lbl">Students</div></div>
+      <div class="h-stat"><div class="num" data-to="300">0</div><div class="lbl">Acre Campus</div></div>
+    </div>
+  </div>
+
+  
+    <div class="hero-corner-deco" aria-hidden="true">Est. 2009 · Gaya, Bihar</div>
+  </div>
+</section>
+
+<!-- WAVE DIVIDER → about -->
+<div class="wave-divider" style="background:var(--bg2)">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60" aria-hidden="true">
+    <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,0 L0,0 Z" fill="var(--bg)"/>
+  </svg>
+</div>
+
+<!-- ══════ ABOUT ══════ -->
+<section id="about" class="sec light-sec" aria-labelledby="about-heading" style="position:relative">
+  <!-- Abstract deco: spiral -->
+  <svg class="abs-deco" style="top:20px;right:30px;width:200px;height:200px" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+    <path d="M100,100 m0,-80 a80,80 0 1,1 -0.1,0 m0,20 a60,60 0 1,1 -0.1,0 m0,20 a40,40 0 1,1 -0.1,0 m0,20 a20,20 0 1,1 -0.1,0" stroke="currentColor" stroke-width="0.7"/>
+  </svg>
+  <div class="about-grid">
+    <div>
+      <div class="sec-lbl rev">About the University</div>
+      <h2 class="sec-title rev" id="about-heading">Collective Reasoning,<br>National Purpose</h2>
+      <p class="about-body rev">Central University of South Bihar (CUSB) is one among 54 Central Universities under the Department of Higher Education, Ministry of Education, Government of India. Established under the Central Universities Act, 2009.</p>
+      <p class="about-body rev" style="margin-top:10px">The University operates from a permanent 300-acre campus at Panchanpur, approximately 15 km from Gaya — in the historic heartland of Bihar, the land of enlightenment.</p>
+      <div class="vm-grid rev">
+        <div class="vm-card"><h4>Vision</h4><p>To be a centre of excellence in teaching, research, and innovation — contributing to national development.</p></div>
+        <div class="vm-card"><h4>Mission</h4><p>To foster an inclusive academic environment promoting critical thinking, ethical values, and interdisciplinary research.</p></div>
+        <div class="vm-card"><h4>Motto</h4><p>Collective Reasoning — fostering collaborative inquiry and shared wisdom.</p></div>
+        <div class="vm-card"><h4>NEP 2020</h4><p>Aligned with National Education Policy 2020 — promoting holistic development.</p></div>
+      </div>
+      <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap" class="rev">
+        <a href="#" class="btn btn-light btn-sm">Our History →</a>
+        <a href="#" class="btn btn-light btn-sm">More About CUSB →</a>
+      </div>
+    </div>
+    <div class="about-img-slot rev">
+      <img src="admin.jpeg" alt="CUSB Main Administrative Building" onerror="this.parentElement.innerHTML='<svg viewBox=\'0 0 300 360\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\' style=\'width:80%;opacity:.3\'><rect x=\'20\' y=\'60\' width=\'260\' height=\'280\' stroke=\'currentColor\' stroke-width=\'1\'/><line x1=\'60\' y1=\'60\' x2=\'60\' y2=\'340\' stroke=\'currentColor\' stroke-width=\'0.7\'/><line x1=\'100\' y1=\'60\' x2=\'100\' y2=\'340\' stroke=\'currentColor\' stroke-width=\'0.7\'/><line x1=\'140\' y1=\'60\' x2=\'140\' y2=\'340\' stroke=\'currentColor\' stroke-width=\'0.7\'/><line x1=\'180\' y1=\'60\' x2=\'180\' y2=\'340\' stroke=\'currentColor\' stroke-width=\'0.7\'/><line x1=\'220\' y1=\'60\' x2=\'220\' y2 \'340\' stroke(\'currentColor\') stroke-width(\'0.7\')/><polyline points(\'10,60 150,10 290,60\') stroke(\'currentColor\') stroke-width(\'1\') fill(\'none\')/><rect x(\'110\') y(\'240\') width(\'80\') height(\'100\') stroke(\'currentColor\') stroke-width(\'0.8\')/></svg>'">
+    </div>
+  </div>
+  <a href="#hero" class="sec-top-link" aria-label="Back to top">↑ Back to top</a>
+</section>
+
+<!-- WAVE -->
+<div class="wave-divider" style="background:var(--bg)">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60" aria-hidden="true">
+    <path d="M0,0 C360,60 720,0 1080,40 C1260,60 1380,20 1440,30 L1440,60 L0,60 Z" fill="var(--bg2)"/>
+  </svg>
+</div>
+
+<!-- ══════ LEADERSHIP ══════ -->
+<section id="leadership" class="sec dark-sec" aria-labelledby="leadership-heading">
+  <!-- Deco: diamond grid -->
+  <svg class="abs-deco" style="bottom:0;left:0;width:180px;height:180px" viewBox="0 0 180 180" fill="none" aria-hidden="true">
+    <path d="M0,90 L90,0 L180,90 L90,180 Z" stroke="currentColor" stroke-width="0.7"/>
+    <path d="M0,90 L45,45 L90,0 L135,45 L180,90 L135,135 L90,180 L45,135 Z" stroke="currentColor" stroke-width="0.4"/>
+  </svg>
+  <div class="sec-hd center rev">
+    <div class="sec-lbl">Administration</div>
+    <h2 class="sec-title" id="leadership-heading">University Leadership</h2>
+    <p class="sec-sub" style="margin:12px auto 0">Guided by visionary leaders committed to academic excellence and national development.</p>
+  </div>
+  <div class="leaders-grid">
+    <div class="leader-card rev">
+      <div class="leader-photo">
+        <img src="president.jpeg" alt="Smt. Droupadi Murmu, President of India" onerror="this.parentElement.innerHTML='<svg viewBox=\'0 0 80 80\' fill=\'none\'><circle cx=\'40\' cy=\'28\' r=\'16\' stroke=\'currentColor\' stroke-width=\'1\'/><path d=\'M12,80 Q12,52 40,52 Q68,52 68,80\' stroke=\'currentColor\' stroke-width=\'1\' fill=\'none\'/></svg>'">
+      </div>
+      <div class="leader-name">Smt. Droupadi Murmu</div>
+      <div class="leader-role">Visitor · Hon'ble President of India</div>
+      <p class="leader-note">As Visitor, the President of India provides supreme guidance to the university's growth and governance.</p>
+      <div style="margin-top:16px"><a href="president.html" class="btn btn-ghost btn-sm">Read More</a></div>
+    </div>
+    <div class="leader-card rev">
+      <div class="leader-photo">
+        <img src="chancellor.png" alt="Dr. C.P. Thakur, Chancellor of CUSB" onerror="this.parentElement.innerHTML='<svg viewBox=\'0 0 80 80\' fill=\'none\'><circle cx=\'40\' cy=\'28\' r=\'16\' stroke=\'currentColor\' stroke-width=\'1\'/><path d=\'M12,80 Q12,52 40,52 Q68,52 68,80\' stroke=\'currentColor\' stroke-width=\'1\' fill=\'none\'/></svg>'">
+      </div>
+      <div class="leader-name">Dr. C.P. Thakur</div>
+      <div class="leader-role">Chancellor</div>
+      <p class="leader-note">Distinguished statesman and medical professional steering the university's strategic direction.</p>
+      <div style="margin-top:16px"><a href="chancellor.html" class="btn btn-ghost btn-sm">Read More</a></div>
+    </div>
+    <div class="leader-card rev">
+      <div class="leader-photo">
+        <img src="vc.jpg" alt="Prof. K.N. Singh, Vice-Chancellor of CUSB" onerror="this.parentElement.innerHTML='<svg viewBox=\'0 0 80 80\' fill=\'none\'><circle cx=\'40\' cy=\'28\' r=\'16\' stroke=\'currentColor\' stroke-width=\'1\'/><path d=\'M12,80 Q12,52 40,52 Q68,52 68,80\' stroke=\'currentColor\' stroke-width=\'1\' fill=\'none\'/></svg>'">
+      </div>
+      <div class="leader-name">Prof. K.N. Singh</div>
+      <div class="leader-role">Vice-Chancellor</div>
+      <p class="leader-note">Leading CUSB's transformation into a centre of research excellence and interdisciplinary innovation.</p>
+      <div style="margin-top:16px"><a href="vc.html" class="btn btn-ghost btn-sm">Read More</a></div>
+    </div>
+  </div>
+  <a href="#hero" class="sec-top-link" aria-label="Back to top" style="display:block;margin:32px auto 0;width:fit-content">↑ Back to top</a>
+</section>
+
+<!-- WAVE -->
+<div class="wave-divider" style="background:var(--bg2)">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60" aria-hidden="true">
+    <path d="M0,40 C200,0 500,60 800,20 C1100,-10 1300,50 1440,30 L1440,60 L0,60 Z" fill="var(--bg)"/>
+  </svg>
+</div>
+
+<!-- ══════ COURSES ══════ -->
+<section id="courses-sec" class="sec light-sec" aria-labelledby="courses-heading" style="position:relative">
+  <!-- Deco: grid dots -->
+  <svg class="abs-deco" style="top:40px;right:0;width:160px;height:300px" viewBox="0 0 160 300" fill="none" aria-hidden="true">
+    <pattern id="dotpat" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="currentColor"/>
+    </pattern>
+    <rect width="160" height="300" fill="url(#dotpat)"/>
+  </svg>
+  <div class="sec-hd center rev">
+    <div class="sec-lbl">Academics</div>
+    <h2 class="sec-title" id="courses-heading">Courses &amp; Programmes</h2>
+    <p class="sec-sub" style="margin:0 auto">Explore 51+ programmes across 13 schools. Filter by school to find your path.</p>
+  </div>
+  <div class="dept-search-wrap rev">
+    <input class="dept-search" type="search" id="deptSearch" placeholder="Search department or school…" aria-label="Search departments and schools" autocomplete="off">
+    <span class="dept-search-ico" aria-hidden="true">🔍</span>
+  </div>
+  <div class="school-tabs-wrap rev">
+    <span class="school-tabs-label" id="school-tabs-label">Select Your School</span>
+    <div class="school-tabs" id="schoolTabs" role="tablist" aria-label="Filter by school">
+      <button class="school-tab active" data-school="all" role="tab" aria-selected="true">🗂 All Schools</button>
+      <button class="school-tab" data-school="math" role="tab" aria-selected="false">💻 Maths, Stat &amp; CS</button>
+      <button class="school-tab" data-school="human" role="tab" aria-selected="false">🧠 Human Science</button>
+      <button class="school-tab" data-school="social" role="tab" aria-selected="false">⚖️ Social Sciences</button>
+      <button class="school-tab" data-school="earth" role="tab" aria-selected="false">🌍 Earth, Bio &amp; Evs</button>
+      <button class="school-tab" data-school="education" role="tab" aria-selected="false">🏫 Education</button>
+      <button class="school-tab" data-school="health" role="tab" aria-selected="false">⚕️ Health Science</button>
+      <button class="school-tab" data-school="lang" role="tab" aria-selected="false">📖 Language &amp; Lit.</button>
+      <button class="school-tab" data-school="media" role="tab" aria-selected="false">📡 Media &amp; Arts</button>
+      <button class="school-tab" data-school="agri" role="tab" aria-selected="false">🌾 Agriculture</button>
+      <button class="school-tab" data-school="management" role="tab" aria-selected="false">💼 Management</button>
+      <button class="school-tab" data-school="law" role="tab" aria-selected="false">⚖️ Law</button>
+      <button class="school-tab" data-school="physical" role="tab" aria-selected="false">⚗️ Physical &amp; Chem.</button>
+    </div>
+  </div>
+  <div class="no-results" id="noResults" role="status" aria-live="polite">No departments found matching your search.</div>
+  <div class="school-group rev" data-school="math"><div class="school-name">💻 School of Mathematics, Statistics &amp; Computer Science</div><div class="dept-links"><a class="dept-link" href="maths.html" data-dept="mathematics"><span class="dico">📐</span>Mathematics</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="statistics"><span class="dico">📉</span>Statistics</a><a class="dept-link" href="computer_sc.html" data-dept="computer-science"><span class="dico">🖥️</span>Computer Science</a></div></div>
+  <hr class="school-divider" data-school="math">
+  <div class="school-group rev" data-school="human"><div class="school-name">🧠 School of Human Sciences</div><div class="dept-links"><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="psychology"><span class="dico">🧠</span>Psychological Sciences</a></div></div>
+  <hr class="school-divider" data-school="human">
+  <div class="school-group rev" data-school="social"><div class="school-name">⚖️ School of Social Sciences &amp; Policies</div><div class="dept-links"><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="historical"><span class="dico">🏛️</span>Historical Studies</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="economics"><span class="dico">📊</span>Economic Studies</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="dev-studies"><span class="dico">🌐</span>Development Studies</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="political"><span class="dico">🗳️</span>Political Studies</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="sociology"><span class="dico">👥</span>Sociological Studies</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="library-science"><span class="dico">📚</span>Library &amp; Info Science</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="social-work"><span class="dico">🤝</span>Social Work</a></div></div>
+  <hr class="school-divider" data-school="social">
+  <div class="school-group rev" data-school="earth"><div class="school-name">🌍 School of Earth, Biological &amp; Environmental Sciences</div><div class="dept-links"><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="bioinformatics"><span class="dico">🧬</span>Bioinformatics</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="geology"><span class="dico">🪨</span>Geology</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="geography"><span class="dico">🗺️</span>Geography</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="life-science"><span class="dico">🌿</span>Life Science</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="biotechnology"><span class="dico">🔬</span>Biotechnology</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="env-science"><span class="dico">🌱</span>Environmental Sciences</a></div></div>
+  <hr class="school-divider" data-school="earth">
+  <div class="school-group rev" data-school="education"><div class="school-name">🏫 School of Education</div><div class="dept-links"><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="teacher-edu"><span class="dico">📏</span>Teacher Education</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="physical-edu"><span class="dico">🏃</span>Physical Education</a></div></div>
+  <hr class="school-divider" data-school="education">
+  <div class="school-group rev" data-school="health"><div class="school-name">⚕️ School of Pharmaceutical Sciences</div><div class="dept-links"><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="pharmacy"><span class="dico">💊</span>Pharmacy</a></div></div>
+  <hr class="school-divider" data-school="health">
+  <div class="school-group rev" data-school="lang"><div class="school-name">📖 School of Languages &amp; Literature</div><div class="dept-links"><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="english"><span class="dico">📖</span>English</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="hindi"><span class="dico">🔤</span>Hindi</a></div></div>
+  <hr class="school-divider" data-school="lang">
+  <div class="school-group rev" data-school="media"><div class="school-name">📡 School of Media &amp; Arts</div><div class="dept-links"><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="mass-comm"><span class="dico">📡</span>Mass Communication &amp; Media</a></div></div>
+  <hr class="school-divider" data-school="media">
+  <div class="school-group rev" data-school="agri"><div class="school-name">🌾 School of Agriculture</div><div class="dept-links"><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="agriculture"><span class="dico">🌾</span>Agriculture</a></div></div>
+  <hr class="school-divider" data-school="agri">
+  <div class="school-group rev" data-school="management"><div class="school-name">💼 School of Commerce &amp; Management</div><div class="dept-links"><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="commerce"><span class="dico">💼</span>Commerce &amp; Business Studies</a></div></div>
+  <hr class="school-divider" data-school="management">
+  <div class="school-group rev" data-school="law"><div class="school-name">⚖️ School of Law &amp; Governance</div><div class="dept-links"><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="law"><span class="dico">⚖️</span>Law &amp; Governance</a></div></div>
+  <hr class="school-divider" data-school="law">
+  <div class="school-group rev" data-school="physical"><div class="school-name">⚗️ School of Physical &amp; Chemical Sciences</div><div class="dept-links"><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="chemistry"><span class="dico">⚗️</span>Chemistry</a><a class="dept-link" href="#" aria-disabled="true" tabindex="-1" data-dept="physics"><span class="dico">⚛️</span>Physics</a></div></div>
+  <a href="#hero" class="sec-top-link rev" aria-label="Back to top" style="display:block;margin-top:40px">↑ Back to top</a>
+</section>
+
+<!-- WAVE -->
+<div class="wave-divider" style="background:var(--bg)">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60" aria-hidden="true">
+    <path d="M0,0 C480,60 960,0 1440,40 L1440,60 L0,60 Z" fill="var(--card-bg)"/>
+  </svg>
+</div>
+
+<!-- ══════ CAMPUS ══════ -->
+<section id="campus" class="sec white-sec" aria-labelledby="campus-heading">
+  <div class="sec-hd rev">
+    <div class="sec-lbl">Infrastructure</div>
+    <h2 class="sec-title" id="campus-heading">Campus &amp; Facilities</h2>
+    <p class="sec-sub">World-class infrastructure across 300 acres — built to support every dimension of academic and student life.</p>
+  </div>
+  <div class="infra-grid">
+    <a href="library.html" class="infra-card rev" aria-label="Library Services"><div class="infra-img-slot"><img src="libimg.avif" alt="Library Services" class="camp-img" onerror="this.style.display='none'"></div><div class="infra-name">Library Services</div><p class="infra-note">Digital and physical collection with access to thousands of journals, e-resources, and research databases.</p></a>
+    <a href="hostels.html" class="infra-card rev" aria-label="Hostel Facility"><div class="infra-img-slot"><img src="hosimg.jpg" alt="Hostel facilities" class="camp-img" onerror="this.style.display='none'"></div><div class="infra-name">Hostel Facility</div><p class="infra-note">Separate blocks for men and women with 24/7 security, mess facility, and recreational spaces.</p></a>
+    <a href="sports.html" class="infra-card rev" aria-label="Sports Complex"><div class="infra-img-slot"><img src="spoim.jpg" alt="Sports facilities" class="camp-img" onerror="this.style.display='none'"></div><div class="infra-name">Sports Complex</div><p class="infra-note">Cricket, football, athletics grounds, and a modern indoor sports hall for students and staff.</p></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="infra-card rev"><div class="infra-img-slot"><img src="audimg.jpg" alt="Auditorium" class="camp-img" onerror="this.style.display='none'"></div><div class="infra-name">Auditorium &amp; Conference Hall</div><p class="infra-note">State-of-the-art venues for seminars, conclaves, cultural programs, and annual convocations.</p></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="infra-card rev"><div class="infra-img-slot"><img src="smartroon.avif" alt="Smart Classroom" class="camp-img" onerror="this.style.display='none'"></div><div class="infra-name">Smart Classrooms &amp; Wi-Fi</div><p class="infra-note">Fully Wi-Fi enabled campus, smart classrooms, computer labs, and media production studio.</p></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="infra-card rev"><div class="infra-img-slot"><img src="diversity.webp" alt="Biodiversity Park" class="camp-img" onerror="this.style.display='none'"></div><div class="infra-name">Biodiversity Park</div><p class="infra-note">Green park featuring medicinal plants and ecological trails across the campus.</p></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="infra-card rev"><div class="infra-img-slot"><img src="health.webp" alt="Healthcare Centre" class="camp-img" onerror="this.style.display='none'"></div><div class="infra-name">Health Care Centre</div><p class="infra-note">On-campus centre providing medical assistance, emergency care, and wellness support.</p></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="infra-card rev"><div class="infra-img-slot"><img src="sclab.jpg" alt="Science Lab" class="camp-img" onerror="this.style.display='none'"></div><div class="infra-name">Central Instrumental Facility</div><p class="infra-note">Advanced research instruments available for interdisciplinary scientific research.</p></a>
+  </div>
+  <a href="#hero" class="sec-top-link" aria-label="Back to top" style="display:block;margin-top:32px">↑ Back to top</a>
+</section>
+
+<!-- WAVE -->
+<div class="wave-divider" style="background:var(--card-bg)">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60" aria-hidden="true">
+    <path d="M0,30 C360,0 720,60 1080,20 C1260,0 1380,40 1440,30 L1440,60 L0,60 Z" fill="var(--bg2)"/>
+  </svg>
+</div>
+
+<!-- ══════ NOTICES ══════ -->
+<section id="notices-sec" class="sec dark-sec" aria-labelledby="notices-heading">
+  <div class="sec-hd rev">
+    <div class="sec-lbl">Information</div>
+    <h2 class="sec-title" id="notices-heading">Notices &amp; Updates</h2>
+  </div>
+  <div class="notices-grid">
+    <div class="notice-col rev">
+      <div class="notice-col-hd"><span class="nc-dot" aria-hidden="true"></span>Admissions &amp; Academic Notices</div>
+      <div class="notice-item"><a href="#" aria-disabled="true" tabindex="-1">CUSB Admission Bulletin 2026 (CUET-PG: 2026) <span class="new-tag">NEW</span></a><div class="n-date">March 2026</div></div>
+      <div class="notice-item"><a href="#" aria-disabled="true" tabindex="-1">NCET-2026 — 4-Year Integrated Teacher Education Programme <span class="new-tag">NEW</span></a><div class="n-date">March 2026</div></div>
+      <div class="notice-item"><a href="#" aria-disabled="true" tabindex="-1">Admission Notification UG 2026–27</a><div class="n-date">February 2026</div></div>
+      <div class="notice-item"><a href="#" aria-disabled="true" tabindex="-1">Semester Exam Schedule — Even Semester 2025–26</a><div class="n-date">January 2026</div></div>
+      <div class="notice-item"><a href="#" aria-disabled="true" tabindex="-1">Ph.D. Admission Notice — All Departments</a><div class="n-date">December 2025</div></div>
+      <div style="margin-top:16px"><a href="#" class="btn btn-ghost btn-sm">View All Notices →</a></div>
+    </div>
+    <div class="notice-col rev">
+      <div class="notice-col-hd"><span class="nc-dot teal" aria-hidden="true"></span>Events &amp; Circulars</div>
+      <div class="notice-item"><a href="#" aria-disabled="true" tabindex="-1">Competition on Smart Design for Website Development <span class="new-tag">NEW</span></a><div class="n-date">Registration from 14th Feb 2026</div></div>
+      <div class="notice-item"><a href="#" aria-disabled="true" tabindex="-1">45th INCA International Congress — CUSB</a><div class="n-date">March 2026</div></div>
+      <div class="notice-item"><a href="#" aria-disabled="true" tabindex="-1">Foundation Day Celebration — CUSB</a><div class="n-date">February 2026</div></div>
+      <div class="notice-item"><a href="#" aria-disabled="true" tabindex="-1">Recruitment Notification — Non-Teaching Posts</a><div class="n-date">January 2026</div></div>
+      <div class="notice-item"><a href="#" aria-disabled="true" tabindex="-1">Circular: NAAC Peer Team Visit Preparation</a><div class="n-date">December 2025</div></div>
+      <div style="margin-top:16px"><a href="#" class="btn btn-ghost btn-sm">View All Events →</a></div>
+    </div>
+  </div>
+  <a href="#hero" class="sec-top-link" aria-label="Back to top" style="display:block;margin-top:32px">↑ Back to top</a>
+</section>
+
+<!-- WAVE -->
+<div class="wave-divider" style="background:var(--bg2)">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60" aria-hidden="true">
+    <path d="M0,60 C240,0 600,60 900,10 C1100,-10 1320,50 1440,20 L1440,60 L0,60 Z" fill="var(--bg)"/>
+  </svg>
+</div>
+
+<!-- ══════ GALLERY ══════ -->
+<section class="gallery-section" id="gallery" aria-labelledby="gallery-heading">
+  <!-- Deco: scattered lines -->
+  <svg class="abs-deco" style="top:20px;left:20px;width:140px;height:140px" viewBox="0 0 140 140" fill="none" aria-hidden="true">
+    <line x1="0" y1="0" x2="140" y2="140" stroke="currentColor" stroke-width="0.5"/>
+    <line x1="0" y1="40" x2="100" y2="140" stroke="currentColor" stroke-width="0.5"/>
+    <line x1="40" y1="0" x2="140" y2="100" stroke="currentColor" stroke-width="0.5"/>
+    <line x1="70" y1="0" x2="140" y2="70" stroke="currentColor" stroke-width="0.5"/>
+    <line x1="0" y1="70" x2="70" y2="140" stroke="currentColor" stroke-width="0.5"/>
+  </svg>
+  <div class="gallery-header">
+    <div class="gallery-eyebrow">HIGHLIGHTS</div>
+    <h2 class="gallery-title" id="gallery-heading">Life at <span>CUSB</span></h2>
+    <p class="gallery-subtitle">Moments that define us — from academic excellence to vibrant campus culture.</p>
+    <button class="gallery-pause-btn" id="gallery-pause-btn" aria-pressed="false" aria-label="Pause gallery auto-scroll">⏸ Pause Slideshow</button>
+  </div>
+  <div class="gallery-stage">
+    <button class="gallery-arrow" id="arrowLeft" aria-label="Scroll gallery left">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="gallery-viewport" id="galleryViewport" aria-label="Photo gallery — use arrow buttons to navigate">
+      <div class="gallery-track" id="galleryTrack" role="list">
+        <div class="gallery-card" role="listitem"><div class="gallery-card-inner"><img src="expansion.jpg" alt="CUSB Main Campus expansion view" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" role="listitem"><div class="gallery-card-inner"><img src="malviya.jpeg" alt="CUSB Madan Mohan Malaviya Hall" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" role="listitem"><div class="gallery-card-inner"><img src="admin.jpeg" alt="CUSB Convocation Ceremony" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" role="listitem"><div class="gallery-card-inner"><img src="admin.jpeg" alt="CUSB Annual Sports Meet" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" role="listitem"><div class="gallery-card-inner"><img src="admin_good.jpeg" alt="CUSB Research Laboratory" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" role="listitem"><div class="gallery-card-inner"><img src="malviya.jpeg" alt="CUSB Cultural Festival" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" role="listitem"><div class="gallery-card-inner"><img src="malviya.jpeg" alt="CUSB Library Reading Hall" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" role="listitem"><div class="gallery-card-inner"><img src="admin.jpeg" alt="CUSB Graduation Day" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" role="listitem"><div class="gallery-card-inner"><img src="admin_good.jpeg" alt="CUSB Academic Block" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" role="listitem"><div class="gallery-card-inner"><img src="malviya.jpeg" alt="CUSB Campus Evening View" loading="lazy" onerror="this.style.display='none'"></div></div>
+        <div class="gallery-card" role="listitem"><div class="gallery-card-inner"><img src="admin.jpeg" alt="CUSB Students at Campus" loading="lazy" onerror="this.style.display='none'"></div></div>
+      </div>
+    </div>
+    <button class="gallery-arrow" id="arrowRight" aria-label="Scroll gallery right">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+  <div class="gallery-dots" id="galleryDots" role="tablist" aria-label="Gallery image navigation"></div>
+  <p class="gallery-count" id="galleryCount" aria-live="polite"><span id="galleryIdx">01</span> / 11</p>
+  <div style="text-align:center;margin-top:20px;padding-bottom:20px;padding:0 6vw 20px">
+    <a href="#hero" class="sec-top-link" style="display:inline-block" aria-label="Back to top">↑ Back to top</a>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave-divider" style="background:var(--bg)">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60" aria-hidden="true">
+    <path d="M0,20 C400,60 800,0 1200,40 C1320,60 1400,10 1440,20 L1440,60 L0,60 Z" fill="var(--card-bg)"/>
+  </svg>
+</div>
+
+<!-- ══════ QUICK LINKS ══════ -->
+<section id="quicklinks" class="sec white-sec" aria-labelledby="quicklinks-heading">
+  <div class="sec-hd rev">
+    <div class="sec-lbl">Quick Access</div>
+    <h2 class="sec-title" id="quicklinks-heading">Student Resources &amp; Quick Links</h2>
+    <p class="sec-sub">Everything you need, one click away.</p>
+  </div>
+  <div class="ql-grid">
+    <a href="https://scholarships.gov.in/" class="ql-card rev" target="_blank" rel="noopener" aria-label="Scholarships portal"><span class="ql-ico"><img src="scholarship.jpg" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">Scholarship</span></a>
+    <a href="hostels.html" class="ql-card rev" aria-label="Hostel information"><span class="ql-ico"><img src="hosimg.jpg" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">Hostel</span></a>
+    <a href="https://rtionline.gov.in/" class="ql-card rev" target="_blank" rel="noopener" aria-label="RTI Online portal"><span class="ql-ico"><img src="rtiimg.webp" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">RTI</span></a>
+    <a href="https://www.antiragging.in/" class="ql-card rev" target="_blank" rel="noopener" aria-label="Anti-Ragging portal"><span class="ql-ico"><img src="anti-ragging.jpg" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">Anti-Ragging</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev" aria-label="Webmail (coming soon)"><span class="ql-ico"><img src="mail.webp" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">Webmail</span></a>
+    <a href="https://cusb.samarth.edu.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev" aria-label="Samarth Login for Students"><span class="ql-ico"><img src="studentslogin.webp" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">Samarth (Students)</span></a>
+    <a href="https://cusb.samarth.ac.in/index.php/site/login" target="_blank" rel="noopener" class="ql-card rev" aria-label="Samarth Login for Employees"><span class="ql-ico"><img src="employeelogin.jpg" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">Samarth (Employee)</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev" aria-label="Prospectus download"><span class="ql-ico"><img src="brochure.webp" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">Prospectus</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev" aria-label="Exam Schedule"><span class="ql-ico"><img src="schedule.png" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">Exam Schedule</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev" aria-label="Semester Results"><span class="ql-ico"><img src="results.jpg" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">Semester Results</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev" aria-label="Downloads"><span class="ql-ico"><img src="downloads.webp" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">Downloads</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev" aria-label="Convocation information"><span class="ql-ico"><img src="convo.png" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">Convocation</span></a>
+    <a href="pyq.html" aria-disabled="true" tabindex="-1" class="ql-card rev" aria-label="Previous Year Questions"><span class="ql-ico"><img src="pyqimg.webp" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">PYQs</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev" aria-label="Placements"><span class="ql-ico"><img src="placement.png" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">Placements</span></a>
+    <a href="#" aria-disabled="true" tabindex="-1" class="ql-card rev" aria-label="NSS and NCC"><span class="ql-ico"><img src="nss.webp" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">NSS / NCC</span></a>
+    <a href="pyq.html" aria-disabled="true" tabindex="-1" class="ql-card rev" aria-label="Alumni portal"><span class="ql-ico"><img src="alumini.png" alt="" class="ql-img" onerror="this.style.display='none'"></span><span class="ql-nm">Alumni</span></a>
+  </div>
+  <a href="#hero" class="sec-top-link" aria-label="Back to top" style="display:block;margin-top:32px">↑ Back to top</a>
+</section>
+
+<!-- WAVE -->
+<div class="wave-divider" style="background:var(--card-bg)">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60" aria-hidden="true">
+    <path d="M0,0 C300,60 700,0 1000,40 C1200,60 1380,10 1440,30 L1440,60 L0,60 Z" fill="var(--bg2)"/>
+  </svg>
+</div>
+
+<!-- ══════ GOV SITES ══════ -->
+<section id="gov_sites" aria-labelledby="gov-heading" style="padding:40px 6vw;background:var(--bg2);border-bottom:1px solid var(--border)">
+  <div class="gallery-eyebrow" id="gov-heading" style="display:block;text-align:center;margin-bottom:20px">Government Portals</div>
+  <div class="students_site">
+    <ul class="students_site_link" role="list">
+      <li><a href="https://swayam.gov.in/" target="_blank" rel="noopener" aria-label="Swayam — Free Online Courses by GoI"><img src="swayam_logo.png" alt="Swayam Courses"></a></li>
+      <li><a href="https://www.swayamprabha.gov.in/" target="_blank" rel="noopener" aria-label="Swayam Prabha — DTH educational channels"><img src="SWAYAM_PRABHA.png" alt="Swayam Prabha"></a></li>
+      <li><a href="https://ndl.iitkgp.ac.in/" target="_blank" rel="noopener" aria-label="National Digital Library of India"><img src="national (1).png" alt="National Digital Library"></a></li>
+      <li><a href="https://aishe.gov.in/" target="_blank" rel="noopener" aria-label="AISHE — All India Survey on Higher Education"><img src="AISHE.png" alt="AISHE Portal"></a></li>
+      <li><a href="https://www.mygov.in/" target="_blank" rel="noopener" aria-label="MyGov — Citizen Engagement Platform"><img src="mygov_0.png" alt="MyGov India"></a></li>
+      <li><a href="https://www.india.gov.in/" target="_blank" rel="noopener" aria-label="India.gov.in — National Portal of India"><img src="Indiagovin.svg" alt="India Government Portal"></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave-divider" style="background:var(--bg2)">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60" aria-hidden="true">
+    <path d="M0,30 C360,60 720,0 1080,50 C1260,70 1380,10 1440,30 L1440,60 L0,60 Z" fill="var(--btn-bg)"/>
+  </svg>
+</div>
+
+<!-- ══════ CTA ══════ -->
+<section id="cta-sec" aria-labelledby="cta-heading" style="padding:100px 6vw;background:var(--btn-bg);color:var(--btn-fg);text-align:center;position:relative;overflow:hidden">
+  <!-- Deco: concentric arcs -->
+  <svg class="cta-deco" viewBox="0 0 800 400" fill="none" style="position:absolute;inset:0;width:100%;height:100%;" aria-hidden="true">
+    <path d="M-100,200 Q400,-100 900,200" stroke="currentColor" stroke-width="0.8" fill="none"/>
+    <path d="M-100,250 Q400,-50 900,250" stroke="currentColor" stroke-width="0.6" fill="none"/>
+    <path d="M-100,300 Q400,0 900,300" stroke="currentColor" stroke-width="0.5" fill="none"/>
+    <path d="M-100,350 Q400,50 900,350" stroke="currentColor" stroke-width="0.4" fill="none"/>
+    <circle cx="700" cy="60" r="80" stroke="currentColor" stroke-width="0.5" fill="none"/>
+    <circle cx="700" cy="60" r="50" stroke="currentColor" stroke-width="0.4" fill="none"/>
+    <circle cx="100" cy="320" r="60" stroke="currentColor" stroke-width="0.5" fill="none"/>
+  </svg>
+  <div class="cta-inner">
+    <h2 class="cta-title rev" id="cta-heading">Begin Your Journey at CUSB</h2>
+    <p class="cta-sub rev">Admissions open for 2026–27. Join thousands of students shaping India's future from the heartland of Bihar.</p>
+    <div class="cta-btns rev">
+      <a href="https://cuet.samarth.ac.in/" target="_blank" rel="noopener" class="btn btn-ocean" style="background:var(--btn-fg);color:var(--btn-bg);border-color:var(--btn-fg)">Apply for 2026–27 →</a>
+      <a href="#quicklinks" class="btn btn-ghost" style="color:var(--btn-fg);border-color:var(--btn-fg)">Download Prospectus</a>
+      <a href="#" aria-disabled="true" tabindex="-1" class="btn btn-ghost" style="color:var(--btn-fg);border-color:var(--btn-fg)">Contact Helpdesk</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════ FOOTER ══════ -->
+<footer id="footer" role="contentinfo">
+  <!-- Deco wave into footer -->
+  <div style="margin:-1px -6vw 0;line-height:0;background:var(--btn-bg)">
+    <svg viewBox="0 0 1440 40" preserveAspectRatio="none" height="40" aria-hidden="true" style="display:block;width:100%">
+      <path d="M0,0 C360,40 720,0 1080,30 C1260,40 1380,10 1440,20 L1440,40 L0,40 Z" fill="var(--footer-bg)"/>
+    </svg>
+  </div>
+  <div class="footer-grid">
+    <div>
+      <div class="fb-name">Central University of South Bihar</div>
+      <p class="fb-desc">An institution of higher learning under the Ministry of Education, Government of India — committed to excellence, equity, and national development.</p>
+      <div class="fb-contact">
+        <a href="tel:06312229530">☎ 0631-2229 530</a>
+        <a href="mailto:admission@cusb.ac.in">✉ admission@cusb.ac.in</a>
+        <a href="mailto:webmaster@cusb.ac.in">✉ webmaster@cusb.ac.in</a>
+        <span>📍 Panchanpur, Gaya, Bihar – 824236</span>
+      </div>
+    </div>
+    <div>
+      <div class="fc-h5">About</div>
+      <ul class="fc-ul">
+        <li><a href="#">The University</a></li>
+        <li><a href="#">Vision &amp; Mission</a></li>
+        <li><a href="#">Administration</a></li>
+        <li><a href="#">Research &amp; Innovation</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fc-h5">Academics</div>
+      <ul class="fc-ul">
+        <li><a href="#courses-sec">All Departments</a></li>
+        <li><a href="#courses-sec">Programs</a></li>
+        <li><a href="#notices-sec">Exam Notices</a></li>
+        <li><a href="#notices-sec">Results</a></li>
+        <li><a href="#quicklinks">Convocation</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fc-h5">Students</div>
+      <ul class="fc-ul">
+        <li><a href="#cta-sec">Admissions 2026–27</a></li>
+        <li><a href="#quicklinks">Scholarship</a></li>
+        <li><a href="#quicklinks">Hostel</a></li>
+        <li><a href="#quicklinks">Placement Cell</a></li>
+        <li><a href="#quicklinks">NSS / NCC</a></li>
+        <li><a href="#quicklinks">Alumni</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fc-h5">Quick Links</div>
+      <ul class="fc-ul">
+        <li><a href="#notices-sec">NAAC / IQAC</a></li>
+        <li><a href="https://rtionline.gov.in/" target="_blank" rel="noopener">RTI</a></li>
+        <li><a href="#">Tenders</a></li>
+        <li><a href="#notices-sec">Recruitment</a></li>
+        <li><a href="#gallery">Photo Gallery</a></li>
+        <li><a href="#">Webmail</a></li>
+      </ul>
+    </div>
+    <div class="social_media">
+      <div class="fc-h5">Follow Us</div>
+      <ul class="social_media-links" role="list" aria-label="CUSB Social Media">
+        <li><a href="https://www.facebook.com/cusbofficial/" target="_blank" rel="noopener" aria-label="Follow CUSB on Facebook"><img src="fb.png" alt="Facebook"></a></li>
+        <li><a href="https://x.com/CUSBofficial" target="_blank" rel="noopener" aria-label="Follow CUSB on X (Twitter)"><img src="X.png" alt="X (Twitter)"></a></li>
+        <li><a href="https://www.instagram.com/cusbofficialpage/?hl=en" target="_blank" rel="noopener" aria-label="Follow CUSB on Instagram"><img src="insta.png" alt="Instagram"></a></li>
+        <li><a href="https://www.youtube.com/user/CUBofficialchannel" target="_blank" rel="noopener" aria-label="CUSB YouTube Channel"><img src="YouTube.webp" alt="YouTube"></a></li>
+        <li><a href="https://in.linkedin.com/school/cusbofficial/" target="_blank" rel="noopener" aria-label="CUSB on LinkedIn"><img src="linke.png" alt="LinkedIn"></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="map">
+    <a href="https://maps.google.com/?q=Central+University+of+South+Bihar+Gaya" target="_blank" rel="noopener" aria-label="View CUSB location on Google Maps">
+      <img src="map.jpeg" alt="Map showing CUSB campus location at Panchanpur, Gaya, Bihar">
+    </a>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Central University of South Bihar, Gaya, India. All rights reserved.</span>
+    <div class="acc-row" role="list" aria-label="Accreditations">
+      <span class="acc-badge" role="listitem">NAAC</span>
+      <span class="acc-badge" role="listitem">NEP 2020</span>
+      <span class="acc-badge" role="listitem">Viksit Bharat</span>
+    </div>
+    <span>
+      <a href="#">Privacy</a> ·
+      <a href="#">Terms</a> ·
+      <a href="#">Sitemap</a>
+    </span>
+  </div>
+</footer>
+
+<!-- ══════ CHATBOT — 2D LINE ART MAN ══════ -->
+<div class="chatbot-container" id="chatbot-container">
+  <div class="chatbot-window" id="chatbot-window" role="dialog" aria-modal="true" aria-label="CUSB Assistant chat">
+    <div class="chatbot-header">
+      <span>CUSB Assistant</span>
+      <button class="chatbot-close" id="chatbot-close" aria-label="Close chat">×</button>
+    </div>
+    <div class="chatbot-messages" id="chatbot-messages" role="log" aria-live="polite" aria-label="Chat messages">
+      <div class="chatbot-message bot">
+        <div class="chatbot-avatar" aria-hidden="true">
+          <!-- 2D line art man -->
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="8" r="4.5" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M7,28 C7,20 21,20 21,28" stroke="currentColor" stroke-width="1.2" fill="none"/>
+            <line x1="14" y1="12.5" x2="14" y2="20" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="14" y1="14" x2="8" y2="18" stroke="currentColor" stroke-width="1.2"/>
+            <line x1="14" y1="14" x2="20" y2="18" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <div class="chatbot-message-bubble">Hi! I'm the CUSB Assistant. Ask me about admissions, programs, campus, or anything about the university!</div>
+      </div>
+    </div>
+    <div class="chatbot-input-group">
+      <label for="chatbot-input" class="sr-only">Type your message</label>
+      <input type="text" id="chatbot-input" placeholder="Ask me anything…" aria-label="Chat message input" autocomplete="off">
+      <button id="chatbot-send" aria-label="Send message">→</button>
+    </div>
+  </div>
+
+  <!-- Floating cloud message -->
+  <div class="floating-message" id="floating-message" aria-hidden="true">
+    <svg width="140" height="54" viewBox="0 0 140 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10,30 Q10,8 30,8 L110,8 Q130,8 130,22 Q130,36 110,36 L40,36 L28,50 L32,36 L30,36 Q10,36 10,30 Z"
+        stroke="currentColor" stroke-width="1.2" fill="var(--card-bg)"/>
+      <text x="70" y="26" text-anchor="middle" font-family="DM Mono, monospace" font-size="9" fill="currentColor">Need any help?</text>
+    </svg>
+  </div>
+
+  <!-- Toggle button with 2D line art man -->
+  <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open CUSB Assistant chat" aria-expanded="false" aria-controls="chatbot-window">
+    <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="14" cy="8" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M7,28 C7,20 21,20 21,28" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <line x1="14" y1="12.5" x2="14" y2="20" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="14" y1="14" x2="8" y2="18" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="14" y1="14" x2="20" y2="18" stroke="currentColor" stroke-width="1.5"/>
+    </svg>
+  </button>
+</div>
+
+<!-- ══════ SECTION PROGRESS NAV ══════ -->
+<nav id="section-nav" aria-label="Jump to page section">
+  <button class="snav-dot" data-target="hero" data-label="Home" aria-label="Jump to Home"></button>
+  <button class="snav-dot" data-target="about" data-label="About" aria-label="Jump to About"></button>
+  <button class="snav-dot" data-target="leadership" data-label="Leadership" aria-label="Jump to Leadership"></button>
+  <button class="snav-dot" data-target="courses-sec" data-label="Courses" aria-label="Jump to Courses"></button>
+  <button class="snav-dot" data-target="campus" data-label="Campus" aria-label="Jump to Campus"></button>
+  <button class="snav-dot" data-target="notices-sec" data-label="Notices" aria-label="Jump to Notices"></button>
+  <button class="snav-dot" data-target="gallery" data-label="Gallery" aria-label="Jump to Gallery"></button>
+  <button class="snav-dot" data-target="quicklinks" data-label="Quick Links" aria-label="Jump to Quick Links"></button>
+  <button class="snav-dot" data-target="cta-sec" data-label="Apply" aria-label="Jump to Apply"></button>
+  <button class="snav-dot" data-target="footer" data-label="Footer" aria-label="Jump to Footer"></button>
+</nav>
+
+<!-- SCROLL TO TOP -->
+<button id="scroll-btn" class="to-top" aria-label="Scroll to top" title="Scroll to top">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="2" fill="none">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+
+<!-- ══════ JAVASCRIPT ══════ -->
+<script>
+/* ─── THEME TOGGLE ─── */
+const html = document.documentElement;
+const themeBtn = document.getElementById('theme-toggle-btn');
+function setTheme(t){
+  html.setAttribute('data-theme',t);
+  localStorage.setItem('cusb-theme',t);
+}
+themeBtn.addEventListener('click',()=>{
+  setTheme(html.getAttribute('data-theme')==='light'?'dark':'light');
+});
+// Persist
+const saved = localStorage.getItem('cusb-theme');
+if(saved) setTheme(saved);
+
+/* ─── FONT SIZE ─── */
+let fScale = parseFloat(localStorage.getItem('cusb-font-scale')||'1');
+const fontDisplay = document.getElementById('font-size-display');
+function applyFont(){
+  document.documentElement.style.setProperty('--font-scale',fScale);
+  fontDisplay.textContent = Math.round(fScale*100)+'%';
+  localStorage.setItem('cusb-font-scale',fScale);
+}
+applyFont();
+document.getElementById('font-increase-btn').addEventListener('click',()=>{if(fScale<1.4){fScale=Math.round((fScale+0.1)*10)/10;applyFont();}});
+document.getElementById('font-decrease-btn').addEventListener('click',()=>{if(fScale>0.8){fScale=Math.round((fScale-0.1)*10)/10;applyFont();}});
+
+/* ─── TICKER PAUSE ─── */
+const tickerTrack = document.getElementById('ticker-track');
+const tickerPauseBtn = document.getElementById('ticker-pause-btn');
+let tickerPaused = false;
+tickerPauseBtn.addEventListener('click',()=>{
+  tickerPaused=!tickerPaused;
+  tickerTrack.classList.toggle('paused',tickerPaused);
+  tickerPauseBtn.setAttribute('aria-pressed',tickerPaused);
+  tickerPauseBtn.textContent = tickerPaused?'▶':'⏸';
+});
+
+/* ─── MOBILE MENU ─── */
+const hamBtn = document.getElementById('ham-btn');
+const mobMenu = document.getElementById('mob-menu');
+const mobOverlay = document.getElementById('mob-overlay');
+const mobClose = document.getElementById('mob-close-btn');
+function openMenu(){
+  mobMenu.classList.add('open');
+  mobOverlay.classList.add('open');
+  hamBtn.setAttribute('aria-expanded','true');
+  mobClose.focus();
+}
+function closeMenu(){
+  mobMenu.classList.remove('open');
+  mobOverlay.classList.remove('open');
+  hamBtn.setAttribute('aria-expanded','false');
+  hamBtn.focus();
+}
+hamBtn.addEventListener('click',openMenu);
+mobClose.addEventListener('click',closeMenu);
+mobOverlay.addEventListener('click',closeMenu);
+mobMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+
+/* ─── COUNTER ANIMATION ─── */
+function animateCounters(){
+  document.querySelectorAll('.num[data-to]').forEach(el=>{
+    const to = parseInt(el.getAttribute('data-to'));
+    const suf = el.getAttribute('data-s')||'';
+    const duration = 1800;
+    const start = performance.now();
+    function step(now){
+      const p = Math.min((now-start)/duration,1);
+      const ease = 1-Math.pow(1-p,3);
+      el.textContent = Math.floor(ease*to)+(p>=1?suf:'');
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
+let countersRun = false;
+const heroObs = new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting && !countersRun){countersRun=true;animateCounters();}
+},{threshold:.3});
+heroObs.observe(document.querySelector('.hero-stats'));
+
+/* ─── SCROLL REVEAL ─── */
+const revObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev').forEach(el=>revObs.observe(el));
+
+/* ─── SCROLL TO TOP ─── */
+const scrollBtn = document.getElementById('scroll-btn');
+window.addEventListener('scroll',()=>{
+  scrollBtn.classList.toggle('show',window.scrollY>400);
+});
+scrollBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ─── SECTION NAV DOTS ─── */
+const snavDots = document.querySelectorAll('.snav-dot');
+const sections = ['hero','about','leadership','courses-sec','campus','notices-sec','gallery','quicklinks','cta-sec','footer'];
+snavDots.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const t = document.getElementById(btn.getAttribute('data-target'));
+    if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+function updateNav(){
+  const mid = window.innerHeight/2;
+  let active = 0;
+  sections.forEach((id,i)=>{
+    const el = document.getElementById(id);
+    if(el){
+      const r = el.getBoundingClientRect();
+      if(r.top<=mid) active=i;
+    }
+  });
+  snavDots.forEach((d,i)=>d.classList.toggle('active',i===active));
+}
+window.addEventListener('scroll',updateNav,{passive:true});
+updateNav();
+
+/* ─── GALLERY ─── */
+const gTrack = document.getElementById('galleryTrack');
+const gDots = document.getElementById('galleryDots');
+const gIdx = document.getElementById('galleryIdx');
+const cards = gTrack.querySelectorAll('.gallery-card');
+const total = cards.length;
+let gCurrent = 0;
+let gAuto;
+let gPaused = false;
+
+// Build dots
+for(let i=0;i<total;i++){
+  const d = document.createElement('button');
+  d.className='gdot'+(i===0?' active':'');
+  d.setAttribute('role','tab');
+  d.setAttribute('aria-label',`Go to image ${i+1}`);
+  d.addEventListener('click',()=>{goTo(i);});
+  gDots.appendChild(d);
+}
+
+function goTo(n){
+  gCurrent=(n+total)%total;
+  const cardW = cards[0].offsetWidth+12;
+  gTrack.style.transform=`translateX(-${gCurrent*cardW}px)`;
+  gDots.querySelectorAll('.gdot').forEach((d,i)=>d.classList.toggle('active',i===gCurrent));
+  gIdx.textContent=String(gCurrent+1).padStart(2,'0');
+}
+document.getElementById('arrowLeft').addEventListener('click',()=>goTo(gCurrent-1));
+document.getElementById('arrowRight').addEventListener('click',()=>goTo(gCurrent+1));
+
+function startAuto(){gAuto=setInterval(()=>goTo(gCurrent+1),3800);}
+function stopAuto(){clearInterval(gAuto);}
+startAuto();
+
+const galPauseBtn=document.getElementById('gallery-pause-btn');
+galPauseBtn.addEventListener('click',()=>{
+  gPaused=!gPaused;
+  gPaused?stopAuto():startAuto();
+  galPauseBtn.setAttribute('aria-pressed',gPaused);
+  galPauseBtn.textContent=gPaused?'▶ Resume Slideshow':'⏸ Pause Slideshow';
+});
+
+// Touch
+let touchX=0;
+gTrack.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX},{passive:true});
+gTrack.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-touchX;
+  if(Math.abs(dx)>40) goTo(dx<0?gCurrent+1:gCurrent-1);
+},{passive:true});
+
+/* ─── SCHOOL TABS & SEARCH ─── */
+const tabs = document.querySelectorAll('.school-tab');
+const groups = document.querySelectorAll('.school-group');
+const dividers = document.querySelectorAll('.school-divider');
+const noRes = document.getElementById('noResults');
+
+function showSchool(school){
+  groups.forEach(g=>{
+    const show = school==='all'||g.getAttribute('data-school')===school;
+    g.style.display=show?'block':'none';
+  });
+  dividers.forEach(d=>{
+    const show = school==='all'||d.getAttribute('data-school')===school;
+    d.style.display=show?'block':'none';
+  });
+  noRes.style.display='none';
+}
+
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    tabs.forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false');});
+    tab.classList.add('active');tab.setAttribute('aria-selected','true');
+    document.getElementById('deptSearch').value='';
+    showSchool(tab.getAttribute('data-school'));
+  });
+});
+
+document.getElementById('deptSearch').addEventListener('input',function(){
+  const q=this.value.toLowerCase().trim();
+  if(!q){showSchool('all');return;}
+  let found=0;
+  groups.forEach(g=>{
+    const text=g.textContent.toLowerCase();
+    const show=text.includes(q);
+    g.style.display=show?'block':'none';
+    if(show)found++;
+  });
+  dividers.forEach(d=>d.style.display='none');
+  noRes.style.display=found?'none':'block';
+  tabs.forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false');});
+});
+
+/* ─── CHATBOT ─── */
+const chatWindow = document.getElementById('chatbot-window');
+const chatToggle = document.getElementById('chatbot-toggle');
+const chatClose = document.getElementById('chatbot-close');
+const chatMessages = document.getElementById('chatbot-messages');
+const chatInput = document.getElementById('chatbot-input');
+const chatSend = document.getElementById('chatbot-send');
+const floatMsg = document.getElementById('floating-message');
+
+// Show floating message after 3s
+setTimeout(()=>{
+  floatMsg.classList.add('show');
+  floatMsg.removeAttribute('aria-hidden');
+  setTimeout(()=>{floatMsg.classList.remove('show');floatMsg.setAttribute('aria-hidden','true');},5000);
+},3000);
+
+chatToggle.addEventListener('click',()=>{
+  const open = chatWindow.classList.toggle('open');
+  chatToggle.setAttribute('aria-expanded',open);
+  floatMsg.classList.remove('show');
+  floatMsg.setAttribute('aria-hidden','true');
+  if(open) setTimeout(()=>chatInput.focus(),300);
+});
+chatClose.addEventListener('click',()=>{
+  chatWindow.classList.remove('open');
+  chatToggle.setAttribute('aria-expanded','false');
+  chatToggle.focus();
+});
+
+const botAvatarSVG = `<div class="chatbot-avatar" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="8" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M7,28 C7,20 21,20 21,28" stroke="currentColor" stroke-width="1.2" fill="none"/><line x1="14" y1="12.5" x2="14" y2="20" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="14" x2="8" y2="18" stroke="currentColor" stroke-width="1.2"/><line x1="14" y1="14" x2="20" y2="18" stroke="currentColor" stroke-width="1.2"/></svg></div>`;
+
+const responses = [
+  {k:['admission','apply','2026','cuet','enroll'],a:"Admissions for 2026–27 are open! Apply through CUET at cuet.samarth.ac.in. Click the Apply button at the top for more details."},
+  {k:['course','programme','department','school','study'],a:"CUSB offers 51+ programmes across 13 schools — from Computer Science and Law to Agriculture and Mass Communication. Visit the Courses section above to explore!"},
+  {k:['hostel','accommodation','stay','room'],a:"CUSB has separate hostel blocks for men and women with 24/7 security, mess facility, and recreational spaces. Check the Hostel link in Quick Links."},
+  {k:['campus','gaya','location','panchanpur'],a:"CUSB's campus is located at Panchanpur, approximately 15 km from Gaya, Bihar. It spans 300 acres — with labs, sports grounds, library, and more."},
+  {k:['fee','tuition','cost'],a:"For detailed fee structure, please visit the official CUSB website or contact the admissions office at admission@cusb.ac.in"},
+  {k:['naac','accreditation'],a:"CUSB is actively pursuing NAAC accreditation. A Peer Team visit is being prepared — check the Notices section for the latest circular."},
+  {k:['phd','research','doctoral'],a:"PhD admissions are open across all departments. Check the Notices & Updates section for the current Ph.D. Admission Notice."},
+  {k:['contact','phone','email','helpdesk'],a:"You can reach CUSB at:\n📞 0631-2229 530\n✉ admission@cusb.ac.in\n📍 Panchanpur, Gaya, Bihar – 824236"},
+  {k:['scholarship','financial'],a:"Various scholarships are available for CUSB students. Visit scholarships.gov.in or check the Quick Links section on this page."},
+  {k:['vc','vice chancellor','chancellor','leadership'],a:"CUSB is led by Prof. K.N. Singh (Vice-Chancellor), Dr. C.P. Thakur (Chancellor), and the Hon'ble President of India as Visitor. See the Leadership section for details."},
+];
+
+function getBotReply(msg){
+  const m = msg.toLowerCase();
+  for(const r of responses){
+    if(r.k.some(k=>m.includes(k))) return r.a;
+  }
+  return "Thank you for your question! For detailed information, please contact CUSB at admission@cusb.ac.in or call 0631-2229 530. I'm here to help with general queries about admissions, programs, and campus life.";
+}
+
+function addMessage(text,isUser){
+  const wrap = document.createElement('div');
+  wrap.className='chatbot-message '+(isUser?'user':'bot');
+  if(!isUser) wrap.innerHTML=botAvatarSVG;
+  const bubble = document.createElement('div');
+  bubble.className='chatbot-message-bubble';
+  bubble.textContent=text;
+  wrap.appendChild(bubble);
+  chatMessages.appendChild(wrap);
+  chatMessages.scrollTop=chatMessages.scrollHeight;
+}
+
+function sendMsg(){
+  const txt=chatInput.value.trim();
+  if(!txt)return;
+  addMessage(txt,true);
+  chatInput.value='';
+  setTimeout(()=>addMessage(getBotReply(txt),false),600);
+}
+
+chatSend.addEventListener('click',sendMsg);
+chatInput.addEventListener('keydown',e=>{if(e.key==='Enter')sendMsg();});
+
+/* ─── SEARCH FORM ─── */
+document.getElementById('nav-search-form').addEventListener('submit',e=>{
+  e.preventDefault();
+  const q=document.getElementById('nav-search-input').value.trim().toLowerCase();
+  if(!q)return;
+  // Scroll to relevant section
+  const map={
+    'admission':'cta-sec','apply':'cta-sec','course':'courses-sec',
+    'programme':'courses-sec','campus':'campus','hostel':'campus',
+    'notice':'notices-sec','gallery':'gallery','about':'about',
+    'leadership':'leadership','quick':'quicklinks','gov':'gov_sites'
+  };
+  for(const [k,id] of Object.entries(map)){
+    if(q.includes(k)){
+      document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
+      return;
+    }
+  }
+  alert('No results found for "'+q+'". Try searching: admission, courses, campus, notices, gallery.');
+});
+
+/* ─── RESPONSIVE HERO GRID ─── */
+function checkHero(){
+  const hero=document.getElementById('hero');
+  if(window.innerWidth<=860){
+    hero.style.gridTemplateColumns='1fr';
+  } else {
+    hero.style.gridTemplateColumns='1fr 1fr';
+  }
+}
+checkHero();
+window.addEventListener('resize',checkHero);
+</script>
+</body>
+</html>

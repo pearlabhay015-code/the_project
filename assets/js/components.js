@@ -103,6 +103,8 @@ class CUSBHeader extends HTMLElement {
         <li><a href="campus.html">Campus</a></li>
         <li><a href="IQAC.html">IQAC</a></li>
         <li><a href="students.html">Students</a></li>
+        <li><a href="#gov_sites">Gov</a></li>
+        <li><a href="aisehi.html">2D</a></li>
       </ul>
       <div class="nav-right">
         <a href="#cta-sec" class="btn-apply">Apply</a>
